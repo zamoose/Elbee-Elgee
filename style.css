@@ -104,6 +104,7 @@ body {
 #navigation ul, #extra ul {
 	margin: 5px 0 0;
 	padding-left: 0;
+	padding-right: 5px;
 }
 
 #navigation ul li h2, #extra ul li h2 {
