@@ -44,6 +44,10 @@ body {
 	background: url(images/menu_gradient2.png) top repeat-x #ca1919;
 }
 
+#navigation {
+	font-size: 73%;
+}
+
 #menu li {
 	display: inline;
 	margin: 0;

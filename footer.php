@@ -1,6 +1,8 @@
 <div id="footer">
 	<div id="footerleft">
-		<p>This is the footer.</p>
+		<?php if ( function_exists('the_recent_posts') ) {
+			the_recent_posts();
+		} ?>
 	</div>
 	<div id="footerright">
 		<ul>
@@ -42,5 +44,10 @@
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+//<![CDATA[
+  document.write('<script'+' src="http://crazyegg.com/pages'+'/scripts/5418.js?'+(new Date()).getTime()+'" type="text/javascript"></scr'+'ipt>');
+  //]]>
+  </script>
 </body>
 </html>
