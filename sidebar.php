@@ -38,8 +38,8 @@
 	</li>
 	<li><h2>Meta</h2>
 		<ul>
-		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php get_bloginfo('rss2_url'); ?>">RSS Entries</a></li>
-		                         <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php get_bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
+		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
+		                         <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
 					                         <li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
 		<?php wp_register(); ?>
 	        <li><?php wp_loginout(); ?></li>
