@@ -93,6 +93,10 @@ body {
 	padding-left: 20px;
 }
 
+#searchform input {
+	width: 97%;
+}
+
 #navigation ul, #extra ul {
 	margin: 5px 0 0;
 	padding-left: 0;
@@ -117,14 +121,14 @@ body {
 	text-decoration: underline;
 }
 
-/*#content a, #content a:visited {
+#content a, #content a:visited {
 	color: #ca1919;
 	text-decoration: none;
 }
 
 #content a:active, #content a:hover {
 	text-decoration: underline;
-}*/
+}
 
 #footer {
 	border-top: 1px solid #ca1919;	
@@ -153,9 +157,10 @@ body {
 	width: 95%;
 	/*margin-left: 3em;
 	border-left: 1px solid;
-	margin: 0 auto;*/
-	border: 1px solid #fff;
-	margin-bottom: 10px;
+	margin: 0 auto;
+	border: 1px solid #fff;*/
+	margin-bottom: 3em;
+	margin-top: 1em;
 }
 
 .published {
@@ -192,4 +197,16 @@ body {
 .wppost h3 a, .wppost h3 a:visited, .wppost h3 a:hover, .wppost h3 a:active { 
 	color: #ccc;
 	text-decoration: none;
+}
+
+.alignright {
+	
+}
+
+.alignleft {
+	
+}
+
+.center {
+	
 }
