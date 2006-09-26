@@ -10,7 +10,7 @@
 			<!--span class="pub-year"><?php echo($ye); ?></span-->
 		</acronym>	
 		<div id="post-<?php the_ID(); ?>" class="wppost">
-			<h3><a href="<?php the_permalink() ?>" rel="bookmark" title='<?php printf(__('Permanent Link to "%s"','k2_domain'), strip_tags(get_the_title())) ?>'><?php the_title(); ?></a></h3>	
+			<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>	
 
 			<div class="itemtext">
 					<?php if ( is_archive() or is_search() or (function_exists('is_tag') and is_tag()) ) {
@@ -20,7 +20,7 @@
 					} ?>
 					<div class="postinfo">
 					<?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?>
-					<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+					<?php edit_post_link(' | Edit this entry.', '', ''); ?>
 					</div>
 					<?php link_pages('<p><strong>'.__('Pages:','k2_domain').'</strong> ', '</p>', __('number','k2_domain')); ?>
 			</div>
