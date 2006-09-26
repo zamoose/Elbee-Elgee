@@ -63,7 +63,7 @@
 </div>
 <script type="text/javascript">
 //<![CDATA[
-  document.write('<script'+' src="http://crazyegg.com/pages'+'/scripts/5418.js?'+(new Date()).getTime()+'" type="text/javascript"></scr'+'ipt>');
+  document.write('<scr'+'ipt src="http://crazyegg.com/pages/scripts/5418.js?'+(new Date()).getTime()+'" type="text/javascript"></scr'+'ipt>');
   //]]>
   </script>
 </body>
