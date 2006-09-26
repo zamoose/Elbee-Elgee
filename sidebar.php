@@ -1,6 +1,6 @@
 <div id="navigation">
 <ul>
-	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar() ) : ?>
+	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
 	<li><h2>Search</h2>
 		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 	</li>
@@ -23,6 +23,19 @@
 </div>
 <div id="extra">
 <ul>
+	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Extra') ) : ?>
+        <?php if (function_exists(ttlb_ecosystem_details)) { ?>
+        <li><h2>TTLB Info</h2>
+		<?php ttlb_ecosystem_details('http://literalbarrage.org/blog'); ?>
+	</li>
+	<?php } ?>
+	<li><h2>Server Load</h2>
+		<ul>
+		        <li>
+			        <a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a>
+			</li>
+		</ul>
+	</li>
 	<li><h2>Meta</h2>
 		<ul>
 		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php get_bloginfo('rss2_url'); ?>">RSS Entries</a></li>
@@ -33,5 +46,6 @@
 		<li><a href="http://www.dreamhost.com/donate.cgi?id=5283"><img border="0" alt="Donate towards my web hosting bill!" src="https://secure.newdream.net/donate1.gif" /></a></li>
 		</ul>
 	</li>
+	<?php endif; ?>
 </ul>
 </div>

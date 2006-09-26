@@ -15,6 +15,8 @@ if ( is_dir($layout_path) ) {
 	}
 }	
 
+$layouts_tmp = asort($layouts);
+
 $options = array (
 
 		  array(    "name" => "Body font color",
@@ -125,6 +127,13 @@ if ($value['type'] == "text") { ?>
 function mytheme_wp_head() { ?>
 <link href="<?php bloginfo('template_directory'); ?>/style.php" rel="stylesheet" type="text/css" />
 <?php }
+
+if ( function_exists('register_sidebar') ) {
+	register_sidebar(array('name'=>'Navigation'));
+	register_sidebar(array('name'=>'Extra'));
+	register_sidebar(array('name'=>'Bottom-Left'));
+	register_sidebar(array('name'=>'Bottom-Right'));
+}
 
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_menu', 'mytheme_add_admin'); ?> 
