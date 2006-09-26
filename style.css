@@ -44,8 +44,8 @@ body {
 	background: url(images/menu_gradient2.png) top repeat-x #ca1919;
 }
 
-#navigation {
-	font-size: 73%;
+#navigation, #extra {
+	font-size: 85%;
 }
 
 #menu li {
@@ -106,7 +106,7 @@ body {
 	padding-left: 0;
 }
 
-#navigation ul li h2 {
+#navigation ul li h2, #extra ul li h2 {
 	color: #ca1919;
 }
 
@@ -115,13 +115,13 @@ body {
 	list-style-image: none;
 }
 
-#navigation a, #navigation a:visited {
+#navigation a, #navigation a:visited, #extra a, #extra a:visited {
 	text-decoration: none;	
 	/*color: #ca1919;*/
 	color: #cfcfd0;
 }
 
-#navigation a:active, #navigation a:hover {
+#navigation a:active, #navigation a:hover, #extra a:active, #extra a:hover {
 	text-decoration: underline;
 }
 
@@ -157,6 +157,13 @@ body {
 	text-align: center;
 }
 
+#comment {
+	width: 95%;
+	margin: 0 auto;
+	height: 60px
+	font-size: 12pt;
+}
+
 .wppost {
 	width: 95%;
 	/*margin-left: 3em;
@@ -167,6 +174,9 @@ body {
 	margin-top: 1em;
 }
 
+.postinfo {
+	text-align: right;
+}
 .published {
 	display:block;
 	text-align: center;
@@ -190,6 +200,13 @@ body {
 .pub-date { 
 	display:block; 
 	font-size:1.6em;
+	margin:0; 
+	padding:0;  
+}
+
+.pub-year { 
+	display:block; 
+	font-size:1.0em;
 	margin:0; 
 	padding:0;  
 }

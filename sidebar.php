@@ -5,12 +5,12 @@
 		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 	</li>
 
-	<?php if(function_exists(sparkStats_imgURI)){?>
+	<?php /*if(function_exists(sparkStats_imgURI)){?>
         	<li><h2><?php _e('Recent Activity'); ?></h2>
 	    		<img src="<?php sparkStats_imgURI(); ?>" alt="SparkStats"/><br /><br />
 	    		<img src="<?php sparkStats_legendURI(); ?>" alt="SparkStats Legend"/>
 		</li>	
-	<?php } ?>
+	<?php }*/ ?>
 	<?php if ( function_exists('deepthoughts') ) { ?>
 		<li><h2>Deep Thoughts</h2>
 		<?php deepthoughts(); ?>
@@ -22,5 +22,16 @@
 
 </div>
 <div id="extra">
-<p>This is extra.</p>
+<ul>
+	<li><h2>Meta</h2>
+		<ul>
+		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php get_bloginfo('rss2_url'); ?>">RSS Entries</a></li>
+		                         <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php get_bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
+					                         <li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
+		<?php wp_register(); ?>
+	        <li><?php wp_loginout(); ?></li>
+		<li><a href="http://www.dreamhost.com/donate.cgi?id=5283"><img border="0" alt="Donate towards my web hosting bill!" src="https://secure.newdream.net/donate1.gif" /></a></li>
+		</ul>
+	</li>
+</ul>
 </div>
