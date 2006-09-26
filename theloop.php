@@ -15,6 +15,8 @@
 						the_content(__('Continue reading','k2_domain') . " '" . the_title('', '', false) . "'");
 					} ?>
 	
+					<?php edit_post_link('Edit this entry.', '<p>', '</p>'); ?>
+
 					<?php link_pages('<p><strong>'.__('Pages:','k2_domain').'</strong> ', '</p>', __('number','k2_domain')); ?>
 			</div>
 
