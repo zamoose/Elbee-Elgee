@@ -8,7 +8,8 @@ $layouts = array("-------");
 if ( is_dir($layout_path) ) {
 	if ($layout_dir = opendir($layout_path) ) { 
 		while ( ($file = readdir($layout_dir)) !== false ) {
-			if ( !substr_compare($file, ".css", (strlen($file) - 4)) ) {
+			//if ( !substr_compare($file, ".css", (strlen($file) - 4)) ) {
+			if(stristr($file, ".css") !== false) {
 				array_push($layouts, $file);
 			}
 		}	
