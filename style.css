@@ -29,7 +29,8 @@ body {
 
 #container {
 	/*border: 1px solid #ccc;
-	padding-top: 0px;*/
+	padding-top: 0px;
+	width: 1024px;*/
 }
 
 #menu {
@@ -101,7 +102,7 @@ body {
 	width: 97%;
 }
 
-#navigation ul, #extra ul {
+#navigation ul, #extra ul, #footer ul {
 	margin: 5px 0 0;
 	padding-left: 0;
 	padding-right: 5px;
@@ -137,6 +138,15 @@ body {
 
 #footer {
 	border-top: 1px solid #ca1919;	
+}
+
+#footer a, #footer a:visited {
+	color: #ca1919;
+	text-decoration: none;
+}
+
+#footer a:active, #footer a:hover {
+	text-decoration: underline;
 }
 
 #footerleft {
@@ -221,14 +231,36 @@ body {
 	text-decoration: none;
 }
 
-.alignright {
-	
-}
-
-.alignleft {
-	
-}
-
 .center {
-	
+        text-align: center;
+}
+
+.alignright {
+        float: right;
+}
+				        
+.alignleft {
+        float: left
+}
+
+img.center, img[align="center"] {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+}
+
+img.alignright, img[align="right"] {
+        padding: 4px !important;
+        margin: 0 0 2px 7px !important;
+        display: inline;
+}
+
+img.alignleft, img[align="left"] {
+        padding: 4px;
+	margin: 0 7px 2px 0;
+        display: inline;
+}
+				        
+img.noborder {
+        border: none !important;
 }

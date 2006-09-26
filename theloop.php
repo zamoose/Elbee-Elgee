@@ -7,7 +7,7 @@
 		<acronym class="published" title="<?php the_time('Y-m-d\TG:i:sO'); ?>">
 			<span class="pub-month"><?php echo($mo); ?></span>
 			<span class="pub-date"><?php echo($da); ?></span>
-			<span class="pub-year"><?php echo($ye); ?></span>
+			<!--span class="pub-year"><?php echo($ye); ?></span-->
 		</acronym>	
 		<div id="post-<?php the_ID(); ?>" class="wppost">
 			<h3><a href="<?php the_permalink() ?>" rel="bookmark" title='<?php printf(__('Permanent Link to "%s"','k2_domain'), strip_tags(get_the_title())) ?>'><?php the_title(); ?></a></h3>	

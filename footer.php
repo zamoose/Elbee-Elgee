@@ -2,9 +2,14 @@
 	<div id="footerleft">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
-		<?php if ( function_exists('the_recent_posts') ) {
-			the_recent_posts();
-		} ?>
+		<li><h2>Recent Posts</h2>
+		<ul>
+		<?php query_posts('paged=2&showposts=10'); ?>
+		<?php while (have_posts()) : the_post(); ?>
+		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
+		<?php endwhile; ?>
+		</ul>
+		</li>
 		<?php endif; ?>
 		</ul>
 	</div>
@@ -24,6 +29,7 @@
 		</ul>
 	</div>
 	<div id="footercredits">
+	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy 2006 Doug Stewart</p>
 	<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
 	<script type="text/javascript" language="JavaScript">var site="s19literal"</script>
 	<script type="text/javascript" language="JavaScript1.2" src="http://s19.sitemeter.com/js/counter.js?site=s19literal">
