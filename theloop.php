@@ -11,7 +11,7 @@
 		</acronym>	
 		<div id="post-<?php the_ID(); ?>" class="wppost">
 			<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>	
-
+			<span class="postmeta">Posted by <?php the_author(); ?> in <?php the_category(', '); ?></span>
 			<div class="itemtext">
 					<?php if ( is_archive() or is_search() or (function_exists('is_tag') and is_tag()) ) {
 						the_excerpt();
