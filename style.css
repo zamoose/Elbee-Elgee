@@ -120,7 +120,9 @@ body {
 #navigation a, #navigation a:visited, #extra a, #extra a:visited {
 	text-decoration: none;	
 	/*color: #ca1919;*/
-	color: #cfcfd0;
+	/*color: #cfcfd0;*/
+	/*color: #416e80;*/
+	color: #495eb8;
 }
 
 #navigation a:active, #navigation a:hover, #extra a:active, #extra a:hover {
@@ -239,9 +241,6 @@ body {
 
 .center {
         text-align: center;
-}
-img.center {
-	margin: 0 auto;
 }
 
 .alignright {

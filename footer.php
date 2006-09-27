@@ -4,7 +4,7 @@
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
 		<li><h2>Recent Posts</h2>
 		<ul>
-		<?php query_posts('paged=2&showposts=10'); ?>
+		<?php query_posts('paged=2&showposts=5'); ?>
 		<?php while (have_posts()) : the_post(); ?>
 		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
 		<?php endwhile; ?>
