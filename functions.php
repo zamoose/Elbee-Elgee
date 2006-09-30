@@ -2,13 +2,11 @@
 $themename = "Elbee Elgee";
 $shortname = "lblg";
 
-$layout_path = TEMPLATEPATH . '/layouts/'; // . $lblg_layout;
-$layouts = array("-------");
+$layout_path = TEMPLATEPATH . '/layouts/'; 
 
 if ( is_dir($layout_path) ) {
 	if ($layout_dir = opendir($layout_path) ) { 
 		while ( ($file = readdir($layout_dir)) !== false ) {
-			//if ( !substr_compare($file, ".css", (strlen($file) - 4)) ) {
 			if(stristr($file, ".css") !== false) {
 				array_push($layouts, $file);
 			}
@@ -17,16 +15,21 @@ if ( is_dir($layout_path) ) {
 }	
 
 $layouts_tmp = asort($layouts);
+$layouts = array_unshift($layouts, "Select a stylesheet:")
 
 $options = array (
-
+		  array(	"name" => "\"About\" Text",
+					"id" => $shortname."_about_text",
+					"std" => "This is a little blurb about your site.",
+					"type" => "textarea",
+					"options" => array() ),
 		  array(    "name" => "Body font color",
 			    "id" => $shortname."_body_color",
 			    "std" => "#000000",
 			    "type" => "text"),
 		  array(    "name" => "Layout Stylesheet",
 			    "id" => $shortname."_layout_stylesheet",
-			    "std" => "-------",
+			    "std" => "Select a stylesheet:",
 			    "type" => "select",
 			    "options" => $layouts)
 
@@ -80,31 +83,55 @@ function mytheme_admin() {
 <table class="optiontable">
 
 <?php foreach ($options as $value) { 
-    
-if ($value['type'] == "text") { ?>
-        
-<tr valign="top"> 
-    <th scope="row"><?php echo $value['name']; ?>:</th>
-    <td>
-        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo get_settings( $value['id'] ); } else { echo $value['std']; } ?>" />
-    </td>
-</tr>
+	
+	switch ( $value['type'] ) {
+		case 'text':
+		?>
+		<tr valign="top"> 
+		    <th scope="row"><?php echo $value['name']; ?>:</th>
+		    <td>
+		        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo get_settings( $value['id'] ); } else { echo $value['std']; } ?>" />
+		    </td>
+		</tr>
+		<?php
+		break;
+		
+		case 'select':
+		?>
+		<tr valign="top"> 
+	        <th scope="row"><?php echo $value['name']; ?>:</th>
+	        <td>
+	            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+	                <?php foreach ($value['options'] as $option) { ?>
+	                <option<?php if ( get_settings( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+	                <?php } ?>
+	            </select>
+	        </td>
+	    </tr>
+		<?php
+		break;
+		
+		case 'textarea':
+		?>
+		<tr valign="top"> 
+	        <th scope="row"><?php echo $value['name']; ?>:</th>
+	        <td>
+				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
+					<?php if( get_settings($value['id']) != "") {
+						echo $get_settings($value['id']);
+					}else{
+						echo $value['std'];
+					}?>
+				</textarea>
+	        </td>
+	    </tr>
+		<?php
+		break;
+				
+		default:
 
-<?php } elseif ($value['type'] == "select") { ?>
-
-    <tr valign="top"> 
-        <th scope="row"><?php echo $value['name']; ?>:</th>
-        <td>
-            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-                <?php foreach ($value['options'] as $option) { ?>
-                <option<?php if ( get_settings( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-                <?php } ?>
-            </select>
-        </td>
-    </tr>
-
-<?php 
-} 
+		break;
+	}
 }
 ?>
 
