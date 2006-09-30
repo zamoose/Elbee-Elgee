@@ -251,6 +251,37 @@ body {
         float: left
 }
 
+.gravatar {
+	float:right;
+	padding: 3px;
+	border: 1px solid #ccc;
+	background: transparent;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+.postgrav {
+	float: left;
+	padding: 3px;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #000;
+	background: transparent;
+}
+
+.navigation .left {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+navigation .right {
+	float: right;
+	width: 50%;
+	text-align: right;
+}
+
 img.center, img[align="center"] {
         display: block;
         margin-left: auto;

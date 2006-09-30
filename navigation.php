@@ -1,8 +1,3 @@
-	<?php /*
-		This navigation is used on most pages to move back and forth in your archives.
-		It has been placed in its own file so it's easier to change across all of K2
-	*/ ?>
-
 	<!--hr /-->
 
 	<?php if (is_single()) { ?>
