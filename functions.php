@@ -16,14 +16,15 @@ if ( is_dir($layout_path) ) {
 }	
 
 $layouts_tmp = asort($layouts);
-$layouts = array_unshift($layouts, "Select a stylesheet:");
+$layouts_tmp = array_unshift($layouts, "Select a stylesheet:");
 
 $options = array (
 		  array(	"name" => "\"About\" Text",
 					"id" => $shortname."_about_text",
 					"std" => "This is a little blurb about your site.",
 					"type" => "textarea",
-					"options" => array() ),
+					"options" => array( "rows" => "5",
+										"cols" => "40") ),
 		  array(    "name" => "Body font color",
 			    "id" => $shortname."_body_color",
 			    "std" => "#000000",
@@ -113,17 +114,17 @@ function mytheme_admin() {
 		break;
 		
 		case 'textarea':
+		$ta_options = $value['options'];
 		?>
 		<tr valign="top"> 
 	        <th scope="row"><?php echo $value['name']; ?>:</th>
 	        <td>
-				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-					<?php if( get_settings($value['id']) != "") {
+				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
+				if( get_settings($value['id']) != "") {
 						echo $get_settings($value['id']);
 					}else{
 						echo $value['std'];
-					}?>
-				</textarea>
+				}?></textarea>
 	        </td>
 	    </tr>
 		<?php

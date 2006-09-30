@@ -8,9 +8,7 @@ Version: Beta 1
 */
 
 body {
-	/*background-color: #0e0d13;*/
 	background-color: #0e1223;
-	/*background-color: #474f57;*/
 	color: #cfcfd0;
 	margin: 0;
 	padding: 0;
@@ -20,7 +18,6 @@ body {
 	height: 279px;
 	background: #0e1223 url(images/newbanner2.png) bottom right no-repeat;
 	border-bottom: 1px solid #f3f3dc;
-	/*border-top: 1px solid #f3f3dc;*/
 }
 
 #content {
@@ -28,9 +25,9 @@ body {
 }
 
 #container {
-	/*border: 1px solid #ccc;
-	padding-top: 0px;
-	width: 1024px;*/
+	border: 1px solid #ccc;
+	background-color: #0e1223;
+	width: 800px !important;
 }
 
 #menu {
@@ -99,7 +96,7 @@ body {
 }
 
 #searchform input {
-	width: 97%;
+	width: 95%;
 }
 
 #navigation ul, #extra ul, #footer ul {
