@@ -59,7 +59,11 @@ $options = array (
 				array(	"name" => "Number of Previous Posts",
 			    		"id" => $shortname."previous_posts",
 			    		"std" => "5",
-			    		"type" => "text")
+			    		"type" => "text"),
+				array(	"name" => "Del.icio.us Username",
+					    "id" => $shortname."delicious_username",
+					    "std" => "zamoose",
+					    "type" => "text")			
 		  );
 
 function mytheme_add_admin() {
