@@ -121,7 +121,7 @@ function mytheme_admin() {
 	        <td>
 				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
 				if( get_settings($value['id']) != "") {
-						echo $get_settings($value['id']);
+						echo get_settings($value['id']);
 					}else{
 						echo $value['std'];
 				}?></textarea>
