@@ -5,6 +5,9 @@ $shortname = "lblg";
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
 
+$alt_stylesheet_path = TEMPLATEPATH . '/styles/';
+$alt_stylesheets = array();
+
 if ( is_dir($layout_path) ) {
 	if ($layout_dir = opendir($layout_path) ) { 
 		while ( ($file = readdir($layout_dir)) !== false ) {
@@ -15,26 +18,48 @@ if ( is_dir($layout_path) ) {
 	}
 }	
 
+if ( is_dir($alt_stylesheet_path) ) {
+	if ($alt_stylesheet_dir = opendir($alt_stylesheet_path) ) { 
+		while ( ($file = readdir($alt_stylesheet_dir)) !== false ) {
+			if(stristr($file, ".css") !== false) {
+				array_push($alt_stylesheets, $file);
+			}
+		}	
+	}
+}	
+
+
 $layouts_tmp = asort($layouts);
-$layouts_tmp = array_unshift($layouts, "Select a stylesheet:");
+$layouts_tmp = array_unshift($layouts, "Select a layout:");
+
+$alt_stylesheets_tmp = asort($alt_stylesheets);
+$alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
+
 
 $options = array (
-		  array(	"name" => "\"About\" Text",
-					"id" => $shortname."_about_text",
-					"std" => "This is a little blurb about your site.",
-					"type" => "textarea",
-					"options" => array( "rows" => "5",
-										"cols" => "40") ),
-		  array(    "name" => "Body font color",
-			    "id" => $shortname."_body_color",
-			    "std" => "#000000",
-			    "type" => "text"),
-		  array(    "name" => "Layout Stylesheet",
-			    "id" => $shortname."_layout_stylesheet",
-			    "std" => "Select a stylesheet:",
-			    "type" => "select",
-			    "options" => $layouts)
-
+				array(	"name" => "\"About\" Text",
+						"id" => $shortname."_about_text",
+						"std" => "This is a little blurb about your site.",
+						"type" => "textarea",
+						"options" => array(	"rows" => "5",
+											"cols" => "40") ),
+											
+				array(	"name" => "Layout Stylesheet",
+			    		"id" => $shortname."_layout_stylesheet",
+			    		"std" => "Select a layout:",
+			    		"type" => "select",
+			    		"options" => $layouts),
+			
+				array(	"name" => "Theme Stylesheet",
+					    "id" => $shortname."_alt_stylesheet",
+					    "std" => "Select a stylesheet:",
+					    "type" => "select",
+					    "options" => $alt_stylesheets),
+					
+				array(	"name" => "Number of Previous Posts",
+			    		"id" => $shortname."previous_posts",
+			    		"std" => "5",
+			    		"type" => "text")
 		  );
 
 function mytheme_add_admin() {
