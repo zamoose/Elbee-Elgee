@@ -270,13 +270,25 @@ body {
 	background: transparent;
 }
 
+.clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.navigation {
+	text-align: center;
+	margin: 10px 0 10px;
+	padding: 0;
+	width: 100%;
+}
 .navigation .left {
 	float: left;
 	width: 50%;
 	text-align: left;
 }
 
-navigation .right {
+.navigation .right {
 	float: right;
 	width: 50%;
 	text-align: right;
