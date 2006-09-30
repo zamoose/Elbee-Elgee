@@ -1,8 +1,9 @@
 body{
 	background-color:  #fff;
+	color: #000;
 }
 #header {
-	height:  260px;
+	height: 260px;
 	background: #fff url('cassette/cassette.jpg') top right no-repeat;
-	color:  #000;
+	color: #000;
 }
