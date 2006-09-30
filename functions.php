@@ -3,6 +3,7 @@ $themename = "Elbee Elgee";
 $shortname = "lblg";
 
 $layout_path = TEMPLATEPATH . '/layouts/'; 
+$layouts = array();
 
 if ( is_dir($layout_path) ) {
 	if ($layout_dir = opendir($layout_path) ) { 
@@ -15,7 +16,7 @@ if ( is_dir($layout_path) ) {
 }	
 
 $layouts_tmp = asort($layouts);
-$layouts = array_unshift($layouts, "Select a stylesheet:")
+$layouts = array_unshift($layouts, "Select a stylesheet:");
 
 $options = array (
 		  array(	"name" => "\"About\" Text",
