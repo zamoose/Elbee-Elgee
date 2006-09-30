@@ -25,9 +25,9 @@ body {
 }
 
 #container {
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;
 	background-color: #0e1223;
-	width: 800px !important;
+	width: 800px !important;*/
 }
 
 #menu {

@@ -5,6 +5,11 @@
 	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> at <?php } ?> <?php bloginfo('name');?></title>
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option('lblg_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
+	<?php
+		if ( isset(get_option('lblg_alt_stylesheet')) )	{
+			echo '<link rel="stylesheet" type="text/css" media="screen" href="<?php get_option('lblg_alt_stylesheet'); ?>" />';
+		}
+	?>
 
 	<?php wp_head(); ?>
 </head>
