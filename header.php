@@ -6,7 +6,8 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option('lblg_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<?php
-		if ( isset(get_option('lblg_alt_stylesheet')) )	{
+		$alt_style = get_option('lblg_alt_stylesheet');
+		if ( $alt_style != '' )	{
 			echo '<link rel="stylesheet" type="text/css" media="screen" href="<?php get_option('lblg_alt_stylesheet'); ?>" />';
 		}
 	?>
