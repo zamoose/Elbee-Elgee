@@ -8,7 +8,7 @@
 	<?php
 		$alt_style = get_option('lblg_alt_stylesheet');
 		if ( $alt_style != '' )	{
-			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.bloginfo('template_directory').'/styles/'.get_option('lblg_alt_stylesheet').'" />';
+			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option('lblg_alt_stylesheet').'" />';
 		}
 	?>
 
