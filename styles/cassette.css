@@ -1,9 +1,66 @@
 body{
 	background-color:  #fff;
-	color: #000;
+	color: #545454;
 }
 #header {
 	height: 260px;
 	background: #fff url('cassette/cassette.jpg') top right no-repeat;
-	color: #000;
+	border-bottom: 1px solid #ccc;
+}
+
+#menu {
+	background: #fff;
+	border-bottom: 1px solid #ccc;
+}
+
+a {
+	text-decoration:  none;
+}
+
+a:link, a:visited, a:active {
+	color:  #006a80;
+}
+
+a:hover {
+	color:  #a8001c;
+}
+
+#menu a:link, #menu a:visited, #menu a.selected:link, #menu a.selected:visited {
+	color:  #006a80;
+	background-color:  #fff;
+}
+
+#menu a:active, #menu a:hover {
+	color:  #a8001c;
+}
+
+#content a:link, #content a:visited, #content a:active {
+	color:  #006a80;
+}
+
+#navigation a, #navigation a:visited, #extra a, #extra a:visited, #footer a, #footer a:visited {
+	color:  #006a80;
+}
+
+#content a:hover, #navigation a:active, #navigation a:hover, #extra a:active, #extra a:hover, #footer a:active, #footer a:hover {
+	color:  #a8001c;
+	text-decoration:  none;
+}
+
+#footer{
+	border-top: 1px solid #ccc;
+}
+
+#navigation ul li h2, #extra ul li h2 {
+	font-weight: normal;
+	text-transform: uppercase;
+	border-bottom: 1px solid #e5e5e5;
+	color: #8fbf60;
+	font-size: 0.8em;
+	letter-spacing: 0.1em;
+	
+}
+
+.itemtext {
+	border-top: 1px solid #ccc;
 }
