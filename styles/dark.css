@@ -2,8 +2,13 @@ body {
 	background-color: #0e0d13;
 }
 
-#container{
+#container {
 	background-color:  #0e1223;
 	border: 1px solid #ccc;
 	border-top: 0;
+}
+
+#header {
+	background: url('dark/mandolux-twins-800.jpg') top center no-repeat;
+	color: #ca1919;
 }
