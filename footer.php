@@ -23,7 +23,7 @@
 				</li>
 			<?php } ?>
 			<?php if ( function_exists('delicious') ) { ?>
-				<li><h2>Elsewhere</h2>
+				<li><h2>del.icio.us Links</h2>
 					<?php delicious('zamoose'); ?>
 			<?php } ?>
 			<li><h2>Meta</h2>
