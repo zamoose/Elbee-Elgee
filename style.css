@@ -293,6 +293,10 @@ body {
 	text-align: right;
 }
 
+#navigation img, #extra img {
+	border:  0px;
+}
+
 img.center, img[align="center"] {
         display: block;
         margin-left: auto;
