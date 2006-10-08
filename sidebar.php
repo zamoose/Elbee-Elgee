@@ -11,12 +11,27 @@
 	    		<img src="<?php sparkStats_legendURI(); ?>" alt="SparkStats Legend"/>
 		</li>	
 	<?php }*/ ?>
-	<?php if ( function_exists('deepthoughts') ) { ?>
+	<?php if ( function_exists('deepthoughts') && is_home() ) { ?>
 		<li><h2>Deep Thoughts</h2>
 		<?php deepthoughts(); ?>
 		</li>
+	<?php }
+
+	if ( is_single() ) { ?>
+	<li><h2>Post Info</h2>
+		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jw, Y','',''); ?> in <?php the_category(', '); ?>.
+	</li>
+	<?php 
+	}
+	if (is_home()) {
+		get_links_list(); 
+	}
+	
+	if (is_single() || is_archive()) {?>
+	<li><h2>Related</h2>
+	<?php related_posts(); ?>
+	</li>
 	<?php } ?>
-	<?php get_links_list(); ?>
 	<?php endif; ?>
 </ul>
 
@@ -24,6 +39,11 @@
 <div id="extra">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Extra') ) : ?>
+	<?php if (function_exists(nr_display)) { ?>
+	<li><h2>Now Reading</h2>
+		<?php nr_display(); ?>
+	</li>
+	<?php } ?>
         <?php if (function_exists(ttlb_ecosystem_details)) { ?>
         <li><h2>TTLB Info</h2>
 		<?php ttlb_ecosystem_details('http://literalbarrage.org/blog'); ?>

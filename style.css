@@ -21,7 +21,7 @@ body {
 }
 
 #content {
-
+	padding-left: 20px;
 }
 
 #container {
@@ -96,7 +96,7 @@ body {
 }
 
 #searchform input {
-	width: 95%;
+	width: 130px;
 }
 
 #navigation ul, #extra ul, #footer ul {

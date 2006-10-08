@@ -12,3 +12,11 @@ body {
 	background: url('dark/mandolux-twins-800.jpg') top center no-repeat;
 	color: #ca1919;
 }
+
+#footerleft {
+	padding-left: 20px;
+}
+
+#footerright {
+	padding-right: 20px;
+}
