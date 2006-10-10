@@ -19,7 +19,7 @@
 
 	if ( is_single() ) { ?>
 	<li><h2>Post Info</h2>
-		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jw, Y','',''); ?> in <?php the_category(', '); ?>.
+		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jS, Y','',''); ?> in <?php the_category(', '); ?>.
 	</li>
 	<?php 
 	}

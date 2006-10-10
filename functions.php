@@ -57,13 +57,18 @@ $options = array (
 					    "options" => $alt_stylesheets),
 					
 				array(	"name" => "Number of Previous Posts",
-			    		"id" => $shortname."previous_posts",
+			    		"id" => $shortname."_previous_posts",
 			    		"std" => "5",
 			    		"type" => "text"),
 				array(	"name" => "Del.icio.us Username",
-					    "id" => $shortname."delicious_username",
+					    "id" => $shortname."_delicious_username",
 					    "std" => "zamoose",
-					    "type" => "text")			
+					    "type" => "text"),			
+				array(	"name" => "Archives Page Style",
+					"id" => $shortname."_archives_style",
+					"std" => "clean",
+					"type" => "radio",
+					"options" => array("clean" => "Clean Archives","subtraction" => "Subtraction Style"))
 		  );
 
 function mytheme_add_admin() {
@@ -158,7 +163,26 @@ function mytheme_admin() {
 	    </tr>
 		<?php
 		break;
-				
+
+		case "radio":
+		?>
+		<tr valign="top"> 
+	        <th scope="row"><?php echo $value['name']; ?>:</th>
+	        <td>
+	            <?php foreach ($value['options'] as $key=>$option) { 
+		    	if ($key == $value['id'] ) {
+				$checked = "checked";
+			} else {
+				$checked = "";
+			}?>
+	            <input type="radio" name="<?php echo $value['id']; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
+	            <?php } ?>
+	        </td>
+	    </tr>
+		<?php
+
+		break;
+
 		default:
 
 		break;
