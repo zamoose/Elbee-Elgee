@@ -1,105 +1,201 @@
-<?php // Do not delete these lines
-	if ('comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
-		die ('Please do not load this page directly. Thanks!');
+<?php 
+/* 	This is comment.phps by Christian Montoya, http://www.christianmontoya.com
 
-        if (!empty($post->post_password)) { // if there's a password
-            if ($_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) {  // and it doesn't match the cookie
-				?>
-
-				<p class="nocomments">This post is password protected. Enter the password to view comments.<p>
-
-				<?php
-				return;
-            }
-        }
-
-		/* This variable is for alternating comment background */
-		$oddcomment = 'alt';
+	Available to you under the do-whatever-you-want license. If you like it, 
+	you are totally welcome to link back to me. 
+	
+	Use of this code does not grant you the right to use the design or any of the 
+	other files on my site. Beyond this file, all rights are reserved, unless otherwise noted. 
+	
+	Enjoy!
+*/
 ?>
 
-<!-- You can start editing here. -->
+<!-- Comments code provided by christianmontoya.com -->
+
+<?php if (!empty($post->post_password) && $_COOKIE['wp-postpass_'.COOKIEHASH]!=$post->post_password) : ?>
+	<p id="comments-locked">Enter your password to view comments.</p>
+<?php return; endif; ?>
+
+<?php if (pings_open()) : ?>
+	<p id="respond"><span id="trackback-link">
+		<a href="<?php trackback_url() ?>" rel="trackback">Get a Trackback link</a>
+	</span></p>
+<?php endif; ?>
 
 <?php if ($comments) : ?>
-	<h3 id="comments"><?php comments_number('No Responses', 'One Response', '% Responses' );?> to &#8220;<?php the_title(); ?>&#8221;</h3> 
 
-	<ol class="commentlist">
+<?php 
 
-	<?php foreach ($comments as $comment) : ?>
+	/* Author values for author highlighting */
+	/* Enter your email and name as they appear in the admin options */
+	$author = array(
+			"highlight" => "highlight",
+			"email" => "YOUR EMAIL HERE",
+			"name" => "YOUR NAME HERE"
+	); 
 
-		<li class="<?php echo $oddcomment; ?>" id="comment-<?php comment_ID() ?>">
-		<?php if (function_exists('gravatar')) { gravatar_image_link(); } ?>
-			<cite><?php comment_author_link() ?></cite> Says:
-			<?php if ($comment->comment_approved == '0') : ?>
-			<em>Your comment is awaiting moderation.</em>
-			<?php endif; ?>
-			<br />
+	/* Count the totals */
+	$numPingBacks = 0;
+	$numComments  = 0;
 
-			<small class="commentmetadata"><a href="#comment-<?php comment_ID() ?>" title=""><?php comment_date('F jS, Y') ?> at <?php comment_time() ?></a> <?php edit_comment_link('e','',''); ?></small>
+	/* Loop throught comments to count these totals */
+	foreach ($comments as $comment) {
+		if (get_comment_type() != "comment") { $numPingBacks++; }
+		else { $numComments++; }
+	}
+	
+	/* Used to stripe comments */
+	$thiscomment = 'odd'; 
+?>
 
-			<?php comment_text() ?>
+<?php
 
-		</li>
+	/* This is a loop for printing pingbacks/trackbacks if there are any */
+	if ($numPingBacks != 0) : ?>
 
-	<?php /* Changes every other comment to a different class */
-		if ('alt' == $oddcomment) $oddcomment = '';
-		else $oddcomment = 'alt';
-	?>
+	<h2 class="comments-header"><?php _e($numPingBacks); ?> Trackbacks/Pingbacks</h2>
+	<ol id="trackbacks">
+	
+<?php foreach ($comments as $comment) : ?>
+<?php if (get_comment_type()!="comment") : ?>
 
-	<?php endforeach; /* end for each comment */ ?>
+	<li id="comment-<?php comment_ID() ?>" class="<?php _e($thiscomment); ?>">
+	<?php comment_type(__('Comment'), __('Trackback'), __('Pingback')); ?>: 
+	<?php comment_author_link(); ?> on <?php comment_date(); ?>
+	</li>
+	
+	<?php if('odd'==$thiscomment) { $thiscomment = 'even'; } else { $thiscomment = 'odd'; } ?>
+	
+<?php endif; endforeach; ?>
 
 	</ol>
 
- <?php else : // this is displayed if there are no comments so far ?>
+<?php endif; ?>
 
-  <?php if ('open' == $post->comment_status) : ?> 
-		<!-- If comments are open, but there are no comments. -->
+<?php 
 
-	 <?php else : // comments are closed ?>
-		<!-- If comments are closed. -->
-		<p class="nocomments">Comments are closed.</p>
+	/* This is a loop for printing comments */
+	if ($numComments != 0) : ?>
 
+	<h2 class="comments-header"><?php _e($numComments); ?> Comments</h2>
+	<ol id="comments">
+	
+	<?php foreach ($comments as $comment) : ?>
+	<?php if (get_comment_type()=="comment") : ?>
+	
+		<li id="comment-<?php comment_ID(); ?>" class="<?php 
+		
+		/* Highlighting class for author or regular striping class for others */
+		
+		/* Get current author name/e-mail */
+		$this_name = $comment->comment_author;
+        $this_email = $comment->comment_author_email;
+        
+        /* Compare to $author array values */
+        if (strcasecmp($this_name, $author["name"])==0 && strcasecmp($this_email, $author["email"])==0)
+			_e($author["highlight"]); 
+		else 
+			_e($thiscomment); 
+		
+		?>">
+			<div class="comment-meta">
+<?php /* If you want to use gravatars, they go somewhere around here */ ?>
+				<span class="comment-author"><?php comment_author_link() ?></span>, 
+				<span class="comment-date"><?php comment_date() ?></span>:
+			</div>
+			<div class="comment-text">
+<?php /* Or maybe put gravatars here. The typical thing is to float them in the CSS */ 
+	/* Typical gravatar call: 
+		<img src="<?php gravatar("R", 80, "YOUR DEFAULT GRAVATAR URL"); ?>" 
+		alt="" class="gravatar" width="80" height="80">
+	*/ ?>
+				<?php comment_text(); ?>
+			</div>
+		</li>
+		
+	<?php if('odd'==$thiscomment) { $thiscomment = 'even'; } else { $thiscomment = 'odd'; } ?>
+	
+	<?php endif; endforeach; ?>
+	
+	</ol>
+	
 	<?php endif; ?>
+	
+<?php else : 
+
+	/* No comments at all means a simple message instead */ 
+?>
+
+	<h2 class="comments-header">No Comments Yet</h2>
+
+	<p>You can be the first to comment!</p>
+	
 <?php endif; ?>
 
+<?php if (comments_open()) : ?>
 
-<?php if ('open' == $post->comment_status) : ?>
+<?php /* This would be a good place for live preview... 
+	<div id="live-preview">
+		<h2 class="comments-header">Live Preview</h2>
+		<?php live_preview(); ?>
+	</div>
+ */ ?>
 
-<h3 id="respond">Leave a Reply</h3>
+	<div id="comments-form">
+	
+	<h2 id="comments-header">Leave a comment</h2>
+	
+	<?php if (get_option('comment_registration') && !$user_ID ) : ?>
+		<p id="comments-blocked">You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=
+		<?php the_permalink(); ?>">logged in</a> to post a comment.</p>
+	<?php else : ?>
 
-<?php if ( get_option('comment_registration') && !$user_ID ) : ?>
-<p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php the_permalink(); ?>">logged in</a> to post a comment.</p>
-<?php else : ?>
+	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
 
-<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
+	<?php if ($user_ID) : ?>
+	
+	<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php">
+		<?php echo $user_identity; ?></a>. 
+		<a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" 
+		title="Log out of this account">Logout</a>
+	</p>
+	
+	<?php else : ?>
+	
+		<p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" />
+		<label for="author">Name<?php if ($req) _e(' (required)'); ?></label></p>
+		
+		<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" />
+		<label for="email">E-mail (will not be published)<?php if ($req) _e(' (required)'); ?></label></p>
+		
+		<p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" />
+		<label for="url">Website</label></p>
+	
+	<?php endif; ?>
 
-<?php if ( $user_ID ) : ?>
+	<?php /* You might want to display this: 
+		<p>XHTML: You can use these tags: <?php echo allowed_tags(); ?></p> */ ?>
 
-<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Logout &raquo;</a></p>
+		<p><textarea name="comment" id="comment" rows="5" cols="30"></textarea></p>
+		
+		<?php /* Buttons are easier to style than input[type=submit], 
+				but you can replace: 
+				<button type="submit" name="submit" id="sub">Submit</button>
+				with: 
+				<input type="submit" name="submit" id="sub" value="Submit" />
+				if you like */ 
+		?>
+		<p><button type="submit" name="submit" id="sub">Submit</button>
+		<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>"></p>
+	
+	<?php do_action('comment_form', $post->ID); ?>
 
-<?php else : ?>
-
-<p><input type="text" name="author" id="author" value="<?php echo $comment_author; ?>" size="22" tabindex="1" />
-<label for="author"><small>Name <?php if ($req) echo "(required)"; ?></small></label></p>
-
-<p><input type="text" name="email" id="email" value="<?php echo $comment_author_email; ?>" size="22" tabindex="2" />
-<label for="email"><small>Mail (will not be published) <?php if ($req) echo "(required)"; ?></small></label></p>
-
-<p><input type="text" name="url" id="url" value="<?php echo $comment_author_url; ?>" size="22" tabindex="3" />
-<label for="url"><small>Website</small></label></p>
-
-<?php endif; ?>
-
-<!--<p><small><strong>XHTML:</strong> You can use these tags: <?php echo allowed_tags(); ?></small></p>-->
-
-<p><textarea name="comment" id="comment" rows="10" tabindex="4"></textarea></p>
-
-<p><input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" />
-<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-</p>
-<?php do_action('comment_form', $post->ID); ?>
-
-</form>
+	</form>
+	</div>
 
 <?php endif; // If registration required and not logged in ?>
 
-<?php endif; // if you delete this the sky will fall on your head ?>
+<?php else : // Comments are closed ?>
+	<p id="comments-closed">Sorry, comments for this entry are closed at this time.</p>
+<?php endif; ?>

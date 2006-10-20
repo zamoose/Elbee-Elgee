@@ -99,7 +99,7 @@ body {
 	width: 130px;
 }
 
-#navigation ul, #extra ul, #footer ul {
+#navigation ul, #extra ul, #footer ul, #footer ol {
 	margin: 5px 0 0;
 	padding-left: 0;
 	padding-right: 5px;

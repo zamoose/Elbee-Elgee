@@ -4,8 +4,11 @@
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
 		<li><h2>Recent Posts</h2>
 		<ul>
-		<?php query_posts('paged=2&showposts=5'); ?>
-		<?php while (have_posts()) : the_post(); ?>
+		<?php 
+			/*$numposts = get_settings('posts_per_page');
+			$poststring = 'paged=2&showposts=$numposts';*/
+			query_posts('paged=2&showposts=7'); 
+		while (have_posts()) : the_post(); ?>
 		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
 		<?php endwhile; ?>
 		</ul>
@@ -16,6 +19,10 @@
 	<div id="footerright">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
+	        <?php if (function_exists(SimplePieWP)) { ?>
+		        <li><h2>Elbee Elgee Development</h2>                <?php echo SimplePieWP('http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss','items:5, shortdesc:200, showdate:j M Y'); ?>
+			</li>
+		<?php } ?>
 
 			<?php if ( function_exists('blc_latest_comments') ) { ?>
 				<li><h2>Recent Comments</h2>
