@@ -170,7 +170,8 @@ function mytheme_admin() {
 	        <th scope="row"><?php echo $value['name']; ?>:</th>
 	        <td>
 	            <?php foreach ($value['options'] as $key=>$option) { 
-				if(isset(get_settings($value['id']))){
+				$radio_setting = get_settings($value['id']);
+				if($radio_setting != ''){
 		    		if ($key == get_settings($value['id']) ) {
 						$checked = "checked";
 						} else {
