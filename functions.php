@@ -65,10 +65,10 @@ $options = array (
 					    "std" => "zamoose",
 					    "type" => "text"),			
 				array(	"name" => "Archives Page Style",
-					"id" => $shortname."_archives_style",
-					"std" => "clean",
-					"type" => "radio",
-					"options" => array("clean" => "Clean Archives","subtraction" => "Subtraction Style"))
+						"id" => $shortname."_archives_style",
+						"std" => "clean",
+						"type" => "radio",
+						"options" => array("clean" => "Clean Archives","subtraction" => "Subtraction Style"))
 		  );
 
 function mytheme_add_admin() {
@@ -170,11 +170,11 @@ function mytheme_admin() {
 	        <th scope="row"><?php echo $value['name']; ?>:</th>
 	        <td>
 	            <?php foreach ($value['options'] as $key=>$option) { 
-		    	if ($key == $value['id'] ) {
-				$checked = "checked";
-			} else {
-				$checked = "";
-			}?>
+		    	if ($key == get_settings($value['id']) ) {
+					$checked = "checked";
+				} else {
+					$checked = "";
+				}?>
 	            <input type="radio" name="<?php echo $value['id']; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
 	            <?php } ?>
 	        </td>
