@@ -177,7 +177,7 @@ function mytheme_admin() {
 							$checked = "";
 						}
 				}else{
-					if($key == $value['std'}]){
+					if($key == $value['std']){
 						$checked = "checked";
 					}else{
 						$checked = "";
