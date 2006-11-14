@@ -11,13 +11,13 @@
 	    		<img src="<?php sparkStats_legendURI(); ?>" alt="SparkStats Legend"/>
 		</li>	
 	<?php }*/ ?>
-	<?php if ( function_exists('deepthoughts') && is_home() ) { ?>
-		<li><h2>Deep Thoughts</h2>
-		<?php deepthoughts(); ?>
+	<?php if ( function_exists('blc_latest_comments') ) { ?>
+		<li><h2>Recent Comments</h2>
+                        <?php blc_latest_comments(); ?>
 		</li>
-	<?php }
+	<?php } ?>
 
-	if ( is_single() ) { ?>
+	<?php if ( is_single() ) { ?>
 	<li><h2>Post Info</h2>
 		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jS, Y','',''); ?> in <?php the_category(', '); ?>.
 	</li>

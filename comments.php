@@ -31,8 +31,8 @@
 	/* Enter your email and name as they appear in the admin options */
 	$author = array(
 			"highlight" => "highlight",
-			"email" => "YOUR EMAIL HERE",
-			"name" => "YOUR NAME HERE"
+			"email" => "zamoose@gmail.com",
+			"name" => "Doug"
 	); 
 
 	/* Count the totals */
@@ -100,6 +100,8 @@
 		
 		?>">
 			<div class="comment-meta">
+			 <?php if (function_exists('gravatar')) { gravatar_image_link(); 
+			 } ?>
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
 				<span class="comment-author"><?php comment_author_link() ?></span>, 
 				<span class="comment-date"><?php comment_date() ?></span>:

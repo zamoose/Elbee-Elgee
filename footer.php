@@ -24,11 +24,12 @@
 			</li>
 		<?php } ?>
 
-			<?php if ( function_exists('blc_latest_comments') ) { ?>
-				<li><h2>Recent Comments</h2>
-				<?php blc_latest_comments(); ?>
-				</li>
-			<?php } ?>
+		<?php if ( function_exists('deepthoughts') && is_home() ) { ?>
+			<li><h2>Deep Thoughts</h2>
+				<?php deepthoughts(); ?>
+			</li>
+		<?php } ?>
+
 			<?php if ( function_exists('delicious') ) { ?>
 				<li><h2>del.icio.us Links</h2>
 					<?php delicious('zamoose'); ?>
@@ -76,10 +77,5 @@
 	</div>
 </div>
 </div>
-<script type="text/javascript">
-//<![CDATA[
-  document.write('<scr'+'ipt src="http://crazyegg.com/pages/scripts/5418.js?'+(new Date()).getTime()+'" type="text/javascript"></scr'+'ipt>');
-  //]]>
-  </script>
 </body>
 </html>
