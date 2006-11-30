@@ -20,7 +20,7 @@
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 	        <?php if (function_exists(SimplePieWP)) { ?>
-		        <li><h2>Elbee Elgee Development</h2>                <?php echo SimplePieWP('http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss','items:5, shortdesc:200, showdate:j M Y'); ?>
+		        <li><h2>Elbee Elgee Development</h2>                <?php echo SimplePieWP('http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss','items:5, showtitle:false, shortdesc:200, showdate:j M Y'); ?>
 			</li>
 		<?php } ?>
 
@@ -30,10 +30,12 @@
 			</li>
 		<?php } ?>
 
-			<?php if ( function_exists('delicious') ) { ?>
-				<li><h2>del.icio.us Links</h2>
-					<?php delicious('zamoose'); ?>
-			<?php } ?>
+	        <?php if (function_exists(SimplePieWP)) { ?>
+			<li><h2>del.icio.us Links</h2>
+		        	<?php echo SimplePieWP('http://del.icio.us/rss/zamoose','items:10, showdesc:false, showtitle:false'); ?>
+			</li>
+		<?php } ?>
+
 			<li><h2>Meta</h2>
 			<ul>
 			<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>

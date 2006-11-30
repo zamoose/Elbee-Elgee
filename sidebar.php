@@ -39,6 +39,12 @@
 <div id="extra">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Extra') ) : ?>
+	<?php if (function_exists(get_scrobbler)) { ?>
+	<li><h2>Now Listening</h2>
+		<?php wpaudioscrobbler(); ?>
+		<?php //get_scrobbler(); ?>
+	</li>
+	<?php } ?>
 	<?php if (function_exists(nr_display)) { ?>
 	<li><h2>Now Reading</h2>
 		<?php nr_display(); ?>

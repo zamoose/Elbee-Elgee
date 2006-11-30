@@ -88,7 +88,7 @@ body {
 
 #header h1 a, #header h1 a:visited {
 	text-decoration: none;
-	color: inherit;
+	color: #cfcfd0;
 }
 
 #header .description {
