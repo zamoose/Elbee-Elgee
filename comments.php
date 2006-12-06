@@ -100,7 +100,7 @@
 		
 		?>">
 			<div class="comment-meta">
-			 <?php if (function_exists('gravatar')) { gravatar_image_link(); 
+			 <?php if (function_exists('gravatar')) { gravatar(); 
 			 } ?>
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
 				<span class="comment-author"><?php comment_author_link() ?></span>, 
