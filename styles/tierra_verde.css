@@ -1,0 +1,19 @@
+body {
+	background-color: rgb(171,195,172);
+	color: rgb(34,70,79);
+}
+
+#header {
+	background: rgb(34,70,79);
+	height: 50px;
+}
+
+#header h1 {
+	display: none;
+}
+
+#header .description {
+	color: #fff;
+	float: right;
+	padding-right: 20px;
+}
