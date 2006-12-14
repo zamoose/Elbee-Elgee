@@ -190,9 +190,19 @@ body {
 	margin-top: 1em;
 }
 
-.postinfo {
-	text-align: right;
+.postinfo, .postmeta {
+	font-size: 80%;
 }
+
+.postinfo {
+	padding: 6px;
+	padding-left: 0px;
+	text-align: right;
+	background: #2d3a70;
+	/*background: #495eb8;*/
+	border-top: 2px solid #56618f;
+}
+
 .published {
 	display:block;
 	text-align: center;

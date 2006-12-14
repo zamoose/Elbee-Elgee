@@ -7,7 +7,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<?php
 		$alt_style = get_option('lblg_alt_stylesheet');
-		if ( $alt_style != '' )	{
+		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
 			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option('lblg_alt_stylesheet').'" />';
 		}
 	?>

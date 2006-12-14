@@ -216,9 +216,9 @@ function mytheme_admin() {
 <?php
 }
 
-function mytheme_wp_head() { ?>
+function mytheme_wp_head() { /*?>
 <link href="<?php bloginfo('template_directory'); ?>/style.php" rel="stylesheet" type="text/css" />
-<?php }
+<?php*/ }
 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Navigation'));

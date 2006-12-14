@@ -19,7 +19,7 @@
 						the_content('Continue reading'. " '" . the_title('', '', false) . "'");
 					} ?>
 					<div class="postinfo">
-						<?php the_category(', '); ?>
+						Posted in <?php the_category(', '); ?>
 					</div>
 					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 			</div>
