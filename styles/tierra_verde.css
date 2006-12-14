@@ -4,7 +4,7 @@ body {
 }
 
 #header {
-	background: rgb(34,70,79);
+	background: rgb(34,70,79) url(tierra_verde/lb-old-skool.png) left no-repeat;
 	height: 50px;
 }
 
