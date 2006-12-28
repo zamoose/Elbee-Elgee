@@ -104,8 +104,8 @@
 			 	gravatar_image_link();
 			 } ?>
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
-				<span class="comment-author"><?php comment_author_link() ?></span>, 
-				<span class="comment-date"><?php comment_date() ?></span>:
+				<span class="comment-author"><?php comment_author_link() ?></span><br />
+				<span class="comment-date"><?php comment_date() ?></span>
 			</div>
 			<div class="comment-text">
 <?php /* Or maybe put gravatars here. The typical thing is to float them in the CSS */ 

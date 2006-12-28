@@ -28,7 +28,7 @@
 	}
 	
 	if (is_single() || is_archive()) {?>
-	<li><h2>Related</h2>
+	<li><h2>Possibly Related</h2>
 	<?php related_posts(); ?>
 	</li>
 	<?php } ?>

@@ -24,10 +24,8 @@ body {
 	padding-left: 20px;
 }
 
-#container {
-	/*border: 1px solid #ccc;
-	background-color: #0e1223;
-	width: 800px !important;*/
+div#container {
+	width: 800px;
 }
 
 #menu {
@@ -203,6 +201,32 @@ body {
 	border-top: 2px solid #56618f;
 }
 
+.postinfo a, .postinfo a:visited {
+	color: #0E1223 !important;
+	font-weight: bold;
+}
+
+#comments {
+	border-top: 1px solid #56618f;
+	padding-left: 0px;
+	padding-right: 10px;
+	list-style: none;
+}
+
+#comments li.odd, #comments li.even, #comments li.highlight {
+	border-bottom: 2px solid #56618f;
+	padding: 5px;
+}
+
+#comments li.odd {
+	background: #2d3a70;
+}
+
+#comments li.highlight {
+	border: 2px solid #56618f;
+	border-top: 0px;
+}
+
 .published {
 	display:block;
 	text-align: center;
@@ -246,6 +270,23 @@ body {
 .wppost h3 a, .wppost h3 a:visited, .wppost h3 a:hover, .wppost h3 a:active { 
 	color: #ccc;
 	text-decoration: none;
+}
+
+.comment-meta {
+	width: 80px;
+	position: absolute;
+}
+
+.comment-author {
+
+}
+
+.commend-date {
+
+}
+
+.comment-text { 
+	margin-left: 81px;
 }
 
 .center {
@@ -312,16 +353,20 @@ img.center, img[align="center"] {
         /*margin-left: auto;
         margin-right: auto;*/
 	margin: 0 auto !important;
+	_margin-right: auto;
+	_margin-left: auto;
 }
 
 img.alignright, img[align="right"] {
         padding: 4px !important;
+	_padding: 4px;
         margin: 0 0 2px 7px !important;
         display: inline;
 }
 
 img.alignleft, img[align="left"] {
         padding: 4px;
+	_padding: 4px;
 	margin: 0 7px 2px 0;
         display: inline;
 }
