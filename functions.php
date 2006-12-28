@@ -37,6 +37,12 @@ $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
 
 
 $options = array (
+				array(	"name" => "Number of Columns",
+						"id" => $shortname."_num_columns",
+						"std" => "3",
+						"type" => "radio",
+						"options" => array("1" => "One","2" => "Two","3" => "Three") ),
+	
 				array(	"name" => "\"About\" Text",
 						"id" => $shortname."_about_text",
 						"std" => "This is a little blurb about your site.",
@@ -60,10 +66,12 @@ $options = array (
 			    		"id" => $shortname."_previous_posts",
 			    		"std" => "5",
 			    		"type" => "text"),
+			
 				array(	"name" => "Del.icio.us Username",
 					    "id" => $shortname."_delicious_username",
 					    "std" => "zamoose",
 					    "type" => "text"),			
+					
 				array(	"name" => "Archives Page Style",
 						"id" => $shortname."_archives_style",
 						"std" => "clean",
