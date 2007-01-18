@@ -62,20 +62,6 @@
 <?php /* Try. to understand */ ?>
 
         <?php do_action('wp_footer'); ?>
-	<script type="text/javascript">
-	<?php
-	global $userdata;
-	if ($userdata) {
-	 echo "z_user_name=\"" . $userdata->display_name . "\";\n";
-	 echo "z_user_email=\"" . $userdata->user_email . "\";\n";
-	}
-	?>
-	z_post_title="<?php the_title();?>";
-	z_post_category="<?php $c=get_the_category();echo $c[0]->cat_name;?>";
-	</script>
-	<script id="stats_script" type="text/javascript" src="http://metrics.performancing.com/wp.js"></script>
-	<br />
-	<a href="http://performancing.com"><img src="http://metrics.performancing.com/logo_small.png" height="14" width="125" border="0" alt="Performancing"></a>
 	</div>
 </div>
 </div>

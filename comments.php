@@ -104,17 +104,14 @@
 			 	gravatar_image_link();
 			 } ?>
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
-				<span class="comment-author"><?php comment_author_link() ?></span><br />
+				<span class="comment-author"><?php comment_author_link() ?></span>
 				<span class="comment-date"><?php comment_date() ?></span>
 			</div>
+			<!--div class="listclear"></div-->
 			<div class="comment-text">
-<?php /* Or maybe put gravatars here. The typical thing is to float them in the CSS */ 
-	/* Typical gravatar call: 
-		<img src="<?php gravatar("R", 80, "YOUR DEFAULT GRAVATAR URL"); ?>" 
-		alt="" class="gravatar" width="80" height="80">
-	*/ ?>
 				<?php comment_text(); ?>
 			</div>
+			<div class="listclear"></div>
 		</li>
 		
 	<?php if('odd'==$thiscomment) { $thiscomment = 'even'; } else { $thiscomment = 'odd'; } ?>
@@ -180,7 +177,7 @@
 	<?php /* You might want to display this: 
 		<p>XHTML: You can use these tags: <?php echo allowed_tags(); ?></p> */ ?>
 
-		<p><textarea name="comment" id="comment" rows="5" cols="30"></textarea></p>
+		<p><textarea name="comment" id="comment" rows="10" cols="30"></textarea></p>
 		
 		<?php /* Buttons are easier to style than input[type=submit], 
 				but you can replace: 

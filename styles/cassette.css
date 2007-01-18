@@ -4,7 +4,7 @@ body{
 }
 #header {
 	height: 260px;
-	background: #fff url('cassette/cassette.jpg') top right no-repeat;
+	background: #fff;/* url('cassette/cassette.jpg') top right no-repeat;*/
 	border-bottom: 1px solid #ccc;
 }
 

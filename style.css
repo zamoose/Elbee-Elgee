@@ -24,10 +24,6 @@ body {
 	padding-left: 20px;
 }
 
-div#container {
-	width: 800px;
-}
-
 #menu {
 	margin: 0;
 	padding: 0;
@@ -223,8 +219,8 @@ div#container {
 }
 
 #comments li.highlight {
-	border: 2px solid #56618f;
-	border-top: 0px;
+/*	border: 2px solid #56618f;
+	border-top: 0px;*/
 }
 
 .published {
@@ -274,19 +270,20 @@ div#container {
 
 .comment-meta {
 	width: 80px;
-	position: absolute;
+/*	position: absolute;*/
+	float: left;
 }
 
 .comment-author {
-
+	display: block;
 }
 
-.commend-date {
-
+.comment-date {
+	display: block;
 }
 
 .comment-text { 
-	margin-left: 81px;
+	margin-left: 85px;
 }
 
 .center {
@@ -302,13 +299,13 @@ div#container {
 }
 
 .gravatar {
-	float:right;
+	float: left;
 	padding: 3px;
 	border: 1px solid #ccc;
 	background: transparent;
 	margin-right: 10px;
 	margin-bottom: 5px;
-	margin-left: 5px;
+	margin-left: 5px !important;
 }
 
 .postgrav {
@@ -324,6 +321,12 @@ div#container {
 	clear: both;
 	margin: 0;
 	padding: 0;
+}
+
+.listclear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
 }
 
 .navigation {
@@ -400,3 +403,9 @@ blockquote {
 	padding: 2px;
 }
 
+.extlink {
+	padding-right: 8px;
+	background-image: url(http://literalbarrage.org/blog/wp-images/aoutside.gif);
+	background-position: right top;
+        background-repeat: no-repeat;
+}
