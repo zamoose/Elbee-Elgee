@@ -1,0 +1,412 @@
+/*
+Theme Name: Elbee Elgee
+Theme URI: http://literalbarrage.org/blog/code/lblg
+Description: An extremely flexible 3 column theme.
+Author: Doug Stewart
+Author URI: http://literalbarrage.org/blog/
+Version: Beta 1
+*/
+
+body {
+	background-color: #0e1223;
+	color: #cfcfd0;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	height: 279px;
+	background: #0e1223 url(default/newbanner2.png) bottom right no-repeat;
+	border-bottom: 1px solid #f3f3dc;
+}
+
+#content {
+	padding-left: 20px;
+}
+
+#menu {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #f3f3dc;
+	border-top: 0px;
+	position: relative;
+	vertical-align: bottom;
+	background: url(default/menu_gradient2.png) top repeat-x #ca1919;
+}
+
+#navigation, #extra {
+	font-size: 85%;
+}
+
+#menu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#menu a:link, #menu a:visited {
+	color:#fff;
+	background: transparent;
+	padding: 10px 10px 4px 10px;
+	float: left;
+	width: auto;
+	/*border-right: 1px solid #000;*/
+	text-decoration:none;
+	font:bold 1em/1em Arial, Helvetica, sans-serif;
+	text-shadow: 2px 2px 2px #555;
+	margin-right: 5px;
+}
+
+#menu li:first-child a {
+	margin-left: 5px;
+}
+
+#menu a:hover {
+	color: #ca1919;
+	background: #f3f3dc;
+}
+
+#menu a.selected {
+	color: #000;
+	background:#f3f3dc;
+}
+
+#header h1 {
+	font: 230% "Times New Roman", Times, serif;
+	margin-top: 0px;
+	padding-top: 50px;
+	padding-left: 20px;
+}
+
+#header h1 a, #header h1 a:visited {
+	text-decoration: none;
+	color: #cfcfd0;
+}
+
+#header .description {
+	padding-left: 20px;
+}
+
+#searchform input {
+	width: 130px;
+}
+
+#navigation ul, #extra ul, #footer ul, #footer ol {
+	margin: 5px 0 0;
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#navigation ul li h2, #extra ul li h2 {
+	color: #ca1919;
+}
+
+#navigation ul li, #extra ul li, #footer ul li {
+	list-style-type: none;
+	list-style-image: none;
+}
+
+#navigation a, #navigation a:visited, #extra a, #extra a:visited {
+	text-decoration: none;	
+	/*color: #ca1919;*/
+	/*color: #cfcfd0;*/
+	/*color: #416e80;*/
+	color: #495eb8;
+}
+
+#navigation a:active, #navigation a:hover, #extra a:active, #extra a:hover {
+	text-decoration: underline;
+}
+
+#content a, #content a:visited {
+	color: #ca1919;
+	text-decoration: none;
+}
+
+#content a:active, #content a:hover {
+	text-decoration: underline;
+}
+
+#footer {
+	border-top: 1px solid #ca1919;	
+}
+
+#footer a, #footer a:visited {
+	color: #ca1919;
+	text-decoration: none;
+}
+
+#footer a:active, #footer a:hover {
+	text-decoration: underline;
+}
+
+#footerleft {
+	width: 45%;
+	margin: 0 auto;
+	float: left;	
+}
+
+#footerright {
+	width: 45%;
+	margin: 0 auto;
+	float: right;	
+}
+
+#footercredits {
+	width: 50%;
+	margin: 0 auto;
+	clear: both;
+	text-align: center;
+}
+
+#comment {
+	width: 95%;
+	margin: 0 auto;
+	height: 60px
+	font-size: 12pt;
+}
+
+#content img {
+	margin-left: -5px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+.wppost {
+	width: 95%;
+	/*margin-left: 3em;
+	border-left: 1px solid;
+	margin: 0 auto;
+	border: 1px solid #fff;*/
+	margin-bottom: 3em;
+	margin-top: 1em;
+}
+
+.postinfo, .postmeta {
+	font-size: 80%;
+}
+
+.postinfo {
+	padding: 6px;
+	padding-left: 0px;
+	text-align: right;
+	background: #2d3a70;
+	/*background: #495eb8;*/
+	border-top: 2px solid #56618f;
+}
+
+.postinfo a, .postinfo a:visited {
+	color: #0E1223 !important;
+	font-weight: bold;
+}
+
+#comments {
+	border-top: 1px solid #56618f;
+	padding-left: 0px;
+	padding-right: 10px;
+	list-style: none;
+}
+
+#comments li.odd, #comments li.even, #comments li.highlight {
+	border-bottom: 2px solid #56618f;
+	padding: 5px;
+}
+
+#comments li.odd {
+	background: #2d3a70;
+}
+
+#comments li.highlight {
+/*	border: 2px solid #56618f;
+	border-top: 0px;*/
+}
+
+.published {
+	display:block;
+	text-align: center;
+	float: right;
+	font-family: Arial, Helvetica, sans-serif; 
+	border: 1px solid #ccc;
+	padding: 0px;
+	margin-right: 20px;
+	margin-left: 20px;
+	/*margin-top: 10px;*/
+	margin-bottom: 20px;
+}
+
+.pub-month {
+	display:block;
+	font-size: 1.2em;
+	margin:0; 
+	padding: 0 3px 0 3px;
+	background: #f3f3dc;
+	color: #000;
+}
+
+.pub-date { 
+	display:block; 
+	font-size:1.6em;
+	margin:0; 
+	padding:0;  
+}
+
+.pub-year { 
+	display:block; 
+	font-size:1.0em;
+	margin:0; 
+	padding:0;  
+}
+
+.wppost h3 {
+	font: 180% "Times New Roman", Times, serif;
+}
+
+.wppost h3 a, .wppost h3 a:visited, .wppost h3 a:hover, .wppost h3 a:active { 
+	color: #ccc;
+	text-decoration: none;
+}
+
+.comment-meta {
+	width: 80px;
+/*	position: absolute;*/
+	float: left;
+}
+
+.comment-author {
+	display: block;
+}
+
+.comment-date {
+	display: block;
+}
+
+.comment-text { 
+	margin-left: 85px;
+}
+
+.center {
+        text-align: center;
+}
+
+.alignright {
+        float: right;
+}
+				        
+.alignleft {
+        float: left
+}
+
+.gravatar {
+	float: left;
+	padding: 3px;
+	border: 1px solid #ccc;
+	background: transparent;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 5px !important;
+}
+
+.postgrav {
+	float: left;
+	padding: 3px;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #000;
+	background: transparent;
+}
+
+.clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.listclear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+.navigation {
+	text-align: center;
+	margin: 10px 0 10px;
+	padding: 0;
+	width: 100%;
+}
+.navigation .left {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.navigation .right {
+	float: right;
+	width: 50%;
+	text-align: right;
+}
+
+#navigation img, #extra img {
+	border: 0px;
+}
+
+img.center, img[align="center"] {
+        display: block;
+        /*margin-left: auto;
+        margin-right: auto;*/
+	margin: 0 auto !important;
+	_margin-right: auto;
+	_margin-left: auto;
+}
+
+img.alignright, img[align="right"] {
+        padding: 4px !important;
+	_padding: 4px;
+        margin: 0 0 2px 7px !important;
+        display: inline;
+}
+
+img.alignleft, img[align="left"] {
+        padding: 4px;
+	_padding: 4px;
+	margin: 0 7px 2px 0;
+        display: inline;
+}
+				        
+img.noborder {
+        border: none !important;
+}
+
+blockquote {
+	margin: 20px 0;
+	padding: 0 20px 0 50px;
+	background: url('default/quote1.png') 10px top no-repeat;
+        border: none;
+}
+
+.ch_code_container {
+	background-color: #f0f0f0;
+	border: 1px solid #C3CED9;
+	padding: 0px 0px 0 0;
+	width: 100%;
+	text-align: left;
+	font-size:1.00em;
+	overflow:auto;
+}
+.ch_code_container .head
+{
+	/*color: #808080;*/
+	color: #000;
+	font-weight: bold;
+	background-color: #f0f0ff;
+	border-bottom: 1px solid #d0d0d0;
+	padding: 2px;
+}
+
+.extlink {
+	padding-right: 8px;
+	background-image: url(http://literalbarrage.org/blog/wp-images/aoutside.gif);
+	background-position: right top;
+        background-repeat: no-repeat;
+}
