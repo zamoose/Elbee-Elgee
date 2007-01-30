@@ -4,5 +4,64 @@ Theme URI: http://literalbarrage.org/blog/code/lblg
 Description: An extremely flexible 3 column theme.
 Author: Doug Stewart
 Author URI: http://literalbarrage.org/blog/
-Version: Beta 1
+Version: Beta 2
 */
+
+#header {
+	height: 7em;
+}
+
+#header h1 {
+	font-size: 189%;
+	font-family: times;
+	padding-left: 20px;
+}
+
+#header p{
+	padding-left: 20px;
+}
+
+#menu {
+	margin: 0;
+	padding: 0;
+	float: left;
+	width: 100%;
+	border-bottom: 1px solid #000;
+	border-top: 0px;
+	position: relative;
+	vertical-align: bottom;
+}
+
+#menu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li:first-child a {
+	margin-left: 5px;
+}
+
+#content {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#footerleft {
+	width: 45%;
+	margin: 0 auto;
+	float: left;    
+}
+
+#footerright {
+	width: 45%;
+	margin: 0 auto;
+	float: right;   
+}
+
+#footercredits {
+	width: 50%;
+	margin: 0 auto;
+	clear: both;
+	text-align: center;
+}
