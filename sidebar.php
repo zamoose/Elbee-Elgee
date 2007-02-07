@@ -39,7 +39,7 @@
 <div id="extra">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Extra') ) : ?>
-	<?php if (function_exists(get_scrobbler)) { ?>
+	<?php if (function_exists(wpaudioscrobbler)) { ?>
 	<li><h2>Now Listening</h2>
 		<?php wpaudioscrobbler(); ?>
 		<?php //get_scrobbler(); ?>
@@ -55,21 +55,16 @@
 		<?php ttlb_ecosystem_details('http://literalbarrage.org/blog'); ?>
 	</li>
 	<?php } ?>
-	<li><h2>Server Load</h2>
-		<ul>
-		        <li>
-			        <a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a>
-			</li>
-		</ul>
-	</li>
 	<li><h2>Meta</h2>
 		<ul>
 		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
 		                         <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
-					                         <li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
 		<?php wp_register(); ?>
 	        <li><?php wp_loginout(); ?></li>
 		<li><a href="http://www.dreamhost.com/donate.cgi?id=5283"><img border="0" alt="Donate towards my web hosting bill!" src="https://secure.newdream.net/donate1.gif" /></a></li>
+		<li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
+		<li><a href="http://pr.blogflux.com/"><img src="http://pr.blogflux.com/pr.php" alt="Google PageRank Checker - Page Rank Calculator" width="80" height="15" border="0"></a></li>
+		<li><a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a></li>
 		</ul>
 	</li>
 	<?php endif; ?>
