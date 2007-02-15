@@ -235,6 +235,79 @@ if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Bottom-Right'));
 }
 
+
+// Set up custom header code
+define('HEADER_TEXTCOLOR', 'cfcfd0');
+define('HEADER_IMAGE', '%s/styles/default/newbanner2.png');
+define('HEADER_IMAGE_WIDTH', '1024');
+define('HEADER_IMAGE_HEIGHT', '279');
+
+function header_style() {
+?>
+<style type="text/css">
+#header{
+	background: url(<?php header_image() ?>) bottom right no-repeat;
+}
+<?php if ( 'blank' == get_header_textcolor() ) { ?>
+#header h1, #header #description {
+	display: none;
+}
+<?php } else { ?>
+#header h1 a, #description {
+	color:#<?php header_textcolor() ?>;
+}
+#desc {
+	margin-right: 30px;
+}
+<?php } ?>
+</style>
+<?php
+}
+
+function elbee_admin_header_style() {
+?>
+<style type="text/css">
+#headimg{
+	background: url(<?php header_image() ?>) bottom right no-repeat;
+	height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
+	width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
+  	padding:0 0 0 18px;
+}
+
+#headimg h1{
+	padding-top:40px;
+	margin: 0;
+}
+#headimg h1 a{
+	color:#<?php header_textcolor() ?>;
+	text-decoration: none;
+	border-bottom: none;
+}
+#headimg #desc{
+	color:#<?php header_textcolor() ?>;
+	font-size:1em;
+	margin-top:-0.5em;
+}
+
+#desc {
+	display: none;
+}
+
+<?php if ( 'blank' == get_header_textcolor() ) { ?>
+#headimg h1, #headimg #desc {
+	display: none;
+}
+#headimg h1 a, #headimg #desc {
+	color:#<?php echo HEADER_TEXTCOLOR ?>;
+}
+<?php } ?>
+
+</style>
+<?php
+}
+
+add_custom_image_header('header_style', 'elbee_admin_header_style');
+
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
 ?>

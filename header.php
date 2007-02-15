@@ -32,7 +32,7 @@
 <body>
 <div id="container">
 <div id="header">
-	<h1><a href="<?php bloginfo('home'); ?>"><?php bloginfo('name'); ?></a></h1>
+	<h1><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></h1>
 	<p class="description"><?php bloginfo('description'); ?></p>
 </div>
         <ul id="menu">
