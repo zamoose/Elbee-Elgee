@@ -1,9 +1,3 @@
-html,body{margin:0;padding:0}
-body{font: 85% arial,sans-serif;text-align:center}
-
-div#container{text-align:left}
-div#content p{line-height:1.4}
-
 div#container{width:700px;margin:0 auto}
 div#navigation{float:left;width:350px}
 div#extra{float:right;width:350px}

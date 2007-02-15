@@ -1,8 +1,3 @@
-html,body{margin:0;padding:0}
-body{font: 85% arial,sans-serif}
-
-div#content p{line-height:1.4}
-
 div#navigation{float:right;width:50%}
 div#extra{float:right;width:49.9%}
 div#footer{clear:right;width:100%}
