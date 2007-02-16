@@ -75,6 +75,7 @@ body {
 
 #header h1 {
 	font: 230% "Times New Roman", Times, serif;
+	font-variant: small-caps;
 	margin-top: 0px;
 	padding-top: 50px;
 	padding-left: 20px;
@@ -205,8 +206,8 @@ body {
 #comments {
 	border-top: 1px solid #56618f;
 	padding-left: 0px;
-	padding-right: 10px;
 	list-style: none;
+	width: 95%;
 }
 
 #comments li.odd, #comments li.even, #comments li.highlight {
