@@ -27,11 +27,14 @@
 		get_links_list(); 
 	}
 	
-	if (is_single() || is_archive()) {?>
+	if (is_single() || is_archive()) {
+		if(function_exists(related_posts)){ ?>
 	<li><h2>Possibly Related</h2>
 	<?php related_posts(); ?>
 	</li>
-	<?php } ?>
+	<?php 
+		}
+	} ?>
 	<?php endif; ?>
 </ul>
 
