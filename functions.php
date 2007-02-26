@@ -243,7 +243,7 @@ define('HEADER_IMAGE_WIDTH', '1024');
 define('HEADER_IMAGE_HEIGHT', '279');
 
 function header_style() {
-?>
+/*?>
 <style type="text/css">
 #header{
 	background: url(<?php header_image() ?>) bottom right no-repeat;
@@ -261,7 +261,7 @@ function header_style() {
 }
 <?php } ?>
 </style>
-<?php
+<?php*/
 }
 
 function elbee_admin_header_style() {

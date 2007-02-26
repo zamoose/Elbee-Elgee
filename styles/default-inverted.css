@@ -8,15 +8,15 @@ Version: Beta 1
 */
 
 body {
-	background-color: #0e1223;
-	color: #cfcfd0;
+	background-color: #fff;
+	color: #111;
 	margin: 0;
 	padding: 0;
 }
 
 #header {
 	height: 279px;
-	background: #0e1223 url(default/newbanner2.png) bottom right no-repeat;
+	background: #0e1223 url(default-inverted/logo-inverted.png) bottom right no-repeat;
 	border-bottom: 1px solid #f3f3dc;
 }
 
@@ -83,7 +83,7 @@ body {
 
 #header h1 a, #header h1 a:visited {
 	text-decoration: none;
-	color: #cfcfd0;
+	color: #111;
 }
 
 #header .description {
