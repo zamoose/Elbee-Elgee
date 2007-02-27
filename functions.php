@@ -236,14 +236,19 @@ if ( function_exists('register_sidebar') ) {
 }
 
 
-// Set up custom header code
-define('HEADER_TEXTCOLOR', 'cfcfd0');
-define('HEADER_IMAGE', '%s/styles/default/newbanner2.png');
-define('HEADER_IMAGE_WIDTH', '1024');
-define('HEADER_IMAGE_HEIGHT', '279');
+$use_custom_header = $shortname."_use_custom_header";
+if(get_settings($use_custom_header) == true){
+	// Set up custom header code
+	define('HEADER_TEXTCOLOR', 'cfcfd0');
+	define('HEADER_IMAGE', '%s/styles/default/newbanner2.png');
+	define('HEADER_IMAGE_WIDTH', '1024');
+	define('HEADER_IMAGE_HEIGHT', '279');
+
+	add_custom_image_header('header_style', 'elbee_admin_header_style');
+}
 
 function header_style() {
-/*?>
+?>
 <style type="text/css">
 #header{
 	background: url(<?php header_image() ?>) bottom right no-repeat;
@@ -261,7 +266,7 @@ function header_style() {
 }
 <?php } ?>
 </style>
-<?php*/
+<?php
 }
 
 function elbee_admin_header_style() {
@@ -305,8 +310,6 @@ function elbee_admin_header_style() {
 </style>
 <?php
 }
-
-add_custom_image_header('header_style', 'elbee_admin_header_style');
 
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
