@@ -8,14 +8,18 @@ Version: Beta 1
 */
 
 body {
-	background-color: #fff;
+	background-color: #eee;
 	color: #111;
-	margin: 0;
-	padding: 0;
+}
+
+#container{
+	background: #fff;
+	border: 1px solid #111;
+	border-top: 0px;
 }
 
 #header {
-	height: 279px;
+	height: 250px;
 	background: #fff url(default-inverted/logo-inverted.png) bottom right no-repeat;
 	border-bottom: 1px solid #111;
 }
