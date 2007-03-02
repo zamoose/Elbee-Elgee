@@ -7,6 +7,8 @@ Author URI: http://literalbarrage.org/blog/
 Version: Beta 1
 */
 
+html,body{margin:0;padding:0}
+
 body {
 	background-color: #eee;
 	color: #111;
@@ -69,12 +71,13 @@ body {
 
 #menu a:hover {
 	color: #ca1919;
-	background: #f3f3dc;
+	/*background: #f3f3dc;*/
+	background: #cfcfd0;
 }
 
 #menu a.selected {
 	color: #000;
-	background:#f3f3dc;
+	background:#cfcfd0;
 }
 
 #header h1 {
@@ -118,7 +121,8 @@ body {
 	/*color: #ca1919;*/
 	/*color: #cfcfd0;*/
 	/*color: #416e80;*/
-	color: #495eb8;
+	/*color: #495eb8;*/
+	color: #0e1223;
 }
 
 #navigation a:active, #navigation a:hover, #extra a:active, #extra a:hover {
@@ -150,13 +154,15 @@ body {
 #footerleft {
 	width: 45%;
 	margin: 0 auto;
-	float: left;	
+	float: left;
+	padding-left: 20px;	
 }
 
 #footerright {
 	width: 45%;
 	margin: 0 auto;
-	float: right;	
+	float: right;
+	padding-right: 20px;	
 }
 
 #footercredits {
@@ -191,8 +197,15 @@ body {
 
 .postinfo, .postmeta {
 	font-size: 80%;
+}
+
+.postmeta {
 	padding-left: 15px;
 	background: url(../images/mini2/calendar.gif) no-repeat left;
+}
+.postcats {
+	padding-left: 15px;
+	background: url(../images/mini2/folder.gif) no-repeat left;
 }
 
 .commentlink {
@@ -204,9 +217,9 @@ body {
 	padding: 6px;
 	padding-left: 0px;
 	text-align: right;
-	background: #2d3a70;
+	background: #cfcfd0;
 	/*background: #495eb8;*/
-	border-top: 2px solid #56618f;
+	border-top: 2px solid #0e1223;
 }
 
 .postinfo a, .postinfo a:visited {
@@ -421,4 +434,9 @@ blockquote {
 	background-image: url(http://literalbarrage.org/blog/wp-images/aoutside.gif);
 	background-position: right top;
         background-repeat: no-repeat;
+}
+
+h2 {
+	font-size: 136%;
+	font-weight: bold;
 }
