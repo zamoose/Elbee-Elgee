@@ -17,12 +17,12 @@
 		</li>
 	<?php } ?>
 
-	<?php if ( is_single() ) { ?>
+	<?php /*if ( is_single() ) { ?>
 	<li><h2>Post Info</h2>
 		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jS, Y','',''); ?> in <?php the_category(', '); ?><?php if(function_exists(UTW_ShowTagsForCurrentPost)) {?> and was tagged as <?php UTW_ShowTagsForCurrentPost("commalist"); } ?>.
 	</li>
 	<?php 
-	}
+	}*/
 	if (is_home()) {
 		get_links_list(); 
 	}

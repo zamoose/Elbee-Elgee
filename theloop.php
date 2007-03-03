@@ -21,6 +21,10 @@
 					} ?>
 					<div class="postinfo">
 						<span class="postcats">Posted in <?php the_category(', '); ?></span>
+						<?php if(function_exists(UTW_ShowTagsForCurrentPost)) { ?>
+						<br />
+						<span class="posttags">Tagged as: <?php UTW_ShowTagsForCurrentPost("commalist"); ?></span>
+					<?php } ?>
 					</div>
 					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 			</div>
