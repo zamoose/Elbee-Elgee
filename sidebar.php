@@ -36,6 +36,19 @@
 		}
 	} ?>
 	<?php endif; ?>
+
+	<li><h2>Quick Archives</h2>
+	<form id="archiveform" action="">
+	<select name="archive_chrono" onchange="window.location = (document.forms.archiveform.archive_chrono[document.forms.archiveform.archive_chrono.selectedIndex].value);">
+	<option value=''>Select Month</option>
+	<?php wp_get_archives('type=monthly&format=option'); ?>
+	</select>
+	</form>
+	</li>
+
+	<li><h2>Quick Categories</h2>
+	<?php wp_dropdown_categories('orderby=name'); ?>
+	</li>
 </ul>
 
 </div>
