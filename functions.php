@@ -37,12 +37,12 @@ $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
 
 
 $options = array (
-				array(	"name" => "Number of Columns",
-						"id" => $shortname."_num_columns",
-						"std" => "3",
-						"type" => "radio",
-						"options" => array("1" => "One","2" => "Two","3" => "Three") ),
 	
+				array(	"name" => "Use Custom Headers",
+						"id" => $shortname."_use_custom_header",
+						"std" => "false",
+						"type" => "checkbox"),
+						
 				array(	"name" => "\"About\" Text",
 						"id" => $shortname."_about_text",
 						"std" => "This is a little blurb about your site.",
@@ -181,13 +181,13 @@ function mytheme_admin() {
 				$radio_setting = get_settings($value['id']);
 				if($radio_setting != ''){
 		    		if ($key == get_settings($value['id']) ) {
-						$checked = "checked";
+						$checked = "checked=\"checked\"";
 						} else {
 							$checked = "";
 						}
 				}else{
 					if($key == $value['std']){
-						$checked = "checked";
+						$checked = "checked=\"checked\"";
 					}else{
 						$checked = "";
 					}
@@ -197,7 +197,25 @@ function mytheme_admin() {
 	        </td>
 	    </tr>
 		<?php
-
+		break;
+		
+		case "checkbox":
+		?>
+			<tr valign="top"> 
+		        <th scope="row"><?php echo $value['name']; ?>:</th>
+		        <td>
+		           <?php
+						if(get_settings($value['id'])){
+							$checked = "checked=\"checked\"";
+						}else{
+							$checked = "";
+						}
+					?>
+		            <input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
+		            <?php  ?>
+		        </td>
+		    </tr>
+			<?php
 		break;
 
 		default:
@@ -222,6 +240,21 @@ function mytheme_admin() {
 </form>
 
 <?php
+}
+
+function option_wrapper_header($values){
+	?>
+	<tr valign="top"> 
+	    <th scope="row"><?php echo $value['name']; ?>:</th>
+	    <td>
+	<?php
+}
+
+function option_wrapper_footer(){
+	?>
+	    </td>
+    </tr>
+	<?php 
 }
 
 function mytheme_wp_head() { /*?>
