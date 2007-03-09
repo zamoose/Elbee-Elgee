@@ -75,7 +75,7 @@ body {
 	background: #cfcfd0;
 }
 
-#menu a.selected {
+#menu a.current_page_item {
 	color: #000;
 	background:#cfcfd0;
 }
@@ -233,14 +233,14 @@ body {
 }
 
 #comments {
-	border-top: 1px solid #56618f;
+	/*border-top: 1px solid #56618f;*/
 	padding-left: 0px;
 	list-style: none;
 	width: 95%;
 }
 
 #comments li.odd, #comments li.even, #comments li.highlight {
-	border-bottom: 2px solid #56618f;
+	/*border-bottom: 2px solid #56618f;*/
 	padding: 5px;
 }
 
@@ -251,6 +251,7 @@ body {
 #comments li.highlight {
 /*	border: 2px solid #56618f;
 	border-top: 0px;*/
+	border: 1px solid #cfcfd0;
 }
 
 .published {

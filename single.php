@@ -1,4 +1,9 @@
-<?php get_header(); ?>
+<?php 
+/*
+Template Name: Single Post
+*/
+
+get_header(); ?>
 
 <div id="wrapper">
 	<div id="content">

@@ -36,8 +36,14 @@
 	<p class="description"><?php bloginfo('description'); ?></p>
 </div>
         <ul id="menu">
-                <li><a href="<?php bloginfo('url'); ?>" class="selected">Blog</a></li>
+		<?php if (is_home()) : ?>
+                <li><a href="<?php bloginfo('url'); ?>" class="current_page_item">Blog</a></li>
                 <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
 				<?php wp_register('<li class="admintab">','</li>'); ?>
+		<?php else : ?>
+                <li><a href="<?php bloginfo('url'); ?>">Blog</a></li>
+                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
+				<?php wp_register('<li class="admintab">','</li>'); ?>
+		<?php endif; ?>
         </ul>
 	

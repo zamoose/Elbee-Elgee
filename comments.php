@@ -1,16 +1,3 @@
-<?php 
-/* 	This is comment.phps by Christian Montoya, http://www.christianmontoya.com
-
-	Available to you under the do-whatever-you-want license. If you like it, 
-	you are totally welcome to link back to me. 
-	
-	Use of this code does not grant you the right to use the design or any of the 
-	other files on my site. Beyond this file, all rights are reserved, unless otherwise noted. 
-	
-	Enjoy!
-*/
-?>
-
 <!-- Comments code provided by christianmontoya.com -->
 
 <?php if (!empty($post->post_password) && $_COOKIE['wp-postpass_'.COOKIEHASH]!=$post->post_password) : ?>
@@ -94,7 +81,7 @@
         
         /* Compare to $author array values */
         if (strcasecmp($this_name, $author["name"])==0 && strcasecmp($this_email, $author["email"])==0)
-			_e($author["highlight"]); 
+			_e($author["highlight"]." ".$thiscomment); 
 		else 
 			_e($thiscomment); 
 		
