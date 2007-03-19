@@ -16,7 +16,7 @@ body {
 
 #header {
 	height: 279px;
-	background: #0e1223 url(default/newbanner2.png) bottom right no-repeat;
+	background: #0e1223 url(default-dark/newbanner2.png) bottom right no-repeat;
 	border-bottom: 1px solid #f3f3dc;
 }
 
@@ -33,7 +33,7 @@ body {
 	border-top: 0px;
 	position: relative;
 	vertical-align: bottom;
-	background: url(default/menu_gradient2.png) top repeat-x #ca1919;
+	background: url(default-dark/menu_gradient2.png) top repeat-x #ca1919;
 }
 
 #navigation, #extra {
@@ -389,7 +389,7 @@ img.noborder {
 blockquote {
 	margin: 20px 0;
 	padding: 0 20px 0 50px;
-	background: url('default/quote1.png') 10px top no-repeat;
+	background: url('default-dark/quote1.png') 10px top no-repeat;
         border: none;
 }
 
