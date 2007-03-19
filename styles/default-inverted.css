@@ -53,8 +53,8 @@ body {
 }
 
 #menu a:link, #menu a:visited {
-	color:#fff;
-	background: transparent;
+	/*color:#fff;
+	background: transparent;*/
 	padding: 10px 10px 4px 10px;
 	float: left;
 	width: auto;
@@ -76,8 +76,16 @@ body {
 }
 
 #menu a.current_page_item {
-	color: #000;
-	background:#cfcfd0;
+}
+
+.current_page_item a {
+	color: #000 !important;
+	background:#cfcfd0 !important;
+}
+
+.page_item a {
+	color:#fff;
+	background: transparent;	
 }
 
 #header h1 {
