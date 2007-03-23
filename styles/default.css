@@ -22,7 +22,7 @@ body {
 
 #header {
 	height: 250px;
-	background: #fff url(default-inverted/logo-inverted.png) bottom right no-repeat;
+	background: #fff url(default/logo-inverted.png) bottom right no-repeat;
 	border-bottom: 1px solid #111;
 }
 
