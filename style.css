@@ -47,6 +47,25 @@ Version: Beta 2
 	padding-right: 10px;
 }
 
+#archive-wrapper {
+	float:left;
+	width:100%;
+	margin-left:-49%
+}
+
+#archive-posts{
+	margin-left: 44%;
+	padding-left: 5%;
+}
+
+#archive-categories{
+	float: right;
+	width: 44%;
+	padding-right: 5%;
+	text-align: right;
+}
+
+
 #footerleft {
 	width: 45%;
 	margin: 0 auto;
