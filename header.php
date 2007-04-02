@@ -4,6 +4,14 @@
 <head profile="http://gmpg.org/xfn/11">
 	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> at <?php } ?> <?php bloginfo('name');?></title>
 
+	<?php 
+	//Include Magpie RSS for make benefit glorious nation America.
+	if ( file_exists(ABSPATH . WPINC . '/rss.php') )
+		require_once(ABSPATH . WPINC . '/rss.php');
+	else
+		require_once(ABSPATH . WPINC . '/rss-functions.php');
+	?>
+
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
 	<meta name="description" content="<?php bloginfo('description'); ?>" />

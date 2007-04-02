@@ -42,6 +42,11 @@ $options = array (
 						"id" => $shortname."_use_custom_header",
 						"std" => "false",
 						"type" => "checkbox"),
+
+				array(	"name" => "Display \"About\" Text",
+						"id" => $shortname."_display_about",
+						"std" => "false",
+						"type" => "checkbox"),
 						
 				array(	"name" => "\"About\" Text",
 						"id" => $shortname."_about_text",
@@ -70,13 +75,7 @@ $options = array (
 				array(	"name" => "Del.icio.us Username",
 					    "id" => $shortname."_delicious_username",
 					    "std" => "zamoose",
-					    "type" => "text"),			
-					
-				array(	"name" => "Archives Page Style",
-						"id" => $shortname."_archives_style",
-						"std" => "clean",
-						"type" => "radio",
-						"options" => array("clean" => "Clean Archives","subtraction" => "Subtraction Style"))
+					    "type" => "text")
 		  );
 
 function mytheme_add_admin() {

@@ -19,6 +19,27 @@
 	<div id="footerright">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
+		<?php if(function_exists(fetch_rss)) { ?>
+			<li><h2>Elbee Elgee Development</h2>
+				<ul>
+			<?php	
+				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
+				$lblgrss = fetch_rss($url);
+				$rss_c = 0;
+				
+				foreach($lblgrss->items as $item){
+					if($rss_c <=4){
+						$title = $item['title'];
+						$link = $item['link'];
+						$description = $item['description'];
+						echo "<li><a href=\"$link\">$title</a></li>\n";
+					}
+					$rss_c++;
+				}
+			?>
+				</ul>
+			</li>
+		<?php } ?>
 	        <?php if (function_exists(SimplePieWP)) { ?>
 		        <li><h2>Elbee Elgee Development</h2>                <?php echo SimplePieWP('http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss','items:5, showtitle:false, shortdesc:200, showdate:j M Y'); ?>
 			</li>
