@@ -23,7 +23,6 @@
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
-	<!--link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/includes/css/yui/reset.css" /-->
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/includes/css/yui/fonts.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option('lblg_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
