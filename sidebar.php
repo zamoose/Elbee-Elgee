@@ -66,11 +66,10 @@
 		<?php nr_display(); ?>
 	</li>
 	<?php } ?>
-        <?php if (function_exists(ttlb_ecosystem_details)) { ?>
         <li><h2>TTLB Info</h2>
-		<?php ttlb_ecosystem_details('http://literalbarrage.org/blog'); ?>
+	<script language="javascript" src="http://truthlaidbear.com/MyDetails.php?url=http://literalbarrage.org/blog&style=javascript">
+	</script>
 	</li>
-	<?php } ?>
 	<li><h2>Meta</h2>
 		<ul>
 		 <li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
@@ -81,7 +80,6 @@
 		<li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
 		<li><a href="http://pr.blogflux.com/"><img src="http://pr.blogflux.com/pr.php" alt="Google PageRank Checker - Page Rank Calculator" width="80" height="15" border="0"></a></li>
 		<li><a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a></li>
-		<li><a href="http://www.poweredbywp.com/" title="WordPress Blogs"><img src="http://www.poweredbywp.com/images/wp2.png" alt="Powered by WordPress - WordPress Blogs Directory" border="0" /></a></li>
 		</ul>
 	</li>
 	<?php endif; ?>

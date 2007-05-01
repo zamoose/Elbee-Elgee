@@ -2,6 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head profile="http://gmpg.org/xfn/11">
+<?php
+// Head that nasty "duplicate content" Google "feature" off at the pass.
+if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){ 
+?>
+	<!-- ok google, index me! -->
+<?php 
+}else{
+?>
+	<!-- google, please ignore - thanks! -->
+	<meta name="robots" content="noindex,follow">
+<?php
+}
+?>
 	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> at <?php } ?> <?php bloginfo('name');?></title>
 
 	<?php 

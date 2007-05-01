@@ -75,6 +75,8 @@
 <?php /* Try. to understand */ ?>
 
         <?php do_action('wp_footer'); ?>
+
+	<!--<?php echo get_num_queries(); ?> queries-->
 	</div>
 </div>
 </div>
