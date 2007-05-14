@@ -1,3 +1,6 @@
+<?php if (is_404()){ ?>
+</div><!--end 404-specific wrapper div -->
+<?php }?>
 <div id="footer">
 	<div id="footerleft">
 		<ul>

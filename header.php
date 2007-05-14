@@ -66,4 +66,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 				<?php wp_register('<li class="admintab page_item">','</li>'); ?>
 		<?php endif; ?>
         </ul>
-	
+<?php if (is_404()){ ?>
+<div id="wrapper-404">
+<?php }?>

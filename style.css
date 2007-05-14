@@ -47,6 +47,15 @@ Version: Beta 2
 	padding-right: 10px;
 }
 
+#wrapper-404 {
+	float: left;
+	width: 100%;
+}
+
+#wrapper-404 #content {
+	width: 95%;
+}
+
 #archive-wrapper {
 	float:left;
 	width:100%;
