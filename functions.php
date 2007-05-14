@@ -39,6 +39,7 @@ $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
 $options = array (
 	
 				array(	"name" => "Use Custom Headers",
+						"desc" => "Check this box if you wish to use WordPress's <a href=\"http://boren.nu/archives/2007/01/07/custom-image-header-api/\">Custom Header Image API</a> to define a custom image for your theme",
 						"id" => $shortname."_use_custom_header",
 						"std" => "false",
 						"type" => "checkbox"),
@@ -56,12 +57,14 @@ $options = array (
 											"cols" => "40") ),
 											
 				array(	"name" => "Layout Stylesheet",
+						"desc" => "Place additional layout stylesheets in the <code>layouts/</code> subdirectory to have them automatically included",
 			    		"id" => $shortname."_layout_stylesheet",
 			    		"std" => "Select a layout:",
 			    		"type" => "select",
 			    		"options" => $layouts),
 			
 				array(	"name" => "Theme Stylesheet",
+						"desc" => "Place additional theme stylesheets and assets in the <code>styles/</code> subdirectory to have them automatically included",
 					    "id" => $shortname."_alt_stylesheet",
 					    "std" => "Select a stylesheet:",
 					    "type" => "select",
@@ -129,54 +132,43 @@ function mytheme_admin() {
 	
 	switch ( $value['type'] ) {
 		case 'text':
+		option_wrapper_header($value);
 		?>
-		<tr valign="top"> 
-		    <th scope="row"><?php echo $value['name']; ?>:</th>
-		    <td>
 		        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo get_settings( $value['id'] ); } else { echo $value['std']; } ?>" />
-		    </td>
-		</tr>
 		<?php
+		option_wrapper_footer($value);
 		break;
 		
 		case 'select':
+		option_wrapper_header($value);
 		?>
-		<tr valign="top"> 
-	        <th scope="row"><?php echo $value['name']; ?>:</th>
-	        <td>
 	            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 	                <?php foreach ($value['options'] as $option) { ?>
 	                <option<?php if ( get_settings( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 	                <?php } ?>
 	            </select>
-	        </td>
-	    </tr>
 		<?php
+		option_wrapper_footer($value);
 		break;
 		
 		case 'textarea':
 		$ta_options = $value['options'];
+		option_wrapper_header($value);
 		?>
-		<tr valign="top"> 
-	        <th scope="row"><?php echo $value['name']; ?>:</th>
-	        <td>
 				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
 				if( get_settings($value['id']) != "") {
 						echo get_settings($value['id']);
 					}else{
 						echo $value['std'];
 				}?></textarea>
-	        </td>
-	    </tr>
 		<?php
+		option_wrapper_footer($value);
 		break;
 
 		case "radio":
-		?>
-		<tr valign="top"> 
-	        <th scope="row"><?php echo $value['name']; ?>:</th>
-	        <td>
-	            <?php foreach ($value['options'] as $key=>$option) { 
+		option_wrapper_header($value);
+		
+ 		foreach ($value['options'] as $key=>$option) { 
 				$radio_setting = get_settings($value['id']);
 				if($radio_setting != ''){
 		    		if ($key == get_settings($value['id']) ) {
@@ -192,18 +184,14 @@ function mytheme_admin() {
 					}
 				}?>
 	            <input type="radio" name="<?php echo $value['id']; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
-	            <?php } ?>
-	        </td>
-	    </tr>
-		<?php
+		<?php 
+		}
+		 
+		option_wrapper_footer($value);
 		break;
 		
 		case "checkbox":
-		?>
-			<tr valign="top"> 
-		        <th scope="row"><?php echo $value['name']; ?>:</th>
-		        <td>
-		           <?php
+		option_wrapper_header($value);
 						if(get_settings($value['id'])){
 							$checked = "checked=\"checked\"";
 						}else{
@@ -211,10 +199,8 @@ function mytheme_admin() {
 						}
 					?>
 		            <input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
-		            <?php  ?>
-		        </td>
-		    </tr>
-			<?php
+		<?php
+		option_wrapper_footer($value);
 		break;
 
 		default:
@@ -244,15 +230,18 @@ function mytheme_admin() {
 function option_wrapper_header($values){
 	?>
 	<tr valign="top"> 
-	    <th scope="row"><?php echo $value['name']; ?>:</th>
+	    <th scope="row"><?php echo $values['name']; ?>:</th>
 	    <td>
 	<?php
 }
 
-function option_wrapper_footer(){
+function option_wrapper_footer($values){
 	?>
 	    </td>
-    </tr>
+	</tr>
+	<tr valign="top">
+		<td>&nbsp;</td><td><small><?php echo $values['desc']; ?></small></td>
+	</tr>
 	<?php 
 }
 
