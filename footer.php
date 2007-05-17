@@ -63,17 +63,7 @@
 		</ul>
 	</div>
 	<div id="footercredits">
-	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy 2006 Doug Stewart</p>
-	<!--WEBBOT bot="HTMLMarkup" startspan ALT="Site Meter" -->
-	<script type="text/javascript" language="JavaScript">var site="s19literal"</script>
-	<script type="text/javascript" language="JavaScript1.2" src="http://s19.sitemeter.com/js/counter.js?site=s19literal">
-	</script>
-	<noscript>
-	<a href="http://s19.sitemeter.com/stats.asp?site=s19literal" border="0" target="_top">
-	<img src="http://s19.sitemeter.com/meter.asp?site=s19literal" alt="Site Meter" border="0"/></a>
-	</noscript>
-	<!-- Copyright (c)2005 Site Meter -->
-	<!--WEBBOT bot="HTMLMarkup" Endspan -->
+	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy; 2006 Doug Stewart</p>
 
 <?php /* Try. to understand */ ?>
 
