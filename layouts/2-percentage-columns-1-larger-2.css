@@ -1,12 +1,3 @@
-html,body{margin:0;padding:0}
-body{font: 85% arial,sans-serif}
-
-
-
-div#content p{line-height:1.4}
-
-div#footer p{margin:0;padding:5px 10px}
-
 div#wrapper{float:left;width:70%}
 div#navigation{float:right;width:29.9%}
 div#extra{clear:both;width:100%}
