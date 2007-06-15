@@ -40,3 +40,7 @@ a:hover {
 	background-color: #606870;
 	border-color: #606870;
 }
+
+ul {
+	list-style: none;
+}
