@@ -26,7 +26,7 @@ Version: Beta 2
 	padding: 0;
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #000;
+	/*border-bottom: 1px solid #000;*/
 	border-top: 0px;
 	position: relative;
 	vertical-align: bottom;
