@@ -1,7 +1,8 @@
 	 <?php /* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
 		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) include (TEMPLATEPATH . '/navigation.php'); ?>
 		<div id="post-<?php the_ID(); ?>" class="wppost">
-			<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>	
+			<?php if(is_home()) { ?><h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>
+			<?php } else { ?><h3><?php the_title(); ?></h3><?php } ?>
 			<span class="postmeta">Posted by <?php the_author(); ?> on <?php the_time('F jS, Y'); ?> <?php if (!is_single()){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
 			<script src="http://feeds.feedburner.com/~s/literalbarrage?i=<?php the_permalink() ?>" type="text/javascript" charset="utf-8"></script>
 			<div class="itemtext">

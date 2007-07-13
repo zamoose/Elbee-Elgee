@@ -286,10 +286,10 @@ body {
 
 .wppost h3 {
 	font: 180% "Times New Roman", Times, serif;
+	color: #CA1919;
 }
 
 .wppost h3 a, .wppost h3 a:visited, .wppost h3 a:hover, .wppost h3 a:active { 
-	color: #ccc;
 	text-decoration: none;
 }
 
