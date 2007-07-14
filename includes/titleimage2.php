@@ -1,8 +1,9 @@
 <?php
 		    // Set some test variables
-		    $font = "fonts/28_days_later.ttf";
+		    //$font = "fonts/28_days_later.ttf";
+			$font = "fonts/blazed/Blazed.ttf";
 		    $text = $_REQUEST['text'];
-		    $size = 25;
+		    $size = 20;
 		    $angle = 0;
 
 			$words = explode(" ", $text);

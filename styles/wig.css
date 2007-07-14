@@ -23,7 +23,7 @@ a {
 }
 
 #header {
-	background: url("http://literalbarrage.org/blog/wp-content/themes/elbee/includes/titleimage2.php?text=Literal%20Barrage") left no-repeat;
+	background: url("../includes/titleimage.php?text=Literal%20Barrage") left no-repeat;
 }
 
 a:link {

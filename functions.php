@@ -128,6 +128,10 @@ function mytheme_admin() {
 
 <table class="optiontable">
 
+<?php option_wrapper_header(array("name"=>"Header Image")); ?>
+
+<?php option_wrapper_footer(array("desc"=>"If you have GD2 support enabled on your server and the style you've selected supports it, you can generate a header image automatically.")); ?>
+
 <?php foreach ($options as $value) { 
 	
 	switch ( $value['type'] ) {
