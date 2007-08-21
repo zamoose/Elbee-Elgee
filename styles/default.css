@@ -430,10 +430,15 @@ blockquote {
 	padding-right: 8px;
 	background-image: url(http://literalbarrage.org/blog/wp-images/aoutside.gif);
 	background-position: right top;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
 }
 
 h2 {
 	font-size: 136%;
 	font-weight: bold;
+}
+
+#archive-wrapper a, #archive-wrapper a:visited, #archive-categories a, #archive-categories a:visited{
+	color: #CA1919;
+	text-decoration: none;
 }

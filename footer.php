@@ -5,12 +5,15 @@
 	<div id="footerleft">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
+		<?php if(is_home()) { 
+			query_posts('paged=2&showposts=7');?>
 		<li><h2>Recent Posts</h2>
+		<?php } else { 
+			query_posts('paged=1'); ?>
+		<li><h2>On The Front Page</h2>
+		<?php } ?>
 		<ul>
 		<?php 
-			/*$numposts = get_settings('posts_per_page');
-			$poststring = 'paged=2&showposts=$numposts';*/
-			query_posts('paged=2&showposts=7'); 
 		while (have_posts()) : the_post(); ?>
 		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
 		<?php endwhile; ?>
@@ -43,10 +46,6 @@
 				</ul>
 			</li>
 		<?php } ?>
-	        <?php if (function_exists(SimplePieWP)) { ?>
-		        <li><h2>Elbee Elgee Development</h2>                <?php echo SimplePieWP('http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss','items:5, showtitle:false, shortdesc:200, showdate:j M Y'); ?>
-			</li>
-		<?php } ?>
 
 		<?php if ( function_exists('deepthoughts') && is_home() ) { ?>
 			<li><h2>Deep Thoughts</h2>
@@ -68,7 +67,10 @@
 <?php /* Try. to understand */ ?>
 
         <?php do_action('wp_footer'); ?>
-
+	<!-- Site Meter -->
+	<a href=" http://s40.sitemeter.com/stats.asp?site=s40literal" target="_top">
+	<img src=" http://s40.sitemeter.com/meter.asp?site=s40literal" alt="Site Meter" border="0"/></a>
+	<!-- Copyright (c)2006 Site Meter -->
 	<!--<?php echo get_num_queries(); ?> queries-->
 	</div>
 </div>
