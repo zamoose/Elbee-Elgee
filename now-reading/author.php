@@ -18,11 +18,11 @@
 		
 		<h2>Books by <?php the_book_author() ?></h2>
 		
-		<?php if( have_books("author={$GLOBALS['nr_author']}") ) : ?>
+		<?php if( have_books("author={$GLOBALS['nr_author']}&num=-1") ) : ?>
 			
 			<ul>
 			
-			<?php while( have_books("author={$GLOBALS['nr_author']}") ) : the_book(); ?>
+			<?php while( have_books("author={$GLOBALS['nr_author']}&num=-1") ) : the_book(); ?>
 				
 				<li>
 					<p><a href="<?php book_permalink() ?>"><img src="<?php book_image() ?>" alt="<?php book_title() ?>" /></a></p>

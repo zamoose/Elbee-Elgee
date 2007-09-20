@@ -113,6 +113,12 @@ function mytheme_add_admin() {
 
 }
 
+//add_theme_page($themename . 'Header Options', 'Header Options', 'edit_themes', basename(__FILE__), 'headimage_admin');
+
+function headimage_admin(){
+	
+}
+
 function mytheme_admin() {
 
     global $themename, $shortname, $options;

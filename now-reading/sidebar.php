@@ -1,3 +1,5 @@
+<div class="now-reading">
+	
 	<h3>Planned books:</h3>
 	
 	<?php if( have_books('status=unread') ) : ?>
@@ -63,3 +65,4 @@
 	
 	<p><a href="<?php library_url() ?>">View full Library</a></p>
 	
+</div>

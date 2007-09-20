@@ -18,11 +18,11 @@
 	
 	<p>Viewing books tagged with &ldquo;<?php the_tag(); ?>&rdquo;:</p>
 	
-	<?php if( have_books("tag={$GLOBALS['nr_tag']}") ) : ?>
+	<?php if( have_books("tag={$GLOBALS['nr_tag']}&num=-1") ) : ?>
 		
 		<ul>
 		
-		<?php while( have_books("tag={$GLOBALS['nr_tag']}") ) : the_book(); ?>
+		<?php while( have_books("tag={$GLOBALS['nr_tag']}&num=-1") ) : the_book(); ?>
 			
 			<li><a href="<?php book_permalink() ?>"><?php book_title() ?></a> by <a href="<?php book_author_permalink() ?>"><?php book_author() ?></a></li>
 			

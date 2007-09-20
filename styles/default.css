@@ -442,3 +442,7 @@ h2 {
 	color: #CA1919;
 	text-decoration: none;
 }
+
+.now-reading ul{
+	list-style: none;
+}

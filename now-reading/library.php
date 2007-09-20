@@ -1,11 +1,9 @@
 <?php get_header() ?>
 
-<div class="content">
+<div class="wrapper">
 	
 	<div id="content" class="now-reading primary narrowcolumn">
-	
-	<div class="post">
-		
+		<div class="wppost">	
 		<?php if( can_now_reading_admin() ) : ?>
 			
 			<p>Admin: &raquo; <a href="<?php manage_library_url() ?>">Manage Books</a></p>
@@ -80,9 +78,9 @@
 		<?php endif; ?>
 		
 		<?php do_action('nr_footer'); ?>
+
+		</div>
 		
-	</div>
-	
 	</div>
 	
 </div>
