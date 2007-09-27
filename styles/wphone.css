@@ -1,0 +1,144 @@
+html,body{margin:0;padding:0}
+
+body{
+	background-color: #ccc;
+}
+
+#container{
+	border: 1px solid #0D324F;
+	border-top: 0px;
+	background-color: #F9FCFE;
+}
+
+#header{
+	height: 204px;
+	background: #14568A url(wphone/iphoney2.jpg) no-repeat right bottom;
+	color: #fff;
+}
+
+#header h1 {
+        font: 230% 'Trebuchet MS',Verdana,Sans-Serif;
+        font-variant: small-caps;
+        margin-top: 0px;
+        padding-top: 50px;
+        padding-left: 20px;
+}
+
+#header h1 a, #header h1 a:visited{
+	text-decoration: none;
+	color: #fff;
+}
+
+#navigation ul, #extra ul, #footer ul{
+	list-style: none;
+	padding-left: 0px;
+}
+
+#menu {
+        margin: 0;
+        padding: 0;
+		padding-top: 0.3em;
+        float: left;
+        width: 100%;
+        border-bottom: 3px solid #0D324F;
+        border-top: 3px solid #448ABD;
+        position: relative;
+        vertical-align: bottom;
+        background: #83B4D8;
+}
+
+#menu li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+}
+
+#menu a:link, #menu a:visited {
+        padding: 10px 10px 4px 10px;
+        float: left;
+        width: auto;
+        text-decoration:none;
+        font:bold 1em/1em Arial, Helvetica, sans-serif;
+        text-shadow: 2px 2px 2px #555;
+        margin-right: 5px;
+}
+
+#menu li:first-child a {
+        margin-left: 5px;
+}
+
+#menu a:hover {
+	color: #fff;
+	background: #0d324f;
+}
+
+#menu a.current_page_item {
+}
+
+.current_page_item a {
+        color: #fff !important;
+        background: #0D324F !important;
+}
+
+.page_item a {
+        color: #000;
+        background: transparent;        
+}
+
+#content h3{
+	font-size: 182%;
+	font-family: 'Trebuchet MS', Verdana, Sans-Serif;
+	margin-bottom: 13px;
+}
+
+#content a,#content a:visited,#akst_form a,#akst_form a:visited,#extra a,#extra a:visited,#navigation a,#navigation a:visited{
+	text-decoration: none;
+	color: #14568A;
+}
+
+#content a:active,#content a:hover,#akst_form a:active,#akst_form a:hover,#extra a:active,#extra a:hover,#navigation a:active,#navigation a:hover{
+	text-decoration: underline;
+}
+
+.postmeta, .postcats{
+	font-size: 77%;
+}
+
+.comments-form textarea{
+	width: 100%;
+}
+
+#akst_form{
+	color: #000;
+}
+#extra h2, #navigation h2{
+	font-size: 123.1%;
+	font-family: 'Trebuchet MS', Verdana, Sans-Serif;
+}
+
+#footer{
+	background-color: #0D324F;
+	color: #fff;
+}
+
+#footer h2{
+	text-align: center;
+}
+
+#footer a, #footer a:visited{
+	text-decoration: none;
+	color: #83B4D8;
+}
+
+#footer a:hover, #footer a:active{
+	text-decoration: underline;
+}
+
+#footerleft ul li{
+	padding-left: 20px;
+}
+
+#footerright ul li{
+	text-align: right;
+	padding-right: 20px;
+}
