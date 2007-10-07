@@ -104,8 +104,8 @@ body{
 	font-size: 77%;
 }
 
-.comments-form textarea{
-	width: 100%;
+#comment{
+	width: 95%;
 }
 
 #akst_form{
