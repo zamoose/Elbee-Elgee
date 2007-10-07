@@ -18,6 +18,10 @@
 						<br />
 						<span class="posttags">Tagged as: <?php UTW_ShowTagsForCurrentPost("commalist"); ?></span>
 					<?php }} ?>
+						<?php if(function_exists(the_tags) && is_single()){?>
+						<br />
+						<span class="posttags">Tagged as: <?php the_tags(', '); ?></span>
+					<?php }?>
 					</div>
 					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 			</div>

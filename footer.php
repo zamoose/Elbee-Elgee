@@ -53,11 +53,28 @@
 			</li>
 		<?php } ?>
 
-	        <?php if (function_exists(SimplePieWP)) { ?>
+		<?php if(function_exists(fetch_rss)) { ?>
 			<li><h2>del.icio.us Links</h2>
-		        	<?php echo SimplePieWP('http://del.icio.us/rss/zamoose','items:10, showdesc:false, showtitle:false'); ?>
+				<ul>
+			<?php	
+				$url = 'http://del.icio.us/rss/zamoose';
+				$lblgrss = fetch_rss($url);
+				$rss_c = 0;
+				
+				foreach($lblgrss->items as $item){
+					if($rss_c <=10){
+						$title = $item['title'];
+						$link = $item['link'];
+						$description = $item['description'];
+						echo "<li><a href=\"$link\">$title</a></li>\n";
+					}
+					$rss_c++;
+				}
+			?>
+				</ul>
 			</li>
 		<?php } ?>
+
 		<?php endif; ?>
 		</ul>
 	</div>
