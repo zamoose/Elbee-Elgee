@@ -142,3 +142,59 @@ body{
 	text-align: right;
 	padding-right: 20px;
 }
+
+.toc{
+	float: right;
+	border: 1px solid #000;
+	padding-left: 7px;
+	padding-right: 7px;
+	margin-left: 2em;
+	margin-bottom: 2em;
+}
+
+#content img.lightbox{
+	border: 1px solid #000;
+	padding: 5px;
+}
+
+#imageDataContainer{
+	background-color: #222;
+	color: #fff;
+}
+
+img.center, img.alignright, img.alignleft{
+	border: 1px solid #ccc;
+}
+
+img.center, img[align="center"] {
+    display: block;
+	margin: 0 auto !important;
+	_margin-right: auto;
+	_margin-left: auto;
+}
+
+img.alignright, img[align="right"] {
+    padding: 4px !important;
+	_padding: 4px;
+    margin: 0 0 2px 7px !important;
+    display: inline;
+}
+
+img.alignleft, img[align="left"] {
+    padding: 4px;
+	_padding: 4px;
+	margin: 0 7px 2px 0;
+    display: inline;
+}
+
+.alignright{
+	float: right;
+}
+
+.alignleft{
+	float: left;
+}
+
+.center {
+	text-align: center;
+}
