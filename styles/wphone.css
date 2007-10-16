@@ -198,3 +198,10 @@ img.alignleft, img[align="left"] {
 .center {
 	text-align: center;
 }
+
+blockquote {
+	margin: 20px 0;
+	padding: 0 20px 0 50px;
+	background: #eee;
+	border-left: 2px solid #ccc;
+}
