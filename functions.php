@@ -10,9 +10,9 @@ $alt_stylesheets = array();
 
 if ( is_dir($layout_path) ) {
 	if ($layout_dir = opendir($layout_path) ) { 
-		while ( ($file = readdir($layout_dir)) !== false ) {
-			if(stristr($file, ".css") !== false) {
-				array_push($layouts, $file);
+		while ( ($layout_file = readdir($layout_dir)) !== false ) {
+			if(stristr($layout_file, ".css") !== false) {
+				$layouts[] = $layout_file;
 			}
 		}	
 	}
@@ -20,9 +20,9 @@ if ( is_dir($layout_path) ) {
 
 if ( is_dir($alt_stylesheet_path) ) {
 	if ($alt_stylesheet_dir = opendir($alt_stylesheet_path) ) { 
-		while ( ($file = readdir($alt_stylesheet_dir)) !== false ) {
-			if(stristr($file, ".css") !== false) {
-				array_push($alt_stylesheets, $file);
+		while ( ($alt_stylesheet_file = readdir($alt_stylesheet_dir)) !== false ) {
+			if(stristr($alt_stylesheet_file, ".css") !== false) {
+				$alt_stylesheets[] = $alt_stylesheet_file;
 			}
 		}	
 	}
