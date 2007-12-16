@@ -244,8 +244,9 @@ body {
 
 #comments li.highlight {
 /*	border: 2px solid #56618f;
-	border-top: 0px;*/
-	border: 1px solid #cfcfd0;
+	border-top: 0px;
+	border: 1px solid #cfcfd0;*/
+	border: 1px solid #777;
 }
 
 .published {
@@ -327,7 +328,7 @@ body {
 	float: left;
 	padding: 3px;
 	border: 1px solid #ccc;
-	background: transparent;
+	background: #fff;
 	margin-right: 10px;
 	margin-bottom: 5px;
 	margin-left: 5px !important;
@@ -342,6 +343,7 @@ body {
 	background: transparent;
 }
 
+.gravatar img 
 .clear {
 	clear: both;
 	margin: 0;
