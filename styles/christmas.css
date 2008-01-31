@@ -21,7 +21,7 @@ body {
 
 #header {
 	height: 250px;
-	background: #fff url(default/logo-inverted.png) bottom right no-repeat;
+	background: #fff url(christmas/xmastree.jpg) bottom right no-repeat;
 	border-bottom: 1px solid #111;
 }
 
@@ -97,11 +97,12 @@ body {
 
 #header h1 a, #header h1 a:visited {
 	text-decoration: none;
-	color: #111;
+	color: #fff;
 }
 
 #header .description {
 	padding-left: 20px;
+	color: #fff;
 }
 
 #searchform input {

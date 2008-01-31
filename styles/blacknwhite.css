@@ -1,8 +1,8 @@
 /*
-	StyleName: Elbee Elgee Default
+	StyleName: Elbee Elgee Black and White
 	StyleAuthor: Doug Stewart
 	StyleAuthorURL: http://literalbarrage.org/blog/
-	StyleDescription: A light, easy-on-the-eyes style.
+	StyleDescription: A high contrast style.
 	Version: 1
 */
 
@@ -15,14 +15,12 @@ body {
 
 #container{
 	background: #fff;
-	border: 1px solid #111;
-	border-top: 0px;
+	border: 0px;
 }
 
 #header {
-	height: 250px;
-	background: #fff url(default/logo-inverted.png) bottom right no-repeat;
-	border-bottom: 1px solid #111;
+	height: 86px;
+	background: #fff url(blacknwhite/lb-logo-bnw.png) top left no-repeat;
 }
 
 #content {
@@ -34,15 +32,9 @@ body {
 	padding: 0;
 	float: left;
 	width: 100%;
-	border-bottom: 1px solid #111;
-	border-top: 0px;
 	position: relative;
 	vertical-align: bottom;
-	background: url(default/menu_gradient2.png) top repeat-x #ca1919;
-}
-
-#navigation, #extra {
-	font-size: 85%;
+	background-color: #000;
 }
 
 #menu li {
@@ -52,13 +44,10 @@ body {
 }
 
 #menu a:link, #menu a:visited {
-	/*color:#fff;
-	background: transparent;*/
 	padding: 10px 10px 4px 10px;
 	float: left;
 	width: auto;
-	/*border-right: 1px solid #000;*/
-	text-decoration:none;
+	text-decoration: none;
 	font:bold 1em/1em Arial, Helvetica, sans-serif;
 	text-shadow: 2px 2px 2px #555;
 	margin-right: 5px;
@@ -70,11 +59,7 @@ body {
 
 #menu a:hover {
 	color: #ca1919;
-	/*background: #f3f3dc;*/
 	background: #cfcfd0;
-}
-
-#menu a.current_page_item {
 }
 
 .current_page_item a {
@@ -88,11 +73,19 @@ body {
 }
 
 #header h1 {
-	font: 230% "Times New Roman", Times, serif;
-	font-variant: small-caps;
-	margin-top: 0px;
-	padding-top: 50px;
-	padding-left: 20px;
+	display: none;
+}
+
+#header .description {
+	float: right;
+	background: transparent url('blacknwhite/posterbanner.jpg') right top no-repeat;
+	width: 131px;
+	height: 86px;
+	margin: 0;
+}
+
+#header .description span{
+	display: none;
 }
 
 #header h1 a, #header h1 a:visited {
@@ -100,8 +93,21 @@ body {
 	color: #111;
 }
 
-#header .description {
-	padding-left: 20px;
+div#wrapper {
+	width: 800px;
+}
+
+div#navigation, div#extra {
+        font-size: 85%;
+        width: 150px;
+}
+
+div#navigation {
+        margin-left: -300px;
+}
+
+div#extra {
+        margin-left: -150px;
 }
 
 #searchform input {
@@ -112,10 +118,6 @@ body {
 	margin: 5px 0 0;
 	padding-left: 0;
 	padding-right: 5px;
-}
-
-#navigation ul li h2, #extra ul li h2 {
-	/*color: #ca1919;*/
 }
 
 #navigation ul li, #extra ul li, #footer ul li {
@@ -132,7 +134,9 @@ body {
 	text-decoration: underline;
 }
 
-#footer {
+div#footer {
+	width: 800px;
+	margin: 0 auto;
 	border-top: 1px solid #ca1919;	
 }
 
