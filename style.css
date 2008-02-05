@@ -7,18 +7,10 @@ Author URI: http://literalbarrage.org/blog/
 Version: Beta 2
 */
 
+/* @group Top-level containers */
+
 #header {
 	height: 7em;
-}
-
-#header h1 {
-	font-size: 189%;
-	font-family: times;
-	padding-left: 20px;
-}
-
-#header p{
-	padding-left: 20px;
 }
 
 #menu {
@@ -26,20 +18,9 @@ Version: Beta 2
 	padding: 0;
 	float: left;
 	width: 100%;
-	/*border-bottom: 1px solid #000;*/
 	border-top: 0px;
 	position: relative;
 	vertical-align: bottom;
-}
-
-#menu li {
-	display: inline;
-	margin: 0;
-	padding: 0;
-}
-
-#menu li:first-child a {
-	margin-left: 5px;
 }
 
 #content {
@@ -94,13 +75,36 @@ Version: Beta 2
 	text-align: center;
 }
 
-.postinfo {
+#comments {
+	padding-left: 0px;
+	list-style: none;
+	width: 95%;
 }
 
-.postcats {
+/* @end */
+
+
+
+#header h1 {
+	font-size: 189%;
+	font-family: times;
+	padding-left: 20px;
 }
 
-.posttags {
+#header p{
+	padding-left: 20px;
+}
+
+
+
+#menu li {
+	display: inline;
+	margin: 0;
+	padding: 0;
+}
+
+#menu li:first-child a {
+	margin-left: 5px;
 }
 
 .series-links, .series-toc {
@@ -124,3 +128,212 @@ Version: Beta 2
 	border-bottom: 1px solid #d0d0d0;
 	padding: 2px;
 }
+
+/* @group List reset */
+
+
+#navigation ul, #extra ul, #footer ul, #footer ol {
+	margin: 5px 0 0;
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#navigation ul li, #extra ul li, #footer ul li {
+	list-style-type: none;
+	list-style-image: none;
+}
+
+.now-reading ul{
+	list-style: none;
+}
+
+/* @end */
+
+
+
+/* @group Alignment classes */
+
+.center {
+        text-align: center;
+}
+
+.alignright {
+        float: right;
+}
+				        
+.alignleft {
+        float: left
+}
+
+/* @end */
+
+/* @group Image classes */
+
+img.center, img[align="center"] {
+    display: block;
+	margin: 0 auto !important;
+	_margin-right: auto;
+	_margin-left: auto;
+}
+
+img.alignright, img[align="right"] {
+    padding: 4px !important;
+	_padding: 4px;
+    margin: 0 0 2px 7px !important;
+    display: inline;
+}
+
+img.alignleft, img[align="left"] {
+    padding: 4px;
+	_padding: 4px;
+	margin: 0 7px 2px 0;
+    display: inline;
+}
+				        
+img.noborder {
+        border: none !important;
+}
+
+#content img {
+	margin-left: -5px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+/* @end */
+
+/* @group Gravatar classes */
+
+.gravatar {
+	float: left;
+	padding: 3px;
+	border: 1px solid #ccc;
+	background: #fff;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 5px !important;
+}
+
+.postgrav {
+	float: left;
+	padding: 3px;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #000;
+	background: transparent;
+}
+
+/* @end */
+
+/* @group Navigation classes */
+
+.navigation {
+	text-align: center;
+	margin: 10px 0 10px;
+	padding: 0;
+	width: 100%;
+}
+.navigation .left {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.navigation .right {
+	float: right;
+	width: 50%;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group Meta info classes */
+
+.postinfo, .postmeta {
+	font-size: 80%;
+}
+
+.postmeta {
+	padding-left: 15px;
+	background: url('images/mini2/calendar.gif') no-repeat left;
+}
+.postcats {
+	padding-left: 15px;
+	background: url('images/mini2/folder.gif') no-repeat top left;
+}
+
+.posttags {
+	padding-left: 15px;
+	background: url('images/mini2/tag.gif') no-repeat top left;
+}
+
+.commentlink {
+	padding-right: 15px;
+	background: url('images/mini2/comment_left.gif') no-repeat right;	
+}
+
+.extlink {
+	padding-right: 8px;
+	background-image: url('http://literalbarrage.org/blog/wp-images/aoutside.gif');
+	background-position: right top;
+	background-repeat: no-repeat;
+}
+
+/* @end */
+
+/* @group Clearing classes */
+
+.clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.listclear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* @end */
+
+/* @group Comments classes */
+#comments_fieldset {
+	border:  0px;
+	padding: 0px;
+}
+
+#comments li.odd, #comments li.even, #comments li.highlight {
+	padding: 5px;
+}
+
+#comment {
+	width: 95%;
+	margin: 0 auto;
+	height: 60px
+	font-size: 12pt;
+}
+
+.comment-meta {
+	width: 80px;
+/*	position: absolute;*/
+	float: left;
+}
+
+.comment-author {
+	display: block;
+}
+
+.comment-date {
+	display: block;
+}
+
+.comment-text { 
+	margin-left: 85px;
+}
+
+/* @end */
+
+
+

@@ -139,7 +139,7 @@
 	<?php else : ?>
 
 	<form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-
+		<fieldset id="comments_fieldset">
 	<?php if ($user_ID) : ?>
 	
 	<p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php">
@@ -177,7 +177,7 @@
 		<input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>"></p>
 	
 	<?php do_action('comment_form', $post->ID); ?>
-
+		</fieldset>
 	</form>
 	</div>
 
