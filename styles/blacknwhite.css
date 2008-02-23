@@ -22,7 +22,7 @@ body {
 
 #header {
 	height: 86px;
-	background: #fff url(blacknwhite/lb-logo-bnw.png) top left no-repeat;
+	background: #fff url(blacknwhite/lblogo-blue.png) top left no-repeat;
 }
 
 div#content {
@@ -37,7 +37,7 @@ div#content {
 	width: 100%;
 	position: relative;
 	vertical-align: bottom;
-	background-color: #000;
+	background-color: #3c3c3c;
 	border-bottom: 1px solid #000;
 	border-top: 1px solid #000;
 }
@@ -129,18 +129,63 @@ div#footer {
 
 /* @group Content styles */
 
+/* @group Comment Styles */
+
+#comments li{
+	padding: 5px;
+	border-top: 1px solid #3c3c3c;
+}
+
+#comments li.odd{
+	background-color: #eee;
+}
+
+.comment-meta{
+	font-size: 80%;
+	text-align: left;
+	margin-left: 5px;
+	padding-top: 1.22em;
+}
+/* @end */
+
+/* @group Post Styles */
+
+.wppost h3 {
+	font-size: 180%;
+	color: #0971B3;
+	/* "Times New Roman", Times, serif;*/
+}
+
 .wppost {
 	width: 95%;
 	margin-bottom: 3em;
 	margin-top: 1em;
 }
 
-.wppost h3 {
-	font-size: 180%;
-	/* "Times New Roman", Times, serif;*/
+.postinfo{
+	background-color: #eee;
+	border-top: 1px solid #3c3c3c;
+}
+/* @end */
+
+/* @end */
+
+/* @group Link styles */
+
+a {
+	color: #0971B3;
+}
+
+a:link, a:visited{
+	text-decoration: none;
+}
+
+a:active, a:hover{
+	text-decoration: underline;
 }
 
 /* @end */
+
 
 
 
