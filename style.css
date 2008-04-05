@@ -282,6 +282,52 @@ img.noborder {
 
 /* @end */
 
+/* @group Drop-down meta classes */
+
+#site-meta {
+	position:fixed;
+	width:100%;
+	z-index:1000;
+	top:0px;
+	left: 0px;
+}
+
+#site-meta li {
+	display:inline;
+}
+
+#meta-panel {
+	background: #EEE;
+	border-bottom: 1px solid black;
+}
+
+#meta-panel ul {
+	width:960px;
+	margin:0 auto;
+	padding:36px 0;
+	text-align: right;
+}
+
+#meta-anchor {
+	display:block;
+	float: right;
+	margin-right: 150px;
+	background-color:#EEE;
+	background-image: url('images/mini2/arrow_down.gif') bottom right no-repeat;
+	/*width:50px;
+	text-indent:-999em;
+	outline:0;*/
+	border: 1px solid black;
+	border-top: #eee;
+	margin-top: -1px;
+	padding-left: 1.5em;
+	padding-right: 1.5em;
+}
+
+
+
+/* @end */
+
 /* @group Clearing classes */
 
 .clear {
@@ -335,5 +381,7 @@ img.noborder {
 
 /* @end */
 
+/* @group Quick Post Form */#postbox {	margin:3em;
+	margin-top: 0em;	padding:3em;	background:#EEE;	border:1px solid #CCC;}#postbox form {	width:100%;}#postbox textarea {	width:100%;	margin-bottom:.75em;}#postbox label {	display: block;}
 
-
+/* @end */

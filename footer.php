@@ -2,6 +2,7 @@
 </div><!--end 404-specific wrapper div -->
 <?php }?>
 <div id="footer">
+	<div id="footerwrapper">
 	<div id="footerleft">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
@@ -89,6 +90,7 @@
 	<img src=" http://s40.sitemeter.com/meter.asp?site=s40literal" alt="Site Meter" border="0"/></a>
 	<!-- Copyright (c)2006 Site Meter -->
 	<!--<?php echo get_num_queries(); ?> queries-->
+	</div>
 	</div>
 </div>
 </div>

@@ -49,14 +49,44 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	?>
 
 	<?php wp_head(); ?>
+	<script type="text/javascript">
+	jQuery(document).ready(function(){
+	// Hide the site-meta panel
+	 jQuery('#meta-panel').hide();
+
+	// Toggle site-meta panel visibilty and class when handle is clicked
+	jQuery('#meta-anchor').click(function() {
+	jQuery('#meta-panel').slideToggle(40);
+	jQuery(this).toggleClass("active");
+	return false;
+	} );
+	});
+	</script>
 	<META name="verify-v1" content="j+73ZfK0ZfqL/24QUywKgcbY+Xsr+P/6XUtDJpUl0wc=" />
 </head>
 <body>
 <div id="container">
+<?php if(is_user_logged_in()) {?>
+<div id="site-meta">
+	<div id="meta-panel">
+	<?php
+	if( current_user_can( 'publish_posts' ) ) {
+		require_once dirname( __FILE__ ) . '/post-form.php';
+	}
+	?>
+		<ul>
+			<?php wp_register();?>
+			<li><?php wp_loginout(); ?></li>
+		</ul>
+	</div>
+	<a href="" id="meta-anchor">Site Meta</a>
+</div>
+<?php } ?>
 <div id="header">
 	<h1><span><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
 	<p class="description"><span><?php bloginfo('description'); ?></span></p>
 </div>
+
         <ul id="menu">
 		<?php if (is_home() || is_single()) : ?>
                 <li class="current_page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>

@@ -11,7 +11,6 @@
 html,body{margin:0;padding:0}
 
 body {
-	background-color: #eee;
 	color: #111;
 }
 
@@ -22,7 +21,7 @@ body {
 
 #header {
 	height: 86px;
-	background: #fff url(blacknwhite/lblogo-blue.png) top left no-repeat;
+	background: #fff url(blacknwhite/lblogo-gray.png) top left no-repeat;
 }
 
 div#content {
@@ -43,7 +42,8 @@ div#content {
 }
 
 div#wrapper {
-	width: 800px;
+	min-width: 800px;
+	max-width: 925px;
 }
 
 div#navigation, div#extra {
@@ -60,6 +60,12 @@ div#extra {
 }
 
 div#footer {
+	background-color: #3c3c3c;
+	color: #fff;
+	border-top: 1px solid #000;
+}
+
+#footerwrapper{
 	width: 800px;
 	margin: 0 auto;
 }
@@ -73,7 +79,7 @@ div#footer {
 
 #header .description {
 	float: right;
-	background: transparent url('blacknwhite/posterbanner.jpg') right top no-repeat;
+	background: transparent url('blacknwhite/posterbanner2.jpg') right top no-repeat;
 	width: 131px;
 	height: 86px;
 	margin: 0;
@@ -116,9 +122,15 @@ div#footer {
  	background:#fff !important;
 }
 
-.page_item a {
+.page_item a:link, .page_item a:visited {
 	color:#fff;
 	background: transparent;	
+}
+
+.page_item a:active, .page_item a:hover, .current_page_item a:active, .current_page_item a:hover{
+	color: #0971B3;
+	background-color: #fff;
+	text-decoration: none;
 }
 
 /* @end */
@@ -133,11 +145,19 @@ div#footer {
 
 #comments li{
 	padding: 5px;
+	border-bottom: 1px solid #3c3c3c;
+}
+
+#comments li:first-child{
 	border-top: 1px solid #3c3c3c;
 }
 
 #comments li.odd{
 	background-color: #eee;
+}
+
+#comments li.highlight{
+	background-color: #b6cddd;
 }
 
 .comment-meta{
@@ -146,11 +166,15 @@ div#footer {
 	margin-left: 5px;
 	padding-top: 1.22em;
 }
+
+#comments div.comment-text > ol > li{
+	border:  0px;
+}
 /* @end */
 
 /* @group Post Styles */
 
-.wppost h3 {
+.wppost h3, h3.archives {
 	font-size: 180%;
 	color: #0971B3;
 	/* "Times New Roman", Times, serif;*/
@@ -183,6 +207,16 @@ a:link, a:visited{
 a:active, a:hover{
 	text-decoration: underline;
 }
+
+#footer a {
+	color: #098ade;
+}
+
+/* @end */
+
+/* @group Footer Styles */
+
+
 
 /* @end */
 

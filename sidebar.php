@@ -4,13 +4,6 @@
 	<li><h2>Search</h2>
 		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
 	</li>
-
-	<?php /*if(function_exists(sparkStats_imgURI)){?>
-        	<li><h2><?php _e('Recent Activity'); ?></h2>
-	    		<img src="<?php sparkStats_imgURI(); ?>" alt="SparkStats"/><br /><br />
-	    		<img src="<?php sparkStats_legendURI(); ?>" alt="SparkStats Legend"/>
-		</li>	
-	<?php }*/ ?>
 	<?php if ( function_exists('blc_latest_comments') ) { ?>
 		<li><h2>Recent Comments</h2>
                         <?php blc_latest_comments(); ?>
@@ -58,7 +51,6 @@
 	<?php if (function_exists(wpaudioscrobbler)) { ?>
 	<li><h2>Now Listening</h2>
 		<?php wpaudioscrobbler(); ?>
-		<?php //get_scrobbler(); ?>
 	</li>
 	<?php } ?>
 	<?php if (function_exists(nr_display)) { ?>
@@ -81,6 +73,7 @@
 			<li><a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a></li>
 			<li><a href="http://macromates.com" title="Made with TextMate"><img src="<?php bloginfo('template_directory');?>/images/textmate_badge.png" style="border: 0;" /></a></li>
 			<li><a href="http://macrabbit.com/cssedit" title="Made with CSSEdit"><img src="<?php bloginfo('template_directory');?>/images/BadgeS.png" style="border: 0;" /></a></li>
+			<li><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a><!--br/>This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://literalbarrage.org/blog/" property="cc:attributionName" rel="cc:attributionURL">http://literalbarrage.org/blog/</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License</a>.--></li>
 		</ul>
 	</li>
 	<?php endif; ?>

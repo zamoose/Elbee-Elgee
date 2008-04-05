@@ -55,7 +55,9 @@ $options = array (
 						"type" => "textarea",
 						"options" => array(	"rows" => "5",
 											"cols" => "40") ),
-											
+				array(	"name" => "Style Options",
+						"type" => "subhead"),
+													
 				array(	"name" => "Layout Stylesheet",
 						"desc" => "Place additional layout stylesheets in the <code>layouts/</code> subdirectory to have them automatically included",
 			    		"id" => $shortname."_layout_stylesheet",
@@ -132,15 +134,24 @@ function mytheme_admin() {
 
 <form method="post">
 
-<table class="optiontable">
+<table class="form-table">
 
-<?php option_wrapper_header(array("name"=>"Header Image")); ?>
+<?php //option_wrapper_header(array("name"=>"Header Image")); ?>
 
-<?php option_wrapper_footer(array("desc"=>"If you have GD2 support enabled on your server and the style you've selected supports it, you can generate a header image automatically.")); ?>
+<?php //option_wrapper_footer(array("desc"=>"If you have GD2 support enabled on your server and the style you've selected supports it, you can generate a header image automatically.")); ?>
 
 <?php foreach ($options as $value) { 
 	
 	switch ( $value['type'] ) {
+		case 'subhead':
+		?>
+			</table>
+			
+			<h3><?php echo $value['name']; ?></h3>
+			
+			<table class="form-table">
+		<?php
+		break;
 		case 'text':
 		option_wrapper_header($value);
 		?>
@@ -247,10 +258,9 @@ function option_wrapper_header($values){
 
 function option_wrapper_footer($values){
 	?>
+		<br /><br />
+		<?php echo $values['desc']; ?>
 	    </td>
-	</tr>
-	<tr valign="top">
-		<td>&nbsp;</td><td><small><?php echo $values['desc']; ?></small></td>
 	</tr>
 	<?php 
 }
