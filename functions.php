@@ -37,12 +37,32 @@ $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
 
 
 $options = array (
-	
+		
+				array(	"name" => "Style Options",
+						"type" => "subhead"),
+
 				array(	"name" => "Use Custom Headers",
 						"desc" => "Check this box if you wish to use WordPress's <a href=\"http://boren.nu/archives/2007/01/07/custom-image-header-api/\">Custom Header Image API</a> to define a custom image for your theme",
 						"id" => $shortname."_use_custom_header",
 						"std" => "false",
 						"type" => "checkbox"),
+
+				array(	"name" => "Layout Stylesheet",
+						"desc" => "Place additional layout stylesheets in the <code>layouts/</code> subdirectory to have them automatically included",
+			    		"id" => $shortname."_layout_stylesheet",
+			    		"std" => "Select a layout:",
+			    		"type" => "select",
+			    		"options" => $layouts),
+
+				array(	"name" => "Theme Stylesheet",
+						"desc" => "Place additional theme stylesheets and assets in the <code>styles/</code> subdirectory to have them automatically included",
+					    "id" => $shortname."_alt_stylesheet",
+					    "std" => "Select a stylesheet:",
+					    "type" => "select",
+					    "options" => $alt_stylesheets),
+	
+				array(	"name" => "Blog Meta Info",
+						"type" => "subhead"),
 
 				array(	"name" => "Display \"About\" Text",
 						"id" => $shortname."_display_about",
@@ -51,36 +71,38 @@ $options = array (
 						
 				array(	"name" => "\"About\" Text",
 						"id" => $shortname."_about_text",
-						"std" => "This is a little blurb about your site.",
+						"desc" => "This is a little blurb about your site.",
+						"std" => "",
 						"type" => "textarea",
 						"options" => array(	"rows" => "5",
 											"cols" => "40") ),
-				array(	"name" => "Style Options",
-						"type" => "subhead"),
-													
-				array(	"name" => "Layout Stylesheet",
-						"desc" => "Place additional layout stylesheets in the <code>layouts/</code> subdirectory to have them automatically included",
-			    		"id" => $shortname."_layout_stylesheet",
-			    		"std" => "Select a layout:",
-			    		"type" => "select",
-			    		"options" => $layouts),
-			
-				array(	"name" => "Theme Stylesheet",
-						"desc" => "Place additional theme stylesheets and assets in the <code>styles/</code> subdirectory to have them automatically included",
-					    "id" => $shortname."_alt_stylesheet",
-					    "std" => "Select a stylesheet:",
-					    "type" => "select",
-					    "options" => $alt_stylesheets),
+
+				array(	"name" => "Del.icio.us Username",
+					    "id" => $shortname."_delicious_username",
+						"desc" => "Enter your <a href='http://del.icio.us'>del.icio.us</a> username here to display your recently-shared links in the footer. Erase 'zamoose' to remove del.icio.us feed entirely.",
+					    "std" => "zamoose",
+					    "type" => "text"),
+
+				array(	"name" => "Footer Text",
+						"id" => $shortname."_footer_text",
+						"desc" => "Footer text defaults to: <b><p><a href=".get_bloginfo('url').">".get_bloginfo('name')."</a> is powered by <a href='http://wordpress.org'>WordPress</a> ".get_bloginfo('version')." and <a href='http://literalbarrage.org/blog/code/elbee-elgee'>Elbee Elgee</a></p><p>&copy; 2003-2008 Doug Stewart</p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
+						"std" => "",
+						"type" => "textarea",
+						"options" => array("rows" => "5",
+										   "cols" => "40") ),
+				
+				array(	"name" => "Statistics Code",
+						"id" => $shortname."_stats_code",
+						"desc" => "If you need to enter SiteMeter, Google Analytics, etc. stat-tracking info in your footer, just plunk it here.",
+						"std" => "",
+						"type" => "textarea",
+						"options" => array("rows" => "5",
+										   "cols" => "40") ),
 					
 				array(	"name" => "Number of Previous Posts",
 			    		"id" => $shortname."_previous_posts",
 			    		"std" => "5",
-			    		"type" => "text"),
-			
-				array(	"name" => "Del.icio.us Username",
-					    "id" => $shortname."_delicious_username",
-					    "std" => "zamoose",
-					    "type" => "text")
+			    		"type" => "text")
 		  );
 
 function mytheme_add_admin() {

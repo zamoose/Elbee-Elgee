@@ -284,7 +284,7 @@ img.noborder {
 
 /* @group Drop-down meta classes */
 
-#site-meta {
+#site-meta, #site-quickpost {
 	position:fixed;
 	width:100%;
 	z-index:1000;
@@ -308,20 +308,16 @@ img.noborder {
 	text-align: right;
 }
 
-#meta-anchor {
+#meta-anchor, #quickpost-anchor {
 	display:block;
 	float: right;
-	margin-right: 150px;
-	background-color:#EEE;
-	background-image: url('images/mini2/arrow_down.gif') bottom right no-repeat;
-	/*width:50px;
-	text-indent:-999em;
-	outline:0;*/
+	background-color:#eee;
 	border: 1px solid black;
 	border-top: #eee;
 	margin-top: -1px;
 	padding-left: 1.5em;
 	padding-right: 1.5em;
+	height: 1.8em;
 }
 
 

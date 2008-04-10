@@ -54,11 +54,13 @@
 			</li>
 		<?php } ?>
 
-		<?php if(function_exists(fetch_rss)) { ?>
+		<?php 
+			$tmp_del_username = get_option('lblg_delicious_username');
+			if(function_exists(fetch_rss) && $tmp_del_username != '') { ?>
 			<li><h2>del.icio.us Links</h2>
 				<ul>
 			<?php	
-				$url = 'http://del.icio.us/rss/zamoose';
+				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
 				$lblgrss = fetch_rss($url);
 				$rss_c = 0;
 				
@@ -80,15 +82,24 @@
 		</ul>
 	</div>
 	<div id="footercredits">
+	<?php 
+		$tmp_footer_text = get_option('lblg_footer_text');
+		if($tmp_footer_text == ''){ 
+	?>
 	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy; 2003-2008 Doug Stewart</p>
-
-<?php /* Try. to understand */ ?>
+	<?php
+		}else{
+			echo $tmp_footer_text;
+		}
+	/* Try. to understand */ ?>
 
         <?php do_action('wp_footer'); ?>
-	<!-- Site Meter -->
-	<a href=" http://s40.sitemeter.com/stats.asp?site=s40literal" target="_top">
-	<img src=" http://s40.sitemeter.com/meter.asp?site=s40literal" alt="Site Meter" border="0"/></a>
-	<!-- Copyright (c)2006 Site Meter -->
+	<?php
+		$tmp_stats_code = get_option('lblg_stats_code');
+		if($tmp_stats_code != ''){
+			echo $tmp_stats_code;
+		}
+	?>
 	<!--<?php echo get_num_queries(); ?> queries-->
 	</div>
 	</div>
