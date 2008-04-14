@@ -27,7 +27,7 @@
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 		<?php if(function_exists(fetch_rss)) { ?>
-			<li><h2>Elbee Elgee Development</h2>
+			<li><h2><a href="http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss" class="rssfeed">Elbee Elgee Development</a></h2>
 				<ul>
 			<?php	
 				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
@@ -56,11 +56,12 @@
 
 		<?php 
 			$tmp_del_username = get_option('lblg_delicious_username');
-			if(function_exists(fetch_rss) && $tmp_del_username != '') { ?>
-			<li><h2>del.icio.us Links</h2>
+			if(function_exists(fetch_rss) && $tmp_del_username != '') { 
+				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
+			?>
+			<li><h2><a href="<?php echo $url; ?>" class="rssfeed">del.icio.us Links</a></h2>
 				<ul>
 			<?php	
-				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
 				$lblgrss = fetch_rss($url);
 				$rss_c = 0;
 				

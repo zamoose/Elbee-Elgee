@@ -189,6 +189,8 @@ div#footer {
 .postinfo{
 	background-color: #eee;
 	border-top: 1px solid #3c3c3c;
+	padding: 5px;
+	padding-left: 10px;
 }
 /* @end */
 
@@ -212,6 +214,9 @@ a:active, a:hover{
 	color: #098ade;
 }
 
+#footer h2 a.rssfeed{
+	color: #fff;
+}
 /* @end */
 
 /* @group Footer Styles */

@@ -65,7 +65,8 @@ Version: Beta 2
 #footerright {
 	width: 45%;
 	margin: 0 auto;
-	float: right;   
+	float: right;
+	text-align: right;
 }
 
 #footercredits {
@@ -381,3 +382,8 @@ img.noborder {
 	margin-top: 0em;	padding:3em;	background:#EEE;	border:1px solid #CCC;}#postbox form {	width:100%;}#postbox textarea {	width:100%;	margin-bottom:.75em;}#postbox label {	display: block;}
 
 /* @end */
+
+#footer h2 a.rssfeed{
+	background: url('images/feed.png') center left no-repeat;
+	padding-left:  18px;
+}
