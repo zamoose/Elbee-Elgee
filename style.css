@@ -154,7 +154,7 @@ Version: Beta 2
 
 /* @group Alignment classes */
 
-.center {
+.center, .aligncenter {
         text-align: center;
 }
 
@@ -170,7 +170,7 @@ Version: Beta 2
 
 /* @group Image classes */
 
-img.center, img[align="center"] {
+img.center, img.aligncenter, img[align="center"] {
     display: block;
 	margin: 0 auto !important;
 	_margin-right: auto;
@@ -206,10 +206,10 @@ img.noborder {
 
 /* @group Gravatar classes */
 
-.gravatar {
+.gravatar, .avatar {
 	float: left;
 	padding: 3px;
-	border: 1px solid #ccc;
+	border: 1px solid #3c3c3c;
 	background: #fff;
 	margin-right: 10px;
 	margin-bottom: 5px;

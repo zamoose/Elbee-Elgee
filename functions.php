@@ -154,7 +154,7 @@ function mytheme_admin() {
     
 ?>
 <div class="wrap">
-<h2><?php echo $themename; ?> settings</h2>
+<h2 class="updatehook"><?php echo $themename; ?> settings</h2>
 
 <form method="post">
 
@@ -295,14 +295,14 @@ function mytheme_wp_head() { /*?>
 
 function mytheme_admin_head(){ 
 	global $theme_current_version;
-	global $themename;
 	global $theme_url;
+	global $themename;
 	?>
 	<script type="text/javascript">  
 	 jQuery(document).ready(function() {  
 	     jQuery.get('http://literalbarrage.org/lblgversion.txt', function(newversion){  
 	         if (<?php echo $theme_current_version; ?> < newversion) {
-	             jQuery('#wpbody > .wrap > h2').after('<div id="message" class="updated fade"><p><strong><?php echo $themename; ?> Update available. Click <a href="<?php echo $theme_url;?>">here</a> for details.</strong></p></div>');
+	             jQuery('#wpbody > .wrap > h2.updatehook').after('<div id="message" class="updated fade"><p><strong>Theme Update available. Click <a href="<?php echo $theme_url;?>">here</a> for details.</strong></p></div>');
 	  
 	         }  
 	     });  

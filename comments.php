@@ -89,6 +89,8 @@
 			<div class="comment-meta">
 			 <?php if (function_exists('gravatar')) { 
 			 	gravatar_image_link();
+			 }elseif (function_exists('get_avatar')) {
+			 	echo get_avatar(get_comment_author_email(),'45');
 			 } ?>
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
 				<span class="comment-author"><?php comment_author_link() ?></span>
