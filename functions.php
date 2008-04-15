@@ -1,6 +1,8 @@
 <?php
 $themename = "Elbee Elgee";
 $shortname = "lblg";
+$theme_current_version = "0.9";
+$theme_url = "http://literalbarrage.org/blog/code/elbee-elgee";
 
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
@@ -291,6 +293,23 @@ function mytheme_wp_head() { /*?>
 <link href="<?php bloginfo('template_directory'); ?>/style.php" rel="stylesheet" type="text/css" />
 <?php*/ }
 
+function mytheme_admin_head(){ 
+	global $theme_current_version;
+	global $themename;
+	global $theme_url;
+	?>
+	<script type="text/javascript">  
+	 jQuery(document).ready(function() {  
+	     jQuery.get('http://literalbarrage.org/lblgversion.txt', function(newversion){  
+	         if (<?php echo $theme_current_version; ?> < newversion) {
+	             jQuery('#wpbody > .wrap > h2').after('<div id="message" class="updated fade"><p><strong><?php echo $themename; ?> Update available. Click <a href="<?php echo $theme_url;?>">here</a> for details.</strong></p></div>');
+	  
+	         }  
+	     });  
+	 });  
+	 </script>
+<?php }
+
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Navigation'));
 	register_sidebar(array('name'=>'Extra'));
@@ -375,5 +394,6 @@ function elbee_admin_header_style() {
 }
 
 add_action('wp_head', 'mytheme_wp_head');
+add_action('admin_head','mytheme_admin_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
 ?>
