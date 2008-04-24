@@ -54,12 +54,40 @@
 			</li>
 		<?php } ?>
 
+		<?php
+			if(function_exists(wp_rss)){
+		?>
+			<li><h2><a href="http://feeds.feedburner.com/zamooses-gr-shared-items" class="rssfeed">Google Reader</a></h2>
+				<ul>
+			<?php
+				$url = "http://feeds.feedburner.com/zamooses-gr-shared-items";
+				
+				wp_rss($url,10);
+				/*	$gr_rss = fetch_rss($url);
+					$rss_c = 0;
+					
+					foreach($gr_rss->items as $item){
+						if($rss_c <= 4){
+							$title = $item['title'];
+							$link = $item['link'];
+							
+							echo "<li><a herf=\"$link\">$title</a></li>\n";
+						}
+						$rss_c++;
+					}*/
+			?>
+				</ul>
+			</li>
+		<?php
+			}
+		?>
+
 		<?php 
 			$tmp_del_username = get_option('lblg_delicious_username');
 			if(function_exists(fetch_rss) && $tmp_del_username != '') { 
 				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
 			?>
-			<li><h2><a href="<?php echo $url; ?>" class="rssfeed">del.icio.us Links</a></h2>
+			<li><h2><a href="<?php echo $url; ?>" class="rssfeed">del.icio.us</a></h2>
 				<ul>
 			<?php	
 				$lblgrss = fetch_rss($url);

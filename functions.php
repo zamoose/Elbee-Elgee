@@ -301,10 +301,10 @@ function mytheme_admin_head(){
 	<script type="text/javascript">  
 	 jQuery(document).ready(function() {  
 	     jQuery.get('http://literalbarrage.org/lblgversion.txt', function(newversion){  
-	         if (<?php echo $theme_current_version; ?> < newversion) {
-	             jQuery('#wpbody > .wrap > h2.updatehook').after('<div id="message" class="updated fade"><p><strong>Theme Update available. Click <a href="<?php echo $theme_url;?>">here</a> for details.</strong></p></div>');
-	  
-	         }  
+			if (<?php echo $theme_current_version; ?> < newversion) {
+	         	jQuery('#wpbody > .wrap > h2.updatehook').after('<div id="message" class="updated fade"><p><strong>Theme Update available. Click <a href="<?php echo $theme_url;?>">here</a> for details.</strong></p></div>');
+				jQuery('#rightnow .youare').after('<p class="themehas"><?php echo $themename; ?> has an <a href="<?php echo $theme_url; ?>">available update</a>.</p>');
+			}  
 	     });  
 	 });  
 	 </script>

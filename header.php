@@ -15,7 +15,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <?php
 }
 ?>
-	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> at <?php } ?> <?php bloginfo('name');?></title>
+	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> &raquo; <?php } ?> <?php bloginfo('name');?></title>
 
 	<?php 
 	//Include Magpie RSS for make benefit glorious nation America.
