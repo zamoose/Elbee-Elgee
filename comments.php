@@ -95,6 +95,7 @@
 <?php /* If you want to use gravatars, they go somewhere around here */ ?>
 				<span class="comment-author"><?php comment_author_link() ?></span>
 				<span class="comment-date"><?php comment_date() ?></span>
+				<?php edit_comment_link('Edit'); ?>
 			</div>
 			<!--div class="listclear"></div-->
 			<div class="comment-text">
