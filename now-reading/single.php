@@ -1,6 +1,6 @@
 <?php get_header(); global $nr_id; ?>
 
-<div class="content">
+<div id="wrapper">
 	
 	<div id="content" class="narrowcolumn primary now-reading">
 	
@@ -68,10 +68,7 @@
 	</div>
 	
 	</div>
-
-	
-	<?php get_sidebar(); ?>
-	
 </div>
+<?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

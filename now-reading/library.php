@@ -1,16 +1,17 @@
 <?php get_header() ?>
 
-<div class="wrapper">
-	
+<div id="wrapper">	
 	<div id="content" class="now-reading primary narrowcolumn">
-		<div class="wppost">	
+	
+	<div class="post">
+		
 		<?php if( can_now_reading_admin() ) : ?>
 			
-			<p>Admin: &raquo; <a href="<?php manage_library_url() ?>">Manage Books</a></p>
+			<p>Admin: &raquo; <a href="<?php manage_library_url() ?>"><?php __('Manage Books', NRTD);?></a></p>
 			
 		<?php endif; ?>
 		
-		<p><?php total_books() ?> overall; <?php books_read_since('1 year') ?> read in the last year; <?php books_read_since('1 month') ?> read in the last month. That's <?php average_books('month'); ?>.</p>
+		<p><?php total_books() ?> overall; <?php books_read_since('1 year') ?> read in the last year; <?php books_read_since('1 month') ?> <?php __('read in the last month. That\'s', NRTD);?> <?php average_books('month'); ?>.</p>
 		
 		<?php library_search_form() ?>
 		
@@ -78,13 +79,11 @@
 		<?php endif; ?>
 		
 		<?php do_action('nr_footer'); ?>
-
-		</div>
 		
 	</div>
 	
-</div>
-
+	</div>
+</div>	
 <?php get_sidebar() ?>
 
 <?php get_footer() ?>

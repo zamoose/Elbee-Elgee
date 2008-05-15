@@ -12,11 +12,16 @@ html,body{margin:0;padding:0}
 
 body {
 	color: #111;
+	background-color: #ddd;
 }
 
 #container{
 	background: #fff;
 	border: 0px;
+	width: 927px;
+	margin: 0 auto;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
 }
 
 #header {

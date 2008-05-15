@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="content">
+<div id="wrapper">
 	
 	<div id="content" class="narrowcolumn primary now-reading">
 	
