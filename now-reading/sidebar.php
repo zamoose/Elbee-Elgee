@@ -6,7 +6,7 @@
 		
 		<ul>
 		
-		<?php while( have_books('status=unread') ) : the_book(); ?>
+		<?php while( have_books('status=unread&num=2') ) : the_book(); ?>
 			
 			<li><a href="<?php book_permalink() ?>"><?php book_title() ?></a> by <?php book_author() ?></li>
 			
@@ -49,7 +49,7 @@
 		
 		<ul>
 		
-		<?php while( have_books('status=read&orderby=finished&order=desc') ) : the_book(); ?>
+		<?php while( have_books('status=read&orderby=finished&order=desc&num=2') ) : the_book(); ?>
 			
 			<li><a href="<?php book_permalink() ?>"><?php book_title() ?></a> by <?php book_author() ?></li>
 			

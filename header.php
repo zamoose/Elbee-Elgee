@@ -39,6 +39,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/includes/css/yui/fonts.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option('lblg_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/print.css" media="print">
 	<?php
 		$alt_style = get_option('lblg_alt_stylesheet');
 		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
