@@ -43,7 +43,7 @@ acronym:after, .titleTip:after {  /* Prints titles after the acronyms/titletips.
   text-decoration: none;
 }
 
-#site-meta, #menu, #navigation, #extra, #footerleft, #footerright, #comments-form, #respond, #trackbacks, .navigation, .postmeta a, .akst_link, .avatar {
+#site-meta, #menu, #navigation, #extra, #footerleft, #footerright, #comments-form, #respond, #trackbacks, .comments-header, .navigation, .postmeta a, .akst_link, .avatar {
 	display: none;
 }
 
