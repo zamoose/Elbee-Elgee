@@ -73,7 +73,7 @@ $options = array (
 						
 				array(	"name" => "\"About\" Text",
 						"id" => $shortname."_about_text",
-						"desc" => "This is a little blurb about your site.",
+						"desc" => "This is a little blurb about your site. (Use HTML if you wish.)",
 						"std" => "",
 						"type" => "textarea",
 						"options" => array(	"rows" => "5",
