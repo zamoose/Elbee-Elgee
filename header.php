@@ -50,7 +50,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	?>
 
 	<?php wp_head(); ?>
-	<META name="verify-v1" content="j+73ZfK0ZfqL/24QUywKgcbY+Xsr+P/6XUtDJpUl0wc=" />
 </head>
 <body>
 <div id="container">
