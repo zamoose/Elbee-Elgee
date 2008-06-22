@@ -20,14 +20,19 @@
 		get_links_list(); 
 	}
 	
-	if (is_single() || is_archive()) {
-		if(function_exists(related_posts)){ ?>
+	if ((is_single() || is_archive()) && function_exists(related_posts)){ ?>
 	<li><h2>Possibly Related</h2>
 	<?php related_posts(); ?>
 	</li>
 	<?php 
-		}
-	} ?>
+	}
+	
+	if ((is_single() || is_archive()) && function_exists(wp_related_posts)) {?>
+	<li><h2>Possibly Related</h2>
+	<?php wp_related_posts(); ?>
+	</li>
+	<?php 
+	}?>
 	<?php endif; ?>
 
 	<li><h2>Quick Archives</h2>
