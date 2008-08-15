@@ -12,10 +12,6 @@ html,body {
   padding: 0;
 }
 
-html > body {
-  font-size: 9pt;
-}
-
 #container {
   color: black;
   background-color: rgb(243,242,235);
