@@ -7,17 +7,31 @@
 
 /* ##### Common Styles ##### */
 
-body {
-  color: black;
-  background-color: rgb(243,242,235);
-  font-family: verdana, helvetica, arial, sans-serif;
-  font-size: 73%;  /* Enables font size scaling in MSIE */
+html,body {
   margin: 0;
   padding: 0;
 }
 
 html > body {
   font-size: 9pt;
+}
+
+#container {
+  color: black;
+  background-color: rgb(243,242,235);
+  font-family: verdana, helvetica, arial, sans-serif;
+  font-size: 73%;
+}
+
+#menu {
+	float: left;
+	width: 100%;
+  color: white;
+  background-color: black;
+  font-size: 109%;
+  text-align: center;
+  margin: 0;
+  padding: 0.5ex 0;
 }
 
 acronym, .titleTip {
