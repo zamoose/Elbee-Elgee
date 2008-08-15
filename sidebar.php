@@ -1,3 +1,11 @@
+<?php 
+$about_option = get_option('lblg_display_about');
+if($about_option == "true"){ ?>
+<div id="aboutsite">
+<h2>About</h2>
+<?php echo get_option('lblg_about_text'); ?>
+</div>
+<?php }?>
 <div id="navigation">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
@@ -63,10 +71,6 @@
 		<?php nr_display(); ?>
 	</li>
 	<?php } ?>
-        <li><h2>TTLB Info</h2>
-	<script language="javascript" src="http://truthlaidbear.com/MyDetails.php?url=http://literalbarrage.org/blog&style=javascript">
-	</script>
-	</li>
 	<li><h2>Meta</h2>
 		<ul>
 			<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>

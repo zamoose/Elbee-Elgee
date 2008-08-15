@@ -387,3 +387,10 @@ img.noborder {
 	background: url('images/feed.png') center left no-repeat;
 	padding-left:  18px;
 }
+
+#aboutsite {
+	margin-left: -300px;
+	width: 300px;
+	float: right;
+	clear: both;
+}
