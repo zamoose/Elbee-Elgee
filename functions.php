@@ -179,7 +179,7 @@ function mytheme_admin() {
 		case 'text':
 		option_wrapper_header($value);
 		?>
-		        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_settings( $value['id'] ) != "") { echo get_settings( $value['id'] ); } else { echo $value['std']; } ?>" />
+		        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" />
 		<?php
 		option_wrapper_footer($value);
 		break;
@@ -189,7 +189,7 @@ function mytheme_admin() {
 		?>
 	            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 	                <?php foreach ($value['options'] as $option) { ?>
-	                <option<?php if ( get_settings( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+	                <option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 	                <?php } ?>
 	            </select>
 		<?php
@@ -201,8 +201,8 @@ function mytheme_admin() {
 		option_wrapper_header($value);
 		?>
 				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
-				if( get_settings($value['id']) != "") {
-						echo get_settings($value['id']);
+				if( get_option($value['id']) != "") {
+						echo get_option($value['id']);
 					}else{
 						echo $value['std'];
 				}?></textarea>
@@ -214,9 +214,9 @@ function mytheme_admin() {
 		option_wrapper_header($value);
 		
  		foreach ($value['options'] as $key=>$option) { 
-				$radio_setting = get_settings($value['id']);
+				$radio_setting = get_option($value['id']);
 				if($radio_setting != ''){
-		    		if ($key == get_settings($value['id']) ) {
+		    		if ($key == get_option($value['id']) ) {
 						$checked = "checked=\"checked\"";
 						} else {
 							$checked = "";
@@ -237,7 +237,7 @@ function mytheme_admin() {
 		
 		case "checkbox":
 		option_wrapper_header($value);
-						if(get_settings($value['id'])){
+						if(get_option($value['id'])){
 							$checked = "checked=\"checked\"";
 						}else{
 							$checked = "";
@@ -319,7 +319,7 @@ if ( function_exists('register_sidebar') ) {
 
 
 $use_custom_header = $shortname."_use_custom_header";
-if(get_settings($use_custom_header) == true){
+if(get_option($use_custom_header) == true){
 	// Set up custom header code
 	define('HEADER_TEXTCOLOR', 'cfcfd0');
 	define('HEADER_IMAGE', '%s/styles/default/newbanner2.png');
