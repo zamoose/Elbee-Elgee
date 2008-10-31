@@ -1,33 +1,86 @@
-/**********************************
- * TITLE: Gila Screen Stylesheet  * 
- * URI  : gila/gila-screen.css    *
- * MODIF: 2003-Apr-30 19:09 +0800 *
- **********************************/
-
-
-/* ##### Common Styles ##### */
-
 html,body {
   margin: 0;
   padding: 0;
+  font-family: verdana, helvetica, arial, sans-serif;
 }
 
 #container {
   color: black;
-  background-color: rgb(243,242,235);
-  font-family: verdana, helvetica, arial, sans-serif;
-  font-size: 73%;
 }
 
 #menu {
-	float: left;
-	width: 100%;
+  float: left;
+  width: 100%;
   color: white;
   background-color: black;
   font-size: 109%;
   text-align: center;
   margin: 0;
   padding: 0.5ex 0;
+}
+
+#menu a:link, #menu a:visited {
+  color: white;
+  background-color: black;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0;
+  padding: 0 1ex;
+}
+
+#menu a:active, #menu a:hover{
+  color: black;
+  background-color: white;	
+}
+
+#navigation {
+  width: 12.5em;	
+  background-color: rgb(243,242,235);
+}
+
+#navigation h2 {
+  color: rgb(64,64,64);
+  background-color: rgb(230,223,207);
+  font-weight: bold;
+  font-size: 85%;
+  margin: 0;
+  padding: 0px;
+}
+
+#navigation a:link, #navigation a:visited{
+  color: rgb(166,140,83);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+#navigation a:active, #navigation a:hover{
+  color: rgb(64,64,64);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+div#extra {
+  padding: 0;
+  border: 1px solid rgb(216,210,195);
+  margin-left: -202px;
+}
+div#content {
+  color: black;
+  background-color: white;
+  text-align: justify;
+  line-height: 1.5em;
+  padding: 0.5ex 15em 1em 1em;
+  border-left: 1px solid rgb(216,210,195);	
+}
+
+div#content a:link, div#content a:visited {
+  color: rgb(168,140,83);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+div#content a:active, div#content a:hover {
+  text-decoration: none;
 }
 
 acronym, .titleTip {
@@ -55,12 +108,13 @@ acronym, .titleTip {
   background-color: rgb(184,38,25);
 }
 
-.headerTitle {
+#header h1 {
   margin: 0;
   padding: 0.25em 4mm 0.25em 4mm;
+  font-family: verdana, helvetica, arial, sans-serif;
 }
 
-.headerTitle a {
+#header h1 a {
   color: black;
   background-color: transparent;
   text-decoration: none;
@@ -79,37 +133,8 @@ acronym, .titleTip {
   font-weight: normal;
 }
 
-.subHeader {
-  color: white;
-  background-color: black;
-  font-size: 109%;
-  text-align: center;
-  margin: 0;
-  padding: 0.5ex 0;
-}
-
-.subHeader a {
-  color: white;
-  background-color: black;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0;
-  padding: 0 1ex;
-}
-
-.subHeader a:hover {
-  color: black;
-  background-color: white;
-}
-
 
 /* ##### Left Side Bar ##### */
-
-.leftSideBar {
-  width: 12.5em;
-  float: left;
-  clear: left;
-}
 
 .leftSideBar .sideBarTitle {
   color: rgb(64,64,64);
@@ -168,15 +193,6 @@ acronym, .titleTip {
 
 
 /* ##### Right Side Bar ##### */
-
-.rightSideBar {
-  width: 13em;
-  margin: 2ex 0.75ex 0 0;
-  padding: 0;
-  float: right;
-  clear: right;
-  border: 1px solid rgb(216,210,195);
-}
 
 [class~="rightSideBar"] {
   margin-right: 1.5ex;
