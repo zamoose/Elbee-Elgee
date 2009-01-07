@@ -11,8 +11,8 @@
 	<?php } else { ?>
 		
 	<div class="navigation">
-		<div class="left"><?php next_posts_link('<span>&laquo;</span> Previous Entries') ?></div>
-		<div class="right"><?php previous_posts_link('Next Entries <span>&raquo;</span>') ?></div>
+		<div class="left"><?php next_posts_link('<span>&laquo;</span> Older Entries') ?></div>
+		<div class="right"><?php previous_posts_link('Newer Entries <span>&raquo;</span>') ?></div>
 		<div class="clear"></div>
 	</div>
 
