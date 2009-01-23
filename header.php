@@ -48,8 +48,11 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 
 		wp_enqueue_script('jquery');
 	?>
+	
+	<script src="<?php bloginfo('template_directory'); ?>/includes/js/jquery.idTabs.min.js" type="text/javascript"></script>
 
 	<?php wp_head(); ?>
+	
 </head>
 <body>
 <div id="container">
