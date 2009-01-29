@@ -1,0 +1,112 @@
+html,body{margin:0;padding:0}
+
+body {
+	color: #111;
+	/*background: url('ojc/ojc-smaller.jpg') #1a1c1d top left no-repeat;*/
+	background: #1a1c1d; /*url(ojg/balloon-size.jpg) top left no-repeat;*/
+}
+
+a{
+	text-decoration: none;
+	color: #d98841;
+}
+
+a:active, a:hover{
+	text-decoration: underline;
+}
+
+div#container{
+	background: #fff;
+	width: 100%;
+}
+
+div#allwrapper{
+	width: 927px;
+	overflow: auto;
+	margin: 0 auto;
+	background: #fff;
+}
+
+div#footer{
+	background: #1a1c1d;
+}
+
+div#footerwrapper{
+	width: 927px;
+	margin: 0 auto;
+	color: #fff;
+}
+
+#header h1{
+	margin-top: 0;
+	font-size: 197%;
+	display: none;
+}
+
+#header .description{
+	display: none;
+}
+
+#header{
+	background: #1a1c1d url(ojg/striped.jpg) top left no-repeat;
+	color: #fff;
+	height: 95px;
+}
+
+#header a:link, #header a:visited{
+	text-decoration: none;
+	color: #fff;
+}
+
+#header a:active, #header a:hover{
+	text-decoration: underline;
+	color: #fff;
+}
+
+#menu{
+	/*border-bottom: 1px solid #000;*/
+	background: transparent;
+	height: 22px;
+	margin-top: -23px;
+}
+
+#menu a:link, #menu a:visited{
+	margin-right: 5px;
+	padding: 10px 10px 4px 10px;
+	background: #ccc;
+	color: #1a1c1d;
+	font-weight: bold;
+	font-size: 123.1%;
+	border-right: 5px solid #1a1c1d;
+}
+
+#menu li.current_page_item a:link, #menu li.current_page_item a:visited, #menu a:active, #menu a:hover{
+	background: #fff;
+	color: #d98841;
+	border-right: 5px solid #d98841;
+	text-decoration: none;
+}
+
+div#content{
+	padding-left: 20px;
+	margin-right: 175px;
+}
+
+.wppost h3, h3.archives {
+	font-size: 182%;
+}
+
+.wppost blockquote{
+	background-color: #f5f5f5;
+	border-left: 2px solid #0971B3;
+	padding: 5px;
+	padding-left: 10px;
+}
+
+#footertabs{
+	text-align: left;
+}
+
+#footertabs > div{
+	border: 1px solid #1a1c1d;
+}
