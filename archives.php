@@ -17,6 +17,7 @@ Template Name: Archives
 	<?php arl_subtraction_archives_categories(); ?>
 </div>
 <?php }else{ ?>
+<div id="allwrapper">
 <div id="wrapper">
 	<div id="content">
 		<h3 class="archives">Archives</h3>
@@ -28,5 +29,6 @@ Template Name: Archives
 	</div>
 </div>
 <?php get_sidebar(); ?>
+</div>
 <?php } ?>
 <?php get_footer(); ?>

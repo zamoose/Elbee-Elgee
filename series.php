@@ -5,6 +5,7 @@ Template Name: Series Archive Page
 
 get_header(); ?>
 
+<div id="allwrapper">
 <div id="wrapper">
 	<div id="content">
  	    <h2 class="pagetitle">Archive for the &#8216;<?php single_series_title(); ?>&#8217; Series</h2>
@@ -19,5 +20,7 @@ get_header(); ?>
 	</div>
 </div>
 <?php get_sidebar(); ?>
+
+</div>
 
 <?php get_footer(); ?>

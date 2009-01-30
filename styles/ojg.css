@@ -38,9 +38,11 @@ div#footerwrapper{
 }
 
 #header h1{
-	margin-top: 0;
-	font-size: 197%;
-	display: none;
+	margin: 0 auto;
+	font-size: 4em;
+	font-weight: bold;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	width: 927px;
 }
 
 #header .description{
@@ -48,9 +50,10 @@ div#footerwrapper{
 }
 
 #header{
-	background: #1a1c1d url(ojg/striped.jpg) top left no-repeat;
+	background: #1a1c1d; 
 	color: #fff;
-	height: 95px;
+	height: 6em;
+	border-bottom: 4px solid #ccc;
 }
 
 #header a:link, #header a:visited{
@@ -63,11 +66,13 @@ div#footerwrapper{
 	color: #fff;
 }
 
-#menu{
+ul#menu{
 	/*border-bottom: 1px solid #000;*/
 	background: transparent;
-	height: 22px;
-	margin-top: -23px;
+	margin: 0 auto;
+	overflow: hidden;
+	width: 927px;
+	float: none;
 }
 
 #menu a:link, #menu a:visited{
@@ -101,6 +106,10 @@ div#content{
 	border-left: 2px solid #0971B3;
 	padding: 5px;
 	padding-left: 10px;
+}
+
+.wppost{
+	border-bottom: 1px solid #ccc;
 }
 
 #footertabs{

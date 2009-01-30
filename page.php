@@ -5,6 +5,7 @@ Template Name: Page
 ?>
 <?php get_header(); ?>
 
+<div id="allwrapper">
 <div id="wrapper">
 	<div id="content">
 	<?php if (have_posts()) : while (have_posts()) : the_post();?>
@@ -18,5 +19,7 @@ Template Name: Page
 </div>
 
 <?php get_sidebar(); ?>
+
+</div>
 
 <?php get_footer(); ?>
