@@ -57,7 +57,14 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <body>
 <div id="container">
 <div id="header">
-	<h1><span><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
+	<?php
+		if (is_page()) { $temp_head_title = trim(strtolower(wp_title('', false))); }
+		if (is_single()) { $temp_head_title = "blog"; }
+		if (is_archive()) { $temp_head_title = "archives"; }
+		$temp_head_title = ":".$temp_head_title;
+		if (is_home()) { $temp_head_title = ""; }
+	?>
+	<h1><span id="blogtitle"><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span><span id="blogselector"><?php echo $temp_head_title; ?></span></h1>
 	<p class="description"><span><?php bloginfo('description'); ?></span></p>
 </div>
 

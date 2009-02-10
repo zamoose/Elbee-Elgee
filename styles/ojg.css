@@ -16,7 +16,7 @@ a:active, a:hover{
 }
 
 div#container{
-	background: #fff;
+	background: #fff url(ojg/bg-gradient.png) repeat-x scroll 0 -4em;
 	width: 100%;
 }
 
@@ -37,6 +37,13 @@ div#footerwrapper{
 	color: #fff;
 }
 
+div#header{
+	background: #1a1c1d; 
+	color: #555;
+	height: 6em;
+	border-bottom: 1px solid #fff;
+}
+
 #header h1{
 	margin: 0 auto;
 	font-size: 4em;
@@ -45,15 +52,12 @@ div#footerwrapper{
 	width: 927px;
 }
 
-#header .description{
-	display: none;
+span#blogtitle {
+	color: #fff;
 }
 
-#header{
-	background: #1a1c1d; 
-	color: #fff;
-	height: 6em;
-	border-bottom: 4px solid #ccc;
+#header .description{
+	display: none;
 }
 
 #header a:link, #header a:visited{
@@ -118,4 +122,8 @@ div#content{
 
 #footertabs > div{
 	border: 1px solid #1a1c1d;
+}
+
+#footerright {
+	overflow: hidden;
 }
