@@ -13,11 +13,6 @@
 					<?php if (function_exists('sharethis_button') && (is_home() || is_page() || is_single())) { sharethis_button(); } ?>
 					<div class="postinfo">
 						<span class="postcats">Posted in <?php the_category(', '); ?></span>
-						<?php if(function_exists(UTW_ShowTagsForCurrentPost)) { 
-						if(is_single()){ ?>
-						<br />
-						<span class="posttags">Tagged as: <?php UTW_ShowTagsForCurrentPost("commalist"); ?></span>
-					<?php }} ?>
 						<?php if(function_exists(the_tags) && is_single()){?>
 						<br />
 						<span class="posttags"><?php the_tags('Tagged as: ',','); ?></span>

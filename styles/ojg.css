@@ -127,3 +127,17 @@ div#content{
 #footerright {
 	overflow: hidden;
 }
+
+/* defaults for all examples 
+#menu.kwicks {  
+    list-style: none;  
+    position: relative;  
+    margin: 0;  
+    padding: 0;  
+}  
+#menu.kwicks li{  
+    display: block;  
+    overflow: hidden;  
+    padding: 0;  
+    cursor: pointer;  
+}*/

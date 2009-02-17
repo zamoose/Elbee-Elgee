@@ -47,11 +47,22 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 		}
 
 		wp_enqueue_script('jquery');
+		wp_enqueue_script('idTabs', '/wp-content/themes/elbee/includes/js/jquery.idTabs.min.js');
+		wp_enqueue_script('kwicks', '/wp-content/themes/elbee/includes/js/jquery.kwicks-1.5.1.js');
 	?>
 	
-	<script src="<?php bloginfo('template_directory'); ?>/includes/js/jquery.idTabs.min.js" type="text/javascript"></script>
-
 	<?php wp_head(); ?>
+	
+	<script type="text/javascript">
+		/*var jQ = jQuery.noconflict();*/
+		
+		jQuery.ready(function() {  
+		    jQuery('#menu.kwicks').kwicks({  
+		        max : 205,  
+		        spacing : 5  
+		    });  
+		});
+	</script>
 	
 </head>
 <body>
@@ -68,7 +79,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<p class="description"><span><?php bloginfo('description'); ?></span></p>
 </div>
 
-        <ul id="menu">
+        <ul id="menu" class="kwicks">
 		<?php if (is_home() || is_single()) : ?>
                 <li class="current_page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
                 <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
