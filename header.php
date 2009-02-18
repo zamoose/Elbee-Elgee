@@ -15,7 +15,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <?php
 }
 ?>
-	<title><?php wp_title(''); ?> <?php if( !(is_404()) && (is_single()) or (is_page()) or (is_archive()) ) { ?> &raquo; <?php } ?> <?php bloginfo('name');?></title>
+	<title><?php wp_title('&raquo;', true, 'right'); ?> <?php bloginfo('name');?></title>
 
 	<?php 
 	//Include Magpie RSS for make benefit glorious nation America.
@@ -72,6 +72,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 		if (is_page()) { $temp_head_title = trim(strtolower(wp_title('', false))); }
 		if (is_single()) { $temp_head_title = "blog"; }
 		if (is_archive()) { $temp_head_title = "archives"; }
+		if (is_404()) { $temp_head_title = "404'd!"; }
 		$temp_head_title = ":".$temp_head_title;
 		if (is_home()) { $temp_head_title = ""; }
 	?>
@@ -90,6 +91,3 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 				<?php wp_register('<li class="admintab page_item">','</li>'); ?>
 		<?php endif; ?>
         </ul>
-<?php if (is_404()){ ?>
-<div id="wrapper-404">
-<?php }?>

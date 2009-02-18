@@ -1,6 +1,3 @@
-<?php if (is_404()){ ?>
-</div><!--end 404-specific wrapper div -->
-<?php }?>
 <div id="footer">
 	<div id="footerwrapper">
 	<div id="footerleft">
@@ -63,15 +60,17 @@
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 
-		<?php if(function_exists(fetch_rss)) { ?>
+		<?php if(function_exists(wp_rss)) { ?>
 			<li><h2><a href="http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss" class="rssfeed">Elbee Elgee Development</a></h2>
 				<ul>
 			<?php	
 				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
-				$lblgrss = fetch_rss($url);
-				$rss_c = 0;
+				/*$lblgrss = fetch_rss($url);
+				$rss_c = 0;*/
+
+				wp_rss($url, 5);
 				
-				foreach($lblgrss->items as $item){
+				/*foreach($lblgrss->items as $item){
 					if($rss_c <=4){
 						$title = $item['title'];
 						$link = $item['link'];
@@ -79,7 +78,7 @@
 						echo "<li><a href=\"$link\">$title</a></li>\n";
 					}
 					$rss_c++;
-				}
+				}*/
 			?>
 				</ul>
 			</li>
@@ -94,18 +93,6 @@
 				$url = "http://feeds.feedburner.com/zamooses-gr-shared-items";
 				
 				wp_rss($url,10);
-				/*	$gr_rss = fetch_rss($url);
-					$rss_c = 0;
-					
-					foreach($gr_rss->items as $item){
-						if($rss_c <= 4){
-							$title = $item['title'];
-							$link = $item['link'];
-							
-							echo "<li><a herf=\"$link\">$title</a></li>\n";
-						}
-						$rss_c++;
-					}*/
 			?>
 				</ul>
 			</li>
@@ -115,24 +102,13 @@
 
 		<?php 
 			$tmp_del_username = get_option('lblg_delicious_username');
-			if(function_exists(fetch_rss) && $tmp_del_username != '') { 
+			if(function_exists(wp_rss) && $tmp_del_username != '') { 
 				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
 			?>
 			<li><h2><a href="<?php echo $url; ?>" class="rssfeed">del.icio.us</a></h2>
 				<ul>
 			<?php	
-				$lblgrss = fetch_rss($url);
-				$rss_c = 0;
-				
-				foreach($lblgrss->items as $item){
-					if($rss_c <=10){
-						$title = $item['title'];
-						$link = $item['link'];
-						$description = $item['description'];
-						echo "<li><a href=\"$link\">$title</a></li>\n";
-					}
-					$rss_c++;
-				}
+				wp_rss($url, 10);
 			?>
 				</ul>
 			</li>
