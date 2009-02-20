@@ -96,13 +96,17 @@ ul#menu{
 	text-decoration: none;
 }
 
+#s {
+	width: 95%;
+}
+
 div#content{
 	padding-left: 20px;
-	margin-right: 175px;
+	margin-right: 300px;
 }
 
 .wppost h3, h3.archives {
-	font-size: 182%;
+	font-size: 2.5em;
 }
 
 .wppost blockquote{
@@ -114,6 +118,13 @@ div#content{
 
 .wppost{
 	border-bottom: 1px solid #ccc;
+}
+
+div#bigbar{
+	float: left;
+	margin-left: -300px;
+	width: 300px;
+	display: block;	
 }
 
 #footertabs{

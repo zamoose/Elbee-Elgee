@@ -15,7 +15,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <?php
 }
 ?>
-	<title><?php wp_title('&raquo;', true, 'right'); ?> <?php bloginfo('name');?></title>
+	<title><?php if(is_search()) { echo "Search Results &raquo; "; } else { wp_title('&raquo;', true, 'right'); } ?> <?php bloginfo('name');?></title>
 
 	<?php 
 	//Include Magpie RSS for make benefit glorious nation America.
@@ -73,6 +73,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 		if (is_single()) { $temp_head_title = "blog"; }
 		if (is_archive()) { $temp_head_title = "archives"; }
 		if (is_404()) { $temp_head_title = "404'd!"; }
+		if (is_search()) { $temp_head_title = "search"; }
 		$temp_head_title = ":".$temp_head_title;
 		if (is_home()) { $temp_head_title = ""; }
 	?>

@@ -6,6 +6,10 @@ if($about_option == "true"){ ?>
 <?php echo get_option('lblg_about_text'); ?>
 </div>
 <?php }?>
+<!--div id="bigbar">
+<img src="<?php bloginfo('template_directory'); ?>/images/ysswotd.jpg" />
+<br />
+</div-->
 <div id="navigation">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
