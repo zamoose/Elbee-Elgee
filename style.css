@@ -100,12 +100,12 @@ Version: Beta 2
 
 #menu li {
 	display: inline;
+	list-style-type: none;
 	margin: 0;
 	padding: 0;
 }
 
 #menu li:first-child a {
-	margin-left: 5px;
 }
 
 .series-links, .series-toc {
@@ -378,8 +378,25 @@ img.noborder {
 
 /* @end */
 
-/* @group Quick Post Form */#postbox {	margin:3em;
-	margin-top: 0em;	padding:3em;	background:#EEE;	border:1px solid #CCC;}#postbox form {	width:100%;}#postbox textarea {	width:100%;	margin-bottom:.75em;}#postbox label {	display: block;}
+/* @group Quick Post Form */
+
+#postbox {
+	margin:3em;
+	margin-top: 0em;
+	padding:3em;
+	background:#EEE;
+	border:1px solid #CCC;
+}
+#postbox form {
+	width:100%;
+}
+#postbox textarea {
+	width:100%;
+	margin-bottom:.75em;
+}
+#postbox label {
+	display: block;
+}
 
 /* @end */
 
@@ -393,4 +410,45 @@ img.noborder {
 	width: 300px;
 	float: right;
 	clear: both;
+}
+
+div.message {
+	width: 80%;
+	margin: 0 auto;
+	padding: 10px 20px 10px 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 1em;
+}
+
+.information {
+	background-color: #F8FAFC;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-color: #B5D4FE;
+	color: #333;
+}
+
+.notification {
+	border-color: #669933;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	background-color: #9BCF7B;
+	color: #333;
+}
+
+.alert {
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-color: #DDDB54;
+	background-color: #FFFFCC;
+	color: #000;
+}
+
+.warning {
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-color: #D43C3C;
+	background-color: #FB7070;
+	color: #fff;
 }

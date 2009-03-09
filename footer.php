@@ -28,7 +28,7 @@
 				<li><a href="#greader">Google Reader</a></li>
 				<li><a href="#delicious">del.icio.us</a></li>
 			</ul>	
-		
+
 			<div id="elbee">
 				Elbee Elgee Development
 				<ul>
@@ -36,7 +36,7 @@
 					$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
 					$lblgrss = fetch_rss($url);
 					$rss_c = 0;
-			
+
 					foreach($lblgrss->items as $item){
 						if($rss_c <=4){
 							$title = $item['title'];

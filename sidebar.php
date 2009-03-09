@@ -6,10 +6,6 @@ if($about_option == "true"){ ?>
 <?php echo get_option('lblg_about_text'); ?>
 </div>
 <?php }?>
-<!--div id="bigbar">
-<img src="<?php bloginfo('template_directory'); ?>/images/ysswotd.jpg" />
-<br />
-</div-->
 <div id="navigation">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
@@ -92,3 +88,45 @@ if($about_option == "true"){ ?>
 	<?php endif; ?>
 </ul>
 </div>
+<?php /*?>
+<div id="bigbar">
+	<?php if(function_exists(fetch_rss)) { ?>
+	<div id="footertabs">			
+		<ul class="idTabs">	
+			<li><a href="#elbee">Elbee Elgee</a></li>
+			<li><a href="#greader">Google Reader</a></li>
+			<li><a href="#delicious">del.icio.us</a></li>
+		</ul>	
+	
+		<div id="elbee">
+			Elbee Elgee Development
+			<ul>
+			<?php	
+				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
+				$lblgrss = fetch_rss($url);
+				$rss_c = 0;
+		
+				foreach($lblgrss->items as $item){
+					if($rss_c <=4){
+						$title = $item['title'];
+						$link = $item['link'];
+						$description = $item['description'];
+						echo "<li><a href=\"$link\">$title</a></li>\n";
+					}
+					$rss_c++;
+				}
+			?>
+			</ul>
+		</div>
+		<div id="greader">
+			Google Reader
+		</div>
+		<div id="delicious">
+			delicious Bookmarks
+		</div>
+	</div>
+	<?php } ?>
+<img src="<?php bloginfo('template_directory'); ?>/images/ysswotd.jpg" />
+<br />
+</div>
+<?php */ ?>

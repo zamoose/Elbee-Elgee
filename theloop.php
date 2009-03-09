@@ -1,5 +1,17 @@
 	 <?php /* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
 		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) include (TEMPLATEPATH . '/navigation.php'); ?>
+		<?php 
+			$asides_cat_byname = get_option('lblg_asides_category');
+			$asides_cat_id = get_cat_id(get_option('lblg_asides_category'));
+			if(in_category($asides_cat_id)){
+		?>
+		<div id="post-<?php the_ID();?>" class="asides">
+			<h3><?php the_title(); ?></h3>
+			<div class="itemtext">
+				<?php the_content(); ?><?php if(!is_single()){ ?>(<?php comments_popup_link('0','1','%'); ?>) <a href="<?php the_permalink();?>" rel="bookmark" title="Permanent link to <?php echo strip_tags(get_the_title()); ?>">#</a><?php } ?>
+			</div>
+		</div>
+		<?php } else { //Not an Aside... ?>
 		<div id="post-<?php the_ID(); ?>" class="wppost">
 			<?php if(!is_single()) { ?><h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>
 			<?php } else { ?><h3><?php the_title(); ?></h3><?php } ?>
@@ -25,6 +37,7 @@
 				<?php trackback_rdf(); ?>
 			-->
 		</div>
+		<?php } //End Asides/!Asides if...else ?>
 	<?php } /* End while */?>
 	<?php if(is_home() || is_archive()) include(TEMPLATEPATH . "/navigation.php"); ?>
 	<?php } /*End loop*/ ?>

@@ -30,6 +30,12 @@ if ( is_dir($alt_stylesheet_path) ) {
 	}
 }	
 
+$lblg_categories = get_categories();
+$lblg_categories_list = array();
+
+foreach($lblg_categories as $lblcat){
+	$lblg_categories_list[] = $lblcat->cat_name;
+}
 
 $layouts_tmp = asort($layouts);
 $layouts_tmp = array_unshift($layouts, "Select a layout:");
@@ -62,6 +68,21 @@ $options = array (
 					    "std" => "Select a stylesheet:",
 					    "type" => "select",
 					    "options" => $alt_stylesheets),
+	
+				array(	"name" => "Asides",
+						"type" => "subhead"),
+
+				array(	"name" => "Display Asides",
+						"desc" => "\"Asides\" are small posts, usually dedicated to a single subject or link that are too lightweight to require a full post on their own.  (See <a href=\"http://codex.wordpress.org/Adding_Asides\">Adding Asides</a> on the WordPress Codex for more information). Posts saved in the category selected here will be displayed in such a way as to draw less attention to them.",
+						"id" => $shortname."_display_asides",
+						"std" => "false",
+						"type" => "checkbox"),
+
+				array(	"name" => "Asides Category",
+					    "id" => $shortname."_asides_category",
+					    "std" => "Select an Asides category:",
+					    "type" => "select",
+					    "options" => $lblg_categories_list),
 	
 				array(	"name" => "Blog Meta Info",
 						"type" => "subhead"),
@@ -159,7 +180,7 @@ function mytheme_admin() {
 <form method="post">
 
 <table class="form-table">
-
+<tbody>
 <?php //option_wrapper_header(array("name"=>"Header Image")); ?>
 
 <?php //option_wrapper_footer(array("desc"=>"If you have GD2 support enabled on your server and the style you've selected supports it, you can generate a header image automatically.")); ?>
@@ -254,7 +275,7 @@ function mytheme_admin() {
 	}
 }
 ?>
-
+</tbody>
 </table>
 
 <p class="submit">
@@ -312,7 +333,11 @@ function mytheme_admin_head(){
 
 if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Navigation'));
-	register_sidebar(array('name'=>'Extra'));
+	register_sidebar(array('name'=>'Extra', 
+						   'before_widget' => '<li>', 
+						   'after_widget' => '</li>', 
+						   'before_title' => '<h2>', 
+						   'after_title' => '</h2>'));
 	register_sidebar(array('name'=>'Bottom-Left'));
 	register_sidebar(array('name'=>'Bottom-Right'));
 }
@@ -393,7 +418,49 @@ function elbee_admin_header_style() {
 <?php
 }
 
+function elbee_enqueue_jscripts() {
+	wp_enqueue_script('jquery-ui-tabs');
+	wp_enqueue_script('idTabs', get_bloginfo('template_directory').'/includes/js/jquery.idTabs.min.js');
+	wp_enqueue_script('kwicks', get_bloginfo('template_directory').'/includes/js/jquery.kwicks-1.5.1.js');
+	wp_enqueue_script('elbeeJS', get_bloginfo('template_directory').'/includes/js/elbeeFunctions.js');
+}
+
+function elbbee_tab_widget($args) {
+	extract(args);
+	
+	echo $before_widget;
+	echo $after_widget;
+}
+
+function elbee_meta_widget($args) {
+	extract($args);
+	
+	echo $before_widget;
+	echo $before_title; ?>Meta<?php echo $after_title;?>
+		<ul>
+			<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
+		 	<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
+			<?php wp_register(); ?>
+	        <li><?php wp_loginout(); ?></li>
+			<li><a href="http://www.dreamhost.com/donate.cgi?id=5283"><img border="0" alt="Donate towards my web hosting bill!" src="https://secure.newdream.net/donate1.gif" /></a></li>
+			<li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
+			<li><a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a></li>
+			<li><a href="http://macromates.com" title="Made with TextMate"><img src="<?php bloginfo('template_directory');?>/images/textmate_badge.png" style="border: 0;" /></a></li>
+			<li><a href="http://macrabbit.com/cssedit" title="Made with CSSEdit"><img src="<?php bloginfo('template_directory');?>/images/BadgeS.png" style="border: 0;" /></a></li>
+			<li><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a><!--br/>This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://literalbarrage.org/blog/" property="cc:attributionName" rel="cc:attributionURL">http://literalbarrage.org/blog/</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License</a>.--></li>
+		</ul>
+	
+	<?php
+	echo $after_widget;
+}
+
+function elbee_meta_widget_init(){
+	register_sidebar_widget(__('Elbee Meta'), 'elbee_meta_widget');
+}
+
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_head','mytheme_admin_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
+add_action('template_redirect', 'elbee_enqueue_jscripts');
+add_action('widgets_init', 'elbee_meta_widget_init');
 ?>

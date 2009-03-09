@@ -45,25 +45,10 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
 			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option('lblg_alt_stylesheet').'" />';
 		}
-
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('idTabs', '/wp-content/themes/elbee/includes/js/jquery.idTabs.min.js');
-		wp_enqueue_script('kwicks', '/wp-content/themes/elbee/includes/js/jquery.kwicks-1.5.1.js');
 	?>
 	
 	<?php wp_head(); ?>
-	
-	<script type="text/javascript">
-		/*var jQ = jQuery.noconflict();*/
-		
-		jQuery.ready(function() {  
-		    jQuery('#menu.kwicks').kwicks({  
-		        max : 205,  
-		        spacing : 5  
-		    });  
-		});
-	</script>
-	
+
 </head>
 <body>
 <div id="container">
@@ -80,7 +65,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<h1><span id="blogtitle"><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span><span id="blogselector"><?php echo $temp_head_title; ?></span></h1>
 	<p class="description"><span><?php bloginfo('description'); ?></span></p>
 </div>
-
+<div id="menuwrap">
         <ul id="menu" class="kwicks">
 		<?php if (is_home() || is_single()) : ?>
                 <li class="current_page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
@@ -92,3 +77,4 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 				<?php wp_register('<li class="admintab page_item">','</li>'); ?>
 		<?php endif; ?>
         </ul>
+</div>
