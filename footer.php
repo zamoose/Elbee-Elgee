@@ -21,42 +21,6 @@
 		</ul>
 	</div>
 	<div id="footerright">
-		<?php if(function_exists(fetch_rss)) { ?>
-		<div id="footertabs">			
-			<ul class="idTabs">	
-				<li><a href="#elbee">Elbee Elgee</a></li>
-				<li><a href="#greader">Google Reader</a></li>
-				<li><a href="#delicious">del.icio.us</a></li>
-			</ul>	
-
-			<div id="elbee">
-				Elbee Elgee Development
-				<ul>
-				<?php	
-					$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
-					$lblgrss = fetch_rss($url);
-					$rss_c = 0;
-
-					foreach($lblgrss->items as $item){
-						if($rss_c <=4){
-							$title = $item['title'];
-							$link = $item['link'];
-							$description = $item['description'];
-							echo "<li><a href=\"$link\">$title</a></li>\n";
-						}
-						$rss_c++;
-					}
-				?>
-				</ul>
-			</div>
-			<div id="greader">
-				Google Reader
-			</div>
-			<div id="delicious">
-				delicious Bookmarks
-			</div>
-		</div>
-		<?php } ?>
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 
@@ -65,20 +29,8 @@
 				<ul>
 			<?php	
 				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
-				/*$lblgrss = fetch_rss($url);
-				$rss_c = 0;*/
 
 				wp_rss($url, 5);
-				
-				/*foreach($lblgrss->items as $item){
-					if($rss_c <=4){
-						$title = $item['title'];
-						$link = $item['link'];
-						$description = $item['description'];
-						echo "<li><a href=\"$link\">$title</a></li>\n";
-					}
-					$rss_c++;
-				}*/
 			?>
 				</ul>
 			</li>

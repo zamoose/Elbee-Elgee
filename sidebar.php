@@ -129,4 +129,4 @@ if($about_option == "true"){ ?>
 <img src="<?php bloginfo('template_directory'); ?>/images/ysswotd.jpg" />
 <br />
 </div>
-<?php */ ?>
+<?php */?>
