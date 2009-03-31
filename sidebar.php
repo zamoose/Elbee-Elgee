@@ -1,10 +1,10 @@
 <?php 
-$about_option = get_option('lblg_display_about');
-if($about_option == "true"){ ?>
-<div id="aboutsite">
-<h2>About</h2>
-<?php echo get_option('lblg_about_text'); ?>
-</div>
+$bigbar_option = get_option('lblg_display_bigbar');
+if($bigbar_option == "true"){ ?>
+<div id="bigbar">
+	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('BigBar') ) : ?>
+
+	<?php endif; ?>
 <?php }?>
 <div id="navigation">
 <ul>
@@ -88,6 +88,9 @@ if($about_option == "true"){ ?>
 	<?php endif; ?>
 </ul>
 </div>
+<?php if($bigbar_option == "true"){ ?>
+</div>
+<?php }?>
 <?php /*?>
 <div id="bigbar">
 	<?php if(function_exists(fetch_rss)) { ?>

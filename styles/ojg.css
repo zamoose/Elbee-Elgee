@@ -19,9 +19,12 @@ div#bigbar{
 	float: left;
 	margin-left: -300px;
 	width: 300px;
-	display: block;	
 }
 
+div#bigbar > div#navigation, div#bigbar > div#extra{
+	width: 149px;
+	margin-left: 0px;
+}
 /* @group Sidebar Elements */
 
 
@@ -195,6 +198,46 @@ ul#menu{
 
 
 
+/* @end */
+
+/* @group Comment Elements */
+
+#comments li {
+	border-top: 2px solid #1a1c1d;
+}
+
+#comments li.even {
+	background: #f6f6f6;
+}
+
+#comments li.highlight {
+	/*background: #cddce5;*/
+}
+
+#comments img.gravatar, #comments img.avatar {
+	float:  right;
+	background-color: #fff;
+	border: 1px solid #3c3c3c;
+}
+
+#comments div.comment-meta {
+	float: none;
+	width: 100%;
+}
+
+#comments span.comment-date{
+	font-size: 0.8em;
+}
+
+#comments span.comment-author {
+	display: inline;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+#comments div.comment-text{
+	margin-left: 5px;
+}
 /* @end */
 
 a{

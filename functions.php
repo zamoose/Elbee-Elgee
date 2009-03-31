@@ -68,7 +68,13 @@ $options = array (
 					    "std" => "Select a stylesheet:",
 					    "type" => "select",
 					    "options" => $alt_stylesheets),
-	
+					
+				array(	"name" => "Use \"Big Bar\" Side Bar ",
+						"desc" => "Check this box to enable the big side bar component.",
+						"id" => $shortname."_display_bigbar",
+						"std" => "false",
+						"type" => "checkbox"),
+						
 				array(	"name" => "Asides",
 						"type" => "subhead"),
 
@@ -332,6 +338,7 @@ function mytheme_admin_head(){
 <?php }
 
 if ( function_exists('register_sidebar') ) {
+	register_sidebar(array('name'=>'BigBar'));
 	register_sidebar(array('name'=>'Navigation'));
 	register_sidebar(array('name'=>'Extra', 
 						   'before_widget' => '<li>', 
@@ -339,7 +346,7 @@ if ( function_exists('register_sidebar') ) {
 						   'before_title' => '<h2>', 
 						   'after_title' => '</h2>'));
 	register_sidebar(array('name'=>'Bottom-Left'));
-	register_sidebar(array('name'=>'Bottom-Right'));
+	register_sidebar(array('name'=>'Bottom-Right'));	
 }
 
 
@@ -454,8 +461,29 @@ function elbee_meta_widget($args) {
 	echo $after_widget;
 }
 
+function elbee_polaroid_widget($args){
+?>
+	<!--div id="imgmapdiv">  
+	    <map name="imgmap">  
+	        <area shape="poly" coords="88,227,195,229,196,101,90,100" href="#" alt="1">  
+	        <area shape="poly" coords="88,214,54,226,19,122,89,102" href="#" alt="2">  
+	        <area shape="poly" coords="198,224,213,229,247,127,199,109,200,111" href="#" alt="3">  
+	        <area shape="poly" coords="45,112,37,59,127,47,133,86,132,95,93,100,47,110" href="#" alt="4">  
+	        <area shape="poly" coords="134,80,137,41,226,51,221,116,200,109,198,100,137,98,135,82" href="#" alt="5">  
+	        <area shape="poly" coords="230,190,263,199,293,92,229,73,226,117,251,127,231,191" href="#" alt="6">  
+	    </map>  
+	</div>  
+
+	<p>  
+	    <img src="<?php bloginfo('template_directory'); ?>/styles/ojg/polaroids.png" width="345" height="312" alt="Move mouse over image" usemap="#imgmap">  
+	</p-->
+	<img src="<?php bloginfo('template_directory'); ?>/styles/ojg/polaroids.png" alt="Do not taunt the Angry Bunny Man." title="Do not taunt the Angry Bunny Man."/>
+<?php
+}
+
 function elbee_meta_widget_init(){
 	register_sidebar_widget(__('Elbee Meta'), 'elbee_meta_widget');
+	register_sidebar_widget(__('Elbee Polaroids'), 'elbee_polaroid_widget');
 }
 
 add_action('wp_head', 'mytheme_wp_head');
