@@ -133,7 +133,7 @@ Version: Beta 2
 /* @group List reset */
 
 
-#navigation ul, #extra ul, #footer ul, #footer ol {
+#navigation ul, #extra ul, #footer ul, #footer ol, #bigbar ul {
 	margin: 5px 0 0;
 	padding-left: 0;
 	padding-right: 5px;
