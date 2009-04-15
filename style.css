@@ -139,7 +139,7 @@ Version: Beta 2
 	padding-right: 5px;
 }
 
-#navigation ul li, #extra ul li, #footer ul li {
+#navigation ul li, #extra ul li, #footer ul li, #bigbar ul li {
 	list-style-type: none;
 	list-style-image: none;
 }
