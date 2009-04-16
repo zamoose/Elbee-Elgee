@@ -364,7 +364,7 @@ if(get_option($use_custom_header) == true){
 function elbee_the_postimage() {
 	global $wpdb, $post;
 
-	$thumb = $wpdb->get_row('SELECT ID, post_title FROM '.$wpdb->posts.' WHERE post_parent = '.$post->ID.' AND post_mime_type LIKE \'image%\' ORDER BY menu_order');
+	$thumb = $wpdb->get_row('SELECT ID, post_title, guid FROM '.$wpdb->posts.' WHERE post_parent = '.$post->ID.' AND post_mime_type LIKE \'image%\' ORDER BY menu_order');
 
 	if(!empty($thumb)) {
 		$image_url = $thumb->guid;
