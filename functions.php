@@ -30,7 +30,7 @@ if ( is_dir($alt_stylesheet_path) ) {
 	}
 }	
 
-$lblg_categories = get_categories('hide_empty=false');
+$lblg_categories = get_categories('hide_empty=0');
 $lblg_categories_list = array();
 
 foreach($lblg_categories as $lblcat){
