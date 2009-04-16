@@ -361,6 +361,20 @@ if(get_option($use_custom_header) == true){
 	add_custom_image_header('header_style', 'elbee_admin_header_style');
 }
 
+function elbee_the_postimage() {
+	global $wpdb, $post;
+
+	$thumb = $wpdb->get_row('SELECT ID, post_title FROM '.$wpdb->posts.' WHERE post_parent = '.$post->ID.' AND post_mime_type LIKE \'image%\' ORDER BY menu_order');
+
+	if(!empty($thumb)) {
+		$image_url = $thumb->guid;
+		
+		$image = parse_url($image_url, PHP_URL_PATH);
+		
+		print $image;
+	}
+}
+
 function header_style() {
 ?>
 <style type="text/css">
