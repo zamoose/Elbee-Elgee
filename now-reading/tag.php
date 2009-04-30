@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+<div id="allwrapper">
 <div id="wrapper">
 	
 	<div id="content" class="narrowcolumn primary now-reading">
@@ -45,5 +46,7 @@
 </div>
 
 <?php get_sidebar() ?>
+
+</div>
 
 <?php get_footer() ?>

@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<div id="allwrapper">
+<div id="wrapper">
 <div class="content">
 	
 	<div id="content" class="narrowcolumn primary now-reading">
@@ -43,7 +45,10 @@
 	</div>
 	
 </div>
+</div>
 
 <?php get_sidebar() ?>
+
+</div>
 
 <?php get_footer() ?>
