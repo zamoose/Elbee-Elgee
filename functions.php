@@ -500,6 +500,9 @@ function elbee_meta_widget_init(){
 	register_sidebar_widget(__('Elbee Polaroids'), 'elbee_polaroid_widget');
 }
 
+remove_action('wp_head', 'rsd_link');
+remove_action('wp_head', 'wlwmanifest_link');
+remove_action('wp_head', 'wp_generator');
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_head','mytheme_admin_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
