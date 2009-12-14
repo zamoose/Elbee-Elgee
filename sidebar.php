@@ -1,13 +1,6 @@
-<?php 
-$bigbar_option = get_option('lblg_display_bigbar');
-if($bigbar_option == "true"){ ?>
-<div id="bigbar">
-	<ul>
-	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('BigBar') ) : ?>
-
-	<?php endif; ?>
-	</ul>
-<?php }?>
+<?php
+elbee_sidebar_header(); 
+?>
 <div id="navigation">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
@@ -20,12 +13,7 @@ if($bigbar_option == "true"){ ?>
 		</li>
 	<?php } ?>
 
-	<?php /*if ( is_single() ) { ?>
-	<li><h2>Post Info</h2>
-		You are reading "<a href="<?php the_permalink(); ?>"> <?php the_title(); ?></a>". It was posted on <?php the_date('l, F jS, Y','',''); ?> in <?php the_category(', '); ?><?php if(function_exists(UTW_ShowTagsForCurrentPost)) {?> and was tagged as <?php UTW_ShowTagsForCurrentPost("commalist"); } ?>.
-	</li>
-	<?php 
-	}*/
+	<?php
 	if (is_home()) {
 		get_links_list(); 
 	}
@@ -45,34 +33,12 @@ if($bigbar_option == "true"){ ?>
 	}?>
 	<?php endif; ?>
 
-	<!--li><h2>Quick Archives</h2>
-	<form id="archiveform" action="">
-	<select name="archive_chrono" onchange="window.location = (document.forms.archiveform.archive_chrono[document.forms.archiveform.archive_chrono.selectedIndex].value);">
-	<option value=''>Select Month</option>
-	<?php wp_get_archives('type=monthly&format=option'); ?>
-	</select>
-	</form>
-	</li>
-
-	<li><h2>Quick Categories</h2>
-	<?php wp_dropdown_categories('orderby=name'); ?>
-	</li-->
 </ul>
 
 </div>
 <div id="extra">
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Extra') ) : ?>
-	<?php if (function_exists(wpaudioscrobbler)) { ?>
-	<li><h2>Now Listening</h2>
-		<?php wpaudioscrobbler(); ?>
-	</li>
-	<?php } ?>
-	<?php if (function_exists(nr_display)) { ?>
-	<li><h2>Now Reading</h2>
-		<?php nr_display(); ?>
-	</li>
-	<?php } ?>
 	<li><h2>Meta</h2>
 		<ul>
 			<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
@@ -90,48 +56,6 @@ if($bigbar_option == "true"){ ?>
 	<?php endif; ?>
 </ul>
 </div>
-<?php if($bigbar_option == "true"){ ?>
-</div>
-<?php }?>
-<?php /*?>
-<div id="bigbar">
-	<?php if(function_exists(fetch_rss)) { ?>
-	<div id="footertabs">			
-		<ul class="idTabs">	
-			<li><a href="#elbee">Elbee Elgee</a></li>
-			<li><a href="#greader">Google Reader</a></li>
-			<li><a href="#delicious">del.icio.us</a></li>
-		</ul>	
-	
-		<div id="elbee">
-			Elbee Elgee Development
-			<ul>
-			<?php	
-				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
-				$lblgrss = fetch_rss($url);
-				$rss_c = 0;
-		
-				foreach($lblgrss->items as $item){
-					if($rss_c <=4){
-						$title = $item['title'];
-						$link = $item['link'];
-						$description = $item['description'];
-						echo "<li><a href=\"$link\">$title</a></li>\n";
-					}
-					$rss_c++;
-				}
-			?>
-			</ul>
-		</div>
-		<div id="greader">
-			Google Reader
-		</div>
-		<div id="delicious">
-			delicious Bookmarks
-		</div>
-	</div>
-	<?php } ?>
-<img src="<?php bloginfo('template_directory'); ?>/images/ysswotd.jpg" />
-<br />
-</div>
-<?php */?>
+<?php
+elbee_sidebar_footer();
+?>
