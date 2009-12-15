@@ -66,7 +66,7 @@
 	if ($numComments != 0) : ?>
 
 	<h2 class="comments-header"><?php _e($numComments); ?> Comments</h2>
-	<ol id="comments">
+	<ol id="comments" class="commentlist">
 	
 	<?php foreach ($comments as $comment) : ?>
 	<?php if (get_comment_type()=="comment") : ?>
