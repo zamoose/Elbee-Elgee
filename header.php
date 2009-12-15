@@ -36,7 +36,11 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />
 	<link rel="alternate" type="text/xml" title="RSS .92" href="<?php bloginfo('rss_url'); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="<?php bloginfo('atom_url'); ?>" />
-	<?php if (is_single() or is_page()) { ?>
+	<?php if (is_single() or is_page()) {
+		if(function_exists(wp_ozh_yourls_head_linkrel)){
+			wp_ozh_yourls_head_linkrel();
+		}
+	?>
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
@@ -50,6 +54,8 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option($shortname.'_alt_stylesheet').'" />';
 		}
 	?>
+	
+	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	
 	<?php wp_head(); ?>
 
