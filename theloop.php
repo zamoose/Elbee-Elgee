@@ -1,8 +1,8 @@
 	 <?php /* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
 		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) include (TEMPLATEPATH . '/navigation.php'); ?>
 		<?php 
-			$asides_cat_byname = get_option('lblg_asides_category');
-			$asides_cat_id = get_cat_id(get_option('lblg_asides_category'));
+			$asides_cat_byname = get_option($shortname.'_asides_category');
+			$asides_cat_id = get_cat_id(get_option($shortname.'_asides_category'));
 			if(in_category($asides_cat_id)){
 		?>
 		<div id="post-<?php the_ID();?>" class="asides">

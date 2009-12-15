@@ -34,6 +34,9 @@ if(file_exists($child_options)){
 			$options = array_merge($parent_options_array, $child_options_array);
 		break;
 	}
+} else {
+	include($parent_options);
+	$options = $parent_options_array;
 }
 
 function mytheme_add_admin() {
@@ -89,9 +92,6 @@ function mytheme_admin() {
 
 <table class="form-table">
 <tbody>
-<?php //option_wrapper_header(array("name"=>"Header Image")); ?>
-
-<?php //option_wrapper_footer(array("desc"=>"If you have GD2 support enabled on your server and the style you've selected supports it, you can generate a header image automatically.")); ?>
 
 <?php foreach ($options as $value) { 
 	
