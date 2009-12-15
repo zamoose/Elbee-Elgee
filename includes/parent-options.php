@@ -1,8 +1,5 @@
 <?php
 
-$themename = "Elbee Elgee";
-$shortname = "lblg";
-
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
 
@@ -42,7 +39,7 @@ $layouts_tmp = array_unshift($layouts, "Select a layout:");
 $alt_stylesheets_tmp = asort($alt_stylesheets);
 $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:");
 
-$options = array (
+$parent_options_array = array (
 		
 				array(	"name" => "Style Options",
 						"type" => "subhead"),

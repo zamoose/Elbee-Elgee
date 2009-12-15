@@ -25,10 +25,10 @@
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 
 		<?php if(function_exists(wp_rss)) { ?>
-			<li><h2><a href="http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss" class="rssfeed">Elbee Elgee Development</a></h2>
+			<li><h2><a href="http://lblg.zamoose.org/trac/timeline?ticket=on&changeset=on&milestone=on&wiki=on&max=50&daysback=90&format=rss" class="rssfeed">Elbee Elgee Development</a></h2>
 				<ul>
 			<?php	
-				$url = 'http://trac.zamoose.org/timeline?milestone=on&ticket=on&changeset=on&wiki=on&max=50&daysback=90&format=rss';
+				$url = 'http://lblg.zamoose.org/trac/timeline?ticket=on&changeset=on&milestone=on&wiki=on&max=50&daysback=90&format=rss';
 
 				wp_rss($url, 5);
 			?>
@@ -53,7 +53,7 @@
 		?>
 
 		<?php 
-			$tmp_del_username = get_option('lblg_delicious_username');
+			$tmp_del_username = get_option($shortname.'_delicious_username');
 			if(function_exists(wp_rss) && $tmp_del_username != '') { 
 				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
 			?>
@@ -71,7 +71,7 @@
 	</div>
 	<div id="footercredits">
 	<?php 
-		$tmp_footer_text = get_option('lblg_footer_text');
+		$tmp_footer_text = get_option($shortname.'_footer_text');
 		if($tmp_footer_text == ''){ 
 	?>
 	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy; 2003-2009 Doug Stewart</p>
@@ -83,7 +83,7 @@
 
         <?php do_action('wp_footer'); ?>
 	<?php
-		$tmp_stats_code = get_option('lblg_stats_code');
+		$tmp_stats_code = get_option($shortname.'_stats_code');
 		if($tmp_stats_code != ''){
 			echo $tmp_stats_code;
 		}

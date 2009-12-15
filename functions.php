@@ -1,6 +1,40 @@
 <?php
+/**
+* functions.php defines all manner of back-end coolness for
+* Elbee Elgee.
+*/
+$themename = "Elbee Elgee";
+$shortname = "lblg";
+$parent_options = TEMPLATEPATH . '/includes/parent-options.php';
+$child_options = STYLESHEETPATH . '/includes/child-options.php';
 
-include(TEMPLATEPATH . '/includes/parent-options.php');
+if(file_exists($child_options)){
+	include($child_options);
+	switch($parent_options_action) {
+		case 'prepend':
+			//Prepend child theme options to options array
+			include($parent_options);
+			$options = array_merge($child_options_array, $parent_options_array);
+		break;
+		case 'replace':
+			// Nuke parent options and replace with child theme's
+			$options = $child_options_array;
+		break;
+		case 'discard':
+			//Create an empty array -- no options
+			$options = array();
+		break;
+		case 'no_action':
+			include($parent_options);
+			$options = $parent_options_array;
+		break;
+		case 'append':
+		default:
+			include($parent_options);
+			$options = array_merge($parent_options_array, $child_options_array);
+		break;
+	}
+}
 
 function mytheme_add_admin() {
 
@@ -294,67 +328,6 @@ function elbee_admin_header_style() {
 <?php
 }
 
-function elbee_enqueue_jscripts() {
-	wp_enqueue_script('jquery-ui-tabs');
-	wp_enqueue_script('idTabs', get_bloginfo('template_directory').'/includes/js/jquery.idTabs.min.js');
-	wp_enqueue_script('kwicks', get_bloginfo('template_directory').'/includes/js/jquery.kwicks-1.5.1.js');
-	wp_enqueue_script('elbeeJS', get_bloginfo('template_directory').'/includes/js/elbeeFunctions.js');
-}
-
-function elbbee_tab_widget($args) {
-	extract($args);
-	
-	echo $before_widget;
-	echo $after_widget;
-}
-
-function elbee_meta_widget($args) {
-	extract($args);
-	
-	echo $before_widget;
-	echo $before_title; ?>Meta<?php echo $after_title;?>
-		<ul>
-			<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
-		 	<li><img src="<?php bloginfo('template_directory'); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
-			<?php wp_register(); ?>
-	        <li><?php wp_loginout(); ?></li>
-			<li><a href="http://www.dreamhost.com/donate.cgi?id=5283"><img border="0" alt="Donate towards my web hosting bill!" src="https://secure.newdream.net/donate1.gif" /></a></li>
-			<li><a href="http://feeds.feedburner.com/literalbarrage"><img src="http://feeds.feedburner.com/~fc/literalbarrage?bg=CA1919&amp;fg=FFFFFF&amp;anim=0" height="26" width="88" style="border:0" alt="" /></a></li>
-			<li><a href="http://jesse.bur.st/" title="Current server load"><img src="/blog/wp-images/serverload.php" alt="Server Load" border="0"></a></li>
-			<li><a href="http://macromates.com" title="Made with TextMate"><img src="<?php bloginfo('template_directory');?>/images/textmate_badge.png" style="border: 0;" /></a></li>
-			<li><a href="http://macrabbit.com/cssedit" title="Made with CSSEdit"><img src="<?php bloginfo('template_directory');?>/images/BadgeS.png" style="border: 0;" /></a></li>
-			<li><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"><img alt="Creative Commons License" style="border-width:0" src="http://creativecommons.org/images/public/somerights20.png"/></a><!--br/>This <span xmlns:dc="http://purl.org/dc/elements/1.1/" href="http://purl.org/dc/dcmitype/Text" rel="dc:type">work</span> by <a xmlns:cc="http://creativecommons.org/ns#" href="http://literalbarrage.org/blog/" property="cc:attributionName" rel="cc:attributionURL">http://literalbarrage.org/blog/</a> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/">Creative Commons Attribution-Noncommercial-Share Alike 3.0 United States License</a>.--></li>
-		</ul>
-	
-	<?php
-	echo $after_widget;
-}
-
-function elbee_polaroid_widget($args){
-?>
-	<!--div id="imgmapdiv">  
-	    <map name="imgmap">  
-	        <area shape="poly" coords="88,227,195,229,196,101,90,100" href="#" alt="1">  
-	        <area shape="poly" coords="88,214,54,226,19,122,89,102" href="#" alt="2">  
-	        <area shape="poly" coords="198,224,213,229,247,127,199,109,200,111" href="#" alt="3">  
-	        <area shape="poly" coords="45,112,37,59,127,47,133,86,132,95,93,100,47,110" href="#" alt="4">  
-	        <area shape="poly" coords="134,80,137,41,226,51,221,116,200,109,198,100,137,98,135,82" href="#" alt="5">  
-	        <area shape="poly" coords="230,190,263,199,293,92,229,73,226,117,251,127,231,191" href="#" alt="6">  
-	    </map>  
-	</div>  
-
-	<p>  
-	    <img src="<?php bloginfo('template_directory'); ?>/styles/ojg/polaroids.png" width="345" height="312" alt="Move mouse over image" usemap="#imgmap">  
-	</p-->
-	<img src="<?php bloginfo('template_directory'); ?>/styles/ojg/polaroids.png" alt="Do not taunt the Angry Bunny Man." title="Do not taunt the Angry Bunny Man."/>
-<?php
-}
-
-function elbee_meta_widget_init(){
-	register_sidebar_widget(__('Elbee Meta'), 'elbee_meta_widget');
-	register_sidebar_widget(__('Elbee Polaroids'), 'elbee_polaroid_widget');
-}
-
 function elbee_sidebar_header(){
 	do_action('elbee_sidebar_header');
 }
@@ -367,34 +340,10 @@ function elbee_meta_info(){
 	do_action('elbee_meta_info');
 }
 
-function elbee_theme_name(){
-	global $themename;
-	do_action('elbee_theme_name', $themename);
-}
-
-function elbee_short_name(){
-	global $shortname;
-	do_action('elbee_short_name', $shortname);
-}
-
-function set_elbee_theme_name($themename){
-	$themename = "Elbee Elgee";
-	return $themename;
-}
-
-function set_elbee_short_name($shortname){
-	$shortname = "lblg";
-	return $shortname;
-}
-
 remove_action('wp_head', 'rsd_link');
 remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'wp_generator');
-add_action('elbee_theme_name', 'set_elbee_theme_name');
-add_action('elbee_short_name', 'set_elbee_short_name');
 add_action('wp_head', 'mytheme_wp_head');
 add_action('admin_head','mytheme_admin_head');
 add_action('admin_menu', 'mytheme_add_admin'); 
-add_action('template_redirect', 'elbee_enqueue_jscripts');
-add_action('widgets_init', 'elbee_meta_widget_init');
 ?>

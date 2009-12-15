@@ -1,3 +1,7 @@
+<?php
+global $themename, $shortname;
+
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
@@ -37,13 +41,13 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<?php } ?>
 
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/includes/css/yui/fonts.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option('lblg_layout_stylesheet'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('template_directory'); ?>/layouts/<?php echo get_option($shortname.'_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/print.css" media="print">
 	<?php
-		$alt_style = get_option('lblg_alt_stylesheet');
+		$alt_style = get_option($shortname.'_alt_stylesheet');
 		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
-			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option('lblg_alt_stylesheet').'" />';
+			echo '<link rel="stylesheet" type="text/css" media="screen" href="'.get_bloginfo('template_directory').'/styles/'.get_option($shortname.'_alt_stylesheet').'" />';
 		}
 	?>
 	
