@@ -202,6 +202,14 @@ img.noborder {
 	max-width: 100%;
 }
 
+.lifestream_icon img, .btc-summary img {
+	border: 0 none !important;
+}
+
+#flickrrss img {
+	border: 0 none;
+	padding: 5px;
+}
 /* @end */
 
 /* @group Gravatar classes */
@@ -354,7 +362,7 @@ img.noborder {
 #comment {
 	width: 95%;
 	margin: 0 auto;
-	height: 60px;
+	height: 12em;
 	font-size: 12pt;
 }
 
