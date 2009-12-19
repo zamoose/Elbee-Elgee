@@ -1,5 +1,5 @@
 <?php
-elbee_sidebar_header(); 
+lblg_sidebar_header(); 
 ?>
 <div id="navigation">
 <ul>
@@ -57,5 +57,5 @@ elbee_sidebar_header();
 </ul>
 </div>
 <?php
-elbee_sidebar_footer();
+lblg_sidebar_footer();
 ?>

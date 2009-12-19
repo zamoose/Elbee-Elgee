@@ -8,66 +8,147 @@ $shortname = "lblg";
 $parent_options = TEMPLATEPATH . '/includes/parent-options.php';
 $child_options = STYLESHEETPATH . '/includes/child-options.php';
 
-if(file_exists($child_options)){
-	include($child_options);
-	switch($parent_options_action) {
-		case 'prepend':
-			//Prepend child theme options to options array
-			include($parent_options);
-			$options = array_merge($child_options_array, $parent_options_array);
-		break;
-		case 'replace':
-			// Nuke parent options and replace with child theme's
-			$options = $child_options_array;
-		break;
-		case 'discard':
-			//Create an empty array -- no options
-			$options = array();
-		break;
-		case 'no_action':
-			include($parent_options);
-			$options = $parent_options_array;
-		break;
-		case 'append':
-		default:
-			include($parent_options);
-			$options = array_merge($parent_options_array, $child_options_array);
-		break;
+function lblg_autoload_options(){
+	global $themename, $shortname, $parent_options, $child_options, $options;
+	if(file_exists($child_options)){
+		include($child_options);
+		switch($parent_options_action) {
+			case 'prepend':
+				//Prepend child theme options to options array
+				include($parent_options);
+				$options = array_merge($child_options_array, $parent_options_array);
+			break;
+			case 'replace':
+				// Nuke parent options and replace with child theme's
+				$options = $child_options_array;
+			break;
+			case 'discard':
+				//Create an empty array -- no options
+				$options = array();
+			break;
+			case 'no_action':
+				include($parent_options);
+				$options = $parent_options_array;
+			break;
+			case 'append':
+			default:
+				include($parent_options);
+				$options = array_merge($parent_options_array, $child_options_array);
+			break;
+		}
+	} else {
+		include($parent_options);
+		$options = $parent_options_array;
 	}
-} else {
-	include($parent_options);
-	$options = $parent_options_array;
 }
 
-function mytheme_add_admin() {
+function lblg_register_options(){
+	global $options, $shortname;
+	foreach ( $options as $key => $value ){
+		if ( $value['type'] != 'subhead'){
+			register_setting($shortname.'_theme_options', $key);
+		}
+	}
+}
 
+function lblg_print_options($options = array()){
+	foreach ($options as $key => $value) { 
+	
+		switch ( $value['type'] ) {
+			case 'subhead':
+			?>
+				</table>
+				
+				<h3><?php echo $value['name']; ?></h3>
+				
+				<table class="form-table">
+			<?php
+			break;
+			case 'text':
+			option_wrapper_header($value);
+			?>
+			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $key ) != "") { echo get_option( $key ); } else { echo $value['std']; } ?>" />
+			<?php
+			option_wrapper_footer($value);
+			break;
+			
+			case 'select':
+			option_wrapper_header($value);
+			?>
+		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
+		                <?php foreach ($value['options'] as $option) { ?>
+		                <option<?php if ( get_option( $key ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <?php } ?>
+		            </select>
+			<?php
+			option_wrapper_footer($value);
+			break;
+			
+			case 'textarea':
+			$ta_options = $value['options'];
+			option_wrapper_header($value);
+			?>
+					<textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
+					if( get_option($key) != "") {
+							echo get_option($key);
+						}else{
+							echo $value['std'];
+					}?></textarea>
+			<?php
+			option_wrapper_footer($value);
+			break;
+	
+			case "radio":
+			option_wrapper_header($value);
+			
+	 		foreach ($value['options'] as $key=>$option) { 
+					$radio_setting = get_option($key);
+					if($radio_setting != ''){
+			    		if ($key == get_option($key) ) {
+							$checked = "checked=\"checked\"";
+							} else {
+								$checked = "";
+							}
+					}else{
+						if($key == $value['std']){
+							$checked = "checked=\"checked\"";
+						}else{
+							$checked = "";
+						}
+					}?>
+		            <input type="radio" name="<?php echo $key; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
+			<?php 
+			}
+			 
+			option_wrapper_footer($value);
+			break;
+			
+			case "checkbox":
+			option_wrapper_header($value);
+							if(get_option($key)){
+								$checked = "checked=\"checked\"";
+							}else{
+								$checked = "";
+							}
+						?>
+			            <input type="checkbox" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="true" <?php echo $checked; ?> />
+			<?php
+			option_wrapper_footer($value);
+			break;
+	
+			default:
+	
+			break;
+		}
+	}
+
+}
+
+function lblg_add_admin() {
     global $themename, $shortname, $options;
-
-    if ( $_GET['page'] == basename(__FILE__) ) {
-    
-        if ( 'save' == $_REQUEST['action'] ) {
-
-                foreach ($options as $value) {
-                    update_option( $value['id'], $_REQUEST[ $value['id'] ] ); }
-
-                foreach ($options as $value) {
-                    if( isset( $_REQUEST[ $value['id'] ] ) ) { update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); } else { delete_option( $value['id'] ); } }
-
-                header("Location: themes.php?page=functions.php&saved=true");
-                die;
-
-        } else if( 'reset' == $_REQUEST['action'] ) {
-
-            foreach ($options as $value) {
-                delete_option( $value['id'] ); }
-
-            header("Location: themes.php?page=functions.php&reset=true");
-            die;
-
-        }
-    }
-
-    add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'mytheme_admin');
+    lblg_autload_options();
+    lblg_register_options();
+    add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'lblg_admin');
 
 }
 
@@ -77,7 +158,7 @@ function headimage_admin(){
 	
 }
 
-function mytheme_admin() {
+function lblg_admin() {
 
     global $themename, $shortname, $options;
 
@@ -88,113 +169,20 @@ function mytheme_admin() {
 <div class="wrap">
 <h2 class="updatehook"><?php echo $themename; ?> settings</h2>
 
-<form method="post">
+<form method="post" action="options.php">
 
 <table class="form-table">
 <tbody>
 
-<?php foreach ($options as $value) { 
-	
-	switch ( $value['type'] ) {
-		case 'subhead':
-		?>
-			</table>
-			
-			<h3><?php echo $value['name']; ?></h3>
-			
-			<table class="form-table">
-		<?php
-		break;
-		case 'text':
-		option_wrapper_header($value);
-		?>
-		        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" />
-		<?php
-		option_wrapper_footer($value);
-		break;
-		
-		case 'select':
-		option_wrapper_header($value);
-		?>
-	            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-	                <?php foreach ($value['options'] as $option) { ?>
-	                <option<?php if ( get_option( $value['id'] ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
-	                <?php } ?>
-	            </select>
-		<?php
-		option_wrapper_footer($value);
-		break;
-		
-		case 'textarea':
-		$ta_options = $value['options'];
-		option_wrapper_header($value);
-		?>
-				<textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
-				if( get_option($value['id']) != "") {
-						echo get_option($value['id']);
-					}else{
-						echo $value['std'];
-				}?></textarea>
-		<?php
-		option_wrapper_footer($value);
-		break;
+<?php lblg_print_options($options); ?>
 
-		case "radio":
-		option_wrapper_header($value);
-		
- 		foreach ($value['options'] as $key=>$option) { 
-				$radio_setting = get_option($value['id']);
-				if($radio_setting != ''){
-		    		if ($key == get_option($value['id']) ) {
-						$checked = "checked=\"checked\"";
-						} else {
-							$checked = "";
-						}
-				}else{
-					if($key == $value['std']){
-						$checked = "checked=\"checked\"";
-					}else{
-						$checked = "";
-					}
-				}?>
-	            <input type="radio" name="<?php echo $value['id']; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
-		<?php 
-		}
-		 
-		option_wrapper_footer($value);
-		break;
-		
-		case "checkbox":
-		option_wrapper_header($value);
-						if(get_option($value['id'])){
-							$checked = "checked=\"checked\"";
-						}else{
-							$checked = "";
-						}
-					?>
-		            <input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
-		<?php
-		option_wrapper_footer($value);
-		break;
-
-		default:
-
-		break;
-	}
-}
-?>
 </tbody>
 </table>
 
+<?php settings_fields($shortname . '_theme_options'); ?>
+
 <p class="submit">
-<input name="save" type="submit" value="Save changes" />    
-<input type="hidden" name="action" value="save" />
-</p>
-</form>
-<form method="post">
-<p class="submit">
-<input name="reset" type="submit" value="Reset" />
-<input type="hidden" name="action" value="reset" />
+<input name="save" type="submit" class="button-primary" value="Save changes" />    
 </p>
 </form>
 
@@ -218,16 +206,16 @@ function option_wrapper_footer($values){
 	<?php 
 }
 
-function mytheme_wp_head() { /*?>
+function lblg_wp_head() { /*?>
 <link href="<?php bloginfo('template_directory'); ?>/style.php" rel="stylesheet" type="text/css" />
 <?php*/ }
 
-function mytheme_admin_head(){ 
+function lblg_admin_head(){ 
 	global $themename;
 }
 
 if ( function_exists('register_sidebar') ) {
-	register_sidebar(array('name'=>'BigBar'));
+	//register_sidebar(array('name'=>'BigBar'));
 	register_sidebar(array('name'=>'Navigation'));
 	register_sidebar(array('name'=>'Extra', 
 						   'before_widget' => '<li>', 
@@ -247,10 +235,10 @@ if(get_option($use_custom_header) == true){
 	define('HEADER_IMAGE_WIDTH', '1024');
 	define('HEADER_IMAGE_HEIGHT', '279');
 
-	add_custom_image_header('header_style', 'elbee_admin_header_style');
+	add_custom_image_header('header_style', 'lblg_admin_header_style');
 }
 
-function elbee_the_postimage() {
+function lblg_the_postimage() {
 	global $wpdb, $post;
 
 	$thumb = $wpdb->get_row('SELECT ID, post_title, guid FROM '.$wpdb->posts.' WHERE post_parent = '.$post->ID.' AND post_mime_type LIKE \'image%\' ORDER BY menu_order');
@@ -264,7 +252,7 @@ function elbee_the_postimage() {
 	}
 }
 
-function header_style() {
+function lblg_header_style() {
 ?>
 <style type="text/css">
 #header{
@@ -286,7 +274,7 @@ function header_style() {
 <?php
 }
 
-function elbee_admin_header_style() {
+function lblg_admin_header_style() {
 ?>
 <style type="text/css">
 #headimg{
@@ -328,22 +316,22 @@ function elbee_admin_header_style() {
 <?php
 }
 
-function elbee_sidebar_header(){
-	do_action('elbee_sidebar_header');
+/*
+* Theme Hooks
+*/
+function lblg_sidebar_header(){
+	do_action('lblg_sidebar_header');
 }
 
-function elbee_sidebar_footer(){
-	do_action('elbee_sidebar_footer');
+function lblg_sidebar_footer(){
+	do_action('lblg_sidebar_footer');
 }
 
-function elbee_meta_info(){
-	do_action('elbee_meta_info');
+function lblg_meta_info(){
+	do_action('lblg_meta_info');
 }
 
-remove_action('wp_head', 'rsd_link');
-remove_action('wp_head', 'wlwmanifest_link');
-remove_action('wp_head', 'wp_generator');
-add_action('wp_head', 'mytheme_wp_head');
-add_action('admin_head','mytheme_admin_head');
-add_action('admin_menu', 'mytheme_add_admin'); 
+add_action('wp_head', 'lblg_wp_head');
+add_action('admin_head','lblg_admin_head');
+add_action('admin_menu', 'lblg_add_admin'); 
 ?>
