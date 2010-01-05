@@ -68,16 +68,4 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<?php lblg_print_title(); ?>
 	<p class="description"><span><?php bloginfo('description'); ?></span></p>
 </div>
-<div id="menuwrap">
-        <ul id="menu" class="kwicks">
-		<?php if (is_home() || is_single()) : ?>
-                <li class="current_page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
-                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
-				<?php wp_register('<li class="admintab page_item">','</li>'); ?>
-		<?php else : ?>
-                <li class="page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
-                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
-				<?php wp_register('<li class="admintab page_item">','</li>'); ?>
-		<?php endif; ?>
-        </ul>
-</div>
+<?php lblg_print_menu(); ?>
