@@ -329,6 +329,10 @@ function lblg_print_title(){
 	do_action('lblg_print_title');
 }
 
+function lblg_above_content(){
+	do_action('lblg_above_content');
+}
+
 function lblg_sidebar_header(){
 	do_action('lblg_sidebar_header');
 }
