@@ -1,5 +1,8 @@
 <?php
 
+$parent_themename = "Elbee Elgee";
+$parent_shortname = "lblg";
+
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
 

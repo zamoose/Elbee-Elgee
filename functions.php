@@ -3,8 +3,7 @@
 * functions.php defines all manner of back-end coolness for
 * Elbee Elgee.
 */
-$themename = "Elbee Elgee";
-$shortname = "lblg";
+
 $parent_options = TEMPLATEPATH . '/includes/parent-options.php';
 $child_options = STYLESHEETPATH . '/includes/child-options.php';
 
@@ -146,13 +145,19 @@ function lblg_print_options($options = array()){
 
 function lblg_add_admin() {
     global $themename, $shortname, $options;
-    lblg_autload_options();
+    lblg_autoload_options();
     lblg_register_options();
     add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'lblg_admin');
 
 }
 
 //add_theme_page($themename . 'Header Options', 'Header Options', 'edit_themes', basename(__FILE__), 'headimage_admin');
+
+function lblg_title(){
+?>
+	<h1><span id="blogtitle"><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
+<?php
+}
 
 function headimage_admin(){
 	
@@ -319,6 +324,11 @@ function lblg_admin_header_style() {
 /*
 * Theme Hooks
 */
+
+function lblg_print_title(){
+	do_action('lblg_print_title');
+}
+
 function lblg_sidebar_header(){
 	do_action('lblg_sidebar_header');
 }
@@ -331,6 +341,7 @@ function lblg_meta_info(){
 	do_action('lblg_meta_info');
 }
 
+add_action('lblg_print_title', 'lblg_title');
 add_action('wp_head', 'lblg_wp_head');
 add_action('admin_head','lblg_admin_head');
 add_action('admin_menu', 'lblg_add_admin'); 
