@@ -17,7 +17,8 @@
 			<?php } else { ?><h3><?php the_title(); ?></h3><?php } ?>
 			<span class="postmeta">Posted by <?php the_author(); ?> on <?php the_time('F jS, Y'); ?> <?php if (!is_single()){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
 			<div class="itemtext">
-			<span class="post_header_img"><img src="<?php bloginfo('template_directory'); ?>/includes/timthumb.php?src=<?php lblg_the_postimage(); ?>&h=120&w=480" /></span>
+			<?php /*
+			<span class="post_header_img"><img src="<?php bloginfo('template_directory'); ?>/includes/timthumb.php?src=<?php lblg_the_postimage(); ?>&h=120&w=480" /></span>*/ ?>
 					<?php if ( is_archive() or is_search() or (function_exists('is_tag') and is_tag()) ) {
 						the_excerpt();
 					} else {
