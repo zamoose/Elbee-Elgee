@@ -379,6 +379,12 @@ function lblg_meta_info(){
 	do_action('lblg_meta_info');
 }
 
+/*
+* Support 2.9 & 3.0 coolness
+*/
+add_theme_support( 'nav-menus' );
+add_theme_support( 'post-thumbnails' );
+
 add_action('lblg_set_themename', 'lblg_themename');
 add_action('lblg_print_title', 'lblg_title');
 add_action('lblg_print_menu', 'lblg_menu');
