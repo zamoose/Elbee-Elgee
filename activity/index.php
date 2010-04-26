@@ -1,6 +1,7 @@
 <?php get_header() ?>
 
-	<div id="container">
+<div id="allwrapper">
+	<div id="wrapper">
 		<div id="content">
 
 			<?php if ( !is_user_logged_in() ) : ?>
@@ -97,8 +98,9 @@
 			<?php do_action( 'bp_after_directory_activity_content' ) ?>
 
 		</div><!-- #content -->
-	</div><!-- #container -->
+	</div><!-- #wrapper -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
+</div><!--#allwrapper-->
 <?php get_footer() ?>

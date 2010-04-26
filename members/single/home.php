@@ -1,6 +1,8 @@
 <?php get_header() ?>
 
-<div id="container">
+
+<div id="allwrapper">
+	<div id="wrapper">
 	<div id="content">
 
 		<?php do_action( 'bp_before_member_home_content' ) ?>
@@ -49,7 +51,8 @@
 		<?php do_action( 'bp_after_member_home_content' ) ?>
 
 	</div><!-- #content -->
-</div><!-- #container -->
+</div>
+</div>
 
 <?php locate_template( array( 'sidebar.php' ), true ) ?>
 

@@ -2,7 +2,9 @@
 
 	<?php do_action( 'bp_before_directory_forums_content' ) ?>
 
-	<div id="container">
+
+	<div id="allwrapper">
+		<div id="wrapper">
 		<div id="content">
 
 		<form action="" method="post" id="forums-search-form" class="dir-form">
@@ -104,7 +106,8 @@
 		</form>
 
 	</div><!-- #content -->
-</div><!-- #container -->
+</div>
+</div>
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 

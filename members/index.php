@@ -1,6 +1,8 @@
 <?php get_header() ?>
 
-<div id="container">
+
+<div id="allwrapper">
+	<div id="wrapper">
 	<div id="content">
 
 		<form action="" method="post" id="members-directory-form" class="dir-form">
@@ -53,7 +55,8 @@
 		</form><!-- #members-directory-form -->
 
 	</div><!-- #content -->
-</div><!-- #container -->
+</div>
+</div>
 
 <?php locate_template( array( 'sidebar.php' ), true ) ?>
 

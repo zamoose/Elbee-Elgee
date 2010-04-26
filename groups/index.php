@@ -1,6 +1,8 @@
 <?php get_header() ?>
 
-<div id="container">
+
+<div id="allwrapper">
+	<div id="wrapper">
 	<div id="content">
 
 		<form action="" method="post" id="groups-directory-form" class="dir-form">
@@ -50,7 +52,8 @@
 		<?php do_action( 'bp_after_directory_groups_content' ) ?>
 
 	</div><!-- #content -->
-</div><!-- #container -->
+</div>
+</div>
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 

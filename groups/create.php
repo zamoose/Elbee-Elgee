@@ -1,6 +1,8 @@
 <?php get_header() ?>
 
-<div id="container">
+
+<div id="allwrapper">
+	<div id="wrapper">
 	<div id="content">
 
 		<form action="<?php bp_group_creation_form_action() ?>" method="post" id="create-group-form" class="standard-form" enctype="multipart/form-data">
@@ -255,7 +257,8 @@
 		</form>
 
 	</div><!-- #content -->
-</div><!-- #container -->
+</div>
+</div>
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
