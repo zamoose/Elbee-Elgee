@@ -1,3 +1,7 @@
+<?php if(function_exists(comment_form)){
+	comment_form();
+} else {
+?>
 <!-- Comments code provided by christianmontoya.com -->
 
 <?php if (!empty($post->post_password) && $_COOKIE['wp-postpass_'.COOKIEHASH]!=$post->post_password) : ?>
@@ -188,4 +192,6 @@
 
 <?php else : // Comments are closed ?>
 	<p id="comments-closed">Sorry, comments for this entry are closed at this time.</p>
-<?php endif; ?>
+<?php endif; 
+} // End else
+?>

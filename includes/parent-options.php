@@ -1,7 +1,7 @@
 <?php
 
-$parent_themename = "Elbee Elgee";
-$parent_shortname = "lblg";
+$themename = $parent_theme_array[ 'parent_themename' ] = "Elbee Elgee";
+$shortname = $parent_theme_array[ 'parent_shortname' ] = "lblg";
 
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
@@ -120,4 +120,7 @@ $parent_options_array = array (
 			    		"type" => "text")
 		  );
 
+$parent_theme_array[ 'options' ] = $parent_options_array;
+
+return $parent_theme_array;
 ?>

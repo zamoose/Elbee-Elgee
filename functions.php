@@ -4,48 +4,47 @@
 * Elbee Elgee.
 */
 
-$parent_options = TEMPLATEPATH . '/includes/parent-options.php';
-$child_options = STYLESHEETPATH . '/includes/child-options.php';
+$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
+$child_options_file = STYLESHEETPATH . '/includes/child-options.php';
 
-function lblg_themename(){
-	global $themename, $shortname;
+// Load parent options
+$parent_theme_array = include( $parent_options_file );
+
+$parent_options_array = $parent_theme_array[ 'options' ];
+
+// Conditionally load child options
+if( file_exists( $child_options_file ) ){
+	$child_theme_array = include( $child_options_file );
+	$child_options_array = $child_theme_array[ 'options' ];
 	
-	$themename = "Elbee Elgee";
-	$shortname = "lblg";
-}
-
-function lblg_autoload_options(){
-	global $themename, $shortname, $parent_options, $child_options, $options;
-	if(file_exists($child_options)){
-		include($child_options);
-		switch($parent_options_action) {
-			case 'prepend':
-				//Prepend child theme options to options array
-				include($parent_options);
-				$options = array_merge($child_options_array, $parent_options_array);
-			break;
-			case 'replace':
-				// Nuke parent options and replace with child theme's
-				$options = $child_options_array;
-			break;
-			case 'discard':
-				//Create an empty array -- no options
-				$options = array();
-			break;
-			case 'no_action':
-				include($parent_options);
-				$options = $parent_options_array;
-			break;
-			case 'append':
-			default:
-				include($parent_options);
-				$options = array_merge($parent_options_array, $child_options_array);
-			break;
-		}
-	} else {
-		include($parent_options);
-		$options = $parent_options_array;
+	$themename = $child_theme_array[ 'child_themename' ];
+	$shortname = $child_theme_array[ 'child_shortname' ];
+	
+	switch( $child_theme_array[ 'parent_options_action' ] ) {
+		case 'prepend':
+			//Prepend child theme options to options array
+			$options = array_merge( $child_options_array, $parent_options_array );
+		break;
+		case 'replace':
+			// Nuke parent options and replace with child theme's
+			$options = $child_options_array;
+		break;
+		case 'discard':
+			//Create an empty array -- no options
+			$options = array();
+		break;
+		case 'no_action':
+			$options = $parent_options_array;
+		break;
+		case 'append':
+		default:
+			$options = array_merge( $parent_options_array, $child_options_array );
+		break;
 	}
+} else {
+	$options = $parent_options_array;
+	$themename = $parent_theme_array[ 'parent_themename' ];
+	$shortname = $parent_theme_array[ 'parent_shortname' ];
 }
 
 function lblg_register_options(){
@@ -152,11 +151,8 @@ function lblg_print_options($options = array()){
 
 function lblg_add_admin() {
     global $themename, $shortname, $options;
-    lblg_set_themename();
-    lblg_autoload_options();
     lblg_register_options();
     add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'lblg_admin');
-
 }
 
 //add_theme_page($themename . 'Header Options', 'Header Options', 'edit_themes', basename(__FILE__), 'headimage_admin');
@@ -168,6 +164,9 @@ function lblg_title(){
 }
 
 function lblg_menu(){
+	if( function_exists( 'wp_nav_menu' ) ){
+		wp_nav_menu( array( 'theme_location' => 'primary' ) );
+	} else {
 	?>
 	<div id="menuwrap">
 	        <ul id="menu" class="kwicks">
@@ -183,6 +182,7 @@ function lblg_menu(){
 	        </ul>
 	</div>
 	<?php
+	}
 }
 
 function headimage_admin(){
@@ -242,11 +242,10 @@ function lblg_wp_head() { /*?>
 <?php*/ }
 
 function lblg_admin_head(){ 
-	global $themename;
+
 }
 
 if ( function_exists('register_sidebar') ) {
-	//register_sidebar(array('name'=>'BigBar'));
 	register_sidebar(array('name'=>'Navigation'));
 	register_sidebar(array('name'=>'Extra', 
 						   'before_widget' => '<li>', 
@@ -384,6 +383,9 @@ function lblg_meta_info(){
 */
 add_theme_support( 'nav-menus' );
 add_theme_support( 'post-thumbnails' );
+add_custom_background();
+
+register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __( 'Sub-Menu' ) ) );
 
 add_action('lblg_set_themename', 'lblg_themename');
 add_action('lblg_print_title', 'lblg_title');
