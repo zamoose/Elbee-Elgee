@@ -3,7 +3,7 @@
 
 <div id="allwrapper">
 	<div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 
 		<form action="" method="post" id="members-directory-form" class="dir-form">
 

@@ -19,7 +19,7 @@ Template Name: Archives
 <?php }else{ ?>
 <div id="allwrapper">
 <div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 		<h3 class="archives">Archives</h3>
 		<?php wp_smart_archives(); ?>
 		

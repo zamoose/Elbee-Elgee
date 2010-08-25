@@ -3,7 +3,7 @@
 	<?php do_action( 'bp_before_create_blog_content' ) ?>
 
 	<div id="container">
-		<div id="content">
+		<div id="lb-content">
 
 		<?php do_action( 'template_notices' ) ?>
 

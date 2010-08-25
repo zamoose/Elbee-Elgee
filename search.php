@@ -7,7 +7,7 @@ get_header(); ?>
 
 <div id="allwrapper">
 <div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 		<?php include( TEMPLATEPATH . '/theloop.php' ); ?>
 	</div>
 </div>

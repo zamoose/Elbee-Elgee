@@ -5,7 +5,7 @@
 
 	<div id="allwrapper">
 		<div id="wrapper">
-		<div id="content">
+		<div id="lb-content">
 
 		<form action="" method="post" id="forums-search-form" class="dir-form">
 			<h3><?php _e( 'Group Forums Directory', 'buddypress' ) ?><?php if ( is_user_logged_in() ) : ?> &nbsp;<a class="button" href="#new-topic" id="new-topic-button"><?php _e( 'New Topic', 'buddypress' ) ?></a><?php endif; ?></h3>

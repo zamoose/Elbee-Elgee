@@ -7,7 +7,7 @@ Template Name: Page
 
 <div id="allwrapper">
 <div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 	<?php if (have_posts()) : while (have_posts()) : the_post();?>
 	<div id="post-<?php the_ID(); ?>" class="wppost">
 		<h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>        

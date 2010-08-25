@@ -2,7 +2,7 @@
 
 <div id="allwrapper">
 	<div id="wrapper">
-		<div id="content">
+		<div id="lb-content">
 
 		<form action="" method="post" id="blogs-directory-form" class="dir-form">
 

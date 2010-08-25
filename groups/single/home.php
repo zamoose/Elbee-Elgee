@@ -3,7 +3,7 @@
 
 <div id="allwrapper">
 	<div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 
 			<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 

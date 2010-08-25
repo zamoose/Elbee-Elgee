@@ -3,7 +3,7 @@
 
 <div id="allwrapper">
 	<div id="wrapper">
-		<div id="content">
+		<div id="lb-content">
 
 		<?php do_action( 'bp_before_register_page' ) ?>
 

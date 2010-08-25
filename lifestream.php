@@ -7,7 +7,7 @@ Template Name: Lifestream
 
 <div id="allwrapper">
 <div id="wrapper">
-	<div id="content">
+	<div id="lb-content">
 	<h3>Lifestream</h3>
 		<?php 
 			if(function_exists(simplelife)){

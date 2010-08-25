@@ -14,7 +14,7 @@ if (function_exists(afdn_error_page)) {
 
 <div id="allwrapper">
 	<div id="wrapper">
-		<div id="content">
+		<div id="lb-content">
 			<div class="wppost">
 				<h3>Whoops.</h3>
 				<div class="itemtext">
