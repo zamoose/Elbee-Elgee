@@ -32,7 +32,7 @@
 						<span class="posttags"><?php the_tags('Tagged as: ',','); ?></span>
 					<?php }?>
 					</div>
-					<?php link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
+					<?php wp_link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 			</div>
 
 			<!--

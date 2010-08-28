@@ -15,7 +15,7 @@ lblg_sidebar_header();
 
 	<?php
 	if (is_home()) {
-		get_links_list(); 
+		wp_list_bookmarks(); 
 	}
 	
 	if ((is_single() || is_archive()) && function_exists(related_posts)){ ?>

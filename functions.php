@@ -378,6 +378,53 @@ function lblg_meta_info(){
 	do_action('lblg_meta_info');
 }
 
+/**
+ * LBBPWidget Class
+ */
+class LBBPMenuWidget extends WP_Widget {
+    /** constructor */
+    function LBBPMenuWidget() {
+        parent::WP_Widget(false, $name = 'LBBPMenuWidget');	
+    }
+
+    /** @see WP_Widget::widget */
+    function widget($args, $instance) {		
+        extract( $args );
+        $title = apply_filters('widget_title', $instance['title']);
+       
+        echo $before_widget;
+        if ( $title ) echo $before_title . $title . $after_title;
+		echo '<ul id="lb-subnav">';
+		
+		if ( is_user_logged_in() ){
+			bp_get_loggedin_user_nav();			
+		} else {
+			bp_get_displayed_user_nav();
+		}
+		echo '</ul>';
+		
+		echo $after_widget;
+    }
+
+    /** @see WP_Widget::update */
+    function update($new_instance, $old_instance) {				
+	$instance = $old_instance;
+	$instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
+
+    /** @see WP_Widget::form */
+    function form($instance) {				
+        $title = esc_attr($instance['title']);
+        ?>
+            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+        <?php 
+    }
+
+} // class LBBPMenuWidget
+
+register_widget('LBBPMenuWidget');
+
 /*
 * Support 2.9 & 3.0 coolness
 */
@@ -393,4 +440,7 @@ add_action('lblg_print_menu', 'lblg_menu');
 add_action('wp_head', 'lblg_wp_head');
 add_action('admin_head','lblg_admin_head');
 add_action('admin_menu', 'lblg_add_admin'); 
+// register LBBPMenuWidget widget
+add_action('widgets_init', create_function('', 'return register_widget("LBBPMenuWidget");'));
+
 ?>

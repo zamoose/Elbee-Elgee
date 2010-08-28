@@ -25,8 +25,8 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 
 	<?php 
 	//Include Magpie RSS for make benefit glorious nation America.
-	if ( file_exists(ABSPATH . WPINC . '/rss.php') )
-		require_once(ABSPATH . WPINC . '/rss.php');
+	if ( file_exists(ABSPATH . WPINC . '/class-simplepie.php') )
+		require_once(ABSPATH . WPINC . '/class-simplepie.php');
 	else
 		require_once(ABSPATH . WPINC . '/rss-functions.php');
 	?>
