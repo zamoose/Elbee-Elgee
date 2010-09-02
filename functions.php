@@ -245,7 +245,8 @@ function lblg_admin_head(){
 
 }
 
-if ( function_exists('register_sidebar') ) {
+
+function lblg_register_sidebars() {
 	register_sidebar(array('name'=>'Navigation'));
 	register_sidebar(array('name'=>'Extra', 
 						   'before_widget' => '<li>', 
@@ -255,7 +256,6 @@ if ( function_exists('register_sidebar') ) {
 	register_sidebar(array('name'=>'Bottom-Left'));
 	register_sidebar(array('name'=>'Bottom-Right'));	
 }
-
 
 $use_custom_header = $shortname."_use_custom_header";
 if(get_option($use_custom_header) == true){
@@ -440,7 +440,9 @@ add_action('lblg_print_menu', 'lblg_menu');
 add_action('wp_head', 'lblg_wp_head');
 add_action('admin_head','lblg_admin_head');
 add_action('admin_menu', 'lblg_add_admin'); 
-// register LBBPMenuWidget widget
+// Register sidebars
+add_action('widgets_init', 'lblg_register_sidebars' );
+// Register LBBPMenuWidget widget
 add_action('widgets_init', create_function('', 'return register_widget("LBBPMenuWidget");'));
 
 ?>
