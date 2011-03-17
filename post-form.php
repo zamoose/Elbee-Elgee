@@ -3,7 +3,7 @@
 global $current_user;
 
 $user			= get_userdata( $current_user->ID );
-$first_name		= attribute_escape( $user->first_name );
+$first_name		= esc_attr( $user->first_name );
 ?>
 
 <div id="postbox">

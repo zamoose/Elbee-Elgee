@@ -5,14 +5,14 @@
 			$asides_cat_id = get_cat_id(get_option($shortname.'_asides_category'));
 			if(in_category($asides_cat_id)){
 		?>
-		<div id="post-<?php the_ID();?>" class="asides">
+		<div id="post-<?php the_ID();?>"  <?php post_class(); ?>>
 			<h3><?php the_title(); ?></h3>
 			<div class="itemtext">
 				<?php the_content(); ?><?php if(!is_single()){ ?>(<?php comments_popup_link('0','1','%'); ?>) <a href="<?php the_permalink();?>" rel="bookmark" title="Permanent link to <?php echo strip_tags(get_the_title()); ?>">#</a><?php } ?>
 			</div>
 		</div>
 		<?php } else { //Not an Aside... ?>
-		<div id="post-<?php the_ID(); ?>" class="wppost">
+		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php if(!is_single()) { ?><h3><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h3>
 			<?php } else { ?><h3><?php the_title(); ?></h3><?php } ?>
 			<span class="postmeta">Posted by <?php the_author(); ?> on <?php the_time('F jS, Y'); ?> <?php if (!is_single()){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>

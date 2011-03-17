@@ -81,7 +81,7 @@
 		}
 	/* Try. to understand */ ?>
 
-        <?php do_action('wp_footer'); ?>
+        <?php wp_footer(); ?>
 	<?php
 		$tmp_stats_code = get_option($shortname.'_stats_code');
 		if($tmp_stats_code != ''){

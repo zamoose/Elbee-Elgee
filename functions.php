@@ -159,7 +159,7 @@ function lblg_add_admin() {
 
 function lblg_title(){
 ?>
-	<h1><span id="blogtitle"><a href="<?php bloginfo('home'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
+	<h1><span id="blogtitle"><a href="<?php bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
 <?php
 }
 
@@ -269,16 +269,8 @@ if(get_option($use_custom_header) == true){
 }
 
 function lblg_the_postimage() {
-	global $wpdb, $post;
-
-	$thumb = $wpdb->get_row('SELECT ID, post_title, guid FROM '.$wpdb->posts.' WHERE post_parent = '.$post->ID.' AND post_mime_type LIKE \'image%\' ORDER BY menu_order');
-
-	if(!empty($thumb)) {
-		$image_url = $thumb->guid;
-		
-		$image = parse_url($image_url, PHP_URL_PATH);
-		
-		print $image;
+	if(has_post_thumbnail()) {
+		the_post_thumbnail();
 	}
 }
 
@@ -430,6 +422,7 @@ register_widget('LBBPMenuWidget');
 */
 add_theme_support( 'nav-menus' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'automatic-feed-links' );
 add_custom_background();
 
 register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __( 'Sub-Menu' ) ) );

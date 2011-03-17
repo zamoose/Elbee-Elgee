@@ -5,7 +5,7 @@ lblg_sidebar_header();
 <ul>
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Navigation') ) : ?>
 	<li><h2>Search</h2>
-		<?php include (TEMPLATEPATH . '/searchform.php'); ?>
+		<?php get_search_form(); ?>
 	</li>
 	<?php if ( function_exists('blc_latest_comments') ) { ?>
 		<li><h2>Recent Comments</h2>
