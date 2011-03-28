@@ -135,11 +135,15 @@ abbr,acronym { border:0;
 
 
 
-#menu li {
-	display: inline;
-	list-style-type: none;
+.menu > ul > li {
+	display: inline-block;
+	/*list-style-type: none;
 	margin: 0;
-	padding: 0;
+	padding: 0;*/
+}
+
+.menu > ul > li a:link, .menu > ul > li a:visited{
+	display:  block;
 }
 
 #menu li:first-child a {
