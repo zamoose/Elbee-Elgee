@@ -10,11 +10,11 @@ Template Name: Lifestream
 	<div id="lb-content">
 	<h3>Lifestream</h3>
 		<?php 
-			if(function_exists(simplelife)){
+			if(function_exists('simplelife')){
 				simplelife();
 			}
 
-			if(function_exists(lifestream)){
+			if(function_exists('lifestream')){
 				lifestream();
 			}
 		?>

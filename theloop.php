@@ -1,5 +1,5 @@
 	 <?php /* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
-		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) include (TEMPLATEPATH . '/navigation.php'); ?>
+		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) get_template_part('navigation'); ?>
 		<?php 
 			$asides_cat_byname = get_option($shortname.'_asides_category');
 			$asides_cat_id = get_cat_id(get_option($shortname.'_asides_category'));
@@ -27,7 +27,7 @@
 					<?php if (function_exists('sharethis_button') && (is_home() || is_page() || is_single())) { sharethis_button(); } ?>
 					<div class="postinfo">
 						<span class="postcats">Posted in <?php the_category(', '); ?></span>
-						<?php if(function_exists(the_tags) && is_single()){?>
+						<?php if(function_exists('the_tags') && is_single()){?>
 						<br />
 						<span class="posttags"><?php the_tags('Tagged as: ',','); ?></span>
 					<?php }?>

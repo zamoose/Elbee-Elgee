@@ -39,7 +39,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="alternate" type="text/xml" title="RSS .92" href="<?php bloginfo('rss_url'); ?>" />
 	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="<?php bloginfo('atom_url'); ?>" />
 	<?php if (is_single() or is_page()) {
-		if(function_exists(wp_ozh_yourls_head_linkrel)){
+		if(function_exists('wp_ozh_yourls_head_linkrel')){
 			wp_ozh_yourls_head_linkrel();
 		}
 	?>

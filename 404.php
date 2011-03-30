@@ -6,7 +6,7 @@ Template Name: 404'd
 <?php header("HTTP/1.1 404 Not Found"); ?>
 <?php header("Status: 404 Not Found"); ?>
 <?php
-if (function_exists(afdn_error_page)) {
+if (function_exists('afdn_error_page')) {
 	afdn_error_page(); 
 } else {
 ?>
