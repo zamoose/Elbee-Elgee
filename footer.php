@@ -24,48 +24,6 @@
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
 
-		<?php if(function_exists(wp_rss)) { ?>
-			<li><h2><a href="http://lblg.zamoose.org/trac/timeline?ticket=on&changeset=on&milestone=on&wiki=on&max=50&daysback=90&format=rss" class="rssfeed">Elbee Elgee Development</a></h2>
-				<ul>
-			<?php	
-				$url = 'http://lblg.zamoose.org/trac/timeline?ticket=on&changeset=on&milestone=on&wiki=on&max=50&daysback=90&format=rss';
-
-				wp_rss($url, 5);
-			?>
-				</ul>
-			</li>
-		<?php } ?>
-
-		<?php
-			if(function_exists(wp_rss)){
-		?>
-			<li><h2><a href="http://feeds.feedburner.com/zamooses-gr-shared-items" class="rssfeed">Google Reader</a></h2>
-				<ul>
-			<?php
-				$url = "http://feeds.feedburner.com/zamooses-gr-shared-items";
-				
-				wp_rss($url,10);
-			?>
-				</ul>
-			</li>
-		<?php
-			}
-		?>
-
-		<?php 
-			$tmp_del_username = get_option($shortname.'_delicious_username');
-			if(function_exists(wp_rss) && $tmp_del_username != '') { 
-				$url = 'http://del.icio.us/rss/'.$tmp_del_username;
-			?>
-			<li><h2><a href="<?php echo $url; ?>" class="rssfeed">del.icio.us</a></h2>
-				<ul>
-			<?php	
-				wp_rss($url, 10);
-			?>
-				</ul>
-			</li>
-		<?php } ?>
-
 		<?php endif; ?>
 		</ul>
 	</div>
@@ -79,14 +37,8 @@
 		}else{
 			echo $tmp_footer_text;
 		}
-	/* Try. to understand */ ?>
 
-        <?php wp_footer(); ?>
-	<?php
-		$tmp_stats_code = get_option($shortname.'_stats_code');
-		if($tmp_stats_code != ''){
-			echo $tmp_stats_code;
-		}
+		wp_footer(); 
 	?>
 	<!--<?php echo get_num_queries(); ?> queries-->
 	</div>
