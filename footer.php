@@ -74,7 +74,7 @@
 		$tmp_footer_text = get_option($shortname.'_footer_text');
 		if($tmp_footer_text == ''){ 
 	?>
-	<p><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy; 2003-2009 Doug Stewart</p>
+	<p><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a> is powered by <a href="http://wordpress.org">WordPress</a> <?php bloginfo('version'); ?> and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p><p>&copy; 2003-2009 Doug Stewart</p>
 	<?php
 		}else{
 			echo $tmp_footer_text;

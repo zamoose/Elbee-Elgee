@@ -159,7 +159,7 @@ function lblg_add_admin() {
 
 function lblg_title(){
 ?>
-	<h1><span id="blogtitle"><a href="<?php bloginfo('url'); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
+	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
 <?php
 }
 
@@ -171,11 +171,11 @@ function lblg_menu(){
 	<div id="menuwrap">
 	        <ul id="menu" class="kwicks">
 			<?php if (is_home() || is_single()) : ?>
-	                <li class="current_page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
+	                <li class="current_page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
 	                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
 					<?php wp_register('<li class="admintab page_item">','</li>'); ?>
 			<?php else : ?>
-	                <li class="page_item"><a href="<?php bloginfo('url'); ?>">Blog</a></li>
+	                <li class="page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
 	                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
 					<?php wp_register('<li class="admintab page_item">','</li>'); ?>
 			<?php endif; ?>
@@ -409,7 +409,7 @@ class LBBPMenuWidget extends WP_Widget {
     function form($instance) {				
         $title = esc_attr($instance['title']);
         ?>
-            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Title:'; ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
         <?php 
     }
 
