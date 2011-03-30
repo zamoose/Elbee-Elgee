@@ -4,7 +4,7 @@
 	<div id="wrapper">
 		<?php lblg_above_content(); ?>
 		<div id="lb-content">
-			<?php include( TEMPLATEPATH . '/theloop.php' ); ?>
+			<?php get_template_part( 'theloop' ); ?>
 		</div>
 	</div>
 

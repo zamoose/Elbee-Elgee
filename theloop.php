@@ -41,5 +41,5 @@
 		</div>
 		<?php } //End Asides/!Asides if...else ?>
 	<?php } /* End while */?>
-	<?php if(is_home() || is_archive()) include(TEMPLATEPATH . "/navigation.php"); ?>
+	<?php if(is_home() || is_archive()) get_template_part('navigation'); ?>
 	<?php } /*End loop*/ ?>

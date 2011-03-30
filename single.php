@@ -8,7 +8,7 @@ get_header(); ?>
 <div id="allwrapper">
 <div id="wrapper">
 	<div id="lb-content">
-		<?php include( TEMPLATEPATH . '/theloop.php' ); ?>
+		<?php get_template_part('theloop' ); ?>
 		<?php comments_template(); ?>
 	</div>
 </div>

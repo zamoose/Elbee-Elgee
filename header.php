@@ -22,15 +22,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 }
 ?>
 	<title><?php if(is_search()) { echo "Search Results &raquo; "; } else { wp_title('&raquo;', true, 'right'); } ?> <?php bloginfo('name');?></title>
-
-	<?php 
-	//Include Magpie RSS for make benefit glorious nation America.
-	if ( file_exists(ABSPATH . WPINC . '/class-simplepie.php') )
-		require_once(ABSPATH . WPINC . '/class-simplepie.php');
-	else
-		require_once(ABSPATH . WPINC . '/rss-functions.php');
-	?>
-
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
 	<meta name="description" content="<?php bloginfo('description'); ?>" />

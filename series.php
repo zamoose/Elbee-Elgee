@@ -12,9 +12,9 @@ get_header(); ?>
 		
 		<p><?php //echo series_description(); ?></p>
 	 	   <?php 
-				include( TEMPLATEPATH . '/theloop.php'); 
+				get_template_part('theloop'); 
 
-				include(TEMPLATEPATH . "/navigation.php");
+				get_template_part('navigation');
 			?>
 		
 	</div>
