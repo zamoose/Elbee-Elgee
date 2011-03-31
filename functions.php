@@ -47,6 +47,8 @@ if( file_exists( $child_options_file ) ){
 	$shortname = $parent_theme_array[ 'parent_shortname' ];
 }
 
+if ( ! isset( $content_width ) ) $content_width = '640';
+
 function lblg_register_options(){
 	global $options, $shortname;
 	foreach ( $options as $key => $value ){
