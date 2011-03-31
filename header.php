@@ -37,10 +37,10 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php get_template_directory_uri(); ?>/includes/css/yui/fonts.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php get_template_directory_uri(); ?>/layouts/<?php echo get_option($shortname.'_layout_stylesheet'); ?>" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/includes/css/yui/fonts.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/layouts/<?php echo get_option($shortname.'_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php get_template_directory_uri(); ?>/print.css" media="print">
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/print.css" media="print">
 	<?php
 		$alt_style = get_option($shortname.'_alt_stylesheet');
 		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
