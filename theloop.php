@@ -1,4 +1,6 @@
-	 <?php /* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
+<?php 
+	global $themename, $shortname;
+	/* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
 		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) get_template_part('navigation'); ?>
 		<?php 
 			$asides_cat_byname = get_option($shortname.'_asides_category');

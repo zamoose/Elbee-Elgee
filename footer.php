@@ -1,3 +1,6 @@
+<?php
+global $themename, $shortname;
+?>
 <div id="footer">
 	<div id="footerwrapper">
 	<div id="footerleft">
