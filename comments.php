@@ -4,4 +4,6 @@
 
 </ol>
 
+<?php paginate_comments_links(); ?>
+
 <?php comment_form(); ?>
