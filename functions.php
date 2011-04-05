@@ -23,28 +23,32 @@ if( file_exists( $child_options_file ) ){
 	switch( $child_theme_array[ 'parent_options_action' ] ) {
 		case 'prepend':
 			//Prepend child theme options to options array
-			$options = array_merge( $child_options_array, $parent_options_array );
+			$temp_options = array_merge( $child_options_array, $parent_options_array );
 		break;
 		case 'replace':
 			// Nuke parent options and replace with child theme's
-			$options = $child_options_array;
+			$temp_options = $child_options_array;
 		break;
 		case 'discard':
 			//Create an empty array -- no options
-			$options = array();
+			$temp_options = array();
 		break;
 		case 'no_action':
-			$options = $parent_options_array;
+			$temp_options = $parent_options_array;
 		break;
 		case 'append':
 		default:
-			$options = array_merge( $parent_options_array, $child_options_array );
+			$temp_options = array_merge( $parent_options_array, $child_options_array );
 		break;
 	}
 } else {
-	$options = $parent_options_array;
+	$temp_options = $parent_options_array;
 	$themename = $parent_theme_array[ 'parent_themename' ];
 	$shortname = $parent_theme_array[ 'parent_shortname' ];
+}
+
+while(list($key, $value) = each($temp_options)){
+	$options[$shortname . "_" . $key] = $value;
 }
 
 if ( ! isset( $content_width ) ) $content_width = '640';
