@@ -1,6 +1,6 @@
 div#container{width:800px;margin:0 auto}
 div#wrapper{float:left;width:100%}
-div#content{margin-left: 300px}
+div#lb-content{margin-left: 300px}
 div#navigation{float:left;width:150px;margin-left:-800px}
 div#extra{float:left;width:150px;margin-left:-550px}
 div#footer{clear:left;width:100%}

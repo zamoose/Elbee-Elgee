@@ -161,8 +161,6 @@ function lblg_add_admin() {
     add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'lblg_admin');
 }
 
-//add_theme_page($themename . 'Header Options', 'Header Options', 'edit_themes', basename(__FILE__), 'headimage_admin');
-
 function lblg_title(){
 ?>
 	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
@@ -189,10 +187,6 @@ function lblg_menu(){
 	</div>
 	<?php
 	}
-}
-
-function headimage_admin(){
-	
 }
 
 function lblg_admin() {
@@ -243,9 +237,9 @@ function option_wrapper_footer($values){
 	<?php 
 }
 
-function lblg_wp_head() { /*?>
-<link href="<?php bloginfo('template_directory'); ?>/style.php" rel="stylesheet" type="text/css" />
-<?php*/ }
+function lblg_wp_head() { 
+	
+}
 
 function lblg_admin_head(){ 
 
