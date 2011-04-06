@@ -1,5 +1,5 @@
 div#wrapper{float:left;width:100%}
 div#lb-content{margin: 0 25%}
-div#navigation{float:left;width:25%;margin-left:-25%}
-div#extra{float:left;width:25%;margin-left:-100%}
+div#primarysb{float:left;width:25%;margin-left:-25%}
+div#secondarysb{float:left;width:25%;margin-left:-100%}
 div#footer{clear:left;width:100%}

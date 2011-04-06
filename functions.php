@@ -162,14 +162,21 @@ function lblg_add_admin() {
 }
 
 function lblg_title(){
-?>
+	if(is_home()) { ?>
 	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
 <?php
+	} else { ?>
+		<p class="blogtitle"><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></p>
+	<?php 
+	}
 }
 
 function lblg_menu(){
 	if( function_exists( 'wp_nav_menu' ) ){
-		wp_nav_menu( array( 'theme_location' => 'primary' ) );
+		wp_nav_menu( array( 'theme_location'	=> 'primary',  
+							'container'			=> 'div',
+							'container_id'		=> 'menu'
+					) );
 	} else {
 	?>
 	<div id="menuwrap">
@@ -247,12 +254,12 @@ function lblg_admin_head(){
 
 
 function lblg_register_sidebars() {
-	register_sidebar(array('name'=>'Navigation'));
-	register_sidebar(array('name'=>'Extra', 
+	register_sidebar(array('name'=>'Primary'));
+	register_sidebar(array('name'=>'Secondary', 
 						   'before_widget' => '<li>', 
 						   'after_widget' => '</li>', 
-						   'before_title' => '<h2>', 
-						   'after_title' => '</h2>'));
+						   'before_title' => '<h4>', 
+						   'after_title' => '</h4>'));
 	register_sidebar(array('name'=>'Bottom-Left'));
 	register_sidebar(array('name'=>'Bottom-Right'));	
 }
@@ -265,7 +272,7 @@ if(get_option($use_custom_header) == true){
 	define('HEADER_IMAGE_WIDTH', '1024');
 	define('HEADER_IMAGE_HEIGHT', '279');
 
-	add_custom_image_header('header_style', 'lblg_admin_header_style');
+	add_custom_image_header('lblg_header_style', 'lblg_admin_header_style');
 }
 
 function lblg_the_postimage() {

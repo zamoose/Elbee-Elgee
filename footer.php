@@ -6,12 +6,15 @@ global $themename, $shortname;
 	<div id="footerleft">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
+			<li><h4>Bottom-Left Sidebar</h4>
+				This is the bottom-left sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
+			</li>
 		<?php if(is_home()) { 
 			query_posts('paged=2&showposts=7');?>
-		<li><h2>Recent Posts</h2>
+		<li><h4>Recent Posts</h4>
 		<?php } else { 
 			query_posts('paged=1'); ?>
-		<li><h2>On The Front Page</h2>
+		<li><h4>On The Front Page</h4>
 		<?php } ?>
 		<ul>
 		<?php 
@@ -26,7 +29,9 @@ global $themename, $shortname;
 	<div id="footerright">
 		<ul>
 		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
-
+			<li><h4>Bottom-Left Sidebar</h4>
+				This is the bottom-left sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
+			</li>
 		<?php endif; ?>
 		</ul>
 	</div>

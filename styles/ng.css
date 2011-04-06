@@ -1,0 +1,12 @@
+#header h1, #header p.blogtitle{
+	margin: 0 auto;
+	font-size: 2.5em;
+	font-weight: bold;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	height: 75px;
+	vertical-align: bottom;
+}
+
+#menu {
+	border-bottom: 1px solid #ccc;
+}
