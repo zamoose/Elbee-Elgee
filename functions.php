@@ -425,7 +425,7 @@ class LBBPMenuWidget extends WP_Widget {
 register_widget('LBBPMenuWidget');
 
 /*
-* Support 2.9 & 3.0 coolness
+* Support 2.9, 3.0 and 3.1 coolness
 */
 add_theme_support( 'nav-menus' );
 add_theme_support( 'post-thumbnails' );
