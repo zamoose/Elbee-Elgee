@@ -36,11 +36,11 @@ Elbee Elgee features four native sidebars/widget areas: Primary, Secondary, Bott
 ###HOOKS###
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
 
-* lblg_title(): Outputs the blog title at the top of each page
-* lblg_menu(): Outputs the navigation menu
-* lblg_the_postimage(): Displays the Featured Image for posts, pages and custom post types that support it
-* lblg_sidebar_header(): Hooks into top of sidebar.php
-* lblg_sidebar_footer(): Hooks into bottom of sidebar.php
+* `lblg_title()`: Outputs the blog title at the top of each page
+* `lblg_menu()`: Outputs the navigation menu
+* `lblg_the_postimage()`: Displays the Featured Image for posts, pages and custom post types that support it
+* `lblg_sidebar_header()`: Hooks into top of sidebar.php
+* `lblg_sidebar_footer()`: Hooks into bottom of sidebar.php
 
 ###AREAS FOR IMPROVEMENT###
 * SEO optimization is a work in progress.
@@ -50,3 +50,5 @@ Elbee Elgee has a few notable hooks, with many more planned. I welcome your sugg
 
 ###ONGOING DEVELOPMENT###
 I have switched my development workflow from Subversion to Mercurial (<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
+
+If you are interested in learning more about Mercurial, <http://hginit.com> is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
