@@ -3,7 +3,7 @@ lblg_sidebar_header();
 ?>
 <div id="primarysb">
 <ul>
-	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Primary') ) : ?>
+	<?php if ( !dynamic_sidebar('Primary') ) : ?>
 	
 	<li><h4>Primary Sidebar</h4>
 		This is the primary sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
@@ -24,7 +24,7 @@ lblg_sidebar_header();
 </div>
 <div id="secondarysb">
 <ul>
-	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Secondary') ) : ?>
+	<?php if ( !dynamic_sidebar('Secondary') ) : ?>
 	<li><h4>Secondary Sidebar</h4>
 		This is the secondary sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
 	</li>

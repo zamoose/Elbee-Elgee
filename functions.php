@@ -158,7 +158,7 @@ function lblg_print_options($options = array()){
 function lblg_add_admin() {
     global $themename, $shortname, $options;
     lblg_register_options();
-    add_theme_page($themename." Options", "$themename Options", 'edit_themes', basename(__FILE__), 'lblg_admin');
+    add_theme_page($themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin');
 }
 
 function lblg_title(){

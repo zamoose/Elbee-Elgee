@@ -1,12 +1,31 @@
+div#header {
+	background: url(ng/anagrammap.png) top left no-repeat;
+}
+
 #header h1, #header p.blogtitle{
 	margin: 0 auto;
 	font-size: 2.5em;
 	font-weight: bold;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	height: 75px;
-	vertical-align: bottom;
+}
+
+
+#blogtitle{
+	/*background-color: #000;*/
+	width: 50%;
 }
 
 #menu {
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #333;
+}
+
+.startTranslucent {
+	background:rgb(0,0,0);
+	background:rgba(0,0,0,0.5);
+	-ms-filter:alpha(opacity=50);
+	filter:alpha(opacity=50)
+}
+
+.stopTranslucent{
+	position: relative;
 }

@@ -5,7 +5,7 @@ global $themename, $shortname;
 	<div id="footerwrapper">
 	<div id="footerleft">
 		<ul>
-		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Left') ) : ?>
+		<?php if ( !dynamic_sidebar('Bottom Left') ) : ?>
 			<li><h4>Bottom-Left Sidebar</h4>
 				This is the bottom-left sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
 			</li>
@@ -28,9 +28,9 @@ global $themename, $shortname;
 	</div>
 	<div id="footerright">
 		<ul>
-		<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('Bottom Right') ) : ?>
-			<li><h4>Bottom-Left Sidebar</h4>
-				This is the bottom-left sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
+		<?php if ( !dynamic_sidebar('Bottom Right') ) : ?>
+			<li><h4>Bottom-Right Sidebar</h4>
+				This is the bottom-right sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
 			</li>
 		<?php endif; ?>
 		</ul>

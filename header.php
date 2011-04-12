@@ -56,7 +56,9 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <body <?php body_class(); ?>>
 <div id="container">
 <div id="header">
-	<?php lblg_print_title(); ?>
-	<p class="description"><span><?php bloginfo('description'); ?></span></p>
+	<div id="blogtitle" class="startTranslucent">
+		<?php lblg_print_title(); ?>
+		<p class="description"><span><?php bloginfo('description'); ?></span></p>
+	</div>
 </div>
 <?php lblg_print_menu(); ?>
