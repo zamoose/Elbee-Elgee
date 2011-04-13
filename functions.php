@@ -47,7 +47,7 @@ if( file_exists( $child_options_file ) ){
 	$shortname = $parent_theme_array[ 'parent_shortname' ];
 }
 
-while(list($key, $value) = each($temp_options)){
+while(list( $key, $value ) = each( $temp_options)){
 	$options[$shortname . "_" . $key] = $value;
 }
 
@@ -56,14 +56,14 @@ if ( ! isset( $content_width ) ) $content_width = '640';
 function lblg_register_options(){
 	global $options, $shortname;
 	foreach ( $options as $key => $value ){
-		if ( $value['type'] != 'subhead'){
-			register_setting($shortname.'_theme_options', $key);
+		if ( $value['type'] != 'subhead' ){
+			register_setting( $shortname.'_theme_options', $key );
 		}
 	}
 }
 
-function lblg_print_options($options = array()){
-	foreach ($options as $key => $value) { 
+function lblg_print_options( $options = array()){
+	foreach ( $options as $key => $value ) { 
 	
 		switch ( $value['type'] ) {
 			case 'subhead':
@@ -76,52 +76,52 @@ function lblg_print_options($options = array()){
 			<?php
 			break;
 			case 'text':
-			option_wrapper_header($value);
+			option_wrapper_header( $value );
 			?>
 			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $key ) != "") { echo get_option( $key ); } else { echo $value['std']; } ?>" />
 			<?php
-			option_wrapper_footer($value);
+			option_wrapper_footer( $value );
 			break;
 			
 			case 'select':
-			option_wrapper_header($value);
+			option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
-		                <?php foreach ($value['options'] as $option) { ?>
-		                <option<?php if ( get_option( $key ) == $option) { echo ' selected="selected"'; } elseif ($option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <?php foreach ( $value['options'] as $option) { ?>
+		                <option<?php if ( get_option( $key ) == $option) { echo ' selected="selected"'; } elseif ( $option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 		                <?php } ?>
 		            </select>
 			<?php
-			option_wrapper_footer($value);
+			option_wrapper_footer( $value );
 			break;
 			
 			case 'textarea':
 			$ta_options = $value['options'];
-			option_wrapper_header($value);
+			option_wrapper_header( $value );
 			?>
 					<textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
-					if( get_option($key) != "") {
-							echo get_option($key);
+					if( get_option( $key ) != "") {
+							echo get_option( $key );
 						}else{
 							echo $value['std'];
 					}?></textarea>
 			<?php
-			option_wrapper_footer($value);
+			option_wrapper_footer( $value );
 			break;
 	
 			case "radio":
-			option_wrapper_header($value);
+			option_wrapper_header( $value );
 			
-	 		foreach ($value['options'] as $key=>$option) { 
-					$radio_setting = get_option($key);
-					if($radio_setting != ''){
-			    		if ($key == get_option($key) ) {
+	 		foreach ( $value['options'] as $key=>$option) { 
+					$radio_setting = get_option( $key );
+					if( $radio_setting != '' ){
+			    		if ( $key == get_option( $key ) ) {
 							$checked = "checked=\"checked\"";
 							} else {
 								$checked = "";
 							}
 					}else{
-						if($key == $value['std']){
+						if( $key == $value['std']){
 							$checked = "checked=\"checked\"";
 						}else{
 							$checked = "";
@@ -131,12 +131,12 @@ function lblg_print_options($options = array()){
 			<?php 
 			}
 			 
-			option_wrapper_footer($value);
+			option_wrapper_footer( $value );
 			break;
 			
 			case "checkbox":
-			option_wrapper_header($value);
-							if(get_option($key)){
+			option_wrapper_header( $value );
+							if(get_option( $key ) ){
 								$checked = "checked=\"checked\"";
 							}else{
 								$checked = "";
@@ -144,7 +144,7 @@ function lblg_print_options($options = array()){
 						?>
 			            <input type="checkbox" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="true" <?php echo $checked; ?> />
 			<?php
-			option_wrapper_footer($value);
+			option_wrapper_footer( $value );
 			break;
 	
 			default:
@@ -158,15 +158,15 @@ function lblg_print_options($options = array()){
 function lblg_add_admin() {
     global $themename, $shortname, $options;
     lblg_register_options();
-    add_theme_page($themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin');
+    add_theme_page( $themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin' );
 }
 
 function lblg_title(){
 	if(is_home()) { ?>
-	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></h1>
+	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo( 'name' ); ?></a></span></h1>
 <?php
 	} else { ?>
-		<p class="blogtitle"><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('name'); ?></a></span></p>
+		<p class="blogtitle"><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo( 'name' ); ?></a></span></p>
 	<?php 
 	}
 }
@@ -175,20 +175,21 @@ function lblg_menu(){
 	if( function_exists( 'wp_nav_menu' ) ){
 		wp_nav_menu( array( 'theme_location'	=> 'primary',  
 							'container'			=> 'div',
-							'container_id'		=> 'menu'
+							'container_id'		=> 'menu',
+							'depth'				=> '1'
 					) );
 	} else {
 	?>
 	<div id="menuwrap">
 	        <ul id="menu" class="kwicks">
-			<?php if (is_home() || is_single()) : ?>
+			<?php if ( is_home() || is_single() ) : ?>
 	                <li class="current_page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
-	                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
-					<?php wp_register('<li class="admintab page_item">','</li>'); ?>
+	                <?php wp_list_pages( 'sort_column=menu_order&depth=1&title_li=' ); ?>
+					<?php wp_register( '<li class="admintab page_item">','</li>' ); ?>
 			<?php else : ?>
 	                <li class="page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
-	                <?php wp_list_pages('sort_column=menu_order&depth=1&title_li='); ?>
-					<?php wp_register('<li class="admintab page_item">','</li>'); ?>
+	                <?php wp_list_pages( 'sort_column=menu_order&depth=1&title_li=' ); ?>
+					<?php wp_register( '<li class="admintab page_item">','</li>' ); ?>
 			<?php endif; ?>
 	        </ul>
 	</div>
@@ -200,8 +201,8 @@ function lblg_admin() {
 
     global $themename, $shortname, $options;
 
-    if ( isset($_POST['save']) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
-    if ( isset($_REQUEST['reset']) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
+    if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
+    if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
     
 ?>
 <div class="wrap">
@@ -212,12 +213,12 @@ function lblg_admin() {
 <table class="form-table">
 <tbody>
 
-<?php lblg_print_options($options); ?>
+<?php lblg_print_options( $options ); ?>
 
 </tbody>
 </table>
 
-<?php settings_fields($shortname . '_theme_options'); ?>
+<?php settings_fields( $shortname . '_theme_options' ); ?>
 
 <p class="submit">
 <input name="save" type="submit" class="button-primary" value="Save changes" />    
@@ -227,7 +228,7 @@ function lblg_admin() {
 <?php
 }
 
-function option_wrapper_header($values){
+function option_wrapper_header( $values ){
 	?>
 	<tr valign="top"> 
 	    <th scope="row"><?php echo $values['name']; ?>:</th>
@@ -235,7 +236,7 @@ function option_wrapper_header($values){
 	<?php
 }
 
-function option_wrapper_footer($values){
+function option_wrapper_footer( $values ){
 	?>
 		<br /><br />
 		<?php echo $values['desc']; ?>
@@ -254,29 +255,29 @@ function lblg_admin_head(){
 
 
 function lblg_register_sidebars() {
-	register_sidebar(array('name'=>'Primary'));
-	register_sidebar(array('name'=>'Secondary', 
+	register_sidebar(array( 'name'=>'Primary' ));
+	register_sidebar(array( 'name'=>'Secondary', 
 						   'before_widget' => '<li>', 
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
-						   'after_title' => '</h4>'));
-	register_sidebar(array('name'=>'Bottom-Left'));
-	register_sidebar(array('name'=>'Bottom-Right'));	
+						   'after_title' => '</h4>' ));
+	register_sidebar(array( 'name'=>'Bottom-Left' ));
+	register_sidebar(array( 'name'=>'Bottom-Right' ));	
 }
 
 $use_custom_header = $shortname."_use_custom_header";
-if(get_option($use_custom_header) == true){
+if(get_option( $use_custom_header) == true ){
 	// Set up custom header code
-	define('HEADER_TEXTCOLOR', 'cfcfd0');
-	define('HEADER_IMAGE', '%s/styles/default/newbanner2.png');
-	define('HEADER_IMAGE_WIDTH', '1024');
-	define('HEADER_IMAGE_HEIGHT', '279');
+	define( 'HEADER_TEXTCOLOR', 'cfcfd0' );
+	define( 'HEADER_IMAGE', '%s/styles/default/newbanner2.png' );
+	define( 'HEADER_IMAGE_WIDTH', '1024' );
+	define( 'HEADER_IMAGE_HEIGHT', '279' );
 
-	add_custom_image_header('lblg_header_style', 'lblg_admin_header_style');
+	add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
 }
 
 function lblg_the_postimage() {
-	if(has_post_thumbnail()) {
+	if( has_post_thumbnail() ) {
 		the_post_thumbnail();
 	}
 }
@@ -350,79 +351,56 @@ function lblg_admin_header_style() {
 */
 
 function lblg_set_themename(){
-	do_action('lblg_set_themename');
+	do_action( 'lblg_set_themename' );
 }
 
 function lblg_print_title(){
-	do_action('lblg_print_title');
+	do_action( 'lblg_print_title' );
 }
 
 function lblg_print_menu(){
-	do_action('lblg_print_menu');
+	do_action( 'lblg_print_menu' );
 }
 
 function lblg_above_content(){
-	do_action('lblg_above_content');
+	do_action( 'lblg_above_content' );
 }
 
 function lblg_sidebar_header(){
-	do_action('lblg_sidebar_header');
+	do_action( 'lblg_sidebar_header' );
 }
 
 function lblg_sidebar_footer(){
-	do_action('lblg_sidebar_footer');
+	do_action( 'lblg_sidebar_footer' );
 }
 
 function lblg_meta_info(){
-	do_action('lblg_meta_info');
+	do_action( 'lblg_meta_info' );
 }
 
-/**
- * LBBPWidget Class
- */
-class LBBPMenuWidget extends WP_Widget {
-    /** constructor */
-    function LBBPMenuWidget() {
-        parent::WP_Widget(false, $name = 'LBBPMenuWidget');	
-    }
+function elbee_bpmenu_widget( $args ){
+	extract( $args );
+	
+	if( $title ){
+		echo $before_widget;
+		echo $before_title . $title . $after_title;
+	}?>
+	<ul>
+	<?php
+	if ( is_user_logged_in() ){
+		bp_get_loggedin_user_nav();			
+	} else {
+		bp_get_displayed_user_nav();
+	}
+	?>
+	</ul>
+	<?php
+	echo $after_widget;
+}
 
-    /** @see WP_Widget::widget */
-    function widget($args, $instance) {		
-        extract( $args );
-        $title = apply_filters('widget_title', $instance['title']);
-       
-        echo $before_widget;
-        if ( $title ) echo $before_title . $title . $after_title;
-		echo '<ul id="lb-subnav">';
-		
-		if ( is_user_logged_in() ){
-			bp_get_loggedin_user_nav();			
-		} else {
-			bp_get_displayed_user_nav();
-		}
-		echo '</ul>';
-		
-		echo $after_widget;
-    }
-
-    /** @see WP_Widget::update */
-    function update($new_instance, $old_instance) {				
-	$instance = $old_instance;
-	$instance['title'] = strip_tags($new_instance['title']);
-        return $instance;
-    }
-
-    /** @see WP_Widget::form */
-    function form($instance) {				
-        $title = esc_attr($instance['title']);
-        ?>
-            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php echo 'Title:'; ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
-        <?php 
-    }
-
-} // class LBBPMenuWidget
-
-register_widget('LBBPMenuWidget');
+function elbee_widgets_init(){
+	wp_register_sidebar_widget(__( 'Elbee Elgee BuddyPress Menu' ), 'elbee_bpmenu_widget', '' );
+}
 
 /*
 * Support 2.9, 3.0 and 3.1 coolness
@@ -434,15 +412,15 @@ add_custom_background();
 
 register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __( 'Sub-Menu' ) ) );
 
-add_action('lblg_set_themename', 'lblg_themename');
-add_action('lblg_print_title', 'lblg_title');
-add_action('lblg_print_menu', 'lblg_menu');
-add_action('wp_head', 'lblg_wp_head');
-add_action('admin_head','lblg_admin_head');
-add_action('admin_menu', 'lblg_add_admin'); 
+add_action( 'lblg_set_themename', 'lblg_themename' );
+add_action( 'lblg_print_title', 'lblg_title' );
+add_action( 'lblg_print_menu', 'lblg_menu' );
+add_action( 'wp_head', 'lblg_wp_head' );
+add_action( 'admin_head','lblg_admin_head' );
+add_action( 'admin_menu', 'lblg_add_admin' ); 
 // Register sidebars
-add_action('widgets_init', 'lblg_register_sidebars' );
+add_action( 'widgets_init', 'lblg_register_sidebars' );
 // Register LBBPMenuWidget widget
-add_action('widgets_init', create_function('', 'return register_widget("LBBPMenuWidget");'));
+add_action( 'widgets_init', 'elbee_widgets_init' );
 
 ?>
