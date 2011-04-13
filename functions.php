@@ -4,25 +4,29 @@
 * Elbee Elgee.
 */
 
+
+//Default locations for the parent and child options files
 $parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
 $child_options_file = STYLESHEETPATH . '/includes/child-options.php';
 
 // Load parent options
 $parent_theme_array = include( $parent_options_file );
-
 $parent_options_array = $parent_theme_array[ 'options' ];
 
 // Conditionally load child options
 if( file_exists( $child_options_file ) ){
 	$child_theme_array = include( $child_options_file );
 	$child_options_array = $child_theme_array[ 'options' ];
-	
+
+	// Child theme options override the short and long theme names
 	$themename = $child_theme_array[ 'child_themename' ];
 	$shortname = $child_theme_array[ 'child_shortname' ];
 	
+
+	// Check the action requested by the child options
 	switch( $child_theme_array[ 'parent_options_action' ] ) {
 		case 'prepend':
-			//Prepend child theme options to options array
+			//Prepend child theme options to options array (add to the top of the options screen)
 			$temp_options = array_merge( $child_options_array, $parent_options_array );
 		break;
 		case 'replace':
@@ -34,25 +38,30 @@ if( file_exists( $child_options_file ) ){
 			$temp_options = array();
 		break;
 		case 'no_action':
+			// In case you want to specify that the parent options array are the only game in town
 			$temp_options = $parent_options_array;
 		break;
 		case 'append':
 		default:
+			// Default case. Append child options to the end of the array (add to the bottom of the options screen)
 			$temp_options = array_merge( $parent_options_array, $child_options_array );
 		break;
 	}
 } else {
+	// If there are no child options, default back to the full parent options
 	$temp_options = $parent_options_array;
 	$themename = $parent_theme_array[ 'parent_themename' ];
 	$shortname = $parent_theme_array[ 'parent_shortname' ];
 }
 
-while(list( $key, $value ) = each( $temp_options)){
+// Tack the theme's shortname onto the options to avoid potential namespacing issues
+while( list( $key, $value ) = each( $temp_options) ){
 	$options[$shortname . "_" . $key] = $value;
 }
 
 if ( ! isset( $content_width ) ) $content_width = '640';
 
+// Register all the options using the Settings API
 function lblg_register_options(){
 	global $options, $shortname;
 	foreach ( $options as $key => $value ){
@@ -62,10 +71,15 @@ function lblg_register_options(){
 	}
 }
 
-function lblg_print_options( $options = array()){
-	foreach ( $options as $key => $value ) { 
-	
+/*
+ * lblg_print_options() is responsible for printing all the theme options in the theme's
+ * options screen.
+ */
+function lblg_print_options( $options = array() ){
+	foreach ( $options as $key => $value ) { 	
 		switch ( $value['type'] ) {
+			
+			// Prints a subheader (useful for dividing options up into similar sections)
 			case 'subhead':
 			?>
 				</table>
@@ -75,6 +89,8 @@ function lblg_print_options( $options = array()){
 				<table class="form-table">
 			<?php
 			break;
+			
+			// Prints a simple text <input> element
 			case 'text':
 			option_wrapper_header( $value );
 			?>
@@ -83,18 +99,20 @@ function lblg_print_options( $options = array()){
 			option_wrapper_footer( $value );
 			break;
 			
+			// Prints a drop-down <select> element
 			case 'select':
 			option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 		                <?php foreach ( $value['options'] as $option) { ?>
-		                <option<?php if ( get_option( $key ) == $option) { echo ' selected="selected"'; } elseif ( $option == $value['std']) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <option<?php if ( get_option( $key ) == $option ) { echo ' selected="selected"'; } elseif ( $option == $value['std'] ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 		                <?php } ?>
 		            </select>
 			<?php
 			option_wrapper_footer( $value );
 			break;
 			
+			// Prints a <textarea> element
 			case 'textarea':
 			$ta_options = $value['options'];
 			option_wrapper_header( $value );
@@ -109,10 +127,11 @@ function lblg_print_options( $options = array()){
 			option_wrapper_footer( $value );
 			break;
 	
+			// Prints a series of radio <input> elements
 			case "radio":
 			option_wrapper_header( $value );
 			
-	 		foreach ( $value['options'] as $key=>$option) { 
+	 		foreach ( $value['options'] as $key=>$option ) { 
 					$radio_setting = get_option( $key );
 					if( $radio_setting != '' ){
 			    		if ( $key == get_option( $key ) ) {
@@ -121,7 +140,7 @@ function lblg_print_options( $options = array()){
 								$checked = "";
 							}
 					}else{
-						if( $key == $value['std']){
+						if( $key == $value['std'] ){
 							$checked = "checked=\"checked\"";
 						}else{
 							$checked = "";
@@ -134,6 +153,7 @@ function lblg_print_options( $options = array()){
 			option_wrapper_footer( $value );
 			break;
 			
+			// Prints a checbox <input> element
 			case "checkbox":
 			option_wrapper_header( $value );
 							if(get_option( $key ) ){
@@ -155,12 +175,14 @@ function lblg_print_options( $options = array()){
 
 }
 
+// Set up the admin page &  register settings
 function lblg_add_admin() {
     global $themename, $shortname, $options;
     lblg_register_options();
     add_theme_page( $themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin' );
 }
 
+// Output the blog title. Hook-able via lblg_print_title() action hook.
 function lblg_title(){
 	if(is_home()) { ?>
 	<h1><span id="blogtitle"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo( 'name' ); ?></a></span></h1>
@@ -171,6 +193,7 @@ function lblg_title(){
 	}
 }
 
+// Output the primary menu. Hook-able via lblg_print_menu() action hook.
 function lblg_menu(){
 	if( function_exists( 'wp_nav_menu' ) ){
 		wp_nav_menu( array( 'theme_location'	=> 'primary',  
@@ -197,6 +220,14 @@ function lblg_menu(){
 	}
 }
 
+// Output the Featured Image
+function lblg_the_postimage() {
+	if( has_post_thumbnail() ) {
+		the_post_thumbnail();
+	}
+}
+
+// Display the theme options page
 function lblg_admin() {
 
     global $themename, $shortname, $options;
@@ -228,6 +259,7 @@ function lblg_admin() {
 <?php
 }
 
+// 
 function option_wrapper_header( $values ){
 	?>
 	<tr valign="top"> 
@@ -236,6 +268,7 @@ function option_wrapper_header( $values ){
 	<?php
 }
 
+// 
 function option_wrapper_footer( $values ){
 	?>
 		<br /><br />
@@ -255,18 +288,18 @@ function lblg_admin_head(){
 
 
 function lblg_register_sidebars() {
-	register_sidebar(array( 'name'=>'Primary' ));
-	register_sidebar(array( 'name'=>'Secondary', 
+	register_sidebar( array( 'name'=>'Primary' ) );
+	register_sidebar( array( 'name'=>'Secondary', 
 						   'before_widget' => '<li>', 
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
-						   'after_title' => '</h4>' ));
-	register_sidebar(array( 'name'=>'Bottom-Left' ));
-	register_sidebar(array( 'name'=>'Bottom-Right' ));	
+						   'after_title' => '</h4>' ) );
+	register_sidebar( array( 'name'=>'Bottom-Left' ) );
+	register_sidebar( array( 'name'=>'Bottom-Right' ) );
 }
 
 $use_custom_header = $shortname."_use_custom_header";
-if(get_option( $use_custom_header) == true ){
+if( get_option( $use_custom_header ) == true ){
 	// Set up custom header code
 	define( 'HEADER_TEXTCOLOR', 'cfcfd0' );
 	define( 'HEADER_IMAGE', '%s/styles/default/newbanner2.png' );
@@ -274,12 +307,6 @@ if(get_option( $use_custom_header) == true ){
 	define( 'HEADER_IMAGE_HEIGHT', '279' );
 
 	add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
-}
-
-function lblg_the_postimage() {
-	if( has_post_thumbnail() ) {
-		the_post_thumbnail();
-	}
 }
 
 function lblg_header_style() {
@@ -294,7 +321,7 @@ function lblg_header_style() {
 }
 <?php } else { ?>
 #header h1 a, #description {
-	color:#<?php header_textcolor() ?>;
+	color:#<?php header_textcolor(); ?>;
 }
 #desc {
 	margin-right: 30px;
@@ -308,7 +335,7 @@ function lblg_admin_header_style() {
 ?>
 <style type="text/css">
 #headimg{
-	background: url(<?php header_image() ?>) bottom right no-repeat;
+	background: url(<?php header_image(); ?>) bottom right no-repeat;
 	height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
 	width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
   	padding:0 0 0 18px;
@@ -319,12 +346,12 @@ function lblg_admin_header_style() {
 	margin: 0;
 }
 #headimg h1 a{
-	color:#<?php header_textcolor() ?>;
+	color:#<?php header_textcolor(); ?>;
 	text-decoration: none;
 	border-bottom: none;
 }
 #headimg #desc{
-	color:#<?php header_textcolor() ?>;
+	color:#<?php header_textcolor(); ?>;
 	font-size:1em;
 	margin-top:-0.5em;
 }
@@ -345,6 +372,33 @@ function lblg_admin_header_style() {
 </style>
 <?php
 }
+
+/*
+* Copyright code, courtesy of Chip Bennett
+* http://wordpress.stackexchange.com/questions/14492/how-do-i-create-a-dynamically-updated-copyright-statement
+*/
+function lblg_copyright() {
+    global $wpdb;
+    $copyright_dates = $wpdb->get_results("
+        SELECT
+            YEAR(min(post_date_gmt)) AS firstdate,
+            YEAR(max(post_date_gmt)) AS lastdate
+        FROM
+            $wpdb->posts
+        WHERE
+            post_status = 'publish'
+    ");
+    $output = '';
+    if($copyright_dates) {
+        $copyright = "&copy; " . $copyright_dates[0]->firstdate;
+            if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
+                $copyright .= '-' . $copyright_dates[0]->lastdate;
+            }
+        $output = bloginfo('name') . " is " . $copyright ;
+    }
+    return $output;
+}
+
 
 /*
 * Theme Hooks
@@ -378,7 +432,11 @@ function lblg_meta_info(){
 	do_action( 'lblg_meta_info' );
 }
 
-function elbee_bpmenu_widget( $args ){
+function lblg_print_copyright(){
+	do_action( 'lblg_print_copyright' );
+}
+
+function  lblg_bpmenu_widget( $args ){
 	extract( $args );
 	
 	if( $title ){
@@ -398,8 +456,14 @@ function elbee_bpmenu_widget( $args ){
 	echo $after_widget;
 }
 
-function elbee_widgets_init(){
-	wp_register_sidebar_widget(__( 'Elbee Elgee BuddyPress Menu' ), 'elbee_bpmenu_widget', '' );
+function lblg_widgets_init(){
+	if( function_exists('bp_get_loggedin_user_nav') ){
+		wp_register_sidebar_widget( 'lblgbpmenu', __( 'Elbee Elgee BuddyPress Menu' ), 'lblg_bpmenu_widget', 
+									array(
+										'title' 		=> 'BuddyPress Menu',
+										'description'	=> 'Outputs the default BuddyPress navigational menu.'
+									) );
+	}
 }
 
 /*
@@ -415,12 +479,13 @@ register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __(
 add_action( 'lblg_set_themename', 'lblg_themename' );
 add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
+add_action( 'lblg_print_copyright', 'lblg_copyright' );
 add_action( 'wp_head', 'lblg_wp_head' );
 add_action( 'admin_head','lblg_admin_head' );
 add_action( 'admin_menu', 'lblg_add_admin' ); 
 // Register sidebars
 add_action( 'widgets_init', 'lblg_register_sidebars' );
-// Register LBBPMenuWidget widget
-add_action( 'widgets_init', 'elbee_widgets_init' );
+// Register BuddyPress menu output
+add_action( 'widgets_init', 'lblg_widgets_init' );
 
 ?>
