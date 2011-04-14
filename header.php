@@ -1,10 +1,7 @@
 <?php
 global $themename, $shortname;
-
-/*$shortname = "lblg";
-$themename = "Elbee Elgee";*/
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
 <head profile="http://gmpg.org/xfn/11">
@@ -37,7 +34,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/includes/css/yui/fonts.css" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/layouts/<?php echo get_option($shortname.'_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/print.css" media="print">
@@ -56,7 +52,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <body <?php body_class(); ?>>
 <div id="container">
 <div id="header">
-	<div id="blogtitle" class="startTranslucent">
+	<div id="blogtitle">
 		<?php lblg_print_title(); ?>
 		<p class="description"><span><?php bloginfo('description'); ?></span></p>
 	</div>

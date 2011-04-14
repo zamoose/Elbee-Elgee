@@ -87,27 +87,10 @@ $parent_options_array = array (
 				"blog_meta_info" => array(	"name" => "Blog Meta Info",
 						"type" => "subhead"),
 
-				/*"display_about" => array(	"name" => "Display \"About\" Text",
-						"std" => "false",
-						"type" => "checkbox"),
-						
-				"about_text" => array(	"name" => "\"About\" Text",
-						"desc" => "This is a little blurb about your site. (Use HTML if you wish.)",
-						"std" => "",
-						"type" => "textarea",
-						"options" => array(	"rows" => "5",
-											"cols" => "40") ),
-
-				"delicious_username" => array(	"name" => "Del.icio.us Username",
-						"desc" => "Enter your <a href='http://del.icio.us'>del.icio.us</a> username here to display your recently-shared links in the footer. Erase 'zamoose' to remove del.icio.us feed entirely.",
-					    "std" => "zamoose",
-					    "type" => "text"),*/
-
 				"display_footer_credit_text" => array(	"name" => "Credit Links",
 						"desc" => "Check this box to display theme credit links in the footer.", 
 						"std" => "false",
 						"type" => "checkbox"),
-
 
 				"footer_credit_text" => array(	"name" => "Footer Credits",
 						"desc" => "Footer credit text defaults to: <b><p><a href=".get_bloginfo('url').">".get_bloginfo('name')."</a> is powered by <a href='http://wordpress.org'>WordPress</a> ".get_bloginfo('version')." and <a href='http://literalbarrage.org/blog/code/elbee-elgee'>Elbee Elgee</a></p><p>&copy; 2003-2009 Doug Stewart</p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
@@ -115,17 +98,19 @@ $parent_options_array = array (
 						"type" => "textarea",
 						"options" => array("rows" => "5",
 										   "cols" => "40") ),
-				
-				/*"stats_code" => array(	"name" => "Statistics Code",
-						"desc" => "If you need to enter SiteMeter, Google Analytics, etc. stat-tracking info in your footer, just plunk it here.",
+										
+				"display_footer_copyright" => array(	"name" => "Display Copyright",
+						"desc" => "Check this box to display your copyright information in the footer.", 
+						"std" => "true",
+						"type" => "checkbox"),	
+						
+				"footer_copyright" => array(	"name" => "Copyright Statement",
+						"desc" => "The following text will be displayed by default: <b><p>" . lblg_copyright() . "</p></b>",
 						"std" => "",
 						"type" => "textarea",
 						"options" => array("rows" => "5",
-										   "cols" => "40") ),
-					
-				"previous_posts" => array(	"name" => "Number of Previous Posts",
-			    		"std" => "5",
-			    		"type" => "text") */
+										   "cols" => "40") ),					
+				
 		  );
 
 $parent_theme_array[ 'options' ] = $parent_options_array;

@@ -12,12 +12,6 @@ lblg_sidebar_header();
 		<?php get_search_form(); ?>
 	</li>
 
-	<?php
-	if (is_home()) {
-		wp_list_bookmarks(); 
-	}
-	?>
-	
 	<?php endif; ?>
 </ul>
 

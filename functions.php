@@ -288,7 +288,11 @@ function lblg_admin_head(){
 
 
 function lblg_register_sidebars() {
-	register_sidebar( array( 'name'=>'Primary' ) );
+	register_sidebar( array( 'name'=>'Primary',
+						   'before_widget' => '<li>', 
+						   'after_widget' => '</li>', 
+						   'before_title' => '<h4>', 
+						   'after_title' => '</h4>' ) );
 	register_sidebar( array( 'name'=>'Secondary', 
 						   'before_widget' => '<li>', 
 						   'after_widget' => '</li>', 
@@ -394,7 +398,7 @@ function lblg_copyright() {
             if($copyright_dates[0]->firstdate != $copyright_dates[0]->lastdate) {
                 $copyright .= '-' . $copyright_dates[0]->lastdate;
             }
-        $output = bloginfo('name') . " is " . $copyright ;
+        $output = $copyright;
     }
     return $output;
 }
