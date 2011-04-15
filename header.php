@@ -23,9 +23,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<meta name="generator" content="WordPress <?php bloginfo('version'); ?>" />
 	<meta name="description" content="<?php bloginfo('description'); ?>" />
 
-	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="<?php bloginfo('rss2_url'); ?>" />
-	<link rel="alternate" type="text/xml" title="RSS .92" href="<?php bloginfo('rss_url'); ?>" />
-	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="<?php bloginfo('atom_url'); ?>" />
 	<?php if (is_single() or is_page()) {
 		if(function_exists('wp_ozh_yourls_head_linkrel')){
 			wp_ozh_yourls_head_linkrel();
@@ -34,15 +31,40 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<?php } ?>
 
-	<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_template_directory_uri(); ?>/layouts/<?php echo get_option($shortname.'_layout_stylesheet'); ?>" />
 	<link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/print.css" media="print">
 	<?php
+		$layout_style = get_option($shortname.'_layout_stylesheet');
 		$alt_style = get_option($shortname.'_alt_stylesheet');
-		if (( $alt_style != '' ) && ($alt_style != 'Select a stylesheet:'))	{
-			echo '<link rel="stylesheet" type="text/css" media="screen" href="'. get_template_directory_uri() .'/styles/'.get_option($shortname.'_alt_stylesheet').'" />';
+		switch($layout_style){
+			case '':
+			case 'Select a layout:':
+				echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_template_directory_uri() . '/layouts/2-columns-fixed-sb-right.css" />';
+			break;
+			case '*none*':
+			break;
+			default:
+				echo '<link rel="stylesheet" type="text/css" media="screen" href="' . get_template_directory_uri() . '/layouts/' . $layout_style . '" />';
+			break;
+
 		}
+
+		echo "\n\t";
+		
+		switch($alt_style){
+			case '':
+			case 'Select a stylesheet:':
+				echo '<link rel="stylesheet" type="text/css" media="screen" href="'. get_template_directory_uri() .'/styles/ng.css" />';
+			break;
+			case '*none*':
+			break;
+			default:
+				echo '<link rel="stylesheet" type="text/css" media="screen" href="'. get_template_directory_uri() .'/styles/'. $alt_style .'" />';
+			break;
+		}
+		
+		echo "\n";
 	?>
+	<link rel="stylesheet" type="text/css" href="<?php echo get_template_directory_uri(); ?>/print.css" media="print">
 	
 	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	
