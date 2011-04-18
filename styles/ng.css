@@ -3,13 +3,27 @@ body{
 	/*color: #d3cccc;*/
 }
 
-div#header {
-	/*background: url(ng/anagrammap.png) top left no-repeat;*/
+a:link, a:visited{
+	color: #ab3b00;
+	text-decoration: none;
 }
 
-#lb-content{
-	border-left: 1px solid #d3cccc;
-	background-color: #fff;
+a:active, a:hover{
+	text-decoration: underline;
+}
+
+div#container {
+	width: 100%;
+}
+
+div#header {
+	background: #333;
+}
+
+div#blogtitle {
+	/*background: url(ng/anagrammap.png) top left no-repeat;*/
+	width: 960px;
+	margin: 0 auto;
 }
 
 #header h1, #header p.blogtitle{
@@ -31,20 +45,39 @@ div#header {
 	width: 50%;
 }
 
-#menu {
+div#menu, div.menu {
 	border-color: #d3cccc;
 	border-style: solid;
 	border-width: 1px 1px 0 1px;
 	background-color: #fff;
-		
+	width: 960px;
+	margin: 0 auto;
+	float: none;
 }
 
-#menu > ul > li > a:link, #menu > ul > li > a:visited{
+div#allwrapper {
+	margin: 0 auto;
+	width: 960px;
+}
+
+div#wrapper {
+	
+}
+
+#menu > ul > li > a:link, #menu > ul > li > a:visited,
+div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
 	background: #333;
 	padding: 5px 10px;
 	color: #02b39a;
 	text-decoration: none;
 }
+
+#lb-content{
+	border-left: 1px solid #d3cccc;
+	background-color: #fff;
+	width: ;
+}
+
 .startTranslucent {
 	background:rgb(0,0,0);
 	background:rgba(0,0,0,0.5);
@@ -56,15 +89,27 @@ div#header {
 	position: relative;
 }
 
-#primarysb > ul > li, #secondarysb > ul > li{
+#primarysb > ul > li, #secondarysb > ul > li,
+#footerleft > ul > li, #footerright > ul > li {
 	border: 3px solid #eee;
 	padding: 4px;
 	margin:4px;
 }
 
-#primarysb h4, #secondarysb h4 {
+#primarysb h4, #secondarysb h4,
+#footerleft h4, #footerright h4 {
 	background-color: #333;
 	width: 97%;
 	color: #fff;
 	padding: 3px;
+}
+
+div#footer {
+	background: #333;
+}
+div#footerwrapper {
+	width: 960px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+	background: #fff;
 }

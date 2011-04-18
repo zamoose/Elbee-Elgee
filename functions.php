@@ -203,7 +203,7 @@ function lblg_menu(){
 					) );
 	} else {
 	?>
-	<div id="menuwrap">
+	<!--div id="menuwrap">
 	        <ul id="menu" class="kwicks">
 			<?php if ( is_home() || is_single() ) : ?>
 	                <li class="current_page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
@@ -215,7 +215,7 @@ function lblg_menu(){
 					<?php wp_register( '<li class="admintab page_item">','</li>' ); ?>
 			<?php endif; ?>
 	        </ul>
-	</div>
+	</div-->
 	<?php
 	}
 }

@@ -65,7 +65,7 @@ abbr,acronym { border:0;
 #header {
 }
 
-#menu {
+#menu, div.menu {
 	margin: 0;
 	padding: 0;
 	float: left;
@@ -150,14 +150,15 @@ abbr,acronym { border:0;
 
 
 
-#menu > ul > li {
+#menu > ul > li, div.menu > ul > li  {
 	display: inline-block;
 	/*list-style-type: none;
 	margin: 0;
 	padding: 0;*/
 }
 
-#menu > ul > li a:link, #menu > ul > li a:visited{
+#menu > ul > li a:link, #menu > ul > li a:visited,
+div.menu > ul > li a:link, div.menu > ul > li a:visited {
 	display:  block;
 }
 
