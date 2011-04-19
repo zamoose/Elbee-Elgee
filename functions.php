@@ -203,19 +203,7 @@ function lblg_menu(){
 					) );
 	} else {
 	?>
-	<!--div id="menuwrap">
-	        <ul id="menu" class="kwicks">
-			<?php if ( is_home() || is_single() ) : ?>
-	                <li class="current_page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
-	                <?php wp_list_pages( 'sort_column=menu_order&depth=1&title_li=' ); ?>
-					<?php wp_register( '<li class="admintab page_item">','</li>' ); ?>
-			<?php else : ?>
-	                <li class="page_item"><a href="<?php echo home_url(); ?>">Blog</a></li>
-	                <?php wp_list_pages( 'sort_column=menu_order&depth=1&title_li=' ); ?>
-					<?php wp_register( '<li class="admintab page_item">','</li>' ); ?>
-			<?php endif; ?>
-	        </ul>
-	</div-->
+
 	<?php
 	}
 }
@@ -403,6 +391,24 @@ function lblg_copyright() {
     return $output;
 }
 
+function lblg_echo_copyright() {
+	echo lblg_copyright();
+}
+
+function lblg_credits(){
+	global $shortname, $options;
+	if($options[$shortname.'_footer_credit_text'] != ''){
+		$credits_text = $options[$shortname.'_footer_credit_text'];
+	}else{
+		$credits_text = '<p>Powered by <a href="http://wordpress.org\>WordPress</a> ' . bloginfo('version');
+		if($options[$shortname.'_display_footer_credit_text'] == true){
+			$credits_text .= 'and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p>';
+		}else{
+			$credits_text .= '</p>';
+		}
+	}
+	echo $credits_text;
+}
 
 /*
 * Theme Hooks
@@ -440,7 +446,11 @@ function lblg_print_copyright(){
 	do_action( 'lblg_print_copyright' );
 }
 
-function  lblg_bpmenu_widget( $args ){
+function lblg_print_credits(){
+	do_action( 'lblg_print_credits' );
+}
+
+function lblg_bpmenu_widget( $args ){
 	extract( $args );
 	
 	if( $title ){
@@ -483,7 +493,8 @@ register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __(
 add_action( 'lblg_set_themename', 'lblg_themename' );
 add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
-add_action( 'lblg_print_copyright', 'lblg_copyright' );
+add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
+add_action( 'lblg_print_credits', 'lblg_credits' );
 add_action( 'wp_head', 'lblg_wp_head' );
 add_action( 'admin_head','lblg_admin_head' );
 add_action( 'admin_menu', 'lblg_add_admin' ); 

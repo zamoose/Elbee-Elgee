@@ -41,7 +41,6 @@ div#blogtitle {
 
 
 #blogtitle{
-	/*background-color: #000;*/
 	width: 50%;
 }
 
@@ -58,10 +57,11 @@ div#menu, div.menu {
 div#allwrapper {
 	margin: 0 auto;
 	overflow: auto;
-	width: 960px;
+	width: 940px;
 	background-color: #fff;
 	border: 1px solid #d3cccc;
 	border-bottom-style: none;
+	padding: 10px;
 }
 
 div#wrapper {
