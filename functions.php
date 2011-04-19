@@ -92,16 +92,16 @@ function lblg_print_options( $options = array() ){
 			
 			// Prints a simple text <input> element
 			case 'text':
-			option_wrapper_header( $value );
+			lblg_option_wrapper_header( $value );
 			?>
 			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $key ) != "") { echo get_option( $key ); } else { echo $value['std']; } ?>" />
 			<?php
-			option_wrapper_footer( $value );
+			lblg_option_wrapper_footer( $value );
 			break;
 			
 			// Prints a drop-down <select> element
 			case 'select':
-			option_wrapper_header( $value );
+			lblg_option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 		                <?php foreach ( $value['options'] as $option) { ?>
@@ -109,13 +109,13 @@ function lblg_print_options( $options = array() ){
 		                <?php } ?>
 		            </select>
 			<?php
-			option_wrapper_footer( $value );
+			lblg_option_wrapper_footer( $value );
 			break;
 			
 			// Prints a <textarea> element
 			case 'textarea':
 			$ta_options = $value['options'];
-			option_wrapper_header( $value );
+			lblg_option_wrapper_header( $value );
 			?>
 					<textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
 					if( get_option( $key ) != "") {
@@ -124,12 +124,12 @@ function lblg_print_options( $options = array() ){
 							echo $value['std'];
 					}?></textarea>
 			<?php
-			option_wrapper_footer( $value );
+			lblg_option_wrapper_footer( $value );
 			break;
 	
 			// Prints a series of radio <input> elements
 			case "radio":
-			option_wrapper_header( $value );
+			lblg_option_wrapper_header( $value );
 			
 	 		foreach ( $value['options'] as $key=>$option ) { 
 					$radio_setting = get_option( $key );
@@ -150,12 +150,12 @@ function lblg_print_options( $options = array() ){
 			<?php 
 			}
 			 
-			option_wrapper_footer( $value );
+			lblg_option_wrapper_footer( $value );
 			break;
 			
 			// Prints a checbox <input> element
 			case "checkbox":
-			option_wrapper_header( $value );
+			lblg_option_wrapper_header( $value );
 							if(get_option( $key ) ){
 								$checked = "checked=\"checked\"";
 							}else{
@@ -164,7 +164,7 @@ function lblg_print_options( $options = array() ){
 						?>
 			            <input type="checkbox" name="<?php echo $key; ?>" id="<?php echo $key; ?>" value="true" <?php echo $checked; ?> />
 			<?php
-			option_wrapper_footer( $value );
+			lblg_option_wrapper_footer( $value );
 			break;
 	
 			default:
@@ -248,7 +248,7 @@ function lblg_admin() {
 }
 
 // 
-function option_wrapper_header( $values ){
+function lblg_option_wrapper_header( $values ){
 	?>
 	<tr valign="top"> 
 	    <th scope="row"><?php echo $values['name']; ?>:</th>
@@ -257,7 +257,7 @@ function option_wrapper_header( $values ){
 }
 
 // 
-function option_wrapper_footer( $values ){
+function lblg_option_wrapper_footer( $values ){
 	?>
 		<br /><br />
 		<?php echo $values['desc']; ?>
