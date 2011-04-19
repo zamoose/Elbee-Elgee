@@ -1,6 +1,5 @@
 body{
 	background-color: #efefef;
-	/*color: #d3cccc;*/
 }
 
 a:link, a:visited{
@@ -17,7 +16,6 @@ div#container {
 }
 
 div#header {
-	background: #333;
 }
 
 div#blogtitle {
@@ -37,6 +35,8 @@ div#blogtitle {
 #header h1 a:link, #header h1 a:visited, #header p.blogtitle a:link, #header p.blogtitle a:visited {
 	color: #02af97;
 	text-decoration: none;
+	vertical-align: baseline;
+	text-shadow: gray 2px 2px 1px;
 }
 
 
@@ -57,7 +57,11 @@ div#menu, div.menu {
 
 div#allwrapper {
 	margin: 0 auto;
+	overflow: auto;
 	width: 960px;
+	background-color: #fff;
+	border: 1px solid #d3cccc;
+	border-bottom-style: none;
 }
 
 div#wrapper {
@@ -70,12 +74,15 @@ div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
 	padding: 5px 10px;
 	color: #02b39a;
 	text-decoration: none;
+	margin-right: 5px;
+}
+
+#menu > ul > li > a:active, #menu > ul > li > a:hover,
+div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
+	background: #ccc;
 }
 
 #lb-content{
-	border-left: 1px solid #d3cccc;
-	background-color: #fff;
-	width: ;
 }
 
 .startTranslucent {
@@ -94,6 +101,7 @@ div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
 	border: 3px solid #eee;
 	padding: 4px;
 	margin:4px;
+	overflow: auto;
 }
 
 #primarysb h4, #secondarysb h4,
