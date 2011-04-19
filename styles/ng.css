@@ -1,3 +1,6 @@
+/*
+ @group Page-wide defaults
+*/
 body{
 	background-color: #efefef;
 }
@@ -11,10 +14,24 @@ a:active, a:hover{
 	text-decoration: underline;
 }
 
+.startTranslucent {
+	background:rgb(0,0,0);
+	background:rgba(0,0,0,0.5);
+	-ms-filter:alpha(opacity=50);
+	filter:alpha(opacity=50)
+}
+
+.stopTranslucent{
+	position: relative;
+}
+
+/* @end */
+
 div#container {
 	width: 100%;
 }
 
+/* @group Header Elements */
 div#header {
 }
 
@@ -26,10 +43,10 @@ div#blogtitle {
 
 #header h1, #header p.blogtitle{
 	margin: 0 auto;
-	font-size: 3em;
+	font-size: 3.5em;
 	font-weight: bold;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	height: 75px;
+	padding-top: 0.5em;
 }
 
 #header h1 a:link, #header h1 a:visited, #header p.blogtitle a:link, #header p.blogtitle a:visited {
@@ -44,6 +61,15 @@ div#blogtitle {
 	width: 50%;
 }
 
+#header p.description {
+	font-style: italic;
+	font-size: 1.5em;
+	margin-left: 1.5em;
+}
+
+/* @end */
+
+/* @group Menu Elements */
 div#menu, div.menu {
 	border-color: #d3cccc;
 	border-style: solid;
@@ -52,20 +78,6 @@ div#menu, div.menu {
 	width: 960px;
 	margin: 0 auto;
 	float: none;
-}
-
-div#allwrapper {
-	margin: 0 auto;
-	overflow: auto;
-	width: 940px;
-	background-color: #fff;
-	border: 1px solid #d3cccc;
-	border-bottom-style: none;
-	padding: 10px;
-}
-
-div#wrapper {
-	
 }
 
 #menu > ul > li > a:link, #menu > ul > li > a:visited,
@@ -82,20 +94,37 @@ div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 	background: #ccc;
 }
 
+/* @end */
+
+/* @group Wrapper Elements */
+div#allwrapper {
+	margin: 0 auto;
+	overflow: auto;
+	width: 940px;
+	background-color: #fff;
+	border: 1px solid #d3cccc;
+	border-bottom-style: none;
+	padding: 10px;
+}
+
+div#wrapper {
+	
+}
+
+/* @end */
+
+/* @group Content Elements */
 #lb-content{
 }
 
-.startTranslucent {
-	background:rgb(0,0,0);
-	background:rgba(0,0,0,0.5);
-	-ms-filter:alpha(opacity=50);
-	filter:alpha(opacity=50)
+#lb-content h2{
+	font-size: 2em;
+	font-style: bold;
 }
 
-.stopTranslucent{
-	position: relative;
-}
+/* @end */
 
+/* @group Sidebar Elements */
 #primarysb > ul > li, #secondarysb > ul > li,
 #footerleft > ul > li, #footerright > ul > li {
 	border: 3px solid #eee;
@@ -112,6 +141,9 @@ div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 	padding: 3px;
 }
 
+/* @end */
+
+/* @group Footer Elements */
 div#footer {
 	background: #333;
 }
@@ -121,3 +153,5 @@ div#footerwrapper {
 	border: 1px solid #ccc;
 	background: #fff;
 }
+
+/* @end */
