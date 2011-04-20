@@ -51,9 +51,7 @@
 
 		<?php do_action( 'bp_after_directory_groups_content' ) ?>
 
-	</div><!-- #content -->
-</div>
-</div>
+	</div><!-- #lb-content -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 

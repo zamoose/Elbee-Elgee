@@ -97,7 +97,7 @@
 
 			<?php do_action( 'bp_after_directory_activity_content' ) ?>
 
-		</div><!-- #content -->
+		</div><!-- #lb-content -->
 	</div><!-- #wrapper -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>

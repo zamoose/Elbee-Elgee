@@ -25,7 +25,7 @@
 
 		<?php do_action( 'bp_after_create_blog_content' ) ?>
 
-		</div><!-- #content -->
+		</div><!-- #lb-content -->
 	</div><!-- #container -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>

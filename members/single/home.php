@@ -50,9 +50,7 @@
 
 		<?php do_action( 'bp_after_member_home_content' ) ?>
 
-	</div><!-- #content -->
-</div>
-</div>
+	</div><!-- #lb-content -->
 
 <?php locate_template( array( 'sidebar.php' ), true ) ?>
 

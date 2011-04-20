@@ -48,9 +48,7 @@
 
 		</form><!-- #blogs-directory-form -->
 
-		</div><!-- #content -->
-	</div>
-	</div>
+		</div><!-- #lb-content -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 

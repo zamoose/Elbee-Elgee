@@ -33,10 +33,8 @@
 
 			<?php do_action( 'bp_after_group_plugin_template' ) ?>
 
-		</div><!-- #content -->
-	</div>
-	</div>
-
+		</div><!-- #lb-content -->
+		
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
 <?php get_footer() ?>

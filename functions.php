@@ -453,9 +453,9 @@ function lblg_print_credits(){
 function lblg_bpmenu_widget( $args ){
 	extract( $args );
 	
-	if( $title ){
+	if( $name ){
 		echo $before_widget;
-		echo $before_title . $title . $after_title;
+		echo $before_title . $name . $after_title;
 	}?>
 	<ul>
 	<?php

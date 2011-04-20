@@ -290,9 +290,7 @@
 
 		<?php do_action( 'bp_after_register_page' ) ?>
 
-		</div><!-- #content -->
-	</div>
-	</div>
+		</div><!-- #lb-content -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 

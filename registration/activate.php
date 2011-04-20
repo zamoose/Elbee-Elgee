@@ -50,7 +50,7 @@
 
 		<?php do_action( 'bp_after_activation_page' ) ?>
 
-		</div><!-- #content -->
+		</div><!-- #lb-content -->
 	</div><!-- #container -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
