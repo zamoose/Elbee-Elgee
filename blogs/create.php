@@ -31,6 +31,8 @@
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
 	<?php do_action( 'bp_after_create_blog_content' ) ?>
+	</div><!-- #wrapper -->
+</div><!--#allwrapper-->
 
 <?php get_footer() ?>
 

@@ -98,9 +98,9 @@
 			<?php do_action( 'bp_after_directory_activity_content' ) ?>
 
 		</div><!-- #lb-content -->
-	</div><!-- #wrapper -->
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
+	</div><!-- #wrapper -->
 </div><!--#allwrapper-->
 <?php get_footer() ?>

@@ -43,4 +43,7 @@
 
 	<?php do_action( 'bp_after_member_plugin_template' ) ?>
 
+		</div><!-- #wrapper -->
+	</div><!--#allwrapper-->
+
 <?php get_footer() ?>

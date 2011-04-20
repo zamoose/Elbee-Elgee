@@ -307,4 +307,7 @@
 		});
 	</script>
 
+			</div><!-- #wrapper -->
+		</div><!--#allwrapper-->
+
 <?php get_footer() ?>

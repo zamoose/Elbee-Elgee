@@ -52,4 +52,7 @@
 
 	<?php locate_template( array( 'sidebar.php' ), true ) ?>
 
+		</div><!-- #wrapper -->
+	</div><!--#allwrapper-->
+
 <?php get_footer() ?>
