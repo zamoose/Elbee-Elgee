@@ -117,11 +117,15 @@ div#wrapper {
 #lb-content{
 }
 
-#lb-content h2{
+body.home-page #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
 	font-size: 2em;
-	font-style: bold;
+	font-weight: bold;
+	padding-top: 1em;
 }
 
+#lb-content p, span.postmeta  {
+	padding-bottom: 0.7em
+}
 /* @end */
 
 /* @group Sidebar Elements */

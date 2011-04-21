@@ -410,6 +410,53 @@ function lblg_credits(){
 	echo $credits_text;
 }
 
+function lblg_styles(){
+	global $shortname;
+	$layout_handle = $shortname . '_layout_stylesheet';
+	$alt_style_handle = $shortname . '_alt_stylesheet';
+	$print_handle = $shortname . '_print_stylesheet';
+	
+	$layout_style_option = get_option($shortname.'_layout_stylesheet');
+	$alt_style_option = get_option($shortname.'_alt_stylesheet');
+	
+	switch($layout_style_option){
+		case '':
+		case 'Select a layout:':
+			$layout = get_template_directory_uri() . '/layouts/2-columns-fixed-sb-right.css';
+		break;
+		case '*none*':
+			unset($layout);
+		break;
+		default:
+			$layout = get_template_directory_uri() . '/layouts/' . $layout_style_option;
+		break;
+	}
+	
+	switch($alt_style_option){
+		case '':
+		case 'Select a stylesheet:':
+			$alt_style = get_template_directory_uri() .'/styles/ng.css';
+		break;
+		case '*none*':
+			unset($alt_style);
+		break;
+		default:
+			$alt_style = get_template_directory_uri() .'/styles/'. $alt_style_option;
+		break;
+	}
+	
+	if( isset($layout) ){
+		wp_enqueue_style( $layout_handle , $layout, '', '', 'screen' );
+	}
+	
+	if( isset($alt_style) ){
+		wp_enqueue_style( $alt_style_handle, $alt_style, '', '', 'screen' );
+	}
+	
+	wp_enqueue_style($print_handle,  get_template_directory_uri() . '/print.css', '', '', 'print' );
+}
+
+
 /*
 * Theme Hooks
 */
@@ -448,6 +495,10 @@ function lblg_print_copyright(){
 
 function lblg_print_credits(){
 	do_action( 'lblg_print_credits' );
+}
+
+function lblg_enqueue_styles(){
+	do_action( 'lblg_enqueue_styles' );
 }
 
 function lblg_bpmenu_widget( $args ){
@@ -490,17 +541,20 @@ add_custom_background();
 
 register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __( 'Sub-Menu' ) ) );
 
+// Elbee Elgee action hooks
 add_action( 'lblg_set_themename', 'lblg_themename' );
 add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
 add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
 add_action( 'lblg_print_credits', 'lblg_credits' );
+add_action( 'lblg_enqueue_styles', 'lblg_styles' );
+
+// WordPress core hooks
 add_action( 'wp_head', 'lblg_wp_head' );
 add_action( 'admin_head','lblg_admin_head' );
 add_action( 'admin_menu', 'lblg_add_admin' ); 
-// Register sidebars
+add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
-// Register BuddyPress menu output
 add_action( 'widgets_init', 'lblg_widgets_init' );
 
 ?>

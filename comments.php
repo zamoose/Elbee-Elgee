@@ -1,9 +1,18 @@
-<ol id="comments" class="commentlist">
+<?php 
+if( have_comments() ) { ?>
+	<h2 id="comments"><?php comments_number(); ?></h2>
 
-<?php wp_list_comments(); ?>
+		<ol class="commentlist">
+			<?php wp_list_comments(); ?>
+		</ol>
+<?php 
+	paginate_comments_links();
+}
+?>
 
-</ol>
+<?php 
+if( comments_open() ){
+	comment_form(); 
+}
+?>
 
-<?php paginate_comments_links(); ?>
-
-<?php comment_form(); ?>
