@@ -61,25 +61,20 @@ $parent_options_array = array (
 				"blog_meta_info" => array(	"name" => "Blog Meta Info",
 						"type" => "subhead"),
 
-				"display_footer_credit_text" => array(	"name" => "Credit Links",
-						"desc" => "Check this box to display theme credit links in the footer.", 
-						"std" => "false",
-						"type" => "checkbox"),
-
-				"footer_credit_text" => array(	"name" => "Footer Credits",
-						"desc" => "Footer credit text defaults to: <b><p></p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
-						"std" => "",
-						"type" => "textarea",
-						"options" => array("rows" => "5",
-										   "cols" => "40") ),
-
 				"display_footer_copyright" => array(	"name" => "Display Copyright",
 						"desc" => "Check this box to display your copyright information in the footer.", 
 						"std" => "true",
 						"type" => "checkbox"),	
 
 				"footer_copyright" => array(	"name" => "Copyright Statement",
-						"desc" => "The following text will be displayed by default: <b><p>" . lblg_copyright() . "</p></b>",
+						"desc" => "The following text will be displayed by default: <b><p>" . get_bloginfo('name') . " " . lblg_copyright() . "</p></b>",
+						"std" => "",
+						"type" => "textarea",
+						"options" => array("rows" => "5",
+										   "cols" => "40") ),
+
+				"footer_credit_text" => array(	"name" => "Footer Credits",
+						"desc" => "Footer credit text defaults to: <b><p>Powered by <a href=\"http://wordpress.org\">WordPress</a> " . get_bloginfo('version') . " and <a href=\"http://literalbarrage.org/blog/code/elbee-elgee\">Elbee Elgee</a></p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
 						"std" => "",
 						"type" => "textarea",
 						"options" => array("rows" => "5",

@@ -397,15 +397,12 @@ function lblg_echo_copyright() {
 
 function lblg_credits(){
 	global $shortname, $options;
-	if($options[$shortname.'_footer_credit_text'] != ''){
-		$credits_text = $options[$shortname.'_footer_credit_text'];
+	$tmp_credits = get_option($shortname . '_footer_credit_text');
+	if($tmp_credits != ''){
+		$credits_text = $tmp_credits;
 	}else{
-		$credits_text = '<p>Powered by <a href="http://wordpress.org\>WordPress</a> ' . bloginfo('version');
-		if($options[$shortname.'_display_footer_credit_text'] == true){
-			$credits_text .= 'and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p>';
-		}else{
-			$credits_text .= '</p>';
-		}
+		$credits_text = '<p>Powered by <a href="http://wordpress.org\">WordPress</a> ' . get_bloginfo('version');
+		$credits_text .= ' and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p>';
 	}
 	echo $credits_text;
 }

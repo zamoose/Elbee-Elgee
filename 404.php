@@ -21,7 +21,10 @@ if (function_exists('afdn_error_page')) {
 					<p>Looks like you managed to stumble across a link to a page that doesn't exist, but never fear, good citizen, for a wealth of options awaits you!</p>
 					<p>Perhaps you could search for what you were looking for:</p>
 
-					<?php if (smart404_loop()) : ?>
+					<?php 
+					echo get_search_form();
+					if(function_exists('smart404_loop')) :
+						if (smart404_loop()) : ?>
 					<p>Or, you could always try one of these posts:</p>
 					<?php while (have_posts()) : the_post(); ?>
 					<h4><a href="<?php the_permalink() ?>"
@@ -30,7 +33,10 @@ if (function_exists('afdn_error_page')) {
 					  <?php the_title(); ?></a></h4>
 					    <p><?php the_excerpt(); ?></p>
 					    <?php endwhile; ?>
-					<?php endif; ?>
+					<?php endif; //End smart404 loop 
+					endif; //End smart404 check
+					?>
+					
 				</div>
 			</div>
 		</div>

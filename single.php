@@ -10,11 +10,11 @@ get_header(); ?>
 	<div id="lb-content">
 		<?php get_template_part( 'theloop' ); ?>
 		<?php comments_template(); ?>
-	</div>
-</div>
+	</div><!-- #lb-content -->
+</div><!-- #wrapper -->
 
 <?php get_sidebar(); ?>
 
-</div>
+</div><!-- #allwrapper -->
 
 <?php get_footer(); ?>
