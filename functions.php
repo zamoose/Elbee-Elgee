@@ -294,11 +294,57 @@ $use_custom_header = $shortname."_use_custom_header";
 if( get_option( $use_custom_header ) == true ){
 	// Set up custom header code
 	define( 'HEADER_TEXTCOLOR', 'cfcfd0' );
-	define( 'HEADER_IMAGE', '%s/styles/default/newbanner2.png' );
-	define( 'HEADER_IMAGE_WIDTH', '1024' );
-	define( 'HEADER_IMAGE_HEIGHT', '279' );
+	define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
+	define( 'HEADER_IMAGE_WIDTH', '960' );
+	define( 'HEADER_IMAGE_HEIGHT', '200' );
 
 	add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
+	
+	register_default_headers( array(
+		'fireworks' => array(
+			'url' => '%s/images/headers/fireworks.jpg',
+			'thumbnail_url' => '%s/images/headers/fireworks-thumbnail.jpg',
+			'description' => 'Fireworks'
+		),
+		'ivy_in_winter' => array(
+			'url' => '%s/images/headers/ivy_in_winter.jpg',
+			'thumbnail_url' => '%s/images/headers/ivy_in_winter-thumbnail.jpg',
+			'description' => 'Ivy in Winter'
+		),
+		'lakeshore' => array(
+			'url' => '%s/images/headers/lakeshore.jpg',
+			'thumbnail_url' => '%s/images/headers/lakeshore-thumbnail.jpg',
+			'description' => 'Lakeshore'
+		),
+		'philly_sunset' => array(
+			'url' => '%s/images/headers/philly_sunset.jpg',
+			'thumbnail_url' => '%s/images/headers/philly_sunset-thumbnail.jpg',
+			'description' => 'Philly Sunset'
+		),
+		'snowy_day' => array(
+			'url' => '%s/images/headers/snowy_day.jpg',
+			'thumbnail_url' => '%s/images/headers/snowy_day-thumbnail.jpg',
+			'description' => 'Snowy Day'
+		),
+		'summer_dock' => array(
+			'url' => '%s/images/headers/summer_dock.jpg',
+			'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
+			/* translators: header image description */
+			'description' => __( 'Inkwell', 'twentyten' )
+		),
+		'path' => array(
+			'url' => '%s/images/headers/path.jpg',
+			'thumbnail_url' => '%s/images/headers/path-thumbnail.jpg',
+			/* translators: header image description */
+			'description' => __( 'Path', 'twentyten' )
+		),
+		'sunset' => array(
+			'url' => '%s/images/headers/sunset.jpg',
+			'thumbnail_url' => '%s/images/headers/sunset-thumbnail.jpg',
+			/* translators: header image description */
+			'description' => __( 'Sunset', 'twentyten' )
+		)
+	) );
 }
 
 function lblg_header_style() {
