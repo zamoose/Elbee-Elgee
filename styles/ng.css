@@ -28,7 +28,7 @@ a:active, a:hover{
 /* @end */
 
 div#container {
-	width: 100%;
+
 }
 
 /* @group Header Elements */
@@ -115,6 +115,7 @@ div#wrapper {
 
 /* @group Content Elements */
 #lb-content{
+	
 }
 
 body.home-page #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
