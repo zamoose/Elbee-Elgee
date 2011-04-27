@@ -42,7 +42,7 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 <body <?php body_class(); ?>>
 <div id="container">
 <div id="header">
-	<div id="blogtitle">
+	<div id="titledesc">
 		<?php lblg_print_title(); ?>
 		<p class="description"><span><?php bloginfo( 'description' ); ?></span></p>
 	</div>

@@ -33,16 +33,20 @@ div#container {
 
 /* @group Header Elements */
 div#header {
+	height: 200px;
 }
 
-div#blogtitle {
-	/*background: url(ng/anagrammap.png) top left no-repeat;*/
-	width: 960px;
-	margin: 0 auto;
+div#titledesc {
+	width: 50%;
+	height: 100%;
+	vertical-align: bottom;
+	background:rgb(0,0,0);
+	background:rgba(0,0,0,0.5);
+	-ms-filter:alpha(opacity=50);
+	filter:alpha(opacity=50)
 }
 
 #header h1, #header p.blogtitle{
-	margin: 0 auto;
 	font-size: 3.5em;
 	font-weight: bold;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -50,10 +54,11 @@ div#blogtitle {
 }
 
 #header h1 a:link, #header h1 a:visited, #header p.blogtitle a:link, #header p.blogtitle a:visited {
-	color: #02af97;
+	/*color: #02af97;*/
+	color: #fff;
 	text-decoration: none;
 	vertical-align: baseline;
-	text-shadow: gray 2px 2px 1px;
+	text-shadow: #000 2px 2px 1px;
 }
 
 
@@ -63,8 +68,9 @@ div#blogtitle {
 
 #header p.description {
 	font-style: italic;
-	font-size: 1.5em;
+	font-size: 1.2em;
 	margin-left: 1.5em;
+	color: #eee;
 }
 
 /* @end */
@@ -118,14 +124,19 @@ div#wrapper {
 	
 }
 
-body.home-page #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
+body.home #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
 	font-size: 2em;
 	font-weight: bold;
 	padding-top: 1em;
+	margin-top: 1em;
 }
 
 #lb-content p, span.postmeta  {
 	padding-bottom: 0.7em
+}
+
+#lb-content div.post {
+	margin-bottom: 1em;
 }
 /* @end */
 

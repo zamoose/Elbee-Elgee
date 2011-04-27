@@ -291,12 +291,20 @@ function lblg_register_sidebars() {
 }
 
 $use_custom_header = $shortname."_use_custom_header";
-if( get_option( $use_custom_header ) == true ){
+if( true == get_option( $use_custom_header ) ){
 	// Set up custom header code
-	define( 'HEADER_TEXTCOLOR', 'cfcfd0' );
-	define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
-	define( 'HEADER_IMAGE_WIDTH', '960' );
-	define( 'HEADER_IMAGE_HEIGHT', '200' );
+	if( !defined('HEADER_IMAGE') ){
+		define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
+	}
+	if( !defined('HEADER_TEXTCOLOR') ){	
+		define( 'HEADER_TEXTCOLOR', 'ffffff' );
+	}
+	if( !defined('HEADER_IMAGE_WIDTH') ) {
+		define( 'HEADER_IMAGE_WIDTH', '960' );
+	}
+	if( !defined('HEADER_IMAGE_HEIGHT') ){
+		define( 'HEADER_IMAGE_HEIGHT', '200' );
+	}
 
 	add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
 	
@@ -329,21 +337,13 @@ if( get_option( $use_custom_header ) == true ){
 		'summer_dock' => array(
 			'url' => '%s/images/headers/summer_dock.jpg',
 			'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Inkwell', 'twentyten' )
+			'description' => 'Summer Dock'
 		),
-		'path' => array(
-			'url' => '%s/images/headers/path.jpg',
-			'thumbnail_url' => '%s/images/headers/path-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Path', 'twentyten' )
+		'sunlight_streaming' => array(
+			'url' => '%s/images/headers/sunlight_streaming.jpg',
+			'thumbnail_url' => '%s/images/headers/sunlight_streaming-thumbnail.jpg',
+			'description' => 'Sunlight Streaming'
 		),
-		'sunset' => array(
-			'url' => '%s/images/headers/sunset.jpg',
-			'thumbnail_url' => '%s/images/headers/sunset-thumbnail.jpg',
-			/* translators: header image description */
-			'description' => __( 'Sunset', 'twentyten' )
-		)
 	) );
 }
 
@@ -564,8 +564,26 @@ function lblg_bpmenu_widget( $args ){
 	echo $after_widget;
 }
 
+class Lblg_BP_Menu_Widget extends WP_Widget {
+	function Lblg_BP_Menu_Widget() {
+		
+	}
+	
+	function widget( $args, $instance ) {
+		
+	}
+	
+	function update( $new_instance, $old_instance ) {
+		
+	}
+	
+	function form( $instance ) {
+		
+	}
+}
 function lblg_widgets_init(){
 	if( function_exists('bp_get_loggedin_user_nav') ){
+		register_widget( 'Lblg_BP_Menu_Widget' );
 		wp_register_sidebar_widget( 'lblgbpmenu', __( 'Elbee Elgee BuddyPress Menu' ), 'lblg_bpmenu_widget', 
 									array(
 										'title' 		=> 'BuddyPress Menu',
