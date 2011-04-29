@@ -61,6 +61,8 @@ div#titledesc {
 	text-shadow: #000 2px 2px 1px;
 }
 
+#header h1 a:hover, #header h1 a:active{
+}
 
 #blogtitle{
 	width: 50%;
