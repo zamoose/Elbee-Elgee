@@ -5,71 +5,83 @@
 */
 
 
-//Default locations for the parent and child options files
-$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
-$child_options_file = STYLESHEETPATH . '/includes/child-options.php';
+function lblg_get_default_options(){
+	//Default locations for the parent and child options files
+	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
+	$child_options_file = STYLESHEETPATH . '/includes/child-options.php';
 
-// Load parent options
-$parent_theme_array = include( $parent_options_file );
-$parent_options_array = $parent_theme_array[ 'options' ];
+	// Load parent options
+	$parent_theme_array = include( $parent_options_file );
+	$parent_options_array = $parent_theme_array[ 'options' ];
 
-// Conditionally load child options
-if( file_exists( $child_options_file ) ){
-	$child_theme_array = include( $child_options_file );
-	$child_options_array = $child_theme_array[ 'options' ];
+	// Conditionally load child options
+	if( file_exists( $child_options_file ) ){
+		$child_theme_array = include( $child_options_file );
+		$child_options_array = $child_theme_array[ 'options' ];
 
-	// Child theme options override the short and long theme names
-	$themename = $child_theme_array[ 'child_themename' ];
-	$shortname = $child_theme_array[ 'child_shortname' ];
-	
+		// Child theme options override the short and long theme names
+		if( isset($child_theme_array[ 'child_themename' ]) ){
+			$temp_themename = $child_theme_array[ 'child_themename' ];
+		}
+		if( isset($child_theme_array[ 'child_shortname' ]) ){
+			$temp_shortname = $child_theme_array[ 'child_shortname' ];
+		}
 
-	// Check the action requested by the child options
-	switch( $child_theme_array[ 'parent_options_action' ] ) {
-		case 'prepend':
-			//Prepend child theme options to options array (add to the top of the options screen)
-			$temp_options = array_merge( $child_options_array, $parent_options_array );
-		break;
-		case 'replace':
-			// Nuke parent options and replace with child theme's
-			$temp_options = $child_options_array;
-		break;
-		case 'discard':
-			//Create an empty array -- no options
-			$temp_options = array();
-		break;
-		case 'no_action':
-			// In case you want to specify that the parent options array are the only game in town
-			$temp_options = $parent_options_array;
-		break;
-		case 'append':
-		default:
-			// Default case. Append child options to the end of the array (add to the bottom of the options screen)
-			$temp_options = array_merge( $parent_options_array, $child_options_array );
-		break;
+		// Check the action requested by the child options
+		switch( $child_theme_array[ 'parent_options_action' ] ) {
+			case 'prepend':
+				//Prepend child theme options to options array (add to the top of the options screen)
+				$temp_options = array_merge( $child_options_array, $parent_options_array );
+			break;
+			case 'replace':
+				// Nuke parent options and replace with child theme's
+				$temp_options = $child_options_array;
+			break;
+			case 'discard':
+				//Create an empty array -- no options
+				$temp_options = array();
+			break;
+			case 'no_action':
+				// In case you want to specify that the parent options array are the only game in town
+				$temp_options = $parent_options_array;
+			break;
+			case 'append':
+			default:
+				// Default case. Append child options to the end of the array (add to the bottom of the options screen)
+				$temp_options = array_merge( $parent_options_array, $child_options_array );
+			break;
+		}
+	} else {
+		// If there are no child options, default back to the full parent options
+		$temp_options = $parent_options_array;
+		$temp_themename = $parent_theme_array[ 'parent_themename' ];
+		$temp_shortname = $parent_theme_array[ 'parent_shortname' ];
 	}
-} else {
-	// If there are no child options, default back to the full parent options
-	$temp_options = $parent_options_array;
-	$themename = $parent_theme_array[ 'parent_themename' ];
-	$shortname = $parent_theme_array[ 'parent_shortname' ];
+	
+	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'options' => $temp_options );
 }
 
-// Tack the theme's shortname onto the options to avoid potential namespacing issues
-while( list( $key, $value ) = each( $temp_options) ){
-	$options[$shortname . "_" . $key] = $value;
+function lblg_options_init(){
+	global $lblg_options;
+	$lblg_options = get_option('lblg_options');
+	
+	if(false === $lblg_options){
+		$lblg_options = lblg_get_default_options();
+	}
+	update_option( 'lblg_options', $lblg_options );
 }
 
 if ( ! isset( $content_width ) ) $content_width = '640';
 
 // Register all the options using the Settings API
-function lblg_register_options(){
+/*function lblg_register_options(){
 	global $options, $shortname;
 	foreach ( $options as $key => $value ){
 		if ( $value['type'] != 'subhead' ){
 			register_setting( $shortname.'_theme_options', $key );
 		}
 	}
-}
+}*/
 
 /*
  * lblg_print_options() is responsible for printing all the theme options in the theme's
@@ -177,8 +189,8 @@ function lblg_print_options( $options = array() ){
 
 // Set up the admin page &  register settings
 function lblg_add_admin() {
-    global $themename, $shortname, $options;
-    lblg_register_options();
+    $lblg_opts = get_option('lblg_options');
+	$themename = $lblg_opts['themename'];
     add_theme_page( $themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin' );
 }
 
@@ -217,8 +229,10 @@ function lblg_the_postimage() {
 
 // Display the theme options page
 function lblg_admin() {
-
-    global $themename, $shortname, $options;
+    $lblg_opts = get_option('lblg_options');
+	$themename = $lblg_opts['themename'];
+	$shortname = $lblg_opts['shortname'];
+	$options = $lblg_opts['options'];
 
     if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
     if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
@@ -267,11 +281,19 @@ function lblg_option_wrapper_footer( $values ){
 }
 
 function lblg_wp_head() { 
+	global $themename, $shortname, $options;
 	
+	$lblg_opts = get_option('lblg_options');
+	print_r($lblg_opts);
+	list($shortname, $themename, $options ) = $lblg_opts;
 }
 
 function lblg_admin_head(){ 
-
+	global $themename, $shortname, $options;
+	
+	$lblg_opts = get_option('lblg_options');
+	print_r($lblg_opts);
+	list($shortname, $themename, $options ) = $lblg_opts;
 }
 
 
@@ -358,11 +380,8 @@ function lblg_header_style() {
 	display: none;
 }
 <?php } else { ?>
-#header h1 a, #description {
+#header h1 a, p.description {
 	color:#<?php header_textcolor(); ?>;
-}
-#desc {
-	margin-right: 30px;
 }
 <?php } ?>
 </style>
@@ -373,38 +392,35 @@ function lblg_admin_header_style() {
 ?>
 <style type="text/css">
 #headimg{
-	background: url(<?php header_image(); ?>) bottom right no-repeat;
+	background: url(<?php header_image(); ?>) bottom left no-repeat;
 	height: <?php echo HEADER_IMAGE_HEIGHT; ?>px;
 	width:<?php echo HEADER_IMAGE_WIDTH; ?>px;
-  	padding:0 0 0 18px;
 }
 
 #headimg h1{
-	padding-top:40px;
-	margin: 0;
+	font-size: 3.5em;
+	font-weight: bold;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	padding-top: 0.5em;
 }
 #headimg h1 a{
 	color:#<?php header_textcolor(); ?>;
 	text-decoration: none;
-	border-bottom: none;
+	vertical-align: baseline;
+	text-shadow: #000 2px 2px 1px;
 }
 #headimg #desc{
 	color:#<?php header_textcolor(); ?>;
-	font-size:1em;
-	margin-top:-0.5em;
-}
-
-#desc {
-	display: none;
+	font-style: italic;
+	font-size: 1.2em;
+	margin-left: 1.5em;
 }
 
 <?php if ( 'blank' == get_header_textcolor() ) { ?>
 #headimg h1, #headimg #desc {
 	display: none;
 }
-#headimg h1 a, #headimg #desc {
-	color:#<?php echo HEADER_TEXTCOLOR ?>;
-}
+
 <?php } ?>
 
 </style>
@@ -571,15 +587,56 @@ class Lblg_Smart_Recent_Posts_Widget extends WP_Widget {
 	}
 	
 	function form( $instance ){
-		
+		$title = esc_attr($instance['title']);
+		$lb_num_posts = esc_attr($instance['lb_num_posts'])
+        ?>
+            <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('lb_num_posts'); ?>">Number of posts to display:<input class="widefat" id="<?php echo $this->get_field_id('lb_num_posts'); ?>" name="<?php echo $this->get_field_name('lb_num_posts'); ?>" type="text" value="<?php echo $lb_num_posts; ?>" /></label></p>
+        <?php
 	}
 	
 	function update( $new_instance, $old_instance ){
+ 		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
 		
+		if( is_int($new_instance['lb_num_posts']) ){
+			$instance['lb_num_posts'] = strip_tags($new_instance['lb_num_posts']);
+		} else {
+			$instance['lb_num_posts'] = get_option('posts_per_page');
+		}
+		
+		return $instance;	
 	}
 	
 	function widget( $args, $instance ){
+		extract($args);
 		
+		if(is_home()) { 
+			$tmp_query_string = 'paged=2&showposts=';
+			$tmp_title = 'Recent Posts';
+		} else {
+			$tmp_query_string = 'paged=1&showposts=';
+			$tmp_title = 'On The Front Page';
+		}
+		
+		$tmp_query_string .= $instance['lb_num_posts'];
+		$tmp_query = new WP_Query($tmp_query_string);
+		
+		echo $before_widget;
+		if('' != $instance['title']){
+			echo $before_title . $instance['title'] . $after_title;
+		} else {
+			echo $before_title . $tmp_title . $after_title;
+		}
+		echo '<ul>';
+
+		while ($tmp_query->have_posts()) : $tmp_query->the_post(); ?>
+		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
+		<?php 
+		endwhile;
+
+		echo '</ul>';
+		echo $after_widget;
 	}
 }
 
@@ -593,7 +650,7 @@ class  Lblg_BP_Menu_Widget extends WP_Widget {
     function form( $instance ) {                          
         $title = esc_attr($instance['title']);
         ?>
-            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+            <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
         <?php 
     }
 
@@ -654,5 +711,5 @@ add_action( 'admin_menu', 'lblg_add_admin' );
 add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 add_action( 'widgets_init', 'lblg_widgets_init' );
-
+add_action('after_setup_theme','lblg_options_init', 9 );
 ?>
