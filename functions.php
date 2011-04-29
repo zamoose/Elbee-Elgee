@@ -351,7 +351,7 @@ function lblg_header_style() {
 ?>
 <style type="text/css">
 #header{
-	background: url(<?php header_image() ?>) bottom right no-repeat;
+	background: url(<?php header_image() ?>) bottom left no-repeat;
 }
 <?php if ( 'blank' == get_header_textcolor() ) { ?>
 #header h1, #header #description {
@@ -564,32 +564,69 @@ function lblg_bpmenu_widget( $args ){
 	echo $after_widget;
 }
 
-class Lblg_BP_Menu_Widget extends WP_Widget {
-	function Lblg_BP_Menu_Widget() {
+class Lblg_Smart_Recent_Posts_Widget extends WP_Widget {
+	function Lblg_Smart_Recent_Posts_Widget(){
+		$widget_ops = array('classname' => 'lblg_smart_recent_posts_widget', 'description' => 'A widget that intelligently displays recent posts.' );
+		$this->WP_Widget('Lblg_Smart_Recent_Posts_Widget', 'Elbee Elgee Smart Recent Posts', $widget_ops);		
+	}
+	
+	function form( $instance ){
 		
 	}
 	
-	function widget( $args, $instance ) {
+	function update( $new_instance, $old_instance ){
 		
 	}
 	
-	function update( $new_instance, $old_instance ) {
-		
-	}
-	
-	function form( $instance ) {
+	function widget( $args, $instance ){
 		
 	}
 }
+
+class  Lblg_BP_Menu_Widget extends WP_Widget {
+
+    function Lblg_BP_Menu_Widget() {
+		$widget_ops = array('classname' => 'lblg_bp_menu_widget', 'description' => 'A basic top-level BuddyPress navigation menu.' );
+		$this->WP_Widget('Lblg_BP_Menu_Widget', 'Elbee Elgee BP Menu', $widget_ops);
+    }
+
+    function form( $instance ) {                          
+        $title = esc_attr($instance['title']);
+        ?>
+            <p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
+        <?php 
+    }
+
+    function update( $new_instance, $old_instance ) {
+        $instance = $old_instance;
+        $instance['title'] = strip_tags($new_instance['title']);
+        return $instance;
+    }
+
+    function widget( $args, $instance ) {         
+        extract( $args );
+        $title = apply_filters('widget_title', $instance['title']);
+       
+        echo $before_widget;
+        if ( $title ) echo $before_title . $title . $after_title;
+                echo '<ul id="lb-subnav">';
+                
+                if ( is_user_logged_in() ){
+                        bp_get_loggedin_user_nav();                     
+                } else {
+                        bp_get_displayed_user_nav();
+                }
+                echo '</ul>';
+                
+                echo $after_widget;
+    }
+} // class LBBPMenuWidget
+
 function lblg_widgets_init(){
 	if( function_exists('bp_get_loggedin_user_nav') ){
 		register_widget( 'Lblg_BP_Menu_Widget' );
-		wp_register_sidebar_widget( 'lblgbpmenu', __( 'Elbee Elgee BuddyPress Menu' ), 'lblg_bpmenu_widget', 
-									array(
-										'title' 		=> 'BuddyPress Menu',
-										'description'	=> 'Outputs the default BuddyPress navigational menu.'
-									) );
 	}
+	register_widget( 'Lblg_Smart_Recent_Posts_Widget' );
 }
 
 /*
