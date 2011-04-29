@@ -9,20 +9,6 @@ global $themename, $shortname;
 			<li><h4>Bottom-Left Sidebar</h4>
 				This is the bottom-left sidebar. You may add widgets to it via the Appearance -&gt; Widgets administration screen.
 			</li>
-		<?php if(is_home()) { 
-			query_posts('paged=2&showposts=7');?>
-		<li><h4>Recent Posts</h4>
-		<?php } else { 
-			query_posts('paged=1'); ?>
-		<li><h4>On The Front Page</h4>
-		<?php } ?>
-		<ul>
-		<?php 
-		while (have_posts()) : the_post(); ?>
-		<li><a href="<?php the_permalink() ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
-		<?php endwhile; ?>
-		</ul>
-		</li>
 		<?php endif; ?>
 		</ul>
 	</div>
