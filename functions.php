@@ -4,6 +4,9 @@
 * Elbee Elgee.
 */
 
+global $shortname, $themename;
+
+echo $shortname, $themename;
 function lblg_get_default_options(){
 	//Default locations for the parent and child options files
 	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
@@ -62,6 +65,7 @@ function lblg_get_default_options(){
 
 function lblg_options_init(){
 	//global $lblg_options;
+	global $shortname, $themename;
 	$temp_opts = lblg_get_default_options();
 	$shortname = $temp_opts['shortname'];
 	$themename = $temp_opts['themename'];
@@ -561,26 +565,6 @@ function lblg_print_credits(){
 
 function lblg_enqueue_styles(){
 	do_action( 'lblg_enqueue_styles' );
-}
-
-function lblg_bpmenu_widget( $args ){
-	extract( $args );
-	
-	if( $name ){
-		echo $before_widget;
-		echo $before_title . $name . $after_title;
-	}?>
-	<ul>
-	<?php
-	if ( is_user_logged_in() ){
-		bp_get_loggedin_user_nav();			
-	} else {
-		bp_get_displayed_user_nav();
-	}
-	?>
-	</ul>
-	<?php
-	echo $after_widget;
 }
 
 class Lblg_Smart_Recent_Posts_Widget extends WP_Widget {
