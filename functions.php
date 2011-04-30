@@ -4,7 +4,6 @@
 * Elbee Elgee.
 */
 
-
 function lblg_get_default_options(){
 	//Default locations for the parent and child options files
 	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
@@ -62,26 +61,38 @@ function lblg_get_default_options(){
 }
 
 function lblg_options_init(){
-	global $lblg_options;
-	$lblg_options = get_option('lblg_options');
+	//global $lblg_options;
+	$temp_opts = lblg_get_default_options();
+	$shortname = $temp_opts['shortname'];
+	$themename = $temp_opts['themename'];
+	
+	$lblg_options = get_option($shortname . '_lblg_options');
 	
 	if(false === $lblg_options){
-		$lblg_options = lblg_get_default_options();
+		$lblg_options = $temp_opts;
 	}
-	update_option( 'lblg_options', $lblg_options );
+	update_option( $shortname . '_lblg_options', $lblg_options );
+}
+
+function lblg_wp_head() { 
+	global $themename, $shortname, $lblg_options;
+	
+	$temp_opts = lblg_get_default_options();
+	
+	$shortname = $temp_opts['shortname'];
+	$themename = $temp_opts['themename'];
+		
+}
+
+function lblg_admin_head(){ 
+	global $themename, $shortname, $lblg_options;
+	$temp_opts = lblg_get_default_options();
+	
+	$shortname = $temp_opts['shortname'];
+	$themename = $temp_opts['themename'];
 }
 
 if ( ! isset( $content_width ) ) $content_width = '640';
-
-// Register all the options using the Settings API
-/*function lblg_register_options(){
-	global $options, $shortname;
-	foreach ( $options as $key => $value ){
-		if ( $value['type'] != 'subhead' ){
-			register_setting( $shortname.'_theme_options', $key );
-		}
-	}
-}*/
 
 /*
  * lblg_print_options() is responsible for printing all the theme options in the theme's
@@ -191,9 +202,16 @@ function lblg_print_options( $options = array() ){
 function lblg_add_admin() {
     $lblg_opts = get_option('lblg_options');
 	$themename = $lblg_opts['themename'];
-    add_theme_page( $themename." Settings", "$themename Settings", 'edit_themes', basename(__FILE__), 'lblg_admin' );
+    add_theme_page( $themename." Settings", "$themename Settings", 'edit_theme_options', basename(__FILE__), 'lblg_admin' );
 }
 
+
+/**
+* Output functions.
+*
+* These functions do useful things, like print the menu, the blog title, featured images, etc.
+*
+*/
 // Output the blog title. Hook-able via lblg_print_title() action hook.
 function lblg_title(){
 	if(is_home()) { ?>
@@ -234,9 +252,9 @@ function lblg_admin() {
 	$shortname = $lblg_opts['shortname'];
 	$options = $lblg_opts['options'];
 
-    if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
+    /*if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
     if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
-    
+    */
 ?>
 <div class="wrap">
 <h2 class="updatehook"><?php echo $themename; ?> settings</h2>
@@ -280,23 +298,6 @@ function lblg_option_wrapper_footer( $values ){
 	<?php 
 }
 
-function lblg_wp_head() { 
-	global $themename, $shortname, $options;
-	
-	$lblg_opts = get_option('lblg_options');
-	print_r($lblg_opts);
-	list($shortname, $themename, $options ) = $lblg_opts;
-}
-
-function lblg_admin_head(){ 
-	global $themename, $shortname, $options;
-	
-	$lblg_opts = get_option('lblg_options');
-	print_r($lblg_opts);
-	list($shortname, $themename, $options ) = $lblg_opts;
-}
-
-
 function lblg_register_sidebars() {
 	register_sidebar( array( 'name'=>'Primary',
 						   'before_widget' => '<li>', 
@@ -312,61 +313,63 @@ function lblg_register_sidebars() {
 	register_sidebar( array( 'name'=>'Bottom-Right' ) );
 }
 
-$use_custom_header = $shortname."_use_custom_header";
-if( true == get_option( $use_custom_header ) ){
-	// Set up custom header code
-	if( !defined('HEADER_IMAGE') ){
-		define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
-	}
-	if( !defined('HEADER_TEXTCOLOR') ){	
-		define( 'HEADER_TEXTCOLOR', 'ffffff' );
-	}
-	if( !defined('HEADER_IMAGE_WIDTH') ) {
-		define( 'HEADER_IMAGE_WIDTH', '960' );
-	}
-	if( !defined('HEADER_IMAGE_HEIGHT') ){
-		define( 'HEADER_IMAGE_HEIGHT', '200' );
-	}
+function lblg_register_headers(){
+	$lblg_opts = get_option($shortname. '_lblg_options');
+	if( true === get_option( $use_custom_header ) ){
+		// Set up custom header code
+		if( !defined('HEADER_IMAGE') ){
+			define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
+		}
+		if( !defined('HEADER_TEXTCOLOR') ){	
+			define( 'HEADER_TEXTCOLOR', 'ffffff' );
+		}
+		if( !defined('HEADER_IMAGE_WIDTH') ) {
+			define( 'HEADER_IMAGE_WIDTH', '960' );
+		}
+		if( !defined('HEADER_IMAGE_HEIGHT') ){
+			define( 'HEADER_IMAGE_HEIGHT', '200' );
+		}
 
-	add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
+		add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
 	
-	register_default_headers( array(
-		'fireworks' => array(
-			'url' => '%s/images/headers/fireworks.jpg',
-			'thumbnail_url' => '%s/images/headers/fireworks-thumbnail.jpg',
-			'description' => 'Fireworks'
-		),
-		'ivy_in_winter' => array(
-			'url' => '%s/images/headers/ivy_in_winter.jpg',
-			'thumbnail_url' => '%s/images/headers/ivy_in_winter-thumbnail.jpg',
-			'description' => 'Ivy in Winter'
-		),
-		'lakeshore' => array(
-			'url' => '%s/images/headers/lakeshore.jpg',
-			'thumbnail_url' => '%s/images/headers/lakeshore-thumbnail.jpg',
-			'description' => 'Lakeshore'
-		),
-		'philly_sunset' => array(
-			'url' => '%s/images/headers/philly_sunset.jpg',
-			'thumbnail_url' => '%s/images/headers/philly_sunset-thumbnail.jpg',
-			'description' => 'Philly Sunset'
-		),
-		'snowy_day' => array(
-			'url' => '%s/images/headers/snowy_day.jpg',
-			'thumbnail_url' => '%s/images/headers/snowy_day-thumbnail.jpg',
-			'description' => 'Snowy Day'
-		),
-		'summer_dock' => array(
-			'url' => '%s/images/headers/summer_dock.jpg',
-			'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
-			'description' => 'Summer Dock'
-		),
-		'sunlight_streaming' => array(
-			'url' => '%s/images/headers/sunlight_streaming.jpg',
-			'thumbnail_url' => '%s/images/headers/sunlight_streaming-thumbnail.jpg',
-			'description' => 'Sunlight Streaming'
-		),
-	) );
+		register_default_headers( array(
+			'fireworks' => array(
+				'url' => '%s/images/headers/fireworks.jpg',
+				'thumbnail_url' => '%s/images/headers/fireworks-thumbnail.jpg',
+				'description' => 'Fireworks'
+			),
+			'ivy_in_winter' => array(
+				'url' => '%s/images/headers/ivy_in_winter.jpg',
+				'thumbnail_url' => '%s/images/headers/ivy_in_winter-thumbnail.jpg',
+				'description' => 'Ivy in Winter'
+			),
+			'lakeshore' => array(
+				'url' => '%s/images/headers/lakeshore.jpg',
+				'thumbnail_url' => '%s/images/headers/lakeshore-thumbnail.jpg',
+				'description' => 'Lakeshore'
+			),
+			'philly_sunset' => array(
+				'url' => '%s/images/headers/philly_sunset.jpg',
+				'thumbnail_url' => '%s/images/headers/philly_sunset-thumbnail.jpg',
+				'description' => 'Philly Sunset'
+			),
+			'snowy_day' => array(
+				'url' => '%s/images/headers/snowy_day.jpg',
+				'thumbnail_url' => '%s/images/headers/snowy_day-thumbnail.jpg',
+				'description' => 'Snowy Day'
+			),
+			'summer_dock' => array(
+				'url' => '%s/images/headers/summer_dock.jpg',
+				'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
+				'description' => 'Summer Dock'
+			),
+			'sunlight_streaming' => array(
+				'url' => '%s/images/headers/sunlight_streaming.jpg',
+				'thumbnail_url' => '%s/images/headers/sunlight_streaming-thumbnail.jpg',
+				'description' => 'Sunlight Streaming'
+			),
+		) );
+	}
 }
 
 function lblg_header_style() {
@@ -517,7 +520,7 @@ function lblg_styles(){
 
 
 /*
-* Theme Hooks
+* Elbee Elgee Theme Hooks
 */
 
 function lblg_set_themename(){
@@ -711,5 +714,5 @@ add_action( 'admin_menu', 'lblg_add_admin' );
 add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 add_action( 'widgets_init', 'lblg_widgets_init' );
-add_action('after_setup_theme','lblg_options_init', 9 );
+add_action( 'after_setup_theme','lblg_options_init', 9 );
 ?>
