@@ -1,6 +1,7 @@
 <?php
 $parent_theme_array[ 'parent_themename' ] = "Elbee Elgee";
 $parent_theme_array[ 'parent_shortname' ] = "lblg";
+$parent_theme_array[ 'parent_version' ] = '1.0';
 
 // Look for layout CSS files to auto-load
 $layout_path = TEMPLATEPATH . '/layouts/'; 

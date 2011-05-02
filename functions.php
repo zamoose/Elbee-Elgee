@@ -4,9 +4,46 @@
 * Elbee Elgee.
 */
 
-global $shortname, $themename;
+//global $shortname, $themename;
 
-echo $shortname, $themename;
+/*
+*  Initialize the theme options, save to the DB if we haven't yet been run
+*/
+function lblg_options_init(){
+	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options;
+	/* 
+	*  If Elbee Elgee (or a child theme) has already been installed,
+	*  this should return an array() with keys 'shortname', 'themename',
+	*  and 'version'.
+	*/
+	$bootstrap_tmp = get_option( 'lblg_meta_info' );
+
+	if( false === $bootstrap_tmp ){
+		// We haven't been installed yet.
+		$temp_opts = lblg_get_default_options();
+		//Assign the globals
+		$lblg_shortname = $temp_opts['shortname'];
+		$lblg_themename = $temp_opts['themename'];
+		$lblg_version = $temp_opts['version'];
+		$lblg_options = $temp_opts['options'];
+	} else {
+		$lblg_shortname = $bootstrap_tmp['shortname'];
+		$lblg_themename = $bootstrap_tmp['themename'];
+		$lblg_version = $bootstrap_tmp['version'];
+		$lblg_options = get_option($lblg_shortname . '_lblg_options');
+		/*
+		*  This shouldn't happen, but it just might, so let's check
+		*  and then set up the options correctly.
+		*/
+		if(false === $lblg_options){
+			$temp_opts = lblg_get_default_options();
+			$lblg_options = $temp_opts['options'];
+		}	
+	}
+	
+	update_option( $shortname . '_lblg_options', $lblg_options );
+}
+
 function lblg_get_default_options(){
 	//Default locations for the parent and child options files
 	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
@@ -27,6 +64,9 @@ function lblg_get_default_options(){
 		}
 		if( isset($child_theme_array[ 'child_shortname' ]) ){
 			$temp_shortname = $child_theme_array[ 'child_shortname' ];
+		}
+		if( isset($child_theme_array[ 'child_version' ]) ){
+			$temp_version = $child_theme_array[ 'child_version' ];
 		}
 
 		// Check the action requested by the child options
@@ -58,34 +98,19 @@ function lblg_get_default_options(){
 		$temp_options = $parent_options_array;
 		$temp_themename = $parent_theme_array[ 'parent_themename' ];
 		$temp_shortname = $parent_theme_array[ 'parent_shortname' ];
+		$temp_version = $parent_theme_array[ 'parent_version' ];
 	}
 	
-	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'options' => $temp_options );
-}
-
-function lblg_options_init(){
-	//global $lblg_options;
-	global $shortname, $themename;
-	$temp_opts = lblg_get_default_options();
-	$shortname = $temp_opts['shortname'];
-	$themename = $temp_opts['themename'];
-	
-	$lblg_options = get_option($shortname . '_lblg_options');
-	
-	if(false === $lblg_options){
-		$lblg_options = $temp_opts;
-	}
-	update_option( $shortname . '_lblg_options', $lblg_options );
+	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'version' => $temp_version, 'options' => $temp_options );
 }
 
 function lblg_wp_head() { 
-	global $themename, $shortname, $lblg_options;
+	global $lblg_themename, $lblg_shortname, $lblg_options;
 	
-	$temp_opts = lblg_get_default_options();
-	
-	$shortname = $temp_opts['shortname'];
-	$themename = $temp_opts['themename'];
-		
+	$shortname = $lblg_shortname;
+	$themename = $lblg_themename;
+
+echo '$lblg_shortname: '.$lblg_shortname.' $lblg_themename: '. $lblg_themename;		
 }
 
 function lblg_admin_head(){ 
