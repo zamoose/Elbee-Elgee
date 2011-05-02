@@ -4,7 +4,7 @@
 * Elbee Elgee.
 */
 
-//global $shortname, $themename;
+define( LBLG_FUNCTIONS_DIR, '/includes/functions/' );
 
 /*
 *  Initialize the theme options, save to the DB if we haven't yet been run
@@ -106,19 +106,10 @@ function lblg_get_default_options(){
 
 function lblg_wp_head() { 
 	global $lblg_themename, $lblg_shortname, $lblg_options;
-	
-	$shortname = $lblg_shortname;
-	$themename = $lblg_themename;
-
-echo '$lblg_shortname: '.$lblg_shortname.' $lblg_themename: '. $lblg_themename;		
 }
 
 function lblg_admin_head(){ 
-	global $themename, $shortname, $lblg_options;
-	$temp_opts = lblg_get_default_options();
-	
-	$shortname = $temp_opts['shortname'];
-	$themename = $temp_opts['themename'];
+	global $lblg_themename, $lblg_shortname, $lblg_options;
 }
 
 if ( ! isset( $content_width ) ) $content_width = '640';
@@ -276,11 +267,16 @@ function lblg_the_postimage() {
 
 // Display the theme options page
 function lblg_admin() {
-    $lblg_opts = get_option('lblg_options');
-	$themename = $lblg_opts['themename'];
-	$shortname = $lblg_opts['shortname'];
-	$options = $lblg_opts['options'];
+	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options;
 
+	print_r($lblg_options);
+	$themename = $lblg_themename;
+	$shortname = $lblg_shortname;
+	$options = $lblg_options;
+
+	if ( isset( $_GET['settings-updated'] ) ) {
+	    echo "<div class='updated'><p>Theme settings updated successfully.</p></div>";
+	}
     /*if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
     if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
     */
@@ -548,148 +544,9 @@ function lblg_styles(){
 }
 
 
-/*
-* Elbee Elgee Theme Hooks
-*/
+require_once( get_template_directory() . LBLG_FUNCTIONS_DIR . 'hooks.php' );
 
-function lblg_set_themename(){
-	do_action( 'lblg_set_themename' );
-}
-
-function lblg_print_title(){
-	do_action( 'lblg_print_title' );
-}
-
-function lblg_print_menu(){
-	do_action( 'lblg_print_menu' );
-}
-
-function lblg_above_content(){
-	do_action( 'lblg_above_content' );
-}
-
-function lblg_sidebar_header(){
-	do_action( 'lblg_sidebar_header' );
-}
-
-function lblg_sidebar_footer(){
-	do_action( 'lblg_sidebar_footer' );
-}
-
-function lblg_meta_info(){
-	do_action( 'lblg_meta_info' );
-}
-
-function lblg_print_copyright(){
-	do_action( 'lblg_print_copyright' );
-}
-
-function lblg_print_credits(){
-	do_action( 'lblg_print_credits' );
-}
-
-function lblg_enqueue_styles(){
-	do_action( 'lblg_enqueue_styles' );
-}
-
-class Lblg_Smart_Recent_Posts_Widget extends WP_Widget {
-	function Lblg_Smart_Recent_Posts_Widget(){
-		$widget_ops = array('classname' => 'lblg_smart_recent_posts_widget', 'description' => 'A widget that intelligently displays recent posts.' );
-		$this->WP_Widget('Lblg_Smart_Recent_Posts_Widget', 'Elbee Elgee Smart Recent Posts', $widget_ops);		
-	}
-	
-	function form( $instance ){
-		$title = esc_attr($instance['title']);
-		$lb_num_posts = esc_attr($instance['lb_num_posts'])
-        ?>
-            <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
-            <p><label for="<?php echo $this->get_field_id('lb_num_posts'); ?>">Number of posts to display:<input class="widefat" id="<?php echo $this->get_field_id('lb_num_posts'); ?>" name="<?php echo $this->get_field_name('lb_num_posts'); ?>" type="text" value="<?php echo $lb_num_posts; ?>" /></label></p>
-        <?php
-	}
-	
-	function update( $new_instance, $old_instance ){
- 		$instance = $old_instance;
-		$instance['title'] = strip_tags($new_instance['title']);
-		
-		if( is_int($new_instance['lb_num_posts']) ){
-			$instance['lb_num_posts'] = strip_tags($new_instance['lb_num_posts']);
-		} else {
-			$instance['lb_num_posts'] = get_option('posts_per_page');
-		}
-		
-		return $instance;	
-	}
-	
-	function widget( $args, $instance ){
-		extract($args);
-		
-		if(is_home()) { 
-			$tmp_query_string = 'paged=2&showposts=';
-			$tmp_title = 'Recent Posts';
-		} else {
-			$tmp_query_string = 'paged=1&showposts=';
-			$tmp_title = 'On The Front Page';
-		}
-		
-		$tmp_query_string .= $instance['lb_num_posts'];
-		$tmp_query = new WP_Query($tmp_query_string);
-		
-		echo $before_widget;
-		if('' != $instance['title']){
-			echo $before_title . $instance['title'] . $after_title;
-		} else {
-			echo $before_title . $tmp_title . $after_title;
-		}
-		echo '<ul>';
-
-		while ($tmp_query->have_posts()) : $tmp_query->the_post(); ?>
-		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br /> published on <?php the_date("M jS, Y"); ?> in <?php the_category(', '); ?><?php the_excerpt(); ?></li>
-		<?php 
-		endwhile;
-
-		echo '</ul>';
-		echo $after_widget;
-	}
-}
-
-class  Lblg_BP_Menu_Widget extends WP_Widget {
-
-    function Lblg_BP_Menu_Widget() {
-		$widget_ops = array('classname' => 'lblg_bp_menu_widget', 'description' => 'A basic top-level BuddyPress navigation menu.' );
-		$this->WP_Widget('Lblg_BP_Menu_Widget', 'Elbee Elgee BP Menu', $widget_ops);
-    }
-
-    function form( $instance ) {                          
-        $title = esc_attr($instance['title']);
-        ?>
-            <p><label for="<?php echo $this->get_field_id('title'); ?>">Title: <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></label></p>
-        <?php 
-    }
-
-    function update( $new_instance, $old_instance ) {
-        $instance = $old_instance;
-        $instance['title'] = strip_tags($new_instance['title']);
-        return $instance;
-    }
-
-    function widget( $args, $instance ) {         
-        extract( $args );
-        $title = apply_filters('widget_title', $instance['title']);
-       
-        echo $before_widget;
-        if ( $title ) echo $before_title . $title . $after_title;
-                echo '<ul id="lb-subnav">';
-                
-                if ( is_user_logged_in() ){
-                        bp_get_loggedin_user_nav();                     
-                } else {
-                        bp_get_displayed_user_nav();
-                }
-                echo '</ul>';
-                
-                echo $after_widget;
-    }
-} // class LBBPMenuWidget
+require_once( get_template_directory() . LBLG_FUNCTIONS_DIR . 'widgets.php' );
 
 function lblg_widgets_init(){
 	if( function_exists('bp_get_loggedin_user_nav') ){
