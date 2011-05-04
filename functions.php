@@ -4,105 +4,9 @@
 * Elbee Elgee.
 */
 
-define( LBLG_FUNCTIONS_DIR, '/includes/functions/' );
+define( LBLG_FUNCTIONS_DIR,  get_template_directory() . '/includes/functions/' );
 
-/*
-*  Initialize the theme options, save to the DB if we haven't yet been run
-*/
-function lblg_options_init(){
-	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options;
-	/* 
-	*  If Elbee Elgee (or a child theme) has already been installed,
-	*  this should return an array() with keys 'shortname', 'themename',
-	*  and 'version'.
-	*/
-	$bootstrap_tmp = get_option( 'lblg_meta_info' );
-
-	if( false === $bootstrap_tmp ){
-		// We haven't been installed yet.
-		$temp_opts = lblg_get_default_options();
-		//Assign the globals
-		$lblg_shortname = $temp_opts['shortname'];
-		$lblg_themename = $temp_opts['themename'];
-		$lblg_version = $temp_opts['version'];
-		$lblg_options = $temp_opts['options'];
-	} else {
-		$lblg_shortname = $bootstrap_tmp['shortname'];
-		$lblg_themename = $bootstrap_tmp['themename'];
-		$lblg_version = $bootstrap_tmp['version'];
-		$lblg_options = get_option($lblg_shortname . '_lblg_options');
-		/*
-		*  This shouldn't happen, but it just might, so let's check
-		*  and then set up the options correctly.
-		*/
-		if(false === $lblg_options){
-			$temp_opts = lblg_get_default_options();
-			$lblg_options = $temp_opts['options'];
-		}	
-	}
-	
-	update_option( $shortname . '_lblg_options', $lblg_options );
-}
-
-function lblg_get_default_options(){
-	//Default locations for the parent and child options files
-	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
-	$child_options_file = STYLESHEETPATH . '/includes/child-options.php';
-
-	// Load parent options
-	$parent_theme_array = include( $parent_options_file );
-	$parent_options_array = $parent_theme_array[ 'options' ];
-
-	// Conditionally load child options
-	if( file_exists( $child_options_file ) ){
-		$child_theme_array = include( $child_options_file );
-		$child_options_array = $child_theme_array[ 'options' ];
-
-		// Child theme options override the short and long theme names
-		if( isset($child_theme_array[ 'child_themename' ]) ){
-			$temp_themename = $child_theme_array[ 'child_themename' ];
-		}
-		if( isset($child_theme_array[ 'child_shortname' ]) ){
-			$temp_shortname = $child_theme_array[ 'child_shortname' ];
-		}
-		if( isset($child_theme_array[ 'child_version' ]) ){
-			$temp_version = $child_theme_array[ 'child_version' ];
-		}
-
-		// Check the action requested by the child options
-		switch( $child_theme_array[ 'parent_options_action' ] ) {
-			case 'prepend':
-				//Prepend child theme options to options array (add to the top of the options screen)
-				$temp_options = array_merge( $child_options_array, $parent_options_array );
-			break;
-			case 'replace':
-				// Nuke parent options and replace with child theme's
-				$temp_options = $child_options_array;
-			break;
-			case 'discard':
-				//Create an empty array -- no options
-				$temp_options = array();
-			break;
-			case 'no_action':
-				// In case you want to specify that the parent options array are the only game in town
-				$temp_options = $parent_options_array;
-			break;
-			case 'append':
-			default:
-				// Default case. Append child options to the end of the array (add to the bottom of the options screen)
-				$temp_options = array_merge( $parent_options_array, $child_options_array );
-			break;
-		}
-	} else {
-		// If there are no child options, default back to the full parent options
-		$temp_options = $parent_options_array;
-		$temp_themename = $parent_theme_array[ 'parent_themename' ];
-		$temp_shortname = $parent_theme_array[ 'parent_shortname' ];
-		$temp_version = $parent_theme_array[ 'parent_version' ];
-	}
-	
-	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'version' => $temp_version, 'options' => $temp_options );
-}
+require_once( LBLG_FUNCTIONS_DIR . 'options.php' );
 
 function lblg_wp_head() { 
 	global $lblg_themename, $lblg_shortname, $lblg_options;
@@ -269,7 +173,6 @@ function lblg_the_postimage() {
 function lblg_admin() {
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options;
 
-	print_r($lblg_options);
 	$themename = $lblg_themename;
 	$shortname = $lblg_shortname;
 	$options = $lblg_options;
@@ -277,9 +180,9 @@ function lblg_admin() {
 	if ( isset( $_GET['settings-updated'] ) ) {
 	    echo "<div class='updated'><p>Theme settings updated successfully.</p></div>";
 	}
-    /*if ( isset( $_POST['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
-    if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
-    */
+    if ( isset( $_GET['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
+    if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
+    
 ?>
 <div class="wrap">
 <h2 class="updatehook"><?php echo $themename; ?> settings</h2>
@@ -544,9 +447,9 @@ function lblg_styles(){
 }
 
 
-require_once( get_template_directory() . LBLG_FUNCTIONS_DIR . 'hooks.php' );
+require_once( LBLG_FUNCTIONS_DIR . 'hooks.php' );
 
-require_once( get_template_directory() . LBLG_FUNCTIONS_DIR . 'widgets.php' );
+require_once( LBLG_FUNCTIONS_DIR . 'widgets.php' );
 
 function lblg_widgets_init(){
 	if( function_exists('bp_get_loggedin_user_nav') ){
