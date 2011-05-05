@@ -3,7 +3,7 @@
 *  Initialize the theme options, save to the DB if we haven't yet been run
 */
 function lblg_options_init(){
-	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_admin_options;
+	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
 	/* 
 	*  If Elbee Elgee (or a child theme) has already been installed,
 	*  this should return an array() with keys 'shortname', 'themename',
@@ -11,14 +11,17 @@ function lblg_options_init(){
 	*/
 	$bootstrap_tmp = get_option( 'lblg_meta_info' );
 
+	if(is_admin()){
+		$temp_opts = lblg_get_default_options();
+		$lblg_default_options = $temp_opts['options'];
+	}
+		
 	if( false === $bootstrap_tmp ){
 		// We haven't been installed yet.
-		$temp_opts = lblg_get_default_options();
 		//Assign the globals
 		$lblg_shortname = $temp_opts['shortname'];
 		$lblg_themename = $temp_opts['themename'];
 		$lblg_version = $temp_opts['version'];
-		$lblg_admin_options = $temp_opts['options'];
 		$lblg_options = lblg_get_options_from_defaults();
 	} else {
 		$lblg_shortname = $bootstrap_tmp['shortname'];

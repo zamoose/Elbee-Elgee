@@ -8,11 +8,11 @@ function lblg_add_admin() {
 
 // Display the theme options page
 function lblg_admin() {
-	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_admin_options;
+	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
 
 	$themename = $lblg_themename;
 	$shortname = $lblg_shortname;
-	$options = $lblg_admin_options;
+	$options = $lblg_default_options;
 
 	if ( isset( $_GET['settings-updated'] ) ) {
 	    echo "<div class='updated'><p>Theme settings updated successfully.</p></div>";
@@ -29,7 +29,7 @@ function lblg_admin() {
 <table class="form-table">
 <tbody>
 
-<?php lblg_print_options( $options ); ?>
+<?php lblg_print_options($lblg_options, $lblg_default_options); ?>
 
 </tbody>
 </table>
@@ -67,8 +67,8 @@ function lblg_option_wrapper_footer( $values ){
  * lblg_print_options() is responsible for printing all the theme options in the theme's
  * options screen.
  */
-function lblg_print_options( $options = array() ){
-	foreach ( $options as $key => $value ) { 	
+function lblg_print_options( $options = array(), $default_options = array() ){
+	foreach ( $default_options as $key => $value ) { 	
 		switch ( $value['type'] ) {
 			
 			// Prints a subheader (useful for dividing options up into similar sections)
