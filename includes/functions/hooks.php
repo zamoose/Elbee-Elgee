@@ -196,6 +196,7 @@ add_action( 'lblg_enqueue_styles', 'lblg_styles' );
 
 // WordPress core hooks
 add_action( 'wp_head', 'lblg_wp_head' );
+add_action( 'admin_init', 'lblg_admin_init' );
 add_action( 'admin_head','lblg_admin_head' );
 add_action( 'admin_menu', 'lblg_add_admin' ); 
 add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );

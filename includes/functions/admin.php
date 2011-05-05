@@ -6,6 +6,11 @@ function lblg_add_admin() {
     add_theme_page( $themename." Settings", "$themename Settings", 'edit_theme_options', basename(__FILE__), 'lblg_admin' );
 }
 
+function lblg_admin_init(){
+	global $lblg_shortname;
+	register_setting($lblg_shortname . '_lblg_options', $lblg_shortname . '_lblg_options', 'lblg_sanitize_options' );
+}
+
 // Display the theme options page
 function lblg_admin() {
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
@@ -19,7 +24,6 @@ function lblg_admin() {
 	}
     if ( isset( $_GET['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
     if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
-    
 ?>
 <div class="wrap">
 <h2 class="updatehook"><?php echo $themename; ?> settings</h2>
@@ -33,8 +37,6 @@ function lblg_admin() {
 
 </tbody>
 </table>
-
-<?php settings_fields( $shortname . '_theme_options' ); ?>
 
 <p class="submit">
 <input name="save" type="submit" class="button-primary" value="Save changes" />    
@@ -74,11 +76,13 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			// Prints a subheader (useful for dividing options up into similar sections)
 			case 'subhead':
 			?>
+				</tbody>
 				</table>
 				
 				<h3><?php echo $value['name']; ?></h3>
 				
 				<table class="form-table">
+				<tbody>
 			<?php
 			break;
 			
@@ -86,7 +90,7 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			case 'text':
 			lblg_option_wrapper_header( $value );
 			?>
-			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $key ) != "") { echo get_option( $key ); } else { echo $value['std']; } ?>" />
+			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if( "" != $options[$key] ) { echo $options[$key]; } else { echo $value['std']; } ?>" />
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
@@ -97,7 +101,7 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			?>
 		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 		                <?php foreach ( $value['options'] as $option) { ?>
-		                <option<?php if ( get_option( $key ) == $option ) { echo ' selected="selected"'; } elseif ( $option == $value['std'] ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <option<?php if ( $options[$key] == $option ) { echo ' selected="selected"'; } elseif ( $option == $value['std'] ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 		                <?php } ?>
 		            </select>
 			<?php
@@ -111,7 +115,7 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			?>
 					<textarea name="<?php echo $key; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
 					if( get_option( $key ) != "") {
-							echo get_option( $key );
+							echo $options[$key];
 						}else{
 							echo $value['std'];
 					}?></textarea>
@@ -124,16 +128,16 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			lblg_option_wrapper_header( $value );
 			
 	 		foreach ( $value['options'] as $key=>$option ) { 
-					$radio_setting = get_option( $key );
+					$radio_setting = $options[$key];
 					if( $radio_setting != '' ){
-			    		if ( $key == get_option( $key ) ) {
-							$checked = "checked=\"checked\"";
+			    		if ( $key == $options[$key] ) {
+							$checked = 'checked="checked"';
 							} else {
 								$checked = "";
 							}
 					}else{
 						if( $key == $value['std'] ){
-							$checked = "checked=\"checked\"";
+							$checked = 'checked="checked"';
 						}else{
 							$checked = "";
 						}
@@ -148,8 +152,8 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			// Prints a checbox <input> element
 			case "checkbox":
 			lblg_option_wrapper_header( $value );
-							if(get_option( $key ) ){
-								$checked = "checked=\"checked\"";
+							if( $option[$key] ){
+								$checked = 'checked="checked"';
 							}else{
 								$checked = "";
 							}
