@@ -97,3 +97,10 @@ class  Lblg_BP_Menu_Widget extends WP_Widget {
                 echo $after_widget;
     }
 } // class LBBPMenuWidget
+
+function lblg_widgets_init(){
+	if( function_exists('bp_get_loggedin_user_nav') ){
+		register_widget( 'Lblg_BP_Menu_Widget' );
+	}
+	register_widget( 'Lblg_Smart_Recent_Posts_Widget' );
+}
