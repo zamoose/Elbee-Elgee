@@ -4,7 +4,7 @@
 * Elbee Elgee.
 */
 
-define( LBLG_FUNCTIONS_DIR,  get_template_directory() . '/includes/functions/' );
+define( 'LBLG_FUNCTIONS_DIR',  get_template_directory() . '/includes/functions/' );
 
 require_once( LBLG_FUNCTIONS_DIR . 'options.php' );
 
