@@ -117,3 +117,22 @@ function lblg_get_default_options(){
 	
 	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'version' => $temp_version, 'options' => $temp_options );
 }
+
+function lblg_sanitize_options( $input ){
+	global $lblg_shortname, $lblg_options, $lblg_default_options;
+
+	print_r($lblg_default_options);
+	if( isset($lblg_options) ){
+		$valid_input = $lblg_options;
+	} else {
+		$valid_input = $lblg_default_options;
+	}
+	
+	$submit = ( ! empty( $input['submit']) ? true : false );
+	$reset = ( ! empty( $input['reset']) ? true : false );
+	
+	foreach( $valid_input as $key => $value ){
+		echo $key;
+		echo $value;
+	}
+}

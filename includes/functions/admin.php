@@ -30,16 +30,21 @@ function lblg_admin() {
 
 <form method="post" action="options.php">
 
+<?php 
+	settings_fields( $lblg_shortname . '_lblg_options' ); 
+	do_settings_sections( 'lblg' );
+?>
 <table class="form-table">
 <tbody>
 
-<?php lblg_print_options($lblg_options, $lblg_default_options); ?>
+<?php lblg_print_options(); ?>
 
 </tbody>
 </table>
 
 <p class="submit">
-<input name="save" type="submit" class="button-primary" value="Save changes" />    
+<input name="save" type="submit" class="button-primary" value="Save changes" />
+<input name="reset" type="submit" class="button-secondary" value="Reset to defaults" />
 </p>
 </form>
 
@@ -69,12 +74,19 @@ function lblg_option_wrapper_footer( $values ){
  * lblg_print_options() is responsible for printing all the theme options in the theme's
  * options screen.
  */
-function lblg_print_options( $options = array(), $default_options = array() ){
+function lblg_print_options(){
+	global $lblg_options, $lblg_default_options;
+	$section = '';
+	$options = $lblg_options;
+	$default_options = $lblg_default_options;
+
 	foreach ( $default_options as $key => $value ) { 	
 		switch ( $value['type'] ) {
 			
 			// Prints a subheader (useful for dividing options up into similar sections)
 			case 'subhead':
+			$section = $value['name'];
+			add_settings_section( $key, $section, '', 'lblg' );
 			?>
 				</tbody>
 				</table>
@@ -88,6 +100,7 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			
 			// Prints a simple text <input> element
 			case 'text':
+			add_settings_field( $key, $value['name'], '', 'lblg', $section );
 			lblg_option_wrapper_header( $value );
 			?>
 			        <input name="<?php echo $key; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if( "" != $options[$key] ) { echo $options[$key]; } else { echo $value['std']; } ?>" />
@@ -97,11 +110,12 @@ function lblg_print_options( $options = array(), $default_options = array() ){
 			
 			// Prints a drop-down <select> element
 			case 'select':
+			add_settings_field( $key, $value['name'], '', 'lblg', $section );
 			lblg_option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $key; ?>" id="<?php echo $key; ?>">
 		                <?php foreach ( $value['options'] as $option) { ?>
-		                <option<?php if ( $options[$key] == $option ) { echo ' selected="selected"'; } elseif ( $option == $value['std'] ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <option<?php if ( ( isset( $lblg_options[$key] ) && ( $option == $lblg_options[$key] ) ) || ( $option == $value['std'] ) ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
 		                <?php } ?>
 		            </select>
 			<?php
