@@ -19,9 +19,6 @@ function lblg_admin() {
 	$shortname = $lblg_shortname;
 	$options = $lblg_default_options;
 
-	if ( isset( $_GET['settings-updated'] ) ) {
-	    echo "<div class='updated'><p>Theme settings updated successfully.</p></div>";
-	}
     if ( isset( $_GET['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
     if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
 ?>
