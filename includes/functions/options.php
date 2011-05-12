@@ -11,11 +11,9 @@ function lblg_options_init(){
 	*/
 	$bootstrap_tmp = get_option( 'lblg_meta_info' );
 
-	if(is_admin()){
-		$temp_opts = lblg_get_default_options();
-		$lblg_default_options = $temp_opts['options'];
-	}
-		
+	$temp_opts = lblg_get_default_options();
+	$lblg_default_options = $temp_opts['options'];
+
 	if( false === $bootstrap_tmp ){
 		// We haven't been installed yet.
 		//Assign the globals
@@ -40,7 +38,7 @@ function lblg_options_init(){
 	$meta_options = array( 'shortname' => $lblg_shortname,
 						   'themename' => $lblg_themename,
 						   'version'   => $lblg_version);
-						
+					
 	update_option( 'lblg_meta_info', $meta_options);
 	update_option( $lblg_shortname . '_lblg_options', $lblg_options );
 }
@@ -119,9 +117,12 @@ function lblg_get_default_options(){
 }
 
 function lblg_sanitize_options( $input ){
-	global $lblg_shortname, $lblg_options, $lblg_default_options;
+	global $lblg_shortname, $lblg_default_options;
 
+print_r($_REQUEST);
+	echo "Input: ";
 	print_r($input);
+	
 	if( isset($lblg_options) && is_array($lblg_options) ){
 		$valid_input = $lblg_options;
 	} else {
@@ -131,7 +132,6 @@ function lblg_sanitize_options( $input ){
 	$submit = ( ! empty( $input['submit']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
 	
-	//echo $submit . " : " . $reset;
 	foreach( $valid_input as $key => $value ){
 		//echo $key;
 		//echo $value;
