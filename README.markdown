@@ -1,4 +1,3 @@
-<!-- -*- markdown -*- -->
 # Elbee Elgee Parent Theme #
 <http://literalbarrage.org/blog/code/elbee-elgee>
 
