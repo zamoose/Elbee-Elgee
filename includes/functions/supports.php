@@ -22,6 +22,9 @@ add_theme_support( 'post-thumbnails' );
 add_theme_support( 'automatic-feed-links' );
 add_custom_background();
 
-register_nav_menus( array( 'primary' => __( 'Primary Menu' ), 'secondary' => __( 'Sub-Menu' ) ) );
+register_nav_menu( 'primary', 'Primary Navigation Menu' );
+if( function_exists( 'bp_get_loggedin_user_nav' ) ){
+	register_nav_menu( 'lblgbpmenu', 'Default BuddyPress Menu' );
+}
 
 if ( ! isset( $content_width ) ) $content_width = '640';

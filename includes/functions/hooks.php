@@ -202,4 +202,7 @@ add_action( 'admin_menu', 'lblg_add_admin' );
 add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 add_action( 'widgets_init', 'lblg_widgets_init' );
+if( function_exists( 'bp_get_loggedin_user_nav' ) ){
+	add_action( 'widgets_init', 'lblg_add_default_buddypress_menu' );
+}
 add_action( 'after_setup_theme','lblg_options_init', 9 );

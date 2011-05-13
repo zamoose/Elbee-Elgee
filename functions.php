@@ -18,4 +18,6 @@ require_once( LBLG_FUNCTIONS_DIR . 'hooks.php' );
 
 require_once( LBLG_FUNCTIONS_DIR . 'supports.php' );
 
+require_once( LBLG_FUNCTIONS_DIR . 'buddypress.php' );
+
 ?>
