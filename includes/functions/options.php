@@ -119,8 +119,6 @@ function lblg_get_default_options(){
 function lblg_sanitize_options( $input ){
 	global $lblg_shortname, $lblg_default_options;
 
-print_r($_REQUEST);
-	echo "Input: ";
 	print_r($input);
 	
 	if( isset($lblg_options) && is_array($lblg_options) ){

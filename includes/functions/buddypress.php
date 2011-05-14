@@ -2,6 +2,7 @@
 function lblg_add_default_buddypress_menu(){
 	global $lblg_themename;
 	$menuname = $lblg_themename . ' BuddyPress Menu';
+	$bpmenulocation = 'lblgbpmenu';
 	// Does the menu exist already?
 	$menu_exists = wp_get_nav_menu_object( $menuname );
 	
@@ -42,9 +43,11 @@ function lblg_add_default_buddypress_menu(){
 		
 		// Grab the theme locations and assign our newly-created menu
 		// to the BuddyPress menu location.
-		$locations = get_theme_mod('nav_menu_locations');
-		$locations['lblgbpmenu'] = $menu_id;
-		set_theme_mod( 'nav_menu_locations', $locations );
+		if( !has_nav_menu( $bpmenulocation ) ){
+			$locations = get_theme_mod('nav_menu_locations');
+			$locations[$bpmenulocation] = $menu_id;
+			set_theme_mod( 'nav_menu_locations', $locations );
+		}
 		
 	} 
 }
