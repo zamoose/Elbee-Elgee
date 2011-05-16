@@ -55,7 +55,7 @@ $parent_options_array = array (
 					    "options" => $alt_stylesheets),
 
 				"use_custom_header" => array(	"name" => "Use Custom Headers",
-						"desc" => "Check this box if you wish to use WordPress's <a href=\"http://boren.nu/archives/2007/01/07/custom-image-header-api/\">Custom Header Image API</a> to define a custom image for your theme",
+						"desc" => "Check this box if you wish to use WordPress's built-in Custom Header Image API to define a custom image for your theme",
 						"std" => "false",
 						"type" => "checkbox"),
 
