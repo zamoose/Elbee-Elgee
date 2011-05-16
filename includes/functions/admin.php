@@ -40,15 +40,15 @@ function lblg_admin() {
 </table>
 
 <p class="submit">
-<input name="lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
-<input name="lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+<input name="<?php echo $lblg_shortname; ?>_lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
+<input name="<?php echo $lblg_shortname; ?>_lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
 </p>
 </form>
 
 <?php
 }
 
-// 
+// Output the per-option table row header markup
 function lblg_option_wrapper_header( $values ){
 	?>
 	<tr valign="top"> 
@@ -57,7 +57,7 @@ function lblg_option_wrapper_header( $values ){
 	<?php
 }
 
-// 
+// Output the per-option table row footer markup 
 function lblg_option_wrapper_footer( $values ){
 	?>
 		<br /><br />
