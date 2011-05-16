@@ -117,23 +117,54 @@ function lblg_get_default_options(){
 }
 
 function lblg_sanitize_options( $input ){
-	global $lblg_shortname, $lblg_default_options;
+	global $lblg_shortname, $lblg_default_options, $lblg_options;
 
-	print_r($input);
-	
-	if( isset($lblg_options) && is_array($lblg_options) ){
-		$valid_input = $lblg_options;
-	} else {
-		$valid_input = lblg_get_options_from_defaults();
-	}
-	
-	$submit = ( ! empty( $input['submit']) ? true : false );
+	$submit = ( ! empty( $input['save']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
 	
-	foreach( $valid_input as $key => $value ){
-		//echo $key;
-		//echo $value;
+	if( $reset ){
+		$valid_input = lblg_get_options_from_defaults();
+	} elseif ( $submit ){
+		// Check to see whether our options have actually been initialized
+		// and exist in the database (they should!)
+		if( isset($lblg_options) && is_array($lblg_options) ){
+			$valid_input = $lblg_options;
+		} else {
+			// If they don't exist for some reason, we use the defaults
+			// as our valid input test
+			$valid_input = lblg_get_options_from_defaults();
+		}
+		
+		print_r($valid_input);
+		foreach( $input as $key => $value ){
+			if( array_key_exists( $key, $lblg_options ) ){
+				$tmp_type = $lblg_default_options[$key]['type'];
+				switch( $tmp_type ){
+					case 'text':
+					case 'textarea':
+						$valid_input[ $key ] = esc_attr( $value );
+					break;
+					
+					case 'select':
+						$valid_input[$key] = ( in_array( $value, $lblg_default_options[$key]['options']) ? $value : $valid_input[$key] );
+					break;
+					
+					case 'radio':
+					
+					break;
+
+					case 'checkbox':
+					
+					break;
+					
+					default:
+					break;
+				}
+			}
+		}
+		
 	}
-	
+
+	print_r($valid_input);
 	return $valid_input;
 }
