@@ -150,7 +150,7 @@ function lblg_sanitize_options( $input ){
 					break;
 					
 					case 'radio':
-					
+						//$valid_input[$key] = ( );
 					break;
 
 					case 'checkbox':

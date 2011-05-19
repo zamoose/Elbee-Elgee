@@ -113,8 +113,10 @@ function lblg_print_options(){
 			lblg_option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>">
-		                <?php foreach ( $value['options'] as $option) { ?>
-		                <option<?php if ( ( isset( $lblg_options[$key] ) && ( $option == $lblg_options[$key] ) ) || ( $option == $value['std'] ) ) { echo ' selected="selected"'; } ?>><?php echo $option; ?></option>
+		                <?php foreach ( $value['options'] as $option) { 
+								$selected = ( ($option == $lblg_options[$key]) ? 'selected="selected"' : '' );
+						?>
+		                <option <?php echo $selected; ?>><?php echo $option; ?></option>
 		                <?php } ?>
 		            </select>
 			<?php
@@ -127,12 +129,7 @@ function lblg_print_options(){
 			$ta_options = $value['options'];
 			lblg_option_wrapper_header( $value );
 			?>
-					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php 
-					if( get_option( $key ) != "") {
-							echo $options[$key];
-						}else{
-							echo $value['std'];
-					}?></textarea>
+					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php echo $lblg_options[$key]; ?></textarea>
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
@@ -141,9 +138,10 @@ function lblg_print_options(){
 			case "radio":
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );			
 			lblg_option_wrapper_header( $value );
-	 		foreach ( $value['options'] as $key=>$option ) { 
-					$radio_setting = $options[$key];
-					if( $radio_setting != '' ){
+	 		foreach ( $value['options'] as $opt_key=>$opt_value ) {
+					$radio_setting = $lblg_options[$key];
+					echo "Radio: $radio_setting";
+					if( '' != $radio_setting ){
 			    		if ( $key == $options[$key] ) {
 							$checked = 'checked="checked"';
 							} else {
@@ -156,7 +154,7 @@ function lblg_print_options(){
 							$checked = "";
 						}
 					}?>
-		            <input type="radio" name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" value="<?php echo $key; ?>" <?php echo $checked; ?> /><?php echo $option; ?><br />
+		            <input type="radio" name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" value="<?php echo $opt_key; ?>" <?php echo $checked; ?> /><?php echo $opt_value; ?><br />
 			<?php 
 			}
 			 

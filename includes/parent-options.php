@@ -51,11 +51,11 @@ $parent_options_array = array (
 				"alt_stylesheet" => array(	"name" => "Theme Stylesheet",
 						"desc" => "Place additional theme stylesheets and assets in <code>" . TEMPLATEPATH . "/styles/</code> to add them as styling options",
 					    "std" => "Select a stylesheet:",
-					    "type" => "select",
+					    "type" => "radio",
 					    "options" => $alt_stylesheets),
 
 				"use_custom_header" => array(	"name" => "Use Custom Headers",
-						"desc" => "Check this box if you wish to use WordPress's built-in Custom Header Image API to define a custom image for your theme",
+						"desc" => 'Check this box if you wish to use WordPress\'s built-in <a href="http://codex.wordpress.org/Custom_Headers">Custom Header Image API</a> to define a custom image for your theme',
 						"std" => "false",
 						"type" => "checkbox"),
 
