@@ -113,11 +113,19 @@ function lblg_print_options(){
 			lblg_option_wrapper_header( $value );
 			?>
 		            <select name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>">
-		                <?php foreach ( $value['options'] as $option) { 
-								$selected = ( ($option == $lblg_options[$key]) ? 'selected="selected"' : '' );
+						<?php 
+							if( $value['options'] === array_values($value['options'])){
+								foreach ( $value['options'] as $option) { 
+									$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
+									echo "<option$selected>$option</option>\n";
+								}
+							} else {
+								foreach ( $value['options'] as $key => $value ) { 
+									$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
+									echo "<option value=$key$selected>$option</option>\n";
+								}							
+							}
 						?>
-		                <option <?php echo $selected; ?>><?php echo $option; ?></option>
-		                <?php } ?>
 		            </select>
 			<?php
 			lblg_option_wrapper_footer( $value );
@@ -138,24 +146,20 @@ function lblg_print_options(){
 			case "radio":
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );			
 			lblg_option_wrapper_header( $value );
-	 		foreach ( $value['options'] as $opt_key=>$opt_value ) {
-					$radio_setting = $lblg_options[$key];
-					echo "Radio: $radio_setting";
-					if( '' != $radio_setting ){
-			    		if ( $key == $options[$key] ) {
-							$checked = 'checked="checked"';
-							} else {
-								$checked = "";
-							}
-					}else{
-						if( $key == $value['std'] ){
-							$checked = 'checked="checked"';
-						}else{
-							$checked = "";
-						}
-					}?>
-		            <input type="radio" name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" value="<?php echo $opt_key; ?>" <?php echo $checked; ?> /><?php echo $opt_value; ?><br />
-			<?php 
+			if( $value['options'] === array_values($value['options'])){
+		 		foreach ( $value['options'] as $option ) {
+						$radio_setting = $lblg_options[$key];
+						$checked = (( $option == $lblg_options[$key]) ? ' checked="checked"' : '' );
+						$tmp_name = $lblg_options_group . '['. $key . ']';
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"$checked />$option<br />\n";
+				}
+			} else {
+		 		foreach ( $value['options'] as $opt_key => $opt_value ) {
+						$radio_setting = $lblg_options[$key];
+						$checked = (( $opt_key == $lblg_options[$key]) ? ' checked="checked"' : '' );
+						$tmp_name = $lblg_options_group . '['. $key . ']';
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"$checked />$opt_value<br />\n";
+				}
 			}
 			 
 			lblg_option_wrapper_footer( $value );
@@ -163,17 +167,13 @@ function lblg_print_options(){
 			
 			// Prints a checbox <input> element
 			case "checkbox":
-			
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
 			lblg_option_wrapper_header( $value );
-							if( $option[$key] ){
-								$checked = 'checked="checked"';
-							}else{
-								$checked = "";
-							}
-						?>
-			            <input type="checkbox" name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" value="true" <?php echo $checked; ?> />
-			<?php
+			
+			$checked = (($lblg_options[$key]) ? ' checked="checked"' : '' );
+			$tmp_name = $lblg_options_group . '['. $key . ']';
+			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"true\"$checked />\n";
+
 			lblg_option_wrapper_footer( $value );
 			break;
 	

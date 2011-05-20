@@ -146,15 +146,12 @@ function lblg_sanitize_options( $input ){
 					break;
 					
 					case 'select':
+					case 'radio':
 						$valid_input[$key] = ( in_array( $value, $lblg_default_options[$key]['options']) ? $value : $valid_input[$key] );
 					break;
 					
-					case 'radio':
-						//$valid_input[$key] = ( );
-					break;
-
 					case 'checkbox':
-					
+						$valid_input[$key] = (( $value == 'true' ) ? 'true' : 'false' );
 					break;
 					
 					default:
@@ -164,7 +161,7 @@ function lblg_sanitize_options( $input ){
 		}
 		
 	}
-
+		
 	print_r($valid_input);
 	return $valid_input;
 }
