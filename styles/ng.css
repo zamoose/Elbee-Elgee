@@ -28,7 +28,7 @@ a:active, a:hover{
 /* @end */
 
 div#container {
-
+	border: 1px solid #d3cccc;
 }
 
 /* @group Header Elements */
@@ -79,11 +79,11 @@ div#titledesc {
 
 /* @group Menu Elements */
 div#menu, div.menu {
-	border-color: #d3cccc;
+	/*border-color: #d3cccc;
 	border-style: solid;
-	border-width: 1px 1px 0 1px;
-	background-color: #fff;
-	width: 960px;
+	border-width: 1px 1px 0 1px; */
+	background-color: #3c3c3c;
+	width: 100%;
 	margin: 0 auto;
 	float: none;
 }
@@ -110,7 +110,7 @@ div#allwrapper {
 	overflow: auto;
 	width: 940px;
 	background-color: #fff;
-	border: 1px solid #d3cccc;
+	/*border: 1px solid #d3cccc;*/
 	border-bottom-style: none;
 	padding: 10px;
 }
@@ -168,7 +168,7 @@ div#footer {
 div#footerwrapper {
 	width: 960px;
 	margin: 0 auto;
-	border: 1px solid #ccc;
+	/*border: 1px solid #ccc;*/
 	background: #fff;
 }
 
