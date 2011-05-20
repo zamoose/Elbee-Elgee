@@ -40,7 +40,13 @@ Additional layouts and styles can be added by simply placing new .css files in t
 
 ### FEATURES ###
 #### Sidebars ####
-Elbee Elgee features four native sidebars/widget areas: Primary, BuddyPress Menu (when BuddyPress is active), Bottom-Left and Bottom-Right. In most layouts, Primary will be placed either directly above (e.g. in 2 column layouts) or to the right of (in 1 or 3 column layouts) Secondary. Bottom-Left and Bottom-Right, as their names suggest, are located at the bottom of the design in the footer on the left and right, respectively.
+Elbee Elgee features four native sidebars/widget areas: Primary, Secondary, Bottom-Left and Bottom-Right. In most layouts, Primary will be placed either directly above (e.g. in 2 column layouts) or to the right of (in 1 or 3 column layouts) Secondary. Bottom-Left and Bottom-Right, as their names suggest, are located at the bottom of the design in the footer on the left and right, respectively.
+
+#### Menus ####
+Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee Elgee BuddyPress Menu") is activated when an active BuddyPress installation is detected. This menu will be automatically populated with the most commonly-used BuddyPress links. You may alter it as you see fit or choose not to use it at all.
+
+#### BuddyPress Support ####
+Elbee Elgee supports basic use of the BuddyPress social media framework (<http://buddypress.org>) out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
 
 #### Hooks ####
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
@@ -70,4 +76,4 @@ If you are interested in learning more about Mercurial, <http://hginit.com> is a
 
 * Chip Bennett's Oenology (<http://www.chipbennett.net/themes/oenology/>)
 
-* Twenty Ten
+* Twenty Ten, the default WordPress theme prior to version 3.2, was the inspiration for the default dynamic header support
