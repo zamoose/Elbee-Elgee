@@ -3,6 +3,9 @@
 * Elbee Elgee Theme Hooks
 */
 
+$lblg_meta_info = get_option('lblg_meta_info');
+$lblg_options = get_option($lblg_meta_info['shortname'] . "_lblg_options" );
+
 /*
 *  Action hooks
 */
@@ -202,7 +205,14 @@ add_action( 'admin_menu', 'lblg_add_admin' );
 add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 add_action( 'widgets_init', 'lblg_widgets_init' );
+add_action( 'after_setup_theme','lblg_options_init', 9 );
+
+// Only load the BuddyPress menu code if BP is active
 if( function_exists( 'bp_get_loggedin_user_nav' ) ){
 	add_action( 'widgets_init', 'lblg_add_default_buddypress_menu' );
 }
-add_action( 'after_setup_theme','lblg_options_init', 9 );
+
+// Only load custom header code if the option is checked
+if( 'true' == $lblg_options['use_custom_header'] ){
+	add_action( 'after_setup_theme', 'lblg_register_headers', 11 );
+}

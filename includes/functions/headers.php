@@ -1,8 +1,8 @@
 <?php
 function lblg_register_headers(){
-	global $lblg_options;
+/*	global $lblg_options;
 	$use_custom_header = $lblg_options['use_custom_header'];
-	if( true === $use_custom_header ){
+	if( true === $use_custom_header ){*/
 		// Set up custom header code
 		if( !defined('HEADER_IMAGE') ){
 			define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
@@ -56,7 +56,7 @@ function lblg_register_headers(){
 				'description' => 'Sunlight Streaming'
 			),
 		) );
-	}
+	// }
 }
 
 function lblg_header_style() {
