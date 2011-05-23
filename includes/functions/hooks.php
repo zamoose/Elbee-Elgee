@@ -79,13 +79,13 @@ function lblg_menu(){
 }
 
 function lblg_styles(){
-	global $shortname;
-	$layout_handle = $shortname . '_layout_stylesheet';
-	$alt_style_handle = $shortname . '_alt_stylesheet';
-	$print_handle = $shortname . '_print_stylesheet';
+	global $lblg_shortname, $lblg_options;
+	$layout_handle = $lblg_shortname . '_layout_stylesheet';
+	$alt_style_handle = $lblg_shortname . '_alt_stylesheet';
+	$print_handle = $lblg_shortname . '_print_stylesheet';
 	
-	$layout_style_option = get_option($shortname.'_layout_stylesheet');
-	$alt_style_option = get_option($shortname.'_alt_stylesheet');
+	$layout_style_option = $lblg_options['layout_stylesheet'];
+	$alt_style_option = $lblg_options['alt_stylesheet'];
 	
 	switch($layout_style_option){
 		case '':
@@ -125,8 +125,8 @@ function lblg_styles(){
 }
 
 function lblg_credits(){
-	global $shortname, $options;
-	$tmp_credits = get_option($shortname . '_footer_credit_text');
+	global $lblg_shortname, $lblg_options;
+	$tmp_credits = $lblg_options['footer_credit_text'];
 	if($tmp_credits != ''){
 		$credits_text = $tmp_credits;
 	}else{

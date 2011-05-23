@@ -90,16 +90,26 @@ div#menu, div.menu {
 
 #menu > ul > li > a:link, #menu > ul > li > a:visited,
 div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
-	background: #333;
 	padding: 5px 10px;
-	color: #02b39a;
+	color: #fff;
 	text-decoration: none;
 	margin-right: 5px;
+	font-weight: bold;
 }
 
 #menu > ul > li > a:active, #menu > ul > li > a:hover,
 div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
-	background: #ccc;
+	background: #fff;
+	color: #0971B3;
+
+}
+
+#menu li.current_page_item {
+	background: #fff;
+}
+
+#menu li.current_page_item a:link, #menu li.current_page_item a:visited {
+	color: #000;
 }
 
 /* @end */

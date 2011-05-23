@@ -1,5 +1,5 @@
 <?php
-global $themename, $shortname;
+global $lblg_themename, $lblg_shortname, $lblg_options;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
@@ -54,3 +54,4 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 	?>
 </div>
 <?php lblg_print_menu(); ?>
+<?php print_r($lblg_options); ?>

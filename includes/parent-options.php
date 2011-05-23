@@ -51,7 +51,7 @@ $parent_options_array = array (
 				"alt_stylesheet" => array(	"name" => "Theme Stylesheet",
 						"desc" => "Place additional theme stylesheets and assets in <code>" . TEMPLATEPATH . "/styles/</code> to add them as styling options",
 					    "std" => "Select a stylesheet:",
-					    "type" => "radio",
+					    "type" => "select",
 					    "options" => $alt_stylesheets),
 
 				"use_custom_header" => array(	"name" => "Use Custom Headers",

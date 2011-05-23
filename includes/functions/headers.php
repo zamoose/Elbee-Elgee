@@ -1,7 +1,7 @@
 <?php
 function lblg_register_headers(){
-	$lblg_opts = get_option($shortname. '_lblg_options');
-	$use_custom_header = $lblg_opts['use_custom_header'];
+	global $lblg_options;
+	$use_custom_header = $lblg_options['use_custom_header'];
 	if( true === $use_custom_header ){
 		// Set up custom header code
 		if( !defined('HEADER_IMAGE') ){

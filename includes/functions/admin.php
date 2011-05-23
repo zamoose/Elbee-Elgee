@@ -23,6 +23,7 @@ function lblg_admin() {
     if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
 ?>
 <div class="wrap">
+<div id="icon-themes" class="icon32"><br /></div>
 <h2 class="updatehook"><?php echo $themename; ?> settings</h2>
 
 <form method="post" action="options.php">
@@ -170,7 +171,7 @@ function lblg_print_options(){
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
 			lblg_option_wrapper_header( $value );
 			
-			$checked = (($lblg_options[$key]) ? ' checked="checked"' : '' );
+			$checked = (( 'true' == $lblg_options[$key]) ? ' checked="checked"' : '' );
 			$tmp_name = $lblg_options_group . '['. $key . ']';
 			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"true\"$checked />\n";
 

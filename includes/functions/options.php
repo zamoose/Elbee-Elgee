@@ -134,34 +134,34 @@ function lblg_sanitize_options( $input ){
 			// as our valid input test
 			$valid_input = lblg_get_options_from_defaults();
 		}
-		
-		print_r($valid_input);
-		foreach( $input as $key => $value ){
-			if( array_key_exists( $key, $lblg_options ) ){
-				$tmp_type = $lblg_default_options[$key]['type'];
-				switch( $tmp_type ){
-					case 'text':
-					case 'textarea':
-						$valid_input[ $key ] = esc_attr( $value );
-					break;
-					
-					case 'select':
-					case 'radio':
-						$valid_input[$key] = ( in_array( $value, $lblg_default_options[$key]['options']) ? $value : $valid_input[$key] );
-					break;
-					
-					case 'checkbox':
-						$valid_input[$key] = (( $value == 'true' ) ? 'true' : 'false' );
-					break;
-					
-					default:
-					break;
-				}
+
+		foreach( $valid_input as $key => $value ){
+			$tmp_type = $lblg_default_options[$key]['type'];
+			
+			switch( $tmp_type ){
+				case 'text':
+				case 'textarea':
+					if( isset($input[$key]) ){
+						$valid_input[ $key ] = esc_attr( $input[$key] );
+					}
+				break;
+
+				case 'select':
+				case 'radio':
+					if( isset($input[$key]) ){
+						$valid_input[$key] = ( in_array( $input[$key], $lblg_default_options[$key]['options']) ? $input[$key] : $valid_input[$key] );
+					}
+				break;
+
+				case 'checkbox':
+					$valid_input[$key] = (( isset($input[$key]) && ( 'true' == $input[$key] ) ) ? 'true' : 'false' );
+				break;
+				
+				default:
+				break;
 			}
-		}
-		
+		}		
 	}
 		
-	print_r($valid_input);
 	return $valid_input;
 }
