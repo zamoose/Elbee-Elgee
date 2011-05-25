@@ -118,9 +118,7 @@ div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 div#allwrapper {
 	margin: 0 auto;
 	overflow: auto;
-	width: 940px;
 	background-color: #fff;
-	/*border: 1px solid #d3cccc;*/
 	border-bottom-style: none;
 	padding: 10px;
 }
