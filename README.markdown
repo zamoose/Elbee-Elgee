@@ -1,11 +1,11 @@
 ## Elbee Elgee Parent Theme ##
-<http://literalbarrage.org/blog/code/elbee-elgee>
+[Project Homepage](<http://literalbarrage.org/blog/code/elbee-elgee>)
 
 ### LICENSE ###
 GNU Public License version 2 (GPLv2)
 
 ### DESCRIPTION ###
-Elbee Elgee (LBLG) is a parent theme with multiple layouts, including 1, 2 and 3 column fluid *and* fixed size designs. Its original inspiration was the Layout Gala (<http://blog.html.it/layoutgala/>, the "LG" in "Elgee"), whose extensive use of negative margins and creative use of floats gave 40 total layouts using a single HTML structure. I have pared down the options a bit, as WordPress' dynamic sidebars have negated the need for several of the "mirror image" designs originally provided by Layout Gala.
+Elbee Elgee (LBLG) is a parent theme with multiple layouts, including 1, 2 and 3 column fluid *and* fixed size designs. Its original inspiration was the [Layout Gala](<http://blog.html.it/layoutgala/>) (the "LG" in "Elgee"), whose extensive use of negative margins and creative use of floats gave 40 total layouts using a single HTML structure. I have pared down the options a bit, as WordPress' dynamic sidebars have negated the need for several of the "mirror image" designs originally provided by Layout Gala.
 
 It supports most advanced WordPress features, such as Featured Images, widgetized sidebars, custom header images, and custom backgrounds. It also features templates for BuddyPress and a custom BuddyPress menu widget, allowing BP admins greater flexibility in choosing a site design.
 
@@ -46,7 +46,7 @@ Elbee Elgee features four native sidebars/widget areas: Primary, Secondary, Bott
 Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee Elgee BuddyPress Menu") is activated when an active BuddyPress installation is detected. This menu will be automatically populated with the most commonly-used BuddyPress links. You may alter it as you see fit or choose not to use it at all.
 
 #### BuddyPress Support ####
-Elbee Elgee supports basic use of the BuddyPress social media framework (<http://buddypress.org>) out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
+Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
 
 #### Hooks ####
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
@@ -64,16 +64,16 @@ Elbee Elgee has a few notable hooks, with many more planned. I welcome your sugg
 * Better documentation.
 
 ### ONGOING DEVELOPMENT ###
-I have switched my development workflow from Subversion to Mercurial (<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
+I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
 
-If you are interested in learning more about Mercurial, <http://hginit.com> is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
+If you are interested in learning more about Mercurial, [HG Init](<http://hginit.com>) is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
 
 ### INSPIRATION ###
 
-* As noted in the introduction, Layout Gala (<http://blog.html.it/layoutgala/>) was the original inspiration for the layouts
+* As noted in the introduction, [Layout Gala](<http://blog.html.it/layoutgala/>) was the original inspiration for the layouts
 
-* The Undersigned's original functions.php tutorial (<http://theundersigned.net/2006/06/wordpress-how-to-theme-options/>, now defunct) for the options.php code
+* The Undersigned's original functions.php [tutorial](<http://theundersigned.net/2006/06/wordpress-how-to-theme-options/>) (now defunct) and my [original tutorial](<http://literalbarrage.org/blog/archives/2007/05/03/a-theme-tip-for-wordpress-theme-authors/>) for the options.php code
 
-* Chip Bennett's Oenology (<http://www.chipbennett.net/themes/oenology/>)
+* Chip Bennett's [Oenology](<http://www.chipbennett.net/themes/oenology/>)
 
-* Twenty Ten, the default WordPress theme prior to version 3.2, was the inspiration for the default dynamic header support
+* [Twenty Ten](http://2010dev.wordpress.com/), the default WordPress theme prior to version 3.2, was the inspiration for the default dynamic header support
