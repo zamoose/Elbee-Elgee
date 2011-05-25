@@ -23,10 +23,12 @@ function lblg_admin() {
     if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
 ?>
 <div class="wrap">
-<div id="icon-themes" class="icon32"><br /></div>
-<h2 class="updatehook"><?php echo $themename; ?> settings</h2>
-
 <form method="post" action="options.php">
+<div id="icon-themes" class="icon32"><br /></div>
+<h2 class="updatehook"><?php echo $themename; ?> settings 
+	<input name="<?php echo $lblg_shortname; ?>_lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
+	<input name="<?php echo $lblg_shortname; ?>_lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+</h2>
 
 <?php 
 	settings_fields( $lblg_shortname . '_lblg_options' ); 
