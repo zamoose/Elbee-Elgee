@@ -2,7 +2,7 @@
 function lblg_register_headers(){
 		// Set up custom header code
 		if( !defined('HEADER_IMAGE') ){
-			define( 'HEADER_IMAGE', '%s/images/headers/snowy_day.jpg' );
+			define( 'HEADER_IMAGE', '%s/images/headers/ivy_in_winter.jpg' );
 		}
 		if( !defined('HEADER_TEXTCOLOR') ){	
 			define( 'HEADER_TEXTCOLOR', 'ffffff' );
