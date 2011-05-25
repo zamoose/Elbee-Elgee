@@ -45,6 +45,10 @@ function lblg_print_credits(){
 	do_action( 'lblg_print_credits' );
 }
 
+function lblg_print_options(){
+	do_action( 'lblg_print_options' );
+}
+
 function lblg_enqueue_styles(){
 	do_action( 'lblg_enqueue_styles' );
 }
@@ -196,6 +200,7 @@ add_action( 'lblg_print_menu', 'lblg_menu' );
 add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
 add_action( 'lblg_print_credits', 'lblg_credits' );
 add_action( 'lblg_enqueue_styles', 'lblg_styles' );
+add_action( 'lblg_print_options', 'lblg_options_walker' );
 
 // WordPress core hooks
 add_action( 'wp_head', 'lblg_wp_head' );

@@ -18,9 +18,6 @@ function lblg_admin() {
 	$themename = $lblg_themename;
 	$shortname = $lblg_shortname;
 	$options = $lblg_default_options;
-
-    if ( isset( $_GET['save'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings saved.</strong></p></div>';
-    if ( isset( $_GET['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.$themename.' settings reset.</strong></p></div>';
 ?>
 <div class="wrap">
 <form method="post" action="options.php">
@@ -31,6 +28,8 @@ function lblg_admin() {
 </h2>
 
 <?php 
+	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$themename.' settings updated.</strong></p></div>';
+
 	settings_fields( $lblg_shortname . '_lblg_options' ); 
 	//do_settings_sections( 'lblg_options_group' );
 ?>
@@ -71,10 +70,10 @@ function lblg_option_wrapper_footer( $values ){
 }
 
 /*
- * lblg_print_options() is responsible for printing all the theme options in the theme's
+ * lblg_options_walker() is responsible for printing all the theme options in the theme's
  * options screen.
  */
-function lblg_print_options(){
+function lblg_options_walker(){
 	global $lblg_options, $lblg_default_options, $lblg_shortname;
 	$section = '';
 	$lblg_options_group = $lblg_shortname . '_lblg_options';
