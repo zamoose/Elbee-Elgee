@@ -1,5 +1,5 @@
 <?php
-global $themename, $shortname;
+global $lblg_themename, $lblg_shortname, $lblg_options;
 ?>
 <div id="footer">
 	<div id="footerwrapper">
@@ -23,16 +23,14 @@ global $themename, $shortname;
 	</div>
 	<div id="footercredits">
 	<?php 
-		$tmp_footer_text = get_option($shortname.'_footer_text');
-		if($tmp_footer_text == ''){ 
+		if( 'true' == $lblg_options['display_footer_copyright'] ) {
 	?>
 	<p><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a> <?php lblg_print_copyright(); ?></p>
-	<?php lblg_print_credits(); ?>
-	<?php
-		}else{
-			echo $tmp_footer_text;
+	<?php }
+		if( 'true' == $lblg_options['display_footer_credits'] ) {
+			lblg_print_credits();
 		}
-
+		
 		wp_footer(); 
 	?>
 	<!--<?php echo get_num_queries(); ?> queries-->
