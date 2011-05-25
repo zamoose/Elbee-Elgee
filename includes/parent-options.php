@@ -56,7 +56,7 @@ $parent_options_array = array (
 
 				"use_custom_header" => array(	"name" => "Use Custom Headers",
 						"desc" => 'Check this box if you wish to use WordPress\'s built-in <a href="http://codex.wordpress.org/Custom_Headers">Custom Header Image API</a> to define a custom image for your theme',
-						"std" => "false",
+						"std" => "true",
 						"type" => "checkbox"),
 
 				"blog_meta_info" => array(	"name" => "Blog Meta Info",
@@ -65,7 +65,7 @@ $parent_options_array = array (
 				"display_footer_copyright" => array(	"name" => "Display Copyright",
 						"desc" => "Check this box to display your copyright information in the footer.", 
 						"std" => "true",
-						"type" => "checkbox"),	
+						"type" => "checkbox"),
 
 				"footer_copyright" => array(	"name" => "Copyright Statement",
 						"desc" => "The following text will be displayed by default: <b><p>" . get_bloginfo('name') . " " . lblg_copyright() . "</p></b>",
@@ -73,6 +73,11 @@ $parent_options_array = array (
 						"type" => "textarea",
 						"options" => array("rows" => "5",
 										   "cols" => "40") ),
+
+				"display_footer_credits" => array(	"name" => "Display Credits",
+						"desc" => "Check this box to display your site credits in the footer.", 
+						"std" => "true",
+						"type" => "checkbox"),
 
 				"footer_credit_text" => array(	"name" => "Footer Credits",
 						"desc" => "Footer credit text defaults to: <b><p>Powered by <a href=\"http://wordpress.org\">WordPress</a> " . get_bloginfo('version') . " and <a href=\"http://literalbarrage.org/blog/code/elbee-elgee\">Elbee Elgee</a></p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
