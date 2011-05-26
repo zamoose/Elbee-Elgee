@@ -77,6 +77,18 @@ div#titledesc {
 
 /* @end */
 
+/* @group BuddyPress Menu Elements */
+
+#lb-bp-nav {
+	width: 49%;
+	float: right;
+	border: 1px solid red;
+	text-align: right;
+}
+
+/* @end */
+
+
 /* @group Menu Elements */
 div#menu, div.menu {
 	/*border-color: #d3cccc;
