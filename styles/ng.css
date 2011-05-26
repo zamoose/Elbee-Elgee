@@ -39,11 +39,12 @@ div#header {
 div#titledesc {
 	width: 50%;
 	height: 100%;
+	float: left;
 	vertical-align: bottom;
 	background:rgb(0,0,0);
 	background:rgba(0,0,0,0.5);
 	-ms-filter:alpha(opacity=50);
-	filter:alpha(opacity=50)
+	filter:alpha(opacity=50);
 }
 
 #header h1, #header p.blogtitle{
@@ -81,9 +82,17 @@ div#titledesc {
 
 #lb-bp-nav {
 	width: 49%;
+	height: 100%;
 	float: right;
-	border: 1px solid red;
 	text-align: right;
+}
+
+#lb-bp-nav ul.menu {
+	width: 100%;
+}
+
+#lb-bp-nav ul.menu > li {
+	display: inline-block;
 }
 
 /* @end */
@@ -146,7 +155,7 @@ div#wrapper {
 	
 }
 
-body.home-page #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
+body.home-page #lb-content h2 a, body.home #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
 	font-size: 2em;
 	font-weight: bold;
 	padding-top: 1em;
