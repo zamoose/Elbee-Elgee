@@ -49,11 +49,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 		<?php lblg_print_title(); ?>
 		<p class="description"><span><?php bloginfo( 'description' ); ?></span></p>
 	</div>
-	<?php 
-	// If BuddyPress is active, let's display the BP menu
-	/*if(function_exists('bp_is_page')){
-		get_template_part( 'bp-navigation' );
-	}*/
-	?>
+	<?php lblg_print_bp_menu(); ?>
 </div>
 <?php lblg_print_menu(); ?>

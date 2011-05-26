@@ -21,6 +21,10 @@ function lblg_print_menu(){
 	do_action( 'lblg_print_menu' );
 }
 
+function lblg_print_bp_menu(){
+	do_action( 'lblg_print_bp_menu' );
+}
+
 function lblg_above_content(){
 	do_action( 'lblg_above_content' );
 }
@@ -83,6 +87,10 @@ function lblg_menu(){
 
 	<?php
 	}
+}
+
+function lblg_bp_menu() {
+		get_template_part( 'bp-navigation' );
 }
 
 function lblg_styles(){
@@ -215,6 +223,7 @@ add_action( 'after_setup_theme','lblg_options_init', 9 );
 // Only load the BuddyPress menu code if BP is active
 if( function_exists( 'bp_get_loggedin_user_nav' ) ){
 	add_action( 'widgets_init', 'lblg_add_default_buddypress_menu' );
+	add_action( 'lblg_print_bp_menu', 'lblg_bp_menu' );
 }
 
 // Only load custom header code if the option is checked
