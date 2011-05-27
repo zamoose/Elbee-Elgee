@@ -334,16 +334,16 @@ img.noborder {
 
 .postmeta {
 	padding-left: 15px;
-	background: url('images/mini2/calendar.gif') no-repeat left;
+	background: url('images/mini2/calendar.gif') no-repeat left top;
 }
 .postcats {
 	padding-left: 15px;
-	background: url('images/mini2/folder.gif') no-repeat top left;
+	background: url('images/mini2/folder.gif') no-repeat left top;
 }
 
 .posttags {
 	padding-left: 15px;
-	background: url('images/mini2/tag.gif') no-repeat top left;
+	background: url('images/mini2/tag.gif') no-repeat left top;
 }
 
 .commentlink {
@@ -492,7 +492,7 @@ div.message {
 	color: #333;
 }
 
-.alert {
+.alert, .sticky {
 	border-top: 2px solid;
 	border-bottom: 2px solid;
 	border-color: #DDDB54;
