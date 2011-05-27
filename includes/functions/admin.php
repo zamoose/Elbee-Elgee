@@ -75,6 +75,9 @@ function lblg_option_wrapper_footer( $values ){
  */
 function lblg_options_walker(){
 	global $lblg_options, $lblg_default_options, $lblg_shortname;
+	
+	//$lblg_num_values = array_count_values($lblg_default_options);
+	
 	$section = '';
 	$lblg_options_group = $lblg_shortname . '_lblg_options';
 	$options = $lblg_options;

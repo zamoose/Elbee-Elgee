@@ -1,7 +1,7 @@
 <?php
 $parent_theme_array[ 'parent_themename' ] = "Elbee Elgee";
 $parent_theme_array[ 'parent_shortname' ] = "lblg";
-$parent_theme_array[ 'parent_version' ] = '1.0';
+$parent_theme_array[ 'parent_version' ] = '1.1';
 
 // Look for layout CSS files to auto-load
 $layout_path = TEMPLATEPATH . '/layouts/'; 
@@ -86,6 +86,21 @@ $parent_options_array = array (
 						"options" => array("rows" => "5",
 										   "cols" => "40") ),
 		  );
+
+	if( function_exists('bp_get_loggedin_user_nav') ) {
+		$parent_options_array['bp_subhead'] = array( "name" => "BuddyPress-specific Options",
+											"type" => "subhead" );
+		
+		$parent_options_array['disable_bp_js'] = array( "name" => "Disable BuddyPress JavaScript/AJAX",
+												"desc" => "Elbee Elgee automatically integrates the BuddyPress default theme javascript and AJAX functionality. You may switch this off, though the experience will degrade somewhat.",
+												"std" => "false",
+												"type" => "checkbox" );
+		
+		$parent_options_array['disable_bp_css'] = array( "name" => "Disable BuddyPress CSS",
+												"desc" => "Elbee Elgee comes with basic CSS styles that give BuddyPress pages a standard look and feel. You can extend upon these styles in your child theme's CSS or simply disable them and construct your own.",
+												"std" => "false",
+												"type" => "checkbox" );
+	}
 
 $parent_theme_array[ 'options' ] = $parent_options_array;
 

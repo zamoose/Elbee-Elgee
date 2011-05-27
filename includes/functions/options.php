@@ -21,7 +21,15 @@ function lblg_options_init(){
 		$lblg_themename = $temp_opts['themename'];
 		$lblg_version = $temp_opts['version'];
 		$lblg_options = lblg_get_options_from_defaults();
+	} elseif( version_compare( $temp_opts['version'], $bootstrap_tmp['version'], '>' )) {
+		// New version of the options have been detected. Let's reload.
+		$lblg_shortname = $temp_opts['shortname'];
+		$lblg_themename = $temp_opts['themename'];
+		$lblg_version = $temp_opts['version'];
+		$tmp_options = get_option( $lblg_shortname . '_lblg_options' );
+		$lblg_options = $tmp_options + $lblg_default_options;
 	} else {
+		// Nothing to see here. Move along. Move along.
 		$lblg_shortname = $bootstrap_tmp['shortname'];
 		$lblg_themename = $bootstrap_tmp['themename'];
 		$lblg_version = $bootstrap_tmp['version'];
