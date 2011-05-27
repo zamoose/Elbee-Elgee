@@ -24,8 +24,8 @@ lblg_sidebar_header();
 		</li>
 		<li><h4>Meta</h4>
 			<ul>
-				<li><img src="<?php get_template_directory_uri(); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
-			 	<li><img src="<?php get_template_directory_uri(); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
+				<li><img src="<?php echo get_template_directory_uri(); ?>/images/feed.png" /><a href="<?php bloginfo('rss2_url'); ?>">RSS Entries</a></li>
+			 	<li><img src="<?php echo get_template_directory_uri(); ?>/images/feed.png" /><a href="<?php bloginfo('comments_rss2_url'); ?>">RSS Comments</a></li>
 				<?php wp_register(); ?>
 		        <li><?php wp_loginout(); ?></li>
 			</ul>
