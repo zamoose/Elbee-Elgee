@@ -235,6 +235,11 @@ div.item-list-tabs#subnav ul li.feed {
 	border: 0;
 }
 
+div.item-list-tabs#subnav ul li#activity-filter-select {
+	border: 0;
+	background: #fff;
+}
+
 #lb-content div.item-list-tabs ul > li:first-child {
 	margin-left: 20px;
 }
@@ -261,12 +266,16 @@ div.item-list-tabs#subnav ul li.feed {
 	margin-bottom: -1px;
 }
 
-#lb-content div.item-list-tabs ul > li.current a,#lb-content div.item-list-tabs ul > li.selected a{
+#lb-content div.item-list-tabs ul > li.current a,#lb-content div.item-list-tabs ul > li.selected a {
 	font-weight: bold;
 }
 
-#lb-content div.item-list-tabs ul > li a{
+#lb-content div.item-list-tabs ul > li a {
+	text-decoration: none;
+}
 
+#lb-content div.item-list-tabs ul > li a:hover, #lb-content div.item-list-tabs ul > li a:active {
+	color: #000;
 }
 
 #lb-content ul.item-list li {
@@ -281,7 +290,6 @@ div#footer {
 div#footerwrapper {
 	width: 960px;
 	margin: 0 auto;
-	/*border: 1px solid #ccc;*/
 	background: #fff;
 }
 
