@@ -235,9 +235,9 @@ div.item-list-tabs#subnav ul li.feed {
 	border: 0;
 }
 
-div.item-list-tabs#subnav ul li#activity-filter-select {
-	border: 0;
-	background: #fff;
+div.item-list-tabs ul > li.last {
+	border: 0 !important;
+	background: #fff !important;
 }
 
 #lb-content div.item-list-tabs ul > li:first-child {
@@ -255,9 +255,9 @@ div.item-list-tabs#subnav ul li#activity-filter-select {
 	padding: 5px 5px 0 5px;
 	line-height: 21px;
 	background: #FAFAFA;
-	background: -webkit-gradient(linear,0 0,0 100%,from(white),to(#111));
-	background: -webkit-linear-gradient(white,#ddd);
-	background: -moz-linear-gradient(top,whiteSmoke);
+	background: -webkit-gradient(linear,0 0,0 100%,from(white),to(#dcdcdc));
+	background: -webkit-linear-gradient(white,#dcdcdc);
+	background: -moz-linear-gradient(top,#dcdcdc);
 }
 
 #lb-content div.item-list-tabs ul > li.current,#lb-content div.item-list-tabs ul > li.selected {

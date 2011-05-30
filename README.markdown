@@ -48,6 +48,9 @@ Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee E
 #### BuddyPress Support ####
 Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
 
+### Theme Options Page ###
+I have planned Elbee Elgee to be a flexible parent theme from the very early stages. One of the coolest features (in my opinion) is its ability to auto-load theme options from either the parent theme *or* child themes. This primarily takes place in `includes/functions/options.php` and allows for an arbitrary number of theme options to be set and configured by end users.
+
 #### Hooks ####
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
 
@@ -68,6 +71,11 @@ I have switched my development workflow from Subversion to [Mercurial](<http://m
 
 If you are interested in learning more about Mercurial, [HG Init](<http://hginit.com>) is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
 
+### KNOWN ISSUES ###
+
+* Version 1.0
+ * BuddyPress AJAX calls are not working correctly
+
 ### INSPIRATION ###
 
 * As noted in the introduction, [Layout Gala](<http://blog.html.it/layoutgala/>) was the original inspiration for the layouts
@@ -77,3 +85,5 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 * Chip Bennett's [Oenology](<http://www.chipbennett.net/themes/oenology/>)
 
 * [Twenty Ten](http://2010dev.wordpress.com/), the default WordPress theme prior to version 3.2, was the inspiration for the default dynamic header support
+
+* [BuddyPress Template Pack](<http://wordpress.org/extend/plugins/bp-template-pack/>) by Andy Peatling for a *ton* of the BuddyPress functionality and template work
