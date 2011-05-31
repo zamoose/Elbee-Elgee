@@ -138,7 +138,5 @@
 				<?php do_action( 'bp_after_directory_activity_content' ) ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-
-<?php get_sidebar( 'buddypress' ) ?>
-
+ 
 <?php get_footer( 'buddypress' ) ?>

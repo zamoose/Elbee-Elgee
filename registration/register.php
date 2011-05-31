@@ -250,7 +250,6 @@
 			<?php do_action( 'bp_after_register_page' ) ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-	<?php get_sidebar( 'buddypress' ) ?>
 
 	<?php do_action( 'bp_after_directory_activity_content' ) ?>
 

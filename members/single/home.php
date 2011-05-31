@@ -71,5 +71,5 @@
 				<?php do_action( 'bp_after_member_home_content' ); ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-<?php get_sidebar( 'buddypress' ); ?>
+
 <?php get_footer( 'buddypress' ); ?>

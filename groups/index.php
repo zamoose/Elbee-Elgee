@@ -75,10 +75,8 @@
 				<?php wp_nonce_field( 'directory_groups', '_wpnonce-groups-filter' ); ?>
 
 			</form><!-- #groups-directory-form -->
-
-<?php get_template_part( 'bp-wrapper-footer' ); ?>
 	<?php do_action( 'bp_after_directory_groups_content' ); ?>
+<?php get_template_part( 'bp-wrapper-footer' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>
 

@@ -21,7 +21,7 @@ function lblg_admin() {
 ?>
 <div class="wrap">
 <form method="post" action="options.php">
-<div id="icon-themes" class="icon32"><br /></div>
+<?php screen_icon( 'themes' ); ?>
 <h2 class="updatehook"><?php echo $themename; ?> settings 
 	<input name="<?php echo $lblg_shortname; ?>_lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
 	<input name="<?php echo $lblg_shortname; ?>_lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
@@ -31,7 +31,6 @@ function lblg_admin() {
 	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$themename.' settings updated.</strong></p></div>';
 
 	settings_fields( $lblg_shortname . '_lblg_options' ); 
-	//do_settings_sections( 'lblg_options_group' );
 ?>
 <table class="form-table">
 <tbody>

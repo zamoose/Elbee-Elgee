@@ -62,5 +62,4 @@
 				<?php do_action( 'bp_after_member_plugin_template' ); ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>

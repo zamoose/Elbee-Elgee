@@ -286,5 +286,4 @@
 			</form>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>

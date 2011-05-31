@@ -76,9 +76,7 @@
 				<?php wp_nonce_field( 'directory_members', '_wpnonce-member-filter' ); ?>
 
 			</form><!-- #members-directory-form -->
-
-<?php get_template_part( 'bp-wrapper-footer' ); ?>
 	<?php do_action( 'bp_after_directory_members_content' ); ?>
+<?php get_template_part( 'bp-wrapper-footer' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
 <?php get_footer( 'buddypress' ); ?>

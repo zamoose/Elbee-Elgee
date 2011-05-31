@@ -35,10 +35,9 @@
 
 			<?php do_action( 'bp_after_create_blog_content' ); ?>
 
-<?php get_template_part( 'bp-wrapper-footer' ); ?>
-
 	<?php do_action( 'bp_after_directory_blogs_content' ); ?>
 
-<?php get_sidebar( 'buddypress' ); ?>
+<?php get_template_part( 'bp-wrapper-footer' ); ?>
+
 <?php get_footer( 'buddypress' ); ?>
 

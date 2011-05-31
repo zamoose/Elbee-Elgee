@@ -189,27 +189,6 @@ function lblg_the_postimage() {
 }
 
 /*
-*  BuddyPress support code, taken from the BuddyPress Template Pack
-*
-*/
-function lblg_bp_init(){
-	global $lblg_shortname, $lblg_options;
-	
-	/* Load the default BuddyPress AJAX functions */
-	if ( 'false' == $lblg_options['disable_bp_js'] ) {
-		require_once( BP_PLUGIN_DIR . '/bp-themes/bp-default/_inc/ajax.php' );
-
-		/* Load the default BuddyPress javascript */
-		wp_enqueue_script( 'lblg-bp-js', BP_PLUGIN_URL . '/bp-themes/bp-default/_inc/global.js', array( 'jquery' ) );
-	}
-	
-	/* Add the wireframe BP page styles */
-	if ( 'false' == $lblg_options['disable_bp_css'] )
-		wp_enqueue_style( 'lblg-bp-css', get_template_directory_uri() . '/includes/css/bp.css' );
-}
-
-
-/*
 *  Utility hooks for use inside <head> and admin <head>,
 *  via wp_head() and admin_head(). Just in case.
 */
