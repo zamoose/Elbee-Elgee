@@ -2,7 +2,7 @@
 
 <?php if ( bp_get_total_friend_count( bp_loggedin_user_id() ) ) : ?>
 
-	<form action="<?php bp_group_send_invite_form_action() ?>" method="post" id="send-invite-form" class="standard-form">
+	<form action="<?php bp_group_send_invite_form_action() ?>" method="post" id="send-invite-form" class="standard-form" role="main">
 
 		<div class="left-menu">
 
@@ -14,7 +14,7 @@
 				<?php wp_nonce_field( 'groups_invite_uninvite_user', '_wpnonce_invite_uninvite_user' ) ?>
 			</div>
 
-		</div>
+		</div><!-- .left-menu -->
 
 		<div class="main-column">
 
@@ -39,7 +39,7 @@
 						<?php do_action( 'bp_group_send_invites_item' ) ?>
 
 						<div class="action">
-							<a class="remove" href="<?php bp_group_invite_user_remove_invite_url() ?>" id="<?php bp_group_invite_item_id() ?>"><?php _e( 'Remove Invite', 'buddypress' ) ?></a>
+							<a class="button remove" href="<?php bp_group_invite_user_remove_invite_url() ?>" id="<?php bp_group_invite_item_id() ?>"><?php _e( 'Remove Invite', 'buddypress' ) ?></a>
 
 							<?php do_action( 'bp_group_send_invites_item_action' ) ?>
 						</div>
@@ -48,11 +48,11 @@
 				<?php endwhile; ?>
 
 			<?php endif; ?>
-			</ul>
+			</ul><!-- #friend-list -->
 
 			<?php do_action( 'bp_after_group_send_invites_list' ) ?>
 
-		</div>
+		</div><!-- .main-column -->
 
 		<div class="clear"></div>
 
@@ -62,13 +62,14 @@
 
 		<?php wp_nonce_field( 'groups_send_invites', '_wpnonce_send_invites') ?>
 
-		<!-- Don't leave out this hidden field -->
+		<?php /* This is important, don't forget it */ ?>
 		<input type="hidden" name="group_id" id="group_id" value="<?php bp_group_id() ?>" />
-	</form>
+
+	</form><!-- #send-invite-form -->
 
 <?php else : ?>
 
-	<div id="message" class="info">
+	<div id="message" class="info" role="main">
 		<p><?php _e( 'Once you have built up friend connections you will be able to invite others to your group. You can send invites any time in the future by selecting the "Send Invites" option when viewing your new group.', 'buddypress' ); ?></p>
 	</div>
 

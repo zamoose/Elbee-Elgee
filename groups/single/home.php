@@ -1,79 +1,79 @@
-<?php get_header() ?>
+<?php get_header( 'buddypress' ); ?>
 
+<?php get_template_part( 'bp-wrapper-header' ); ?>
 
-<div id="allwrapper">
-	<div id="wrapper">
-	<div id="lb-content">
+				<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 
-			<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
+				<?php do_action( 'bp_before_group_home_content' ) ?>
 
-			<?php do_action( 'bp_before_group_home_content' ) ?>
+				<div id="item-header" role="complementary">
 
-			<div id="item-header">
-				<?php locate_template( array( 'groups/single/group-header.php' ), true ) ?>
-			</div>
+					<?php locate_template( array( 'groups/single/group-header.php' ), true ); ?>
 
-			<div id="item-nav">
-				<div class="item-list-tabs no-ajax" id="object-nav">
-					<ul>
-						<?php bp_get_options_nav() ?>
+				</div><!-- #item-header -->
 
-						<?php do_action( 'bp_group_options_nav' ) ?>
-					</ul>
-				</div>
-			</div>
+				<div id="item-nav">
+					<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
+						<ul>
 
-			<div id="item-body">
-				<?php do_action( 'bp_before_group_body' ) ?>
+							<?php bp_get_options_nav(); ?>
 
-				<?php if ( bp_is_group_admin_page() && bp_group_is_visible() ) : ?>
-					<?php locate_template( array( 'groups/single/admin.php' ), true ) ?>
+							<?php do_action( 'bp_group_options_nav' ); ?>
 
-				<?php elseif ( bp_is_group_members() && bp_group_is_visible() ) : ?>
-					<?php locate_template( array( 'groups/single/members.php' ), true ) ?>
-
-				<?php elseif ( bp_is_group_invites() && bp_group_is_visible() ) : ?>
-					<?php locate_template( array( 'groups/single/send-invites.php' ), true ) ?>
-
-				<?php elseif ( bp_is_group_forum() && bp_group_is_visible() ) : ?>
-					<?php locate_template( array( 'groups/single/forum.php' ), true ) ?>
-
-				<?php elseif ( bp_is_group_membership_request() ) : ?>
-					<?php locate_template( array( 'groups/single/request-membership.php' ), true ) ?>
-
-				<?php elseif ( bp_group_is_visible() && bp_is_active( 'activity' ) ) : ?>
-					<?php locate_template( array( 'groups/single/activity.php' ), true ) ?>
-
-				<?php elseif ( !bp_group_is_visible() ) : ?>
-					<?php /* The group is not visible, show the status message */ ?>
-
-					<?php do_action( 'bp_before_group_status_message' ) ?>
-
-					<div id="message" class="info">
-						<p><?php bp_group_status_message() ?></p>
+						</ul>
 					</div>
+				</div><!-- #item-nav -->
 
-					<?php do_action( 'bp_after_group_status_message' ) ?>
+				<div id="item-body">
 
-				<?php else : ?>
-					<?php
-						/* If nothing sticks, just load a group front template if one exists. */
+					<?php do_action( 'bp_before_group_body' );
+
+					if ( bp_is_group_admin_page() && bp_group_is_visible() ) :
+						locate_template( array( 'groups/single/admin.php' ), true );
+
+					elseif ( bp_is_group_members() && bp_group_is_visible() ) :
+						locate_template( array( 'groups/single/members.php' ), true );
+
+					elseif ( bp_is_group_invites() && bp_group_is_visible() ) :
+						locate_template( array( 'groups/single/send-invites.php' ), true );
+
+						elseif ( bp_is_group_forum() && bp_group_is_visible() && bp_is_active( 'forums' ) && bp_forums_is_installed_correctly() ) : 
+							locate_template( array( 'groups/single/forum.php' ), true );
+
+					elseif ( bp_is_group_membership_request() ) :
+						locate_template( array( 'groups/single/request-membership.php' ), true );
+
+					elseif ( bp_group_is_visible() && bp_is_active( 'activity' ) ) :
+						locate_template( array( 'groups/single/activity.php' ), true );
+
+					elseif ( bp_group_is_visible() ) :
+						locate_template( array( 'groups/single/members.php' ), true );
+
+					elseif ( !bp_group_is_visible() ) :
+						// The group is not visible, show the status message
+
+						do_action( 'bp_before_group_status_message' ); ?>
+
+						<div id="message" class="info">
+							<p><?php bp_group_status_message(); ?></p>
+						</div>
+
+						<?php do_action( 'bp_after_group_status_message' );
+
+					else :
+						// If nothing sticks, just load a group front template if one exists.
 						locate_template( array( 'groups/single/front.php' ), true );
-					?>
-				<?php endif; ?>
 
-				<?php do_action( 'bp_after_group_body' ) ?>
-			</div>
+					endif;
 
-			<?php do_action( 'bp_after_group_home_content' ) ?>
+					do_action( 'bp_after_group_body' ); ?>
 
-			<?php endwhile; endif; ?>
+				</div><!-- #item-body -->
 
-	</div><!-- #lb-content -->
+				<?php do_action( 'bp_after_group_home_content' ); ?>
 
-	<?php locate_template( array( 'sidebar.php' ), true ) ?>
+				<?php endwhile; endif; ?>
 
-		</div><!-- #wrapper -->
-	</div><!--#allwrapper-->
-
-<?php get_footer() ?>
+<?php get_template_part( 'bp-wrapper-footer' ); ?>
+<?php get_sidebar( 'buddypress' ); ?>
+<?php get_footer( 'buddypress' ); ?>

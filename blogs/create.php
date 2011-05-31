@@ -1,38 +1,44 @@
-<?php get_header() ?>
+<?php
 
-	<?php do_action( 'bp_before_create_blog_content' ) ?>
+/**
+ * BuddyPress - Create Blog
+ *
+ * @package BuddyPress
+ * @subpackage bp-default
+ */
 
-	<div id="container">
-		<div id="lb-content">
+?>
 
-		<?php do_action( 'template_notices' ) ?>
+<?php get_header( 'buddypress' ); ?>
 
-		<h3><?php _e( 'Create a Blog', 'buddypress' ) ?> &nbsp;<a class="button" href="<?php echo bp_get_root_domain() . '/' . BP_BLOGS_SLUG . '/' ?>"><?php _e( 'Blogs Directory', 'buddypress' ) ?></a></h3>
+	<?php do_action( 'bp_before_directory_blogs_content' ); ?>
 
-		<?php do_action( 'bp_before_create_blog_content' ) ?>
+<?php get_template_part( 'bp-wrapper-header' ); ?>
 
-		<?php if ( bp_blog_signup_enabled() ) : ?>
+			<?php do_action( 'template_notices' ); ?>
 
-			<?php bp_show_blog_signup_form() ?>
+				<h3><?php _e( 'Create a Blog', 'buddypress' ); ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_blogs_root_slug() ) ?>"><?php _e( 'Blogs Directory', 'buddypress' ); ?></a></h3>
 
-		<?php else: ?>
+			<?php do_action( 'bp_before_create_blog_content' ); ?>
 
-			<div id="message" class="info">
-				<p><?php _e( 'Blog registration is currently disabled', 'buddypress' ); ?></p>
-			</div>
+			<?php if ( bp_blog_signup_enabled() ) : ?>
 
-		<?php endif; ?>
+				<?php bp_show_blog_signup_form(); ?>
 
-		<?php do_action( 'bp_after_create_blog_content' ) ?>
+			<?php else: ?>
 
-		</div><!-- #lb-content -->
-	</div><!-- #container -->
+				<div id="message" class="info">
+					<p><?php _e( 'Blog registration is currently disabled', 'buddypress' ); ?></p>
+				</div>
 
-	<?php locate_template( array( 'sidebar.php' ), true ) ?>
+			<?php endif; ?>
 
-	<?php do_action( 'bp_after_create_blog_content' ) ?>
-	</div><!-- #wrapper -->
-</div><!--#allwrapper-->
+			<?php do_action( 'bp_after_create_blog_content' ); ?>
 
-<?php get_footer() ?>
+<?php get_template_part( 'bp-wrapper-footer' ); ?>
+
+	<?php do_action( 'bp_after_directory_blogs_content' ); ?>
+
+<?php get_sidebar( 'buddypress' ); ?>
+<?php get_footer( 'buddypress' ); ?>
 

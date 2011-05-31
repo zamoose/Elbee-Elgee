@@ -1,8 +1,10 @@
 ## Elbee Elgee Parent Theme ##
 [Project Homepage](<http://literalbarrage.org/blog/code/elbee-elgee>)
 
+[Demo Site](<http://lblg.zamoose.org>)
+
 ### LICENSE ###
-GNU Public License version 2 (GPLv2)
+GNU Public License version 2 ([GPLv2](<http://www.gnu.org/licenses/gpl-2.0.html>))
 
 ### DESCRIPTION ###
 Elbee Elgee (LBLG) is a parent theme with multiple layouts, including 1, 2 and 3 column fluid *and* fixed size designs. Its original inspiration was the [Layout Gala](<http://blog.html.it/layoutgala/>) (the "LG" in "Elgee"), whose extensive use of negative margins and creative use of floats gave 40 total layouts using a single HTML structure. I have pared down the options a bit, as WordPress' dynamic sidebars have negated the need for several of the "mirror image" designs originally provided by Layout Gala.
@@ -48,7 +50,7 @@ Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee E
 #### BuddyPress Support ####
 Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
 
-### Theme Options Page ###
+#### Theme Options Page ####
 I have planned Elbee Elgee to be a flexible parent theme from the very early stages. One of the coolest features (in my opinion) is its ability to auto-load theme options from either the parent theme *or* child themes. This primarily takes place in `includes/functions/options.php` and allows for an arbitrary number of theme options to be set and configured by end users.
 
 #### Hooks ####
