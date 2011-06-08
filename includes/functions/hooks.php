@@ -89,10 +89,6 @@ function lblg_menu(){
 	}
 }
 
-function lblg_bp_menu() {
-		get_template_part( 'bp-navigation' );
-}
-
 function lblg_styles(){
 	global $lblg_shortname, $lblg_options;
 	$layout_handle = $lblg_shortname . '_layout_stylesheet';
@@ -184,7 +180,7 @@ function lblg_echo_copyright() {
 // Output the Featured Image
 function lblg_the_postimage() {
 	if( has_post_thumbnail() ) {
-		the_post_thumbnail();
+		the_post_thumbnail( 'lb-content-header' );
 	}
 }
 
@@ -219,13 +215,6 @@ add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 add_action( 'widgets_init', 'lblg_widgets_init' );
 add_action( 'after_setup_theme','lblg_options_init', 9 );
-
-// Only load the BuddyPress menu code if BP is active
-if( function_exists( 'bp_get_loggedin_user_nav' ) ){
-	add_action( 'widgets_init', 'lblg_add_default_buddypress_menu' );
-	add_action( 'lblg_print_bp_menu', 'lblg_bp_menu' );
-	add_action( 'bp_init', 'lblg_bp_init' );
-}
 
 // Only load custom header code if the option is checked
 if( 'true' == $lblg_options['use_custom_header'] ){

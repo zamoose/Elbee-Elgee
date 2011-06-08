@@ -52,7 +52,7 @@ div#titledesc {
 	font-size: 3.5em;
 	font-weight: bold;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-	margin-top: 2em;
+	margin-top: 20px;
 }
 
 #header h1 a:link, #header h1 a:visited, #header p.blogtitle a:link, #header p.blogtitle a:visited {
@@ -214,6 +214,10 @@ body.home-page #lb-content h2 a, body.home #lb-content h2 a, body.single #lb-con
 	padding: 3px;
 }
 
+#lb-content img.wp-post-image {
+	margin: 0 auto;
+	display: block;
+}
 /* @end */
 
 /* @group BuddyPress Elements */

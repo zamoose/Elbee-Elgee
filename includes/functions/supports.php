@@ -17,8 +17,11 @@ function lblg_register_sidebars() {
 /*
 * Support 2.9, 3.0 and 3.1 coolness
 */
+if ( ! isset( $content_width ) ) $content_width = '640';
 add_theme_support( 'nav-menus' );
 add_theme_support( 'post-thumbnails' );
+set_post_thumbnail_size( 64, 64, true );
+add_image_size( 'lb-content-header', $content_width, 9999 );
 add_theme_support( 'automatic-feed-links' );
 add_custom_background();
 
