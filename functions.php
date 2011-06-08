@@ -18,6 +18,7 @@ require_once( LBLG_FUNCTIONS_DIR . 'hooks.php' );
 
 require_once( LBLG_FUNCTIONS_DIR . 'supports.php' );
 
-require_once( LBLG_FUNCTIONS_DIR . 'buddypress.php' );
-
+// Only load the BuddyPress-related code if BP is active
+if( function_exists( 'bp_init' ))
+	require_once( LBLG_FUNCTIONS_DIR . 'buddypress.php' );
 ?>
