@@ -1,75 +1,56 @@
-<?php
+<?php get_header() ?>
 
-/**
- * BuddyPress - Users Home
- *
- * @package BuddyPress
- * @subpackage bp-default
- */
+	<?php get_template_part( 'bp-wrapper-header' ); ?>
 
-?>
+			<?php do_action( 'bp_before_member_home_content' ) ?>
 
-<?php get_header( 'buddypress' ); ?>
+			<div id="item-header">
+				<?php locate_template( array( 'members/single/member-header.php' ), true ) ?>
+			</div><!-- #item-header -->
 
-<?php get_template_part( 'bp-wrapper-header' ); ?>
+			<div id="item-nav">
+				<div class="item-list-tabs no-ajax" id="object-nav">
+					<ul>
+						<?php bp_get_displayed_user_nav() ?>
 
-				<?php do_action( 'bp_before_member_home_content' ); ?>
+						<?php do_action( 'bp_member_options_nav' ) ?>
+					</ul>
+				</div>
+			</div><!-- #item-nav -->
 
-				<div id="item-header" role="complementary">
+			<div id="item-body">
+				<?php do_action( 'bp_before_member_body' ) ?>
 
-					<?php locate_template( array( 'members/single/member-header.php' ), true ); ?>
+				<?php if ( bp_is_user_activity() || !bp_current_component() ) : ?>
+					<?php locate_template( array( 'members/single/activity.php' ), true ) ?>
 
-				</div><!-- #item-header -->
+				<?php elseif ( bp_is_user_blogs() ) : ?>
+					<?php locate_template( array( 'members/single/blogs.php' ), true ) ?>
 
-				<div id="item-nav">
-					<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
-						<ul>
+				<?php elseif ( bp_is_user_friends() ) : ?>
+					<?php locate_template( array( 'members/single/friends.php' ), true ) ?>
 
-							<?php bp_get_displayed_user_nav(); ?>
+				<?php elseif ( bp_is_user_groups() ) : ?>
+					<?php locate_template( array( 'members/single/groups.php' ), true ) ?>
 
-							<?php do_action( 'bp_member_options_nav' ); ?>
+				<?php elseif ( bp_is_user_messages() ) : ?>
+					<?php locate_template( array( 'members/single/messages.php' ), true ) ?>
 
-						</ul>
-					</div>
-				</div><!-- #item-nav -->
+				<?php elseif ( bp_is_user_profile() ) : ?>
+					<?php locate_template( array( 'members/single/profile.php' ), true ) ?>
 
-				<div id="item-body">
+				<?php else : ?>
+					<?php
+						/* If nothing sticks, just load a member front template if one exists. */
+						locate_template( array( 'members/single/front.php' ), true );
+					?>
+				<?php endif; ?>
 
-					<?php do_action( 'bp_before_member_body' );
-				
-					if ( bp_is_user_activity() || !bp_current_component() ) :
-						locate_template( array( 'members/single/activity.php' ), true );
+				<?php do_action( 'bp_after_member_body' ) ?>
 
-					 elseif ( bp_is_user_blogs() ) :
-						locate_template( array( 'members/single/blogs.php'    ), true );
+			</div><!-- #item-body -->
 
-					elseif ( bp_is_user_friends() ) :
-						locate_template( array( 'members/single/friends.php'  ), true );
-
-					elseif ( bp_is_user_groups() ) :
-						locate_template( array( 'members/single/groups.php'   ), true );
-
-					elseif ( bp_is_user_messages() ) :
-						locate_template( array( 'members/single/messages.php' ), true );
-
-					elseif ( bp_is_user_profile() ) :
-						locate_template( array( 'members/single/profile.php'  ), true );
-
-					elseif ( bp_is_user_forums() ) :
-						locate_template( array( 'members/single/forums.php'  ), true );
-
-					// If nothing sticks, load a generic template
-					else :
-						locate_template( array( 'members/single/front.php'    ), true );
-
-					endif;
-
-					do_action( 'bp_after_member_body' ); ?>
-
-				</div><!-- #item-body -->
-
-				<?php do_action( 'bp_after_member_home_content' ); ?>
+			<?php do_action( 'bp_after_member_home_content' ) ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
-
-<?php get_footer( 'buddypress' ); ?>
+<?php get_footer() ?>

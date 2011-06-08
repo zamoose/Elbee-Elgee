@@ -1,43 +1,31 @@
-<?php
+<?php get_header() ?>
 
-/**
- * BuddyPress - Create Blog
- *
- * @package BuddyPress
- * @subpackage bp-default
- */
+	<?php do_action( 'bp_before_directory_blogs_content' ) ?>
 
-?>
+	<?php get_template_part( 'bp-wrapper-header' ); ?>
 
-<?php get_header( 'buddypress' ); ?>
+		<?php do_action( 'template_notices' ) ?>
 
-	<?php do_action( 'bp_before_directory_blogs_content' ); ?>
+		<h3><?php _e( 'Create a Blog', 'buddypress' ) ?> &nbsp;<a class="button" href="<?php echo bp_get_root_domain() . '/' . BP_BLOGS_SLUG . '/' ?>"><?php _e( 'Blogs Directory', 'buddypress' ) ?></a></h3>
 
-<?php get_template_part( 'bp-wrapper-header' ); ?>
+		<?php do_action( 'bp_before_create_blog_content' ) ?>
 
-			<?php do_action( 'template_notices' ); ?>
+		<?php if ( bp_blog_signup_enabled() ) : ?>
 
-				<h3><?php _e( 'Create a Blog', 'buddypress' ); ?> &nbsp;<a class="button" href="<?php echo trailingslashit( bp_get_root_domain() . '/' . bp_get_blogs_root_slug() ) ?>"><?php _e( 'Blogs Directory', 'buddypress' ); ?></a></h3>
+			<?php bp_show_blog_signup_form() ?>
 
-			<?php do_action( 'bp_before_create_blog_content' ); ?>
+		<?php else: ?>
 
-			<?php if ( bp_blog_signup_enabled() ) : ?>
+			<div id="message" class="info">
+				<p><?php _e( 'Blog registration is currently disabled', 'buddypress' ); ?></p>
+			</div>
 
-				<?php bp_show_blog_signup_form(); ?>
+		<?php endif; ?>
 
-			<?php else: ?>
-
-				<div id="message" class="info">
-					<p><?php _e( 'Blog registration is currently disabled', 'buddypress' ); ?></p>
-				</div>
-
-			<?php endif; ?>
-
-			<?php do_action( 'bp_after_create_blog_content' ); ?>
-
-	<?php do_action( 'bp_after_directory_blogs_content' ); ?>
+		<?php do_action( 'bp_after_create_blog_content' ) ?>
 
 <?php get_template_part( 'bp-wrapper-footer' ); ?>
+	<?php do_action( 'bp_after_directory_blogs_content' ) ?>
 
-<?php get_footer( 'buddypress' ); ?>
+<?php get_footer() ?>
 

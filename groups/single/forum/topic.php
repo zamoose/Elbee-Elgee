@@ -1,72 +1,37 @@
-<?php do_action( 'bp_before_group_forum_topic' ); ?>
+<?php do_action( 'bp_before_group_forum_topic' ) ?>
 
 <?php if ( bp_has_forum_topic_posts() ) : ?>
 
 	<form action="<?php bp_forum_topic_action() ?>" method="post" id="forum-topic-form" class="standard-form">
 
-		<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
-			<ul>
-				<li>
-					<a href="#post-topic-reply" class="show-hide-new"><?php _e( 'New Reply', 'buddypress' ) ?></a>
-				</li>
+		<div class="pagination no-ajax">
 
-				<?php if ( !bp_forum_directory_is_disabled() ) : ?>
+			<div id="post-count" class="pag-count">
+				<?php bp_the_topic_pagination_count() ?>
+			</div>
 
-					<li>
-						<a href="<?php bp_forum_directory_permalink() ?>"><?php _e( 'Forum Directory', 'buddypress') ?></a>
-					</li>
+			<div class="pagination-links" id="topic-pag">
+				<?php bp_the_topic_pagination() ?>
+			</div>
 
-				<?php endif; ?>
-
-			</ul>
 		</div>
 
 		<div id="topic-meta">
 			<h3><?php bp_the_topic_title() ?> (<?php bp_the_topic_total_post_count() ?>)</h3>
-			
-			<?php if ( bp_forum_topic_has_tags() ) : ?>
-				
-				<div class="topic-tags">
-				
-					<?php _e( 'Topic tags:', 'buddypress' ) ?> <?php bp_forum_topic_tag_list() ?>
-				
-				</div>
-				
-			<?php endif; ?>
+			<a class="button" href="<?php bp_forum_permalink() ?>/">&larr; <?php _e( 'Group Forum', 'buddypress' ) ?></a> &nbsp; <a class="button" href="<?php bp_forum_directory_permalink() ?>/"><?php _e( 'Group Forum Directory', 'buddypress') ?></a>
 
-			<?php if ( bp_group_is_admin() || bp_group_is_mod() || bp_get_the_topic_is_mine() ) : ?>
-
-				<div class="last admin-links">
-
+			<div class="admin-links">
+				<?php if ( bp_group_is_admin() || bp_group_is_mod() || bp_get_the_topic_is_mine() ) : ?>
 					<?php bp_the_topic_admin_links() ?>
+				<?php endif; ?>
 
-				</div>
-
-			<?php endif; ?>
-
-			<?php do_action( 'bp_group_forum_topic_meta' ); ?>
-
-		</div>
-
-		<div class="pagination no-ajax">
-
-			<div id="post-count" class="pag-count">
-
-				<?php bp_the_topic_pagination_count() ?>
-
+				<?php do_action( 'bp_group_forum_topic_meta' ); ?>
 			</div>
-
-			<div class="pagination-links" id="topic-pag">
-
-				<?php bp_the_topic_pagination() ?>
-
-			</div>
-
 		</div>
 
 		<?php do_action( 'bp_before_group_forum_topic_posts' ) ?>
 
-		<ul id="topic-post-list" class="item-list" role="main">
+		<ul id="topic-post-list" class="item-list">
 			<?php while ( bp_forum_topic_posts() ) : bp_the_forum_topic_post(); ?>
 
 				<li id="post-<?php bp_the_topic_post_id() ?>" class="<?php bp_the_topic_post_css_class() ?>">
@@ -113,7 +78,7 @@
 
 			<?php if ( bp_get_the_topic_is_last_page() ) : ?>
 
-				<?php if ( bp_get_the_topic_is_topic_open() && !bp_group_is_user_banned() ) : ?>
+				<?php if ( bp_get_the_topic_is_topic_open() ) : ?>
 
 					<div id="post-topic-reply">
 						<p id="post-reply"></p>
@@ -137,7 +102,7 @@
 						<?php wp_nonce_field( 'bp_forums_new_reply' ) ?>
 					</div>
 
-				<?php elseif ( !bp_group_is_user_banned() ) : ?>
+				<?php else : ?>
 
 					<div id="message" class="info">
 						<p><?php _e( 'This topic is closed, replies are no longer accepted.', 'buddypress' ) ?></p>
@@ -150,7 +115,6 @@
 		<?php endif; ?>
 
 	</form><!-- #forum-topic-form -->
-
 <?php else: ?>
 
 	<div id="message" class="info">

@@ -1,49 +1,59 @@
 <?php do_action( 'bp_before_profile_loop_content' ) ?>
 
-<?php if ( bp_has_profile() ) : ?>
+<?php if ( function_exists('xprofile_get_profile') ) : ?>
 
-	<?php while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
+	<?php if ( bp_has_profile() ) : ?>
 
-		<?php if ( bp_profile_group_has_fields() ) : ?>
+		<?php while ( bp_profile_groups() ) : bp_the_profile_group(); ?>
 
-			<?php do_action( 'bp_before_profile_field_content' ) ?>
+			<?php if ( bp_profile_group_has_fields() ) : ?>
 
-			<div class="bp-widget <?php bp_the_profile_group_slug() ?>">
-				<?php if ( 1 != bp_get_the_profile_group_id() ) : ?>
-					<h4><?php bp_the_profile_group_name() ?></h4>
-				<?php endif; ?>
+				<?php do_action( 'bp_before_profile_field_content' ) ?>
 
-				<table class="profile-fields">
-					<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
+				<div class="bp-widget <?php bp_the_profile_group_slug() ?>">
+					<?php if ( 1 != bp_get_the_profile_group_id() ) : ?>
+						<h4><?php bp_the_profile_group_name() ?></h4>
+					<?php endif; ?>
 
-						<?php if ( bp_field_has_data() ) : ?>
-							<tr<?php bp_field_css_class() ?>>
+					<table class="profile-fields zebra">
+						<?php while ( bp_profile_fields() ) : bp_the_profile_field(); ?>
 
-								<td class="label">
-									<?php bp_the_profile_field_name() ?>
-								</td>
+							<?php if ( bp_field_has_data() ) : ?>
+								<tr<?php bp_field_css_class() ?>>
 
-								<td class="data">
-									<?php bp_the_profile_field_value() ?>
-								</td>
+									<td class="label">
+										<?php bp_the_profile_field_name() ?>
+									</td>
 
-							</tr>
-						<?php endif; ?>
+									<td class="data">
+										<?php bp_the_profile_field_value() ?>
+									</td>
 
-						<?php do_action( 'bp_profile_field_item' ) ?>
+								</tr>
+							<?php endif; ?>
 
-					<?php endwhile; ?>
-				</table>
-			</div>
+							<?php do_action( 'bp_profile_field_item' ) ?>
 
-			<?php do_action( 'bp_after_profile_field_content' ) ?>
+						<?php endwhile; ?>
+					</table>
+				</div>
 
-		<?php endif; ?>
+				<?php do_action( 'bp_after_profile_field_content' ) ?>
 
-	<?php endwhile; ?>
+			<?php endif; ?>
 
-	<?php do_action( 'bp_profile_field_buttons' ) ?>
+		<?php endwhile; ?>
+
+		<?php do_action( 'bp_profile_field_buttons' ) ?>
+
+	<?php endif; ?>
+
+<?php else : ?>
+
+	<?php /* Just load the standard WP profile information, if BP extended profiles are not loaded. */ ?>
+	<?php bp_core_get_wp_profile() ?>
 
 <?php endif; ?>
 
 <?php do_action( 'bp_after_profile_loop_content' ) ?>
+

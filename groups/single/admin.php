@@ -1,10 +1,10 @@
-<div class="item-list-tabs no-ajax" id="subnav" role="navigation">
+<div class="item-list-tabs no-ajax" id="subnav">
 	<ul>
 		<?php bp_group_admin_tabs(); ?>
 	</ul>
 </div><!-- .item-list-tabs -->
 
-<form action="<?php bp_group_admin_form_action() ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data" role="main">
+<form action="<?php bp_group_admin_form_action() ?>" name="group-settings-form" id="group-settings-form" class="standard-form" method="post" enctype="multipart/form-data">
 
 <?php do_action( 'bp_before_group_admin_content' ) ?>
 
@@ -39,7 +39,15 @@
 
 	<?php do_action( 'bp_before_group_settings_admin' ); ?>
 
-	<?php if ( bp_is_active( 'forums' ) ) : ?>
+	<?php if ( function_exists('bp_wire_install') ) : ?>
+
+		<div class="checkbox">
+			<label><input type="checkbox" name="group-show-wire" id="group-show-wire" value="1"<?php bp_group_show_wire_setting() ?>/> <?php _e( 'Enable comment wire', 'buddypress' ) ?></label>
+		</div>
+
+	<?php endif; ?>
+
+	<?php if ( function_exists('bp_forums_is_installed_correctly') ) : ?>
 
 		<?php if ( bp_forums_is_installed_correctly() ) : ?>
 
@@ -47,11 +55,11 @@
 				<label><input type="checkbox" name="group-show-forum" id="group-show-forum" value="1"<?php bp_group_show_forum_setting() ?> /> <?php _e( 'Enable discussion forum', 'buddypress' ) ?></label>
 			</div>
 
-			<hr />
-
 		<?php endif; ?>
 
 	<?php endif; ?>
+
+	<hr />
 
 	<h4><?php _e( 'Privacy Options', 'buddypress' ); ?></h4>
 
@@ -191,24 +199,24 @@
 
 						<h5>
 							<?php bp_group_member_link() ?>
-
+							
 							<?php if ( bp_get_group_member_is_banned() ) _e( '(banned)', 'buddypress'); ?>
 
-							<span class="small">
-
+							<span class="small"> - 
+							
 							<?php if ( bp_get_group_member_is_banned() ) : ?>
-
-								<a href="<?php bp_group_member_unban_link() ?>" class="button confirm member-unban" title="<?php _e( 'Unban this member', 'buddypress' ) ?>"><?php _e( 'Remove Ban', 'buddypress' ); ?></a>
+								
+								<a href="<?php bp_group_member_unban_link() ?>" class="confirm" title="<?php _e( 'Unban this member', 'buddypress' ) ?>"><?php _e( 'Remove Ban', 'buddypress' ); ?></a>
 
 							<?php else : ?>
 
-								<a href="<?php bp_group_member_ban_link() ?>" class="button confirm member-ban" title="<?php _e( 'Kick and ban this member', 'buddypress' ); ?>"><?php _e( 'Kick &amp; Ban', 'buddypress' ); ?></a>
-								<a href="<?php bp_group_member_promote_mod_link() ?>" class="button confirm member-promote-to-mod" title="<?php _e( 'Promote to Mod', 'buddypress' ); ?>"><?php _e( 'Promote to Mod', 'buddypress' ); ?></a>
-								<a href="<?php bp_group_member_promote_admin_link() ?>" class="button confirm member-promote-to-admin" title="<?php _e( 'Promote to Admin', 'buddypress' ); ?>"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
+								<a href="<?php bp_group_member_ban_link() ?>" class="confirm" title="<?php _e( 'Kick and ban this member', 'buddypress' ); ?>"><?php _e( 'Kick &amp; Ban', 'buddypress' ); ?></a>
+								| <a href="<?php bp_group_member_promote_mod_link() ?>" class="confirm" title="<?php _e( 'Promote to Mod', 'buddypress' ); ?>"><?php _e( 'Promote to Mod', 'buddypress' ); ?></a>
+								| <a href="<?php bp_group_member_promote_admin_link() ?>" class="confirm" title="<?php _e( 'Promote to Admin', 'buddypress' ); ?>"><?php _e( 'Promote to Admin', 'buddypress' ); ?></a>
 
 							<?php endif; ?>
 
-								<a href="<?php bp_group_member_remove_link() ?>" class="button confirm" title="<?php _e( 'Remove this member', 'buddypress' ); ?>"><?php _e( 'Remove from group', 'buddypress' ); ?></a>
+								| <a href="<?php bp_group_member_remove_link() ?>" class="confirm" title="<?php _e( 'Remove this member', 'buddypress' ); ?>"><?php _e( 'Remove from group', 'buddypress' ); ?></a>
 
 								<?php do_action( 'bp_group_manage_members_admin_item' ); ?>
 

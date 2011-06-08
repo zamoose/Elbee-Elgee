@@ -1,4 +1,4 @@
-<div id="message-thread" role="main">
+<div id="message-thread">
 
 	<?php do_action( 'bp_before_message_thread_content' ) ?>
 
@@ -10,14 +10,13 @@
 			<span class="highlight">
 				<?php printf( __('Sent between %s and %s', 'buddypress'), bp_get_the_thread_recipients(), '<a href="' . bp_get_loggedin_user_link() . '" title="' . bp_get_loggedin_user_fullname() . '">' . bp_get_loggedin_user_fullname() . '</a>' ) ?>
 			</span>
-			<a class="button confirm" href="<?php bp_the_thread_delete_link() ?>" title="<?php _e( "Delete Message", "buddypress" ); ?>"><?php _e( 'Delete', 'buddypress' ) ?></a> &nbsp;
 		</p>
 
 		<?php do_action( 'bp_before_message_thread_list' ) ?>
 
 		<?php while ( bp_thread_messages() ) : bp_thread_the_message(); ?>
 
-			<div class="message-box <?php bp_the_thread_message_alt_class(); ?>">
+			<div class="message-box">
 
 				<div class="message-metadata">
 
@@ -82,7 +81,6 @@
 					</div>
 
 					<input type="hidden" id="thread_id" name="thread_id" value="<?php bp_the_thread_id(); ?>" />
-					<input type="hidden" id="messages_order" name="messages_order" value="<?php bp_thread_messages_order(); ?>" />
 					<?php wp_nonce_field( 'messages_send_message', 'send_message_nonce' ) ?>
 
 				</div><!-- .message-content -->
