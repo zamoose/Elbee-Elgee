@@ -158,7 +158,7 @@ add_action( 'pre_get_posts', 'lblg_bp_fix_get_posts_on_activity_front' );
 /**
  * Hooks BP's action buttons
  */
-function bp_tpack_add_buttons() {
+function lblg_bp_add_buttons() {
 	// Member Buttons
 	if ( bp_is_active( 'friends' ) )
 		add_action( 'bp_member_header_actions',    'bp_add_friend_button' );
@@ -180,4 +180,4 @@ function bp_tpack_add_buttons() {
 	if ( bp_is_active( 'blogs' ) )
 		add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
 }
-add_action( 'bp_init', 'bp_tpack_add_buttons' );
+add_action( 'bp_init', 'lblg_bp_add_buttons' );
