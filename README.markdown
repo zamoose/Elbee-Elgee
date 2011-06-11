@@ -53,6 +53,19 @@ Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) soci
 #### Theme Options Page ####
 I have planned Elbee Elgee to be a flexible parent theme from the very early stages. One of the coolest features (in my opinion) is its ability to auto-load theme options from either the parent theme *or* child themes. This primarily takes place in `includes/functions/options.php` and allows for an arbitrary number of theme options to be set and configured by end users.
 
+This effectively creates a parent/child relationship *for theme options*. Child themes of Elbee Elgee can either default back to the options provided by the parent theme, they can extend said options, they can override them entirely, or they can disable all theme options.
+
+#### Multiple Layouts ####
+The HTML markup, combined with different CSS layout files, offers Elbee Elgee around 30 possible layout configurations right out of the gate. You can choose between 1, 2 and 3 column layouts, each of which offers static width, percentage-based and fluid width variants.
+
+As of version 1.0 of Elbee Elgee, selecting a layout can be a bit confusing. Essentially, the CSS layout files are named in the following format:
+
+`[number of columns]-[fixed/fluid/percentage-based]-[sidebar locations].css`
+
+So, for example, `1-column-fixed.css` is a single column layout with fixed width (960px by default), while `3-columns-fluid-sb-fixed-both.css` is a 3 column fluid width design with fixed size sidebars on either side of the content area.
+
+In successive versions of the theme I hope to implement a graphical layout-picker in order to make the layout selection process a bit more user-friendly.
+
 #### Hooks ####
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
 
@@ -76,7 +89,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 ### KNOWN ISSUES ###
 
 * Version 1.0
- * BuddyPress AJAX calls are not working correctly
+ * None.
 
 ### INSPIRATION ###
 

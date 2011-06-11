@@ -16,7 +16,7 @@ if (function_exists('afdn_error_page')) {
 	<div id="wrapper">
 		<div id="lb-content">
 			<div class="wppost">
-				<h3>Whoops.</h3>
+				<h1>Whoops.</h1>
 				<div class="itemtext">
 					<p>Looks like you managed to stumble across a link to a page that doesn't exist, but never fear, good citizen, for a wealth of options awaits you!</p>
 					<p>Perhaps you could search for what you were looking for:</p>

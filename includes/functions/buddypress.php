@@ -131,10 +131,11 @@ add_action( 'pre_update_option_page_on_front', 'lblg_bp_page_on_front_update', 1
 function lblg_bp_page_on_front_template( $template ) {
 	global $wp_query;
 
-	if ( empty( $wp_query->post->ID ) )
-		return locate_template( array( 'activity/index.php' ), false );
-	else
+	if ( empty( $wp_query->post->ID ) ) {
+		 return locate_template( array( 'activity/index.php' ), false );
+	} else{
 		return $template;
+	}
 }
 add_filter( 'page_template', 'lblg_bp_page_on_front_template' );
 

@@ -91,7 +91,8 @@ div#titledesc {
 	width: 100%;
 	/*margin-top:28%;
 	height: 4em;*/
-	height: 1.5em;
+	height: 20px;
+	margin-top: 130px;
 }
 
 #lb-bp-nav ul.menu > li {
@@ -120,6 +121,7 @@ div#titledesc {
 #lb-bp-search-bar {
 	margin-top: 20px;
 	margin-right: 10px;
+	height: 25px;
 }
 /* @end */
 
@@ -182,7 +184,9 @@ div#wrapper {
 	
 }
 
-body.home-page #lb-content h2 a, body.home #lb-content h2 a, body.single #lb-content h1, body.page #lb-content h1{
+body.home-page #lb-content h2 a, body.home #lb-content h2 a, 
+body.single #lb-content h1, body.page #lb-content h1,
+body.error404 #lb-content h1 {
 	font-size: 2em;
 	font-weight: bold;
 	padding-top: 1em;
@@ -219,72 +223,9 @@ body.home-page #lb-content h2 a, body.home #lb-content h2 a, body.single #lb-con
 	margin: 0 auto;
 	display: block;
 }
-/* @end */
 
-/* @group BuddyPress Elements */
-#item-actions {
-	float: right;
-	text-align: right;
-}
-
-#lb-content div.item-list-tabs {
-	border-bottom: 1px solid #ddd;
-	padding-bottom: 0;
-}
-
-#lb-content div.item-list-tabs > ul {
-}
-div.item-list-tabs#subnav ul li.feed {
-	background: #fff url(../images/feed.png) left no-repeat;
-	padding-left: 20px;	
-	border: 0;
-}
-
-div.item-list-tabs ul > li.last {
-	border: 0 !important;
-	background: #fff !important;
-}
-
-#lb-content div.item-list-tabs ul > li:first-child {
-	margin-left: 20px;
-}
-
-#lb-content div.item-list-tabs ul > li {
-	display: block;
-	border-width: 1px 1px 0 1px;
-	border-style: solid;
-	border-color: #ddd;
-	border-radius: 4px 4px 0 0;
-	-moz-border-radius: 4px 4px 0 0;
-	-webkit-border-radius: 4px 4px 0 0;
-	padding: 5px 5px 0 5px;
-	line-height: 21px;
-	background: #FAFAFA;
-	background: -webkit-gradient(linear,0 0,0 100%,from(white),to(#dcdcdc));
-	background: -webkit-linear-gradient(white,#dcdcdc);
-	background: -moz-linear-gradient(top,#dcdcdc);
-}
-
-#lb-content div.item-list-tabs ul > li.current,#lb-content div.item-list-tabs ul > li.selected {
-	background: #fff;
-	border-bottom: 1px solid #fff;
-	margin-bottom: -1px;
-}
-
-#lb-content div.item-list-tabs ul > li.current a,#lb-content div.item-list-tabs ul > li.selected a {
-	font-weight: bold;
-}
-
-#lb-content div.item-list-tabs ul > li a {
-	text-decoration: none;
-}
-
-#lb-content div.item-list-tabs ul > li a:hover, #lb-content div.item-list-tabs ul > li a:active {
-	color: #000;
-}
-
-#lb-content ul.item-list li {
-	border-bottom: 1px solid #ddd;
+#lb-content img {
+	max-width: 100%;
 }
 /* @end */
 

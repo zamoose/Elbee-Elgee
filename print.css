@@ -47,26 +47,26 @@ acronym:after, .titleTip:after {  /* Prints titles after the acronyms/titletips.
 	display: none;
 }
 
-#content {
+#lb-content {
   text-align: justify;
   margin: 0;
   padding: 0;
 }
 
-#content h3 {
+#lb-content h3 {
   font-family: "trebuchet ms", verdana, helvetica, arial, sans-serif;
   font-size: 120%;
   margin: 2ex 0 1ex 0;
   padding: 0;
 }
 
-#content a {
+#lb-content a {
   color: black;
   background-color: transparent;
   text-decoration: none;
 }
 
-#content a:after {  /* Prints the links' URIs after the links' texts. Doesn't work in MSIE */
+#lb-content a:after {  /* Prints the links' URIs after the links' texts. Doesn't work in MSIE */
   content: "<" attr(href) ">";
   font-size: 90%;
   padding-left: 1ex;
