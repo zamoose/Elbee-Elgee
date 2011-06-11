@@ -131,8 +131,11 @@ add_action( 'pre_update_option_page_on_front', 'lblg_bp_page_on_front_update', 1
 function lblg_bp_page_on_front_template( $template ) {
 	global $wp_query;
 
+	echo 'FLAJSDASHDJLAHSD';
+
 	if ( empty( $wp_query->post->ID ) ) {
-		 return locate_template( array( 'activity/index.php' ), false );
+		 //return locate_template( array( 'activity/index.php' ), false );
+		return get_template_directory_uri() . '/activity/index.php';
 	} else{
 		return $template;
 	}
