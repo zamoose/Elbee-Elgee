@@ -80,6 +80,7 @@ Elbee Elgee has a few notable hooks, with many more planned. I welcome your sugg
 * More theme hooks.
 * General code clean-up/optimization.
 * Better documentation.
+* Fully-integrated bbPress support.
 
 ### ONGOING DEVELOPMENT ###
 I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
@@ -89,7 +90,11 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 ### KNOWN ISSUES ###
 
 * Version 1.0
- * None.
+ * Specifying BuddyPress Activity as front page tosses 404 error
+ * Header images max width at 960px.
+ * "New Topic" & "Create Group" buttons styled incorrectly
+ * Where's the "Add Friend" button?
+ * Question mark JS anchor next to @ names doesn't place non-hidden text in the right place
 
 ### INSPIRATION ###
 
