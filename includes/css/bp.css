@@ -434,26 +434,32 @@ ul.button-nav li a, div.generic-button a {
     vertical-align: bottom;
     cursor: pointer;
 }
-    a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover,
-    ul.button-nav li a:hover, ul.button-nav li.current a,
-    div.generic-button a:hover {
-        border-color: #aaa;
-        color: #555;
-        outline: none;
-    }
 
-    /* Buttons that are disabled */
-    div.pending a, a.disabled {
-        border-color: #eee;
-        color: #bbb;
-        cursor: default;
-    }
-    div.pending a:hover, a.disabled:hover { border-color: #eee; color: #bbb; }
+a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover,
+ul.button-nav li a:hover, ul.button-nav li.current a,
+div.generic-button a:hover {
+    border-color: #aaa;
+    color: #555;
+    outline: none;
+}
 
-    div.accept, div.reject {
-        float: left;
-        margin-left: 10px;
-    }
+/* Buttons that are disabled */
+div.pending a, a.disabled {
+    border-color: #eee;
+    color: #bbb;
+    cursor: default;
+}
+div.pending a:hover, a.disabled:hover { border-color: #eee; color: #bbb; }
+
+div.accept, div.reject {
+    float: left;
+    margin-left: 10px;
+}
+
+div#item-header div.generic-button, div#item-header a.button {
+	float: left;
+	margin: 10px 10px 0 0;
+}
 
 body.directory #lb-content h3 {
 	color: #000;
@@ -466,6 +472,22 @@ body.directory #lb-content h3 {
 form.dir-form div.dir-search {
 	    float: right;
 	    margin: -37px 0 0 0;
+}
+
+span.activity, div#message p {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: normal;
+	background: #FFF9DB;
+	border-bottom: 1px solid #FFE8C4;
+	border-right: 1px solid #FFE8C4;
+	color: #ffa200;
+	padding: 1px 8px;
+	margin-top: 6px;
+	text-decoration: none;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 }
 
 table.forum {

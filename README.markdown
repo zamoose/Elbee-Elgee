@@ -87,14 +87,23 @@ I have switched my development workflow from Subversion to [Mercurial](<http://m
 
 If you are interested in learning more about Mercurial, [HG Init](<http://hginit.com>) is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
 
+### VERSION HISTORY ###
+
+* Version 1.1
+	* **Issues Fixed**
+		* BuddyPress Member/Group buttons not appearing
+		* Question mark next to @ names in individual Member screens now styling correctly
+* Version 1.0
+	* Initial release
+
 ### KNOWN ISSUES ###
 
 * Version 1.0
- * Specifying BuddyPress Activity as front page tosses 404 error
- * Header images max width at 960px.
- * "New Topic" & "Create Group" buttons styled incorrectly
- * Where's the "Add Friend" button?
- * Question mark JS anchor next to @ names doesn't place non-hidden text in the right place
+	* Specifying BuddyPress Activity as front page tosses 404 error
+	* Header images max width at 960px.
+	* "New Topic" & "Create Group" buttons styled incorrectly
+	* <del>Where's the "Add Friend" button?</del>
+	* <del>Question mark JS anchor next to @ names doesn't place non-hidden text in the right place</del>
 
 ### INSPIRATION ###
 

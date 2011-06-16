@@ -19,8 +19,9 @@ require_once( LBLG_FUNCTIONS_DIR . 'hooks.php' );
 require_once( LBLG_FUNCTIONS_DIR . 'supports.php' );
 
 // Only load the BuddyPress-related code if BP is active
-if( function_exists( 'bp_init' ))
+if( function_exists( 'bp_init' ) )
 	require_once( LBLG_FUNCTIONS_DIR . 'buddypress.php' );
-	
-require_once( LBLG_FUNCTIONS_DIR . 'bbpress.php' );
+
+if( function_exists( 'bbp_get_current_user_id' ) )	
+	require_once( LBLG_FUNCTIONS_DIR . 'bbpress.php' );
 ?>
