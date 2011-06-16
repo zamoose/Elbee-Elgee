@@ -38,7 +38,7 @@
 
 						<?php else : ?>
 
-							<?php bbp_get_template_part( 'bbpress/no', 'topics' ); ?>
+							<?php bbp_get_template_part( 'bbpress/feedback',   'no-topics' ); ?>
 
 						<?php endif; ?>
 
@@ -46,5 +46,4 @@
 
 					</div>
 				</div><!-- #topic-tag -->
-				
 <?php get_template_part( 'bbp-wrapper-footer' ); ?>

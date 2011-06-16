@@ -9,6 +9,8 @@
 
 ?>
 
+	<?php do_action( 'bbp_template_before_forums_loop' ); ?>
+
 	<table class="bbp-forums">
 
 		<thead>
@@ -21,7 +23,7 @@
 		</thead>
 
 		<tfoot>
-			<tr><td colspan="4">&nbsp;<?php // @todo - Moderation links ?></td></tr>
+			<tr><td colspan="4">&nbsp;</td></tr>
 		</tfoot>
 
 		<tbody>
@@ -60,3 +62,5 @@
 		</tbody>
 
 	</table>
+
+	<?php do_action( 'bbp_template_after_forums_loop' ); ?>

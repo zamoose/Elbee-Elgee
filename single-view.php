@@ -1,7 +1,7 @@
 <?php
 
 /**
- * bbPress - Forum Archive
+ * Single View
  *
  * @package bbPress
  * @subpackage Theme
@@ -15,13 +15,13 @@
 
 				<?php do_action( 'bbp_template_notices' ); ?>
 
-				<div id="forum-front" class="bbp-forum-front">
-					<h1 class="entry-title"><?php bbp_forum_archive_title(); ?></h1>
+				<div id="bbp-view-<?php bbp_view_id(); ?>" class="bbp-view">
+					<h1 class="entry-title"><?php bbp_view_title(); ?></h1>
 					<div class="entry-content">
 
-						<?php bbp_get_template_part( 'bbpress/content', 'archive-forum' ); ?>
+						<?php bbp_get_template_part( 'bbpress/content', 'single-view' ); ?>
 
 					</div>
-				</div><!-- #forum-front -->
+				</div><!-- #bbp-view-<?php bbp_view_id(); ?> -->
 
 <?php get_template_part( 'bbp-wrapper-footer' ); ?>

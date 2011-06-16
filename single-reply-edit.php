@@ -1,7 +1,8 @@
+native
 <?php
 
 /**
- * Edit handler for topics and replies
+ * Edit handler for replies
  *
  * @package bbPress
  * @subpackage Theme
@@ -21,17 +22,13 @@
 
 							<?php bbp_breadcrumb(); ?>
 
-							<?php if ( bbp_is_reply_edit() ) : ?>
-
-								<?php bbp_get_template_part( 'bbpress/form', 'reply' ); ?>
-
-							<?php elseif ( bbp_is_topic_edit() ) : ?>
-
-								<?php bbp_get_template_part( 'bbpress/form', 'topic' ); ?>
-
-							<?php endif; ?>
+							<?php bbp_get_template_part( 'bbpress/form', 'reply' ); ?>
 
 						</div>
 					</div><!-- #bbp-edit-page -->
 
-<?php get_template_part( 'bbp-wrapper-footer' ); ?>
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

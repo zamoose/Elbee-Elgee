@@ -12,6 +12,20 @@ wp_reset_postdata();
 
 ?>
 
+	<?php if ( !bbp_is_forum() ) : ?>
+
+		<?php bbp_breadcrumb(); ?>
+
+	<?php endif; ?>
+
+	<?php if ( bbp_is_topic_edit() ) : ?>
+
+		<?php bbp_topic_tag_list( bbp_get_topic_id() ); ?>
+
+		<?php bbp_single_topic_description( array( 'topic_id' => bbp_get_topic_id() ) ); ?>
+
+	<?php endif; ?>
+
 	<?php if ( bbp_current_user_can_access_create_topic_form() ) : ?>
 
 		<div id="new-topic-<?php bbp_topic_id(); ?>" class="bbp-topic-form">
@@ -57,8 +71,8 @@ wp_reset_postdata();
 						<?php bbp_get_template_part( 'bbpress/form', 'anonymous' ); ?>
 
 						<p>
-							<label for="bbp_topic_title"><?php _e( 'Topic Title:', 'bbpress' ); ?></label><br />
-							<input type="text" id="bbp_topic_title" value="<?php bbp_form_topic_title(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_topic_title" />
+							<label for="bbp_topic_title"><?php printf( __( 'Topic Title (Maximum Length: %d):', 'bbpress' ), bbp_get_title_max_length() ); ?></label><br />
+							<input type="text" id="bbp_topic_title" value="<?php bbp_form_topic_title(); ?>" tabindex="<?php bbp_tab_index(); ?>" size="40" name="bbp_topic_title" maxlength="<?php bbp_title_max_length(); ?>" />
 						</p>
 
 						<p>
