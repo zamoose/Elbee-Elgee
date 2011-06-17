@@ -474,7 +474,7 @@ form.dir-form div.dir-search {
 	    margin: -37px 0 0 0;
 }
 
-span.activity, div#message p {
+#lb-content span.activity, #lb-content div#message p {
 	display: inline-block;
 	font-size: 11px;
 	font-weight: normal;
