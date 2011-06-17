@@ -420,8 +420,8 @@ div.activity-meta a:hover {
 }
 
 a.button, input[type=submit], input[type=button], input[type=reset],
-ul.button-nav li a, div.generic-button a {
-    background: url( ng/white-grad.png ) top left repeat-x;
+ul.button-nav li a, div.generic-button a, h3 a.button {
+    background: url( ../../images/white-grad.png ) top left repeat-x;
     border: 1px solid #ddd;
     padding: 3px 10px;
     -moz-border-radius: 3px;
@@ -437,7 +437,7 @@ ul.button-nav li a, div.generic-button a {
 
 a.button:hover, a.button:focus, input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover,
 ul.button-nav li a:hover, ul.button-nav li.current a,
-div.generic-button a:hover {
+div.generic-button a:hover, h3 a.button:hover {
     border-color: #aaa;
     color: #555;
     outline: none;

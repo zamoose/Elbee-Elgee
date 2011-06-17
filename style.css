@@ -484,32 +484,34 @@ div.message {
 	color: #333;
 }
 
-.notification {
+.notification, .category-notification {
 	border-color: #669933;
-	border-top: 2px solid;
-	border-bottom: 2px solid;
+	border: 1px solid;
 	background-color: #9BCF7B;
 	color: #333;
+	padding: 10px;
 }
 
-.alert, .sticky {
-	border-top: 2px solid;
-	border-bottom: 2px solid;
+.alert, .category-alert {
+	border: 1px solid;
 	border-color: #DDDB54;
 	background-color: #FFFFCC;
 	color: #000;
+	padding: 10px;
 }
 
-.warning {
-	border-top: 2px solid;
-	border-bottom: 2px solid;
+.warning, .category-warning {
+	border: 1px solid;
 	border-color: #D43C3C;
-	background-color: #FB7070;
-	color: #fff;
+	background-color: #faa19f;
+	color: #000;
+	padding: 10px;
 }
 
 .sticky {
-	
+	border: 1px solid #097bc3;
+	background: #9ed2fb;
+	padding: 10px;
 }
 
 .bypostauthor {
