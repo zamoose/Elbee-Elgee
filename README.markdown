@@ -48,12 +48,23 @@ Elbee Elgee features four native sidebars/widget areas: Primary, Secondary, Bott
 Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee Elgee BuddyPress Menu") is activated when an active BuddyPress installation is detected. This menu will be automatically populated with the most commonly-used BuddyPress links. You may alter it as you see fit or choose not to use it at all.
 
 #### BuddyPress Support ####
+*Based in part on code provided by the [BuddyPress Template Pack plugin](http://wordpress.org/extend/plugins/bp-template-pack/)*
+
 Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
+
+**Note:** This theme has preliminary support for using a BuddyPress activity stream as the front page, however, it is buggy and therefore disabled in the code for the time being. I hope to correct this as soon as BuddyPress 1.3 ships.
 
 #### Theme Options Page ####
 I have planned Elbee Elgee to be a flexible parent theme from the very early stages. One of the coolest features (in my opinion) is its ability to auto-load theme options from either the parent theme *or* child themes. This primarily takes place in `includes/functions/options.php` and allows for an arbitrary number of theme options to be set and configured by end users.
 
 This effectively creates a parent/child relationship *for theme options*. Child themes of Elbee Elgee can either default back to the options provided by the parent theme, they can extend said options, they can override them entirely, or they can disable all theme options.
+
+#### bbPress version 2.0 (aka "The Plugin") Support ####
+*Based on the bbp_twentyten parent theme provided as a part of the default bbPress plugin install*
+
+Elbee Elgee has preliminary support for the "plugin-ized" version 2.0 of [bbPress](http://bbpress.org) (the WordPress-based forum solution). Templating functionality should not change between bbPress 2.0 beta 3 (the most recent version of bbP as of this writing) and the final release of bbPress version 2.0, so forums should continue to work during that transition period.
+
+**Note:** BuddyPress and the plugin version of bbPress do not currently play well together. The combination of the two is not tested under this theme and is in no way recommended, nor will I support it until BuddyPress and bbPress come to an understanding regarding mutual support. *I.e., if you're thinking of running BuddyPress 1.2.x and bbPress 2.0, DON'T.*
 
 #### Multiple Layouts ####
 The HTML markup, combined with different CSS layout files, offers Elbee Elgee around 30 possible layout configurations right out of the gate. You can choose between 1, 2 and 3 column layouts, each of which offers static width, percentage-based and fluid width variants.
