@@ -1,12 +1,11 @@
 <?php
+/*
+* All code in this file has been adapted from the bbp_twentyten theme provided
+* as a part of the default bbPress plugin install and therefore retains the original
+* GPL license attached to said files.
+*/
 
- /**
- * @package bbPress
- * @subpackage BBP_Twenty_Ten
- * @since Twenty Ten 1.1
- */
-
-if ( ! function_exists( 'bbp_twentyten_setup' ) ):
+if ( ! function_exists( 'lblg_bbp_setup' ) ):
 /**
  * Sets up theme support for bbPress
  *
@@ -15,16 +14,16 @@ if ( ! function_exists( 'bbp_twentyten_setup' ) ):
  *
  * @since bbPress (r2652)
  */
-function bbp_twentyten_setup() {
+function lblg_bbp_setup() {
 
 	// This theme comes bundled with bbPress template files
 	add_theme_support( 'bbpress' );
 }
 /** Tell WordPress to run twentyten_setup() when the 'after_setup_theme' hook is run. */
-add_action( 'after_setup_theme', 'bbp_twentyten_setup' );
+add_action( 'after_setup_theme', 'lblg_bbp_setup' );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_enqueue_styles' ) ) :
+if ( !function_exists( 'lblg_bbp_enqueue_styles' ) ) :
 /**
  * Load the theme CSS
  *
@@ -33,7 +32,7 @@ if ( !function_exists( 'bbp_twentyten_enqueue_styles' ) ) :
  * @uses is_admin() To check if it's the admin section
  * @uses wp_enqueue_style() To enqueue the styles
  */
-function bbp_twentyten_enqueue_styles () {
+function lblg_bbp_enqueue_styles () {
 	if ( is_admin() )
 		return false;
 
@@ -57,10 +56,10 @@ function bbp_twentyten_enqueue_styles () {
 		wp_enqueue_style( 'bbp-twentyten-bbpress', get_stylesheet_directory_uri() . '/bbpress/css/bbpress.css', 'twentyten', 20100503, 'screen' );
 	}
 }
-add_action( 'init', 'bbp_twentyten_enqueue_styles' );
+add_action( 'init', 'lblg_bbp_enqueue_styles' );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_dim_favorite' ) ) :
+if ( !function_exists( 'lblg_bbp_dim_favorite' ) ) :
 /**
  * Add or remove a topic from a user's favorites
  *
@@ -74,7 +73,7 @@ if ( !function_exists( 'bbp_twentyten_dim_favorite' ) ) :
  * @uses bbp_remove_user_favorite() To remove the topic from user's favorites
  * @uses bbp_add_user_favorite() To add the topic from user's favorites
  */
-function bbp_twentyten_dim_favorite () {
+function lblg_bbp_dim_favorite () {
 	$user_id = bbp_get_current_user_id();
 	$id      = intval( $_POST['id'] );
 
@@ -96,27 +95,11 @@ function bbp_twentyten_dim_favorite () {
 
 	die( '0' );
 }
-add_action( 'wp_ajax_dim-favorite', 'bbp_twentyten_dim_favorite' );
+add_action( 'wp_ajax_dim-favorite', 'lblg_bbp_dim_favorite' );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_dim_subscription' ) ) :
-/**
- * Subscribe/Unsubscribe a user from a topic
- *
- * @since bbPress (r2668)
- *
- * @uses bbp_is_subscriptions_active() To check if the subscriptions are active
- * @uses bbp_get_current_user_id() To get the current user id
- * @uses current_user_can() To check if the current user can edit the user
- * @uses bbp_get_topic() To get the topic
- * @uses check_ajax_referer() To verify the nonce & check the referer
- * @uses bbp_is_user_subscribed() To check if the topic is in user's
- *                                 subscriptions
- * @uses bbp_remove_user_subscriptions() To remove the topic from user's
- *                                        subscriptions
- * @uses bbp_add_user_subscriptions() To add the topic from user's subscriptions
- */
-function bbp_twentyten_dim_subscription () {
+if ( !function_exists( 'lblg_bbp_dim_subscription' ) ) :
+function lblg_bbp_dim_subscription () {
 	if ( !bbp_is_subscriptions_active() )
 		return;
 
@@ -141,41 +124,22 @@ function bbp_twentyten_dim_subscription () {
 
 	die( '0' );
 }
-add_action( 'wp_ajax_dim-subscription', 'bbp_twentyten_dim_subscription' );
+add_action( 'wp_ajax_dim-subscription', 'lblg_bbp_dim_subscription' );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_enqueue_scripts' ) ) :
-/**
- * Enqueue the required Javascript files
- *
- * @since bbPress (r2652)
- *
- * @uses bbp_is_topic() To check if it's the topic page
- * @uses get_stylesheet_directory_uri() To get the stylesheet directory uri
- * @uses bbp_is_single_user_edit() To check if it's the profile edit page
- * @uses wp_enqueue_script() To enqueue the scripts
- */
-function bbp_twentyten_enqueue_scripts () {
+if ( !function_exists( 'lblg_bbp_enqueue_scripts' ) ) :
+function lblg_bbp_enqueue_scripts () {
 	if ( bbp_is_topic() )
 		wp_enqueue_script( 'bbp_topic', get_stylesheet_directory_uri() . '/bbpress/js/topic.js', array( 'wp-lists' ), '20101202' );
 
 	if ( bbp_is_single_user_edit() )
 		wp_enqueue_script( 'user-profile' );
 }
-add_action( 'wp_enqueue_scripts', 'bbp_twentyten_enqueue_scripts' );
+add_action( 'wp_enqueue_scripts', 'lblg_bbp_enqueue_scripts' );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_scripts' ) ) :
-/**
- * Put some scripts in the header, like AJAX url for wp-lists
- *
- * @since bbPress (r2652)
- *
- * @uses bbp_is_topic() To check if it's the topic page
- * @uses admin_url() To get the admin url
- * @uses bbp_is_single_user_edit() To check if it's the profile edit page
- */
-function bbp_twentyten_scripts () {
+if ( !function_exists( 'lblg_bbp_scripts' ) ) :
+function lblg_bbp_scripts () {
 	if ( bbp_is_topic() ) : ?>
 
 	<script type='text/javascript'>
@@ -195,28 +159,11 @@ function bbp_twentyten_scripts () {
 	<?php
 	endif;
 }
-add_filter( 'wp_head', 'bbp_twentyten_scripts', -1 );
+add_filter( 'wp_head', 'lblg_bbp_scripts', -1 );
 endif;
 
-if ( !function_exists( 'bbp_twentyten_topic_script_localization' ) ) :
-/**
- * Load localizations for topic script.
- *
- * These localizations require information that may not be loaded even by init.
- *
- * @since bbPress (r2652)
- *
- * @uses bbp_is_topic() To check if it's the topic page
- * @uses bbp_get_current_user_id() To get the current user id
- * @uses bbp_get_topic_id() To get the topic id
- * @uses bbp_get_favorites_permalink() To get the favorites permalink
- * @uses bbp_is_user_favorite() To check if the topic is in user's favorites
- * @uses bbp_is_subscriptions_active() To check if the subscriptions are active
- * @uses bbp_is_user_subscribed() To check if the user is subscribed to topic
- * @uses bbp_get_topic_permalink() To get the topic permalink
- * @uses wp_localize_script() To localize the script
- */
-function bbp_twentyten_topic_script_localization () {
+if ( !function_exists( 'lblg_bbp_topic_script_localization' ) ) :
+function lblg_bbp_topic_script_localization () {
 	if ( !bbp_is_topic() )
 		return;
 
@@ -247,7 +194,7 @@ function bbp_twentyten_topic_script_localization () {
 
 	wp_localize_script( 'bbp_topic', 'bbpTopicJS', $localizations );
 }
-add_filter( 'wp_enqueue_scripts', 'bbp_twentyten_topic_script_localization' );
+add_filter( 'wp_enqueue_scripts', 'lblg_bbp_topic_script_localization' );
 endif;
 
 ?>
