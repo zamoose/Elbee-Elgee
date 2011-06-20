@@ -113,7 +113,7 @@ function lblg_bp_wp_pages_filter( $page_html ) {
 	$page_html .= '<option class="level-0" value="activity"' . $selected . '>' . __( 'Activity Stream', 'buddypress' ) . '</option></select>';
 	return $page_html;
 }
-add_filter( 'wp_dropdown_pages', 'lblg_bp_wp_pages_filter' );
+//add_filter( 'wp_dropdown_pages', 'lblg_bp_wp_pages_filter' );
 
 /* Hijack the saving of page on front setting to save the activity stream setting */
 function lblg_bp_page_on_front_update( $oldvalue, $newvalue ) {

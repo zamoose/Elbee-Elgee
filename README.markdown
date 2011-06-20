@@ -98,6 +98,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* BuddyPress Member/Group buttons now appearing
 		* Question mark next to @ names in individual Member screens now styling correctly
 		* "New Topic" & "Create Group" buttons styled correctly
+		* Header images max width now 1024px.
 * Version 1.0
 	* Initial release
 
@@ -105,7 +106,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 * Version 1.0
 	* Specifying BuddyPress Activity as front page tosses 404 error
-	* Header images max width at 960px.
+	* <del>Header images max width at 960px</del>
 	* <del>"New Topic" & "Create Group" buttons styled incorrectly</del>
 	* <del>Where's the "Add Friend" button?</del>
 	* <del>Question mark JS anchor next to @ names doesn't place non-hidden text in the right place</del>
