@@ -186,11 +186,11 @@ div#wrapper {
 
 body.home-page #lb-content h2 a, body.home #lb-content h2 a, 
 body.single #lb-content h1, body.page #lb-content h1,
-body.error404 #lb-content h1 {
+body.error404 #lb-content h1, h1.entry-title {
 	font-size: 2em;
 	font-weight: bold;
-	padding-top: 1em;
-	margin-top: 1em;
+	padding-top: 0.5em;
+	margin-top: 0.5em;
 }
 
 #lb-content p, span.postmeta  {

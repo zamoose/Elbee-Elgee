@@ -60,7 +60,7 @@ div.bbp-topic-tags {
 	background-color: #fff;
 }
 #lb-content table tbody tr.odd td {
-	background-color: #fbfbfb;
+	background-color: #f3f3f3;
 }
 
 #lb-content table tbody tr.status-trash.even td,
@@ -84,7 +84,8 @@ table.bbp-replies tbody tr td {
 
 table.bbp-forums th, table.bbp-topics th,
 table.bbp-topic th, table.bbp-replies th {
-	background-color: #f3f3f3;
+	background-color: #ccc;
+	font-weight: bold;
 }
 table.bbp-forums th span, table.bbp-topics th span,
 table.bbp-topic th span, table.bbp-replies th span {
@@ -491,33 +492,35 @@ div.bbp-template-notice a {
 	color: #555;
 	text-decoration: none;
 }
-	div.bbp-template-notice a:hover {
-		color: #000;
-	}
-	div.bbp-template-notice.info {
-		border: #cee1ef 1px solid;
-		background-color: #f0f8ff;
-	}
-	div.bbp-template-notice.important {
-		border: #e6db55 1px solid;
-		background-color: #fffbcc;
-	}
-	div.bbp-template-notice.error,
-	div.bbp-template-notice.warning {
-		background-color: #ffebe8;
-		border-color: #c00;
-	}
-	div.bbp-template-notice.error a,
-	div.bbp-template-notice.warning a {
-		color: #c00;
-	}
-	div.bbp-template-notice p {
-		margin: 0.5em 0 6px 0 !important;
-		padding: 2px;
-		font-size: 12px;
-		line-height: 140%;
-	}
-
+div.bbp-template-notice a:hover {
+	color: #000;
+}
+div.bbp-template-notice.info {
+	border: #cee1ef 1px solid;
+	background-color: #f0f8ff;
+}
+div.bbp-template-notice.important {
+	border: #e6db55 1px solid;
+	background-color: #fffbcc;
+}
+div.bbp-template-notice.error,
+div.bbp-template-notice.warning {
+	background-color: #ffebe8;
+	border-color: #c00;
+}
+div.bbp-template-notice.error a,
+div.bbp-template-notice.warning a {
+	color: #c00;
+}
+div.bbp-template-notice p {
+	margin: 0.5em 0 6px 0 !important;
+	padding: 2px;
+	font-size: 12px;
+	line-height: 140%;
+}
+div.bbp-template-notice > p.description {
+	color: #333;
+}
 /* =Stickies
 -------------------------------------------------------------- */
 
