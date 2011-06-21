@@ -100,6 +100,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.1.1
+	* **Issues Fixed**
+		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
 * Version 1.1
 	* **Features Added**
 		* bbPress v.2.0 (plugin-based) support
