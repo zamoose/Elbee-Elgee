@@ -25,6 +25,19 @@ a:active, a:hover{
 	position: relative;
 }
 
+#lb-content dl {
+	padding-left: 1em;
+	padding-top: 1em;
+}
+
+#lb-content dt {
+	font-weight: bold;
+}
+
+#lb-content dd {
+	padding-left: 1em;
+}
+
 /* @end */
 
 div#container {

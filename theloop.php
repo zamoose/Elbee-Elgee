@@ -5,8 +5,8 @@
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php if( is_home() ) { ?><h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h2>
 			<?php } else { ?><h1><?php the_title(); ?></h1><?php } ?>
-			<?php lblg_the_postimage(); ?>
 			<span class="postmeta">Posted by <?php the_author(); ?> on <?php the_time('F jS, Y'); ?> <?php if (!is_single()){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
+			<?php lblg_the_postimage(); ?>
 			<div class="itemtext">
 				<?php if ( is_archive() or is_search() or is_tag() ) {
 					the_excerpt();
