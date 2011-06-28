@@ -26,14 +26,14 @@ function lblg_options_init(){
 		$lblg_shortname = $temp_opts['shortname'];
 		$lblg_themename = $temp_opts['themename'];
 		$lblg_version = $temp_opts['version'];
-		$tmp_options = get_option( $lblg_shortname . '_lblg_options' );
+		$tmp_options = get_option( $lblg_shortname . '_theme_options' );
 		$lblg_options = $tmp_options + $lblg_default_options;
 	} else {
 		// Nothing to see here. Move along. Move along.
 		$lblg_shortname = $bootstrap_tmp['shortname'];
 		$lblg_themename = $bootstrap_tmp['themename'];
 		$lblg_version = $bootstrap_tmp['version'];
-		$lblg_options = get_option( $lblg_shortname . '_lblg_options' );
+		$lblg_options = get_option( $lblg_shortname . '_theme_options' );
 		/*
 		*  This shouldn't happen, but it just might, so let's check
 		*  and then set up the options correctly.
@@ -48,7 +48,7 @@ function lblg_options_init(){
 						   'version'   => $lblg_version);
 					
 	update_option( 'lblg_meta_info', $meta_options);
-	update_option( $lblg_shortname . '_lblg_options', $lblg_options );
+	update_option( $lblg_shortname . '_theme_options', $lblg_options );
 }
 
 function lblg_get_options_from_defaults(){

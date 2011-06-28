@@ -4,7 +4,7 @@
 */
 
 $lblg_meta_info = get_option('lblg_meta_info');
-$lblg_options = get_option($lblg_meta_info['shortname'] . "_lblg_options" );
+$lblg_options = get_option($lblg_meta_info['shortname'] . "_theme_options" );
 
 /*
 *  Action hooks
