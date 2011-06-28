@@ -2,7 +2,7 @@
 $lblg_meta = get_option('lblg_meta_info');
 $lblg_themename = $lblg_meta['themename'];
 $lblg_shortname = $lblg_meta['shortname'];
-$lblg_options = get_option($lblg_shortname . '_lblg_options' );
+$lblg_options = get_option($lblg_shortname . '_theme_options' );
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>

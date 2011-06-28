@@ -51,7 +51,7 @@ function lblg_add_default_buddypress_menu(){
 		
 	} 
 }
-add_action( 'widgets_init', 'lblg_add_default_buddypress_menu' );
+add_action( 'after_setup_theme', 'lblg_add_default_buddypress_menu' );
 
 function lblg_bp_menu() {
 		get_template_part( 'bp-navigation' );

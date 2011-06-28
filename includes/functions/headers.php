@@ -61,6 +61,7 @@ function lblg_header_style() {
 <style type="text/css">
 #header{
 	background: url(<?php header_image() ?>) bottom left no-repeat;
+	background-size: cover;
 }
 <?php if ( 'blank' == get_header_textcolor() ) { ?>
 #header h1, #header #description {
