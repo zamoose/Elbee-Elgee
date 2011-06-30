@@ -1,14 +1,29 @@
-/*
-Theme Name: Elbee Elgee
-Theme URI: http://literalbarrage.org/blog/code/lblg
-Description: An extremely flexible 1, 2, or 3 column theme with over 30 possible layouts and support for widgetized sidebars, custom headers, custom backgrounds, custom navigation menus, BuddyPress and bbPress.
-Author: Doug Stewart
-Author URI: http://literalbarrage.org/blog/
-License: GPL v2
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Version: 1.1.1
-Tags: buddypress, two-columns, three-columns, one-column, left-sidebar, right-sidebar, white, blue, fixed-width, flexible-width, custom-header, custom-menu, featured-images, sticky-post, theme-options
-*/
+/**
+ * Theme Name: Elbee Elgee
+ * Theme URI: http://literalbarrage.org/blog/code/lblg
+ * Short Name: lblg
+ * Support URI: http://literalbarrage.org/blog/forums/themes/lblg/
+ * Description: An extremely flexible 1, 2, or 3 column theme with over 30 possible layouts and support for widgetized sidebars, custom headers, custom backgrounds, custom navigation menus, BuddyPress and bbPress.
+ * Author: Doug Stewart
+ * Author URI: http://literalbarrage.org/blog/
+ * License: GPL v2
+ * License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ * Version: 1.1.1
+ * Tags: buddypress, two-columns, three-columns, one-column, left-sidebar, right-sidebar, white, blue, fixed-width, flexible-width, custom-header, custom-menu, featured-images, sticky-post, theme-options
+ *
+ * Elbee Elgee WordPress Theme, Copyright (C) 2011 Doug Stewart
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ * 
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ **/
 
 /* @group Reset CSS 
    Based on YUI Reset CSS */
