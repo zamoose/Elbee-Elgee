@@ -1,5 +1,5 @@
-
-div#header h1{margin:0;padding-left:10px;background: #EEE;color: #79B30B}
+div#header{background:#bbb;}
+div#header h1 a{margin:0;padding-left:10px;background: #ddd;color: #79B30B;}
 div#header a{color: #79B30B}
 div#primarysb{background:#B9CAFF}
 div#secondarysb{background:#FF8539}

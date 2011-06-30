@@ -9,31 +9,36 @@ function lblg_options_init(){
 	*  this should return an array() with keys 'shortname', 'themename',
 	*  and 'version'.
 	*/
-	$bootstrap_tmp = get_option( 'lblg_meta_info' );
+	
+	$parent_bootstrap = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
+	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
+	
+	// If parent & child are the same theme, these should be equal
+	if( $parent_bootstrap['Short Name'] == $child_bootstrap['Short Name'] ){
+		$lblg_shortname = $parent_bootstrap['Short Name'];
+		$lblg_themename = $parent_bootstrap['Theme Name'];
+		$lblg_version = $parent_bootstrap['Version'];
+	} else {
+		$lblg_shortname = $child_bootstrap['Short Name'];
+		$lblg_themename = $child_bootstrap['Theme Name'];
+		$lblg_version = $child_bootstrap['Version'];
+	}
 
+	// Check to see whether we've been installed previously
+	$lblg_stored_options = get_option( $lblg_shortname . '_theme_options' );
+	
 	$temp_opts = lblg_get_default_options();
 	$lblg_default_options = $temp_opts['options'];
 
-	if( false === $bootstrap_tmp ){
+	if( false === $lblg_stored_options ){
 		// We haven't been installed yet.
-		//Assign the globals
-		$lblg_shortname = $temp_opts['shortname'];
-		$lblg_themename = $temp_opts['themename'];
-		$lblg_version = $temp_opts['version'];
 		$lblg_options = lblg_get_options_from_defaults();
-	} elseif( version_compare( $temp_opts['version'], $bootstrap_tmp['version'], '>' )) {
+	} elseif( version_compare( $lblg_version, $install_check['version'], '>' )) {
 		// New version of the options have been detected. Let's reload.
-		$lblg_shortname = $temp_opts['shortname'];
-		$lblg_themename = $temp_opts['themename'];
-		$lblg_version = $temp_opts['version'];
-		$tmp_options = get_option( $lblg_shortname . '_lblg_options' );
-		$lblg_options = $tmp_options + $lblg_default_options;
+		$lblg_options = $lblg_stored_options + $lblg_default_options;
 	} else {
 		// Nothing to see here. Move along. Move along.
-		$lblg_shortname = $bootstrap_tmp['shortname'];
-		$lblg_themename = $bootstrap_tmp['themename'];
-		$lblg_version = $bootstrap_tmp['version'];
-		$lblg_options = get_option( $lblg_shortname . '_lblg_options' );
+		$lblg_options = get_option( $lblg_shortname . '_theme_options' );
 		/*
 		*  This shouldn't happen, but it just might, so let's check
 		*  and then set up the options correctly.
@@ -42,13 +47,8 @@ function lblg_options_init(){
 			$lblg_options = lblg_get_options_from_defaults();
 		}	
 	}
-	
-	$meta_options = array( 'shortname' => $lblg_shortname,
-						   'themename' => $lblg_themename,
-						   'version'   => $lblg_version);
-					
-	update_option( 'lblg_meta_info', $meta_options);
-	update_option( $lblg_shortname . '_lblg_options', $lblg_options );
+
+	update_option( $lblg_shortname . '_theme_options', $lblg_options );
 }
 
 function lblg_get_options_from_defaults(){

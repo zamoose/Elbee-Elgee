@@ -8,7 +8,7 @@ function lblg_add_admin() {
 
 function lblg_admin_init(){
 	global $lblg_shortname;
-	register_setting( $lblg_shortname . '_lblg_options', $lblg_shortname . '_lblg_options', 'lblg_sanitize_options' );
+	register_setting( $lblg_shortname . '_theme_options', $lblg_shortname . '_theme_options', 'lblg_sanitize_options' );
 }
 
 // Display the theme options page
@@ -23,14 +23,14 @@ function lblg_admin() {
 <form method="post" action="options.php">
 <?php screen_icon( 'themes' ); ?>
 <h2 class="updatehook"><?php echo $themename; ?> settings 
-	<input name="<?php echo $lblg_shortname; ?>_lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
-	<input name="<?php echo $lblg_shortname; ?>_lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+	<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
+	<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
 </h2>
 
 <?php 
 	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$themename.' settings updated.</strong></p></div>';
 
-	settings_fields( $lblg_shortname . '_lblg_options' ); 
+	settings_fields( $lblg_shortname . '_theme_options' ); 
 ?>
 <table class="form-table">
 <tbody>
@@ -41,8 +41,8 @@ function lblg_admin() {
 </table>
 
 <p class="submit">
-<input name="<?php echo $lblg_shortname; ?>_lblg_options[save]" type="submit" class="button-primary" value="Save changes" />
-<input name="<?php echo $lblg_shortname; ?>_lblg_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
+<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
 </p>
 </form>
 
@@ -78,7 +78,7 @@ function lblg_options_walker(){
 	//$lblg_num_values = array_count_values($lblg_default_options);
 	
 	$section = '';
-	$lblg_options_group = $lblg_shortname . '_lblg_options';
+	$lblg_options_group = $lblg_shortname . '_theme_options';
 	$options = $lblg_options;
 	$default_options = $lblg_default_options;
 

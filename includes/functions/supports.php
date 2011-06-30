@@ -10,8 +10,16 @@ function lblg_register_sidebars() {
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
-	register_sidebar( array( 'name'=>'Bottom-Left' ) );
-	register_sidebar( array( 'name'=>'Bottom-Right' ) );
+	register_sidebar( array( 'name'=>'Bottom-Left',
+						   'before_widget' => '<li>', 
+						   'after_widget' => '</li>', 
+						   'before_title' => '<h4>', 
+						   'after_title' => '</h4>' ) );
+	register_sidebar( array( 'name'=>'Bottom-Right',
+						   'before_widget' => '<li>', 
+						   'after_widget' => '</li>', 
+						   'before_title' => '<h4>', 
+						   'after_title' => '</h4>' ) );
 }
 
 /*
