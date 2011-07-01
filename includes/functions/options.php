@@ -14,7 +14,7 @@ function lblg_options_init(){
 	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 	
 	// If parent & child are the same theme, these should be equal
-	if( $parent_bootstrap['Short Name'] == $child_bootstrap['Short Name'] ){
+	if( $parent_bootstrap == $child_bootstrap ){
 		$lblg_shortname = $parent_bootstrap['Short Name'];
 		$lblg_themename = $parent_bootstrap['Theme Name'];
 		$lblg_version = $parent_bootstrap['Version'];
@@ -27,35 +27,36 @@ function lblg_options_init(){
 	// Check to see whether we've been installed previously
 	$lblg_stored_options = get_option( $lblg_shortname . '_theme_options' );
 	
-	$temp_opts = lblg_get_default_options();
-	$lblg_default_options = $temp_opts['options'];
+	// Pull the default options from the parent-options.php and, optionally, the
+	// child-options.php file, if we're running as a child theme.
+	$lblg_default_options = lblg_get_default_options();
 
 	if( false === $lblg_stored_options ){
 		// We haven't been installed yet.
-		$lblg_options = lblg_get_options_from_defaults();
-	} elseif( version_compare( $lblg_version, $install_check['version'], '>' )) {
+		$lblg_options = lblg_get_options_from_defaults( $lblg_default_options );
+	} elseif( version_compare( $lblg_version, $lblg_stored_options['version'], '>' )) {
 		// New version of the options have been detected. Let's reload.
 		$lblg_options = $lblg_stored_options + $lblg_default_options;
 	} else {
-		// Nothing to see here. Move along. Move along.
-		$lblg_options = get_option( $lblg_shortname . '_theme_options' );
+		// We've previously been installed and the version number
+		// hasn't changed. Assume no change and act accordingly.
+		$lblg_options = $lblg_stored_options;
 		/*
 		*  This shouldn't happen, but it just might, so let's check
 		*  and then set up the options correctly.
 		*/
 		if(false === $lblg_options){
-			$lblg_options = lblg_get_options_from_defaults();
+			$lblg_options = lblg_get_options_from_defaults( $lblg_default_options );
 		}	
 	}
 
 	update_option( $lblg_shortname . '_theme_options', $lblg_options );
 }
 
-function lblg_get_options_from_defaults(){
-	$temp_opts = lblg_get_default_options();
-
+function lblg_get_options_from_defaults( $default_options ){
 	$stripped_opts = array();
-	foreach($temp_opts['options'] as $key => $value){
+	
+	foreach( $default_options as $key => $value ){
 		if('subhead' != $value['type']){
 			$stripped_opts[$key] = $value['std'];
 		}
@@ -77,17 +78,6 @@ function lblg_get_default_options(){
 	if( file_exists( $child_options_file ) ){
 		$child_theme_array = include( $child_options_file );
 		$child_options_array = $child_theme_array[ 'options' ];
-
-		// Child theme options override the short and long theme names
-		if( isset($child_theme_array[ 'child_themename' ]) ){
-			$temp_themename = $child_theme_array[ 'child_themename' ];
-		}
-		if( isset($child_theme_array[ 'child_shortname' ]) ){
-			$temp_shortname = $child_theme_array[ 'child_shortname' ];
-		}
-		if( isset($child_theme_array[ 'child_version' ]) ){
-			$temp_version = $child_theme_array[ 'child_version' ];
-		}
 
 		// Check the action requested by the child options
 		switch( $child_theme_array[ 'parent_options_action' ] ) {
@@ -116,12 +106,9 @@ function lblg_get_default_options(){
 	} else {
 		// If there are no child options, default back to the full parent options
 		$temp_options = $parent_options_array;
-		$temp_themename = $parent_theme_array[ 'parent_themename' ];
-		$temp_shortname = $parent_theme_array[ 'parent_shortname' ];
-		$temp_version = $parent_theme_array[ 'parent_version' ];
 	}
 	
-	return array( 'shortname' => $temp_shortname, 'themename' => $temp_themename, 'version' => $temp_version, 'options' => $temp_options );
+	return $temp_options;
 }
 
 function lblg_sanitize_options( $input ){
