@@ -89,7 +89,7 @@ $parent_options_array = array (
 		
 		$parent_options_array['disable_bp_js'] = array( "name" => "Disable BuddyPress JavaScript/AJAX",
 												"desc" => "Elbee Elgee automatically integrates the BuddyPress default theme javascript and AJAX functionality. You may switch this off, though the experience will degrade somewhat.",
-												"std" => "true",
+												"std" => "false",
 												"type" => "checkbox" );
 		
 		$parent_options_array['disable_bp_css'] = array( "name" => "Disable BuddyPress CSS",

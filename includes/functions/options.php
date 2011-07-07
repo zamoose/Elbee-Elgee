@@ -13,7 +13,14 @@ function lblg_options_init(){
 	$parent_bootstrap = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
 	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 	
-	// If parent & child are the same theme, these should be equal
+	/*
+	*  If parent & child are the same theme, these should be equal
+	*
+ 	*  This is mainly future-proofing. At the moment, if only a parent
+	*  theme is active, STYLESHEETPATH and TEMPLATE PATH will be equal.
+	*  I have no guarantees that this will continue to function, hence the 
+	*  below code.
+	*/
 	if( $parent_bootstrap == $child_bootstrap ){
 		$lblg_shortname = $parent_bootstrap['Short Name'];
 		$lblg_themename = $parent_bootstrap['Theme Name'];
@@ -50,6 +57,7 @@ function lblg_options_init(){
 		}	
 	}
 
+	$lblg_options['version'] = $lblg_version;
 	update_option( $lblg_shortname . '_theme_options', $lblg_options );
 }
 
