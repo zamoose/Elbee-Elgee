@@ -21,6 +21,7 @@ function lblg_register_sidebars() {
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
 }
+add_action( 'widgets_init', 'lblg_register_sidebars' );
 
 /*
 * Support 2.9, 3.0 and 3.1 coolness

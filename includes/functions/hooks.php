@@ -3,9 +3,6 @@
 * Elbee Elgee Theme Hooks
 */
 
-$lblg_meta_info = get_option('lblg_meta_info');
-$lblg_options = get_option($lblg_meta_info['shortname'] . "_theme_options" );
-
 /*
 *  Action hooks
 */
@@ -56,6 +53,7 @@ function lblg_print_options(){
 function lblg_enqueue_styles(){
 	do_action( 'lblg_enqueue_styles' );
 }
+add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
 
 /**
 * Output functions.
@@ -134,6 +132,8 @@ function lblg_styles(){
 	
 	wp_enqueue_style($print_handle,  get_template_directory_uri() . '/print.css', '', '', 'print' );
 }
+add_action( 'lblg_enqueue_styles', 'lblg_styles' );
+
 
 function lblg_credits(){
 	global $lblg_shortname, $lblg_options;
@@ -191,11 +191,12 @@ function lblg_the_postimage() {
 function lblg_wp_head() { 
 	global $lblg_themename, $lblg_shortname, $lblg_options;
 }
+add_action( 'wp_head', 'lblg_wp_head' );
 
 function lblg_admin_head(){ 
 	global $lblg_themename, $lblg_shortname, $lblg_options;
 }
-
+add_action( 'admin_head','lblg_admin_head' );
 
 // Elbee Elgee action hooks
 add_action( 'lblg_set_themename', 'lblg_themename' );
@@ -203,18 +204,10 @@ add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
 add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
 add_action( 'lblg_print_credits', 'lblg_credits' );
-add_action( 'lblg_enqueue_styles', 'lblg_styles' );
 add_action( 'lblg_print_options', 'lblg_options_walker' );
 
 // WordPress core hooks
-add_action( 'wp_head', 'lblg_wp_head' );
-add_action( 'admin_init', 'lblg_admin_init' );
-add_action( 'admin_head','lblg_admin_head' );
-add_action( 'admin_menu', 'lblg_add_admin' ); 
-add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
-add_action( 'widgets_init', 'lblg_register_sidebars' );
-add_action( 'widgets_init', 'lblg_widgets_init' );
-add_action( 'after_setup_theme','lblg_options_init', 9 );
+
 
 // Only load custom header code if the option is checked
 if( 'true' == $lblg_options['use_custom_header'] ){

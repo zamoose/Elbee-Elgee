@@ -1,15 +1,16 @@
 <?php
 // Set up the admin page &  register settings
 function lblg_add_admin() {
-    $lblg_meta = get_option( 'lblg_meta_info ');
-	$themename = $lblg_meta['themename'];
-    add_theme_page( $themename." Settings", "$themename Settings", 'edit_theme_options', 'lblg_options_page' , 'lblg_admin' );
+	global $lblg_themename;
+    add_theme_page( $lblg_themename." Settings", "$themename Settings", 'edit_theme_options', 'lblg_options_page' , 'lblg_admin' );
 }
+add_action( 'admin_menu', 'lblg_add_admin' );
 
 function lblg_admin_init(){
 	global $lblg_shortname;
 	register_setting( $lblg_shortname . '_theme_options', $lblg_shortname . '_theme_options', 'lblg_sanitize_options' );
 }
+add_action( 'admin_init', 'lblg_admin_init' );
 
 // Display the theme options page
 function lblg_admin() {

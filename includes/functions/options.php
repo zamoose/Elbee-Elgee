@@ -13,6 +13,7 @@ function lblg_options_init(){
 	$parent_bootstrap = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
 	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 	
+	print_r($child_bootstrap);
 	/*
 	*  If parent & child are the same theme, these should be equal
 	*
@@ -23,14 +24,15 @@ function lblg_options_init(){
 	*/
 	if( $parent_bootstrap == $child_bootstrap ){
 		$lblg_shortname = $parent_bootstrap['Short Name'];
-		$lblg_themename = $parent_bootstrap['Theme Name'];
+		$lblg_themename = $parent_bootstrap['Name'];
 		$lblg_version = $parent_bootstrap['Version'];
 	} else {
 		$lblg_shortname = $child_bootstrap['Short Name'];
-		$lblg_themename = $child_bootstrap['Theme Name'];
+		$lblg_themename = $child_bootstrap['Name'];
 		$lblg_version = $child_bootstrap['Version'];
 	}
 
+	echo $lblg_themename;
 	// Check to see whether we've been installed previously
 	$lblg_stored_options = get_option( $lblg_shortname . '_theme_options' );
 	
@@ -60,6 +62,7 @@ function lblg_options_init(){
 	$lblg_options['version'] = $lblg_version;
 	update_option( $lblg_shortname . '_theme_options', $lblg_options );
 }
+add_action( 'after_setup_theme','lblg_options_init', 9 );
 
 function lblg_get_options_from_defaults( $default_options ){
 	$stripped_opts = array();

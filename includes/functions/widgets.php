@@ -104,3 +104,4 @@ function lblg_widgets_init(){
 	}
 	register_widget( 'Lblg_Smart_Recent_Posts_Widget' );
 }
+add_action( 'widgets_init', 'lblg_widgets_init' );
