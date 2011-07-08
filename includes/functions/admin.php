@@ -2,7 +2,7 @@
 // Set up the admin page &  register settings
 function lblg_add_admin() {
 	global $lblg_themename;
-    add_theme_page( $lblg_themename." Settings", "$themename Settings", 'edit_theme_options', 'lblg_options_page' , 'lblg_admin' );
+    add_theme_page( "$lblg_themename Settings", "$lblg_themename Settings", 'edit_theme_options', 'lblg_options_page' , 'lblg_admin' );
 }
 add_action( 'admin_menu', 'lblg_add_admin' );
 

@@ -13,7 +13,6 @@ function lblg_options_init(){
 	$parent_bootstrap = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
 	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 	
-	print_r($child_bootstrap);
 	/*
 	*  If parent & child are the same theme, these should be equal
 	*
@@ -32,7 +31,6 @@ function lblg_options_init(){
 		$lblg_version = $child_bootstrap['Version'];
 	}
 
-	echo $lblg_themename;
 	// Check to see whether we've been installed previously
 	$lblg_stored_options = get_option( $lblg_shortname . '_theme_options' );
 	
