@@ -30,13 +30,12 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 		if( 'true' == $lblg_options['display_footer_credits'] ) {
 			lblg_print_credits();
 		}
-		
-		wp_footer(); 
 	?>
 	<!--<?php echo get_num_queries(); ?> queries-->
 	</div>
 	</div>
 </div>
 </div>
+<?php wp_footer(); ?>
 </body>
 </html>

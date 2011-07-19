@@ -16,20 +16,18 @@ add_action( 'admin_init', 'lblg_admin_init' );
 function lblg_admin() {
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
 
-	$themename = $lblg_themename;
-	$shortname = $lblg_shortname;
 	$options = $lblg_default_options;
 ?>
 <div class="wrap">
 <form method="post" action="options.php">
 <?php screen_icon( 'themes' ); ?>
-<h2 class="updatehook"><?php echo $themename; ?> settings 
+<h2 class="updatehook"><?php echo $lblg_themename; ?> settings 
 	<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
 	<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
 </h2>
 
 <?php 
-	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$themename.' settings updated.</strong></p></div>';
+	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$lblg_themename.' settings updated.</strong></p></div>';
 
 	settings_fields( $lblg_shortname . '_theme_options' ); 
 ?>
