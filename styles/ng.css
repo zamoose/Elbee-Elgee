@@ -206,6 +206,89 @@ body.error404 #lb-content h1, h1.entry-title {
 	margin-top: 0.5em;
 }
 
+.itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6 {
+	font-weight: bold;
+}
+
+.itemtext h2 {
+	font-size: 1.8em;
+}
+
+.itemtext h3 {
+	font-size: 1.6em;
+}
+
+.itemtext h4 {
+	font-size: 1.4em;
+}
+
+.itemtext h5 {
+	font-size: 1.2em;
+}
+
+.itemtext h6 {
+	font-size: 1.0em;
+}
+
+.itemtext blockquote {
+	padding: 5px 15px 0 15px;
+	margin-bottom: 10px;
+	background: #eee;
+	font-style: italic;
+}
+
+.itemtext table {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.itemtext table th {
+	text-transform: uppercase;
+	text-align: left;
+}
+
+.itemtext table tr td {
+	border-top: 1px solid #bbb;
+	padding: 5px 10px 5px 10px;
+}
+
+.itemtext ul {
+	list-style-type: disc;
+	margin-left: 22px;
+}
+
+.itemtext ul ul {
+	list-style-type: circle;
+}
+
+.itemtext ul ul ul {
+	list-style-type: square;
+}
+
+.itemtext ol {
+	list-style-type: decimal;
+	margin-left: 22px;
+}
+
+.itemtext ol ol {
+	list-style-type: lower-latin;
+}
+
+.itemtext ol ol ol {
+	list-style-type: lower-roman;
+}
+
+.itemtext abbr, .itemtext dfn, .itemtext acronym {
+	border-bottom-style: dotted;
+	cursor: help;
+	border-bottom-width: 1px;
+}
+
+.itemtext pre {
+	padding: 5px 20px 5px 20px;
+	margin-left: 20px;
+	background: #eee;
+}
 #lb-content p, span.postmeta  {
 	padding-bottom: 0.7em
 }
