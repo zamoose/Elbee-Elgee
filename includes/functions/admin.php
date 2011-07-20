@@ -73,9 +73,7 @@ function lblg_option_wrapper_footer( $values ){
  */
 function lblg_options_walker(){
 	global $lblg_options, $lblg_default_options, $lblg_shortname;
-	
-	//$lblg_num_values = array_count_values($lblg_default_options);
-	
+		
 	$section = '';
 	$lblg_options_group = $lblg_shortname . '_theme_options';
 	$options = $lblg_options;
@@ -119,13 +117,13 @@ function lblg_options_walker(){
 						<?php 
 							if( $value['options'] === array_values($value['options'])){
 								foreach ( $value['options'] as $option) { 
-									$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
-									echo "<option$selected>$option</option>\n";
+									//$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
+									echo "<option" . selected( $option, $lblg_options[$key], false ) . ">$option</option>\n";
 								}
 							} else {
 								foreach ( $value['options'] as $key => $value ) { 
-									$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
-									echo "<option value=$key$selected>$option</option>\n";
+									//$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
+									echo "<option value=\"$key\"" . selected( $option, $lblg_options[$key], false ) .">$option</option>\n";
 								}							
 							}
 						?>
@@ -152,16 +150,16 @@ function lblg_options_walker(){
 			if( $value['options'] === array_values($value['options'])){
 		 		foreach ( $value['options'] as $option ) {
 						$radio_setting = $lblg_options[$key];
-						$checked = (( $option == $lblg_options[$key]) ? ' checked="checked"' : '' );
+						//$checked = (( $option == $lblg_options[$key]) ? ' checked="checked"' : '' );
 						$tmp_name = $lblg_options_group . '['. $key . ']';
-			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"$checked />$option<br />\n";
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"" . checked( $option, $lblg_options[$key], false ) . " />$option<br />\n";
 				}
 			} else {
 		 		foreach ( $value['options'] as $opt_key => $opt_value ) {
 						$radio_setting = $lblg_options[$key];
-						$checked = (( $opt_key == $lblg_options[$key]) ? ' checked="checked"' : '' );
+						//$checked = (( $opt_key == $lblg_options[$key]) ? ' checked="checked"' : '' );
 						$tmp_name = $lblg_options_group . '['. $key . ']';
-			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"$checked />$opt_value<br />\n";
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"" . checked( $opt_key, $lblg_options[$key], false ) . " />$opt_value<br />\n";
 				}
 			}
 			 
@@ -173,9 +171,9 @@ function lblg_options_walker(){
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
 			lblg_option_wrapper_header( $value );
 			
-			$checked = (( 'true' == $lblg_options[$key]) ? ' checked="checked"' : '' );
+			//$checked = (( 'true' == $lblg_options[$key]) ? ' checked="checked"' : '' );
 			$tmp_name = $lblg_options_group . '['. $key . ']';
-			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"true\"$checked />\n";
+			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"1\"" . checked( $lblg_options[$key], 1, false ) . " />\n";
 
 			lblg_option_wrapper_footer( $value );
 			break;
