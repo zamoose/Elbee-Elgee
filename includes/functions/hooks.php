@@ -207,9 +207,3 @@ add_action( 'lblg_print_credits', 'lblg_credits' );
 add_action( 'lblg_print_options', 'lblg_options_walker' );
 
 // WordPress core hooks
-
-
-// Only load custom header code if the option is checked
-if( 'true' == $lblg_options['use_custom_header'] ){
-	add_action( 'after_setup_theme', 'lblg_register_headers', 11 );
-}
