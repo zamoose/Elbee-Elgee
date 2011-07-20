@@ -24,7 +24,7 @@ function lblg_register_sidebars() {
 add_action( 'widgets_init', 'lblg_register_sidebars' );
 
 /*
-* Support 2.9, 3.0 and 3.1 coolness
+* Add support for various WordPress-native functionality
 */
 if ( ! isset( $content_width ) ) $content_width = '640';
 add_theme_support( 'nav-menus' );

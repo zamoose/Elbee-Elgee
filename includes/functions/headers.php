@@ -1,4 +1,15 @@
 <?php
+function lblg_custom_headers_check() {
+	global $lblg_options;
+
+	// Only load custom header code if the option is checked
+	if( ( 1 == $lblg_options['use_custom_header'] ) && ( 'layoutgala.css' != $lblg_options['alt_stylesheet']) ){
+		add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
+		add_action( 'after_setup_theme', 'lblg_register_headers', 11 );
+	}	
+}
+add_action( 'after_setup_theme', 'lblg_custom_headers_check' );
+
 function lblg_register_headers(){
 		// Set up custom header code
 		if( !defined('HEADER_IMAGE') ){
@@ -14,8 +25,6 @@ function lblg_register_headers(){
 			define( 'HEADER_IMAGE_HEIGHT', '200' );
 		}
 
-		add_custom_image_header( 'lblg_header_style', 'lblg_admin_header_style' );
-	
 		register_default_headers( array(
 			'fireworks' => array(
 				'url' => '%s/images/headers/fireworks.jpg',
