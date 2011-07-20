@@ -158,7 +158,7 @@ function lblg_sanitize_options( $input ){
 				break;
 
 				case 'checkbox':
-					$valid_input[$key] = (( isset($input[$key]) && ( 'true' == $input[$key] ) ) ? 'true' : 'false' );
+					$valid_input[$key] = (( isset($input[$key]) && ( '1' == $input[$key] ) ) ? '1' : '0' );
 				break;
 				
 				default:
