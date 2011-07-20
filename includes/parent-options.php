@@ -52,7 +52,7 @@ $parent_options_array = array (
 
 				"use_custom_header" => array(	"name" => "Use Custom Headers",
 						"desc" => 'Check this box if you wish to use WordPress\'s built-in <a href="http://codex.wordpress.org/Custom_Headers">Custom Header Image API</a> to define a custom image for your theme',
-						"std" => "true",
+						"std" => "1",
 						"type" => "checkbox"),
 
 				"blog_meta_info" => array(	"name" => "Blog Meta Info",
@@ -60,7 +60,7 @@ $parent_options_array = array (
 
 				"display_footer_copyright" => array(	"name" => "Display Copyright",
 						"desc" => "Check this box to display your copyright information in the footer.", 
-						"std" => "true",
+						"std" => "1",
 						"type" => "checkbox"),
 
 				"footer_copyright" => array(	"name" => "Copyright Statement",
@@ -72,7 +72,7 @@ $parent_options_array = array (
 
 				"display_footer_credits" => array(	"name" => "Display Credits",
 						"desc" => "Check this box to display your site credits in the footer.", 
-						"std" => "true",
+						"std" => "1",
 						"type" => "checkbox"),
 
 				"footer_credit_text" => array(	"name" => "Footer Credits",
@@ -89,12 +89,12 @@ $parent_options_array = array (
 		
 		$parent_options_array['disable_bp_js'] = array( "name" => "Disable BuddyPress JavaScript/AJAX",
 												"desc" => "Elbee Elgee automatically integrates the BuddyPress default theme javascript and AJAX functionality. You may switch this off, though the experience will degrade somewhat.",
-												"std" => "false",
+												"std" => "0",
 												"type" => "checkbox" );
 		
 		$parent_options_array['disable_bp_css'] = array( "name" => "Disable BuddyPress CSS",
 												"desc" => "Elbee Elgee comes with basic CSS styles that give BuddyPress pages a standard look and feel. You can extend upon these styles in your child theme's CSS or simply disable them and construct your own.",
-												"std" => "false",
+												"std" => "0",
 												"type" => "checkbox" );
 	}
 
