@@ -38,7 +38,7 @@ function lblg_options_init(){
 	// child-options.php file, if we're running as a child theme.
 	$lblg_default_options = lblg_get_default_options();
 
-	if( false === $lblg_stored_options ){
+	if( ( false === $lblg_stored_options ) || ( '' == $lblg_stored_options ) ){
 		// We haven't been installed yet.
 		$lblg_options = lblg_get_options_from_defaults( $lblg_default_options );
 	} elseif( version_compare( $lblg_version, $lblg_stored_options['version'], '>' )) {
@@ -125,9 +125,9 @@ function lblg_sanitize_options( $input ){
 
 	$submit = ( ! empty( $input['save']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
-	
+		
 	if( $reset ){
-		$valid_input = lblg_get_options_from_defaults();
+		$valid_input = lblg_get_options_from_defaults( $lblg_default_options );
 	} elseif ( $submit ){
 		// Check to see whether our options have actually been initialized
 		// and exist in the database (they should!)
@@ -136,7 +136,7 @@ function lblg_sanitize_options( $input ){
 		} else {
 			// If they don't exist for some reason, we use the defaults
 			// as our valid input test
-			$valid_input = lblg_get_options_from_defaults();
+			$valid_input = lblg_get_options_from_defaults( $lblg_default_options );
 		}
 
 		foreach( $valid_input as $key => $value ){
