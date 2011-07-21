@@ -111,6 +111,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Post date changed to use permalink as well as post title to account for posts without a title
 		* Images explicitly noted as GPLv2
 		* Dual setting of `$content_width` removed
+		* Theme options changed to use recommended `checked()` and `selected()` syntax
+		* Required header, list and table formatting applied
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -130,7 +132,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 ### KNOWN ISSUES ###
 * Version 1.1.1 aka "The Theme Review One" (taken from the [initial theme review](http://themes.trac.wordpress.org/ticket/4336#comment:3))
 	* <del>Posts with no titles must still include a permalink to the single post view. The recommended practice is to place the permalink on the post date as well.</del>
-	* You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.
+	* <del>You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.</del>
 	* Captioned images must be properly aligned.
 	* Floated elements must be properly cleared.
 	* Check your styling of comments, particularly nested comments.
@@ -143,7 +145,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* <del>The use of `$_SERVER['PHP_SELF']` in forms is discouraged as it presents a security risk.</del>
 	* <del>All custom functions and global variables must be prefixed with the theme slug or an appropriate variant.</del>
 	* All data must be sanitized and validated before saving to the database and properly escaped when outputting to forms.
-	* Themes are required to use checked() and selected() for checkbox and select options in forms respectively.
+	* <del>Themes are required to use checked() and selected() for checkbox and select options in forms respectively.</del>
 	* <del>`( ! isset( $content_width ) ) $content_width = '640';` entered twice in `includes/supports.php`.</del>
 	* <del>Please note the license being used for your header images in the readme. They must be GPL-compatible.</del>
 * Version 1.0

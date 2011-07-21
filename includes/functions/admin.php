@@ -103,7 +103,7 @@ function lblg_options_walker(){
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
 			lblg_option_wrapper_header( $value );
 			?>
-			        <input name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if( "" != $options[$key] ) { echo $options[$key]; } else { echo $value['std']; } ?>" />
+			        <input name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" type="<?php echo $value['type']; ?>" value="<?php if( "" != $options[$key] ) { echo esc_html( $options[$key] ); } else { echo $value['std']; } ?>" />
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
@@ -117,12 +117,10 @@ function lblg_options_walker(){
 						<?php 
 							if( $value['options'] === array_values($value['options'])){
 								foreach ( $value['options'] as $option) { 
-									//$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
 									echo "<option" . selected( $option, $lblg_options[$key], false ) . ">$option</option>\n";
 								}
 							} else {
 								foreach ( $value['options'] as $key => $value ) { 
-									//$selected = ( ($option == $lblg_options[$key]) ? ' selected="selected"' : '' );
 									echo "<option value=\"$key\"" . selected( $option, $lblg_options[$key], false ) .">$option</option>\n";
 								}							
 							}
@@ -138,7 +136,7 @@ function lblg_options_walker(){
 			$ta_options = $value['options'];
 			lblg_option_wrapper_header( $value );
 			?>
-					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php echo $lblg_options[$key]; ?></textarea>
+					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php echo esc_html( $lblg_options[$key] ); ?></textarea>
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
@@ -150,14 +148,12 @@ function lblg_options_walker(){
 			if( $value['options'] === array_values($value['options'])){
 		 		foreach ( $value['options'] as $option ) {
 						$radio_setting = $lblg_options[$key];
-						//$checked = (( $option == $lblg_options[$key]) ? ' checked="checked"' : '' );
 						$tmp_name = $lblg_options_group . '['. $key . ']';
 			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"" . checked( $option, $lblg_options[$key], false ) . " />$option<br />\n";
 				}
 			} else {
 		 		foreach ( $value['options'] as $opt_key => $opt_value ) {
 						$radio_setting = $lblg_options[$key];
-						//$checked = (( $opt_key == $lblg_options[$key]) ? ' checked="checked"' : '' );
 						$tmp_name = $lblg_options_group . '['. $key . ']';
 			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"" . checked( $opt_key, $lblg_options[$key], false ) . " />$opt_value<br />\n";
 				}
@@ -170,8 +166,7 @@ function lblg_options_walker(){
 			case "checkbox":
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
 			lblg_option_wrapper_header( $value );
-			
-			//$checked = (( 'true' == $lblg_options[$key]) ? ' checked="checked"' : '' );
+
 			$tmp_name = $lblg_options_group . '['. $key . ']';
 			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"1\"" . checked( $lblg_options[$key], 1, false ) . " />\n";
 
