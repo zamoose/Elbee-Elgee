@@ -22,8 +22,7 @@ function lblg_admin() {
 <form method="post" action="options.php">
 <?php screen_icon( 'themes' ); ?>
 <h2 class="updatehook"><?php echo $lblg_themename; ?> settings 
-	<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
-	<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+<?php lblg_print_option_buttons(); ?>
 </h2>
 
 <?php 
@@ -40,12 +39,20 @@ function lblg_admin() {
 </table>
 
 <p class="submit">
-<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
-<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+<?php lblg_print_option_buttons(); ?>
 </p>
 </form>
 
 <?php
+}
+
+// Output Submit/Reset buttons
+function lblg_print_option_buttons() {
+	global $lblg_shortname;
+?>	
+	<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
+	<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
+<?php	
 }
 
 // Output the per-option table row header markup
