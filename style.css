@@ -228,6 +228,7 @@ div.menu > ul > li a:link, div.menu > ul > li a:visited {
 
 .center, .aligncenter {
         text-align: center;
+		margin: 0 auto;
 }
 
 .alignright {
@@ -343,7 +344,7 @@ img.noborder {
 
 /* @group Meta info classes */
 
-.postinfo, .postmeta {
+.postinfo {
 	font-size: 80%;
 }
 
