@@ -6,11 +6,14 @@
 			<?php } else { ?><h1><?php the_title(); ?></h1><?php } ?>
 			<?php lblg_the_postimage(); ?>
 			<div class="itemtext">
-				<?php if ( is_archive() or is_search() or is_tag() ) {
+				<?php 
+				if ( is_archive() or is_search() or is_tag() ) {
 					the_excerpt();
 				} else {
 					the_content('Continue reading'. " '" . the_title('', '', false) . "'");
-				} ?>
+				}
+				wp_link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); 
+				?>
 				<div class="postinfo">
 					<span class="postmeta">Posted by <?php the_author(); ?> on <a href="<?php the_permalink(); ?>"><?php the_time('F jS, Y'); ?></a> <?php if (!is_single()){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
 					<?php if( !is_page() ) { ?>
@@ -20,7 +23,6 @@
 					<span class="posttags"><?php the_tags('Tagged as: ',','); ?></span>
 				<?php }?>
 				</div>
-				<?php wp_link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); ?>
 			</div>
 
 			<!--
