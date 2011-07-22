@@ -221,6 +221,7 @@ body.error404 #lb-content h1, h1.entry-title {
 .itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6,
 .comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6 {
 	font-weight: bold;
+	clear: both;
 }
 
 .itemtext h2, .comment-body h2 {
@@ -265,6 +266,10 @@ body.error404 #lb-content h1, h1.entry-title {
 	padding: 5px 10px 5px 10px;
 }
 
+ol.commentlist ul.children{
+	margin-left: 20px;
+}
+
 .itemtext ul, .comment-body ul {
 	list-style-type: disc;
 	margin-left: 22px;
@@ -306,6 +311,10 @@ body.error404 #lb-content h1, h1.entry-title {
 
 .itemtext strong, .comment-body strong{
 	font-weight: bold;
+}
+
+li.comment {
+	clear: both;
 }
 
 #lb-content p {

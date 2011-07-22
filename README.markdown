@@ -77,6 +77,9 @@ So, for example, `1-column-fixed.css` is a single column layout with fixed width
 
 In successive versions of the theme I hope to implement a graphical layout-picker in order to make the layout selection process a bit more user-friendly.
 
+#### Demonstration Stylesheet ####
+A stylesheet, `layoutgala.css`, is included with Elbee Elgee but is not intended for "production" use. Instead, it is intended as a learning tool. Due to the large number of layout stylesheets, the exact proportions and placement of the various theme elements can be a bit confusing (I mean, could *you* tell the difference between `2-columns-sb-right-under.css` and `2-columns-sb-right-under-full.css` just by looking at the name?). I have therefore included a styling scheme, based on the original Layout Gala markup, that nicely demonstrates the layout features.
+
 #### Hooks ####
 Elbee Elgee has a few notable hooks, with many more planned. I welcome your suggestions.
 
@@ -95,6 +98,7 @@ I have tried to hew as closely as possible to the recommended best-practices in 
 * General code clean-up/optimization.
 * Better documentation.
 * <del>Fully-integrated bbPress support.</del> Added in 1.1.
+* Editor styling (particularly important after WP 3.2's addition of Distraction-Free Writing [DFW])
 
 ### ONGOING DEVELOPMENT ###
 I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
@@ -113,6 +117,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Dual setting of `$content_width` removed
 		* Theme options changed to use recommended `checked()` and `selected()` syntax
 		* Required header, list and table formatting applied
+		* Changed location of post meta information
+		* Floated elements properly cleared in single post/page templates
+		* Captioned images properly aligned
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -133,13 +140,13 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 * Version 1.1.1 aka "The Theme Review One" (taken from the [initial theme review](http://themes.trac.wordpress.org/ticket/4336#comment:3))
 	* <del>Posts with no titles must still include a permalink to the single post view. The recommended practice is to place the permalink on the post date as well.</del>
 	* <del>You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.</del>
-	* Captioned images must be properly aligned.
-	* Floated elements must be properly cleared.
+	* <del>Captioned images must be properly aligned.</del>
+	* <del>Floated elements must be properly cleared.</del>
 	* Check your styling of comments, particularly nested comments.
 	* Posts with closed comments are required to display some kind of "Comments are disabled" message. This does not apply to Pages.
 	* Theme options using textareas that allow HTML should use `wp_kses_post()` when sanitizing form data.
 	* Provide styling for the calendar widget.
-	* Provide more whitespace between the post meta and post content.
+	* <del>Provide more whitespace between the post meta and post content.</del>
 	* Content entered in "Copyright Statement" and "Footer Credits" does not show up on the site.
 	* <del>wp_footer() must be placed directly before &lt;/body&gt;.</del>
 	* <del>The use of `$_SERVER['PHP_SELF']` in forms is discouraged as it presents a security risk.</del>
