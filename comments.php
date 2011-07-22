@@ -13,6 +13,8 @@ if( have_comments() ) { ?>
 <?php 
 if( comments_open() ){
 	comment_form(); 
+} else {
+	?><small>(Comments are closed)</small><?php
 }
 ?>
 
