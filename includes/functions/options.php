@@ -146,7 +146,8 @@ function lblg_sanitize_options( $input ){
 				case 'text':
 				case 'textarea':
 					if( isset($input[$key]) ){
-						$valid_input[ $key ] = esc_attr( $input[$key] );
+						$valid_input[ $key ] = wp_kses_post( $input[ $key ] );
+						//$valid_input[ $key ] = esc_attr( $input[$key] );
 					}
 				break;
 
