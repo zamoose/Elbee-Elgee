@@ -122,6 +122,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Captioned images properly aligned
 		* "Comments are closed" displayed when comments are disabled/closed
 		* Switched options textareas from `esc_attr()` to `wp_kses_post()`
+		* Calendar widget styling added
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -147,7 +148,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Check your styling of comments, particularly nested comments.
 	* <del>Posts with closed comments are required to display some kind of "Comments are disabled" message. This does not apply to Pages.</del>
 	* <del>Theme options using textareas that allow HTML should use `wp_kses_post()` when sanitizing form data.</del>
-	* Provide styling for the calendar widget.
+	* <del>Provide styling for the calendar widget.</del>
 	* <del>Provide more whitespace between the post meta and post content.</del>
 	* Content entered in "Copyright Statement" and "Footer Credits" does not show up on the site.
 	* <del>wp_footer() must be placed directly before &lt;/body&gt;.</del>

@@ -324,6 +324,16 @@ li.comment {
 #lb-content div.post {
 	margin-bottom: 1em;
 }
+
+#lb-content img.wp-post-image {
+	margin: 0 auto;
+	display: block;
+}
+
+#lb-content img {
+	max-width: 100%;
+}
+
 /* @end */
 
 /* @group Sidebar Elements */
@@ -343,14 +353,29 @@ li.comment {
 	padding: 3px;
 }
 
-#lb-content img.wp-post-image {
-	margin: 0 auto;
-	display: block;
+#calendar_wrap {
+	padding: 15px;
 }
 
-#lb-content img {
-	max-width: 100%;
+#wp-calendar {
+	width: 90%;
+	margin: 0 auto;
 }
+
+#wp-calendar caption {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#wp-calendar th {
+	border-bottom: 1px solid;
+}
+
+#wp-calendar td#today {
+	font-weight: bold;
+}
+
 /* @end */
 
 /* @group Footer Elements */
