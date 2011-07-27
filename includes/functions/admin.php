@@ -49,10 +49,12 @@ function lblg_admin() {
 // Output Submit/Reset buttons
 function lblg_print_option_buttons() {
 	global $lblg_shortname;
-?>	
-	<input name="<?php echo $lblg_shortname; ?>_theme_options[save]" type="submit" class="button-primary" value="Save changes" />
-	<input name="<?php echo $lblg_shortname; ?>_theme_options[reset]" type="submit" class="button-secondary" value="Reset to defaults" />
-<?php	
+	
+	$save_name = $lblg_shortname . "_theme_options[save]";
+	$reset_name = $lblg_shortname . "_theme_options[reset]";
+	
+	submit_button( "Save changes", "primary", $save_name, false );
+ 	submit_button( "Reset to defaults", "secondary", $reset_name, false );
 }
 
 // Output the per-option table row header markup

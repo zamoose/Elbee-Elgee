@@ -33,6 +33,7 @@ set_post_thumbnail_size( 64, 64, true );
 add_image_size( 'lb-content-header', $content_width, 9999 );
 add_theme_support( 'automatic-feed-links' );
 add_custom_background();
+add_editor_style();
 
 register_nav_menu( 'primary', 'Primary Navigation Menu' );
 if( function_exists( 'bp_get_loggedin_user_nav' ) ){

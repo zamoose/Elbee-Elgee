@@ -1,0 +1,536 @@
+/* @group Reset CSS 
+   Based on YUI Reset CSS */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+fieldset,img { 
+	border: 0;
+}
+address,caption,cite,code,dfn,em,strong,th,var {
+	font-style: normal;
+	font-weight: normal;
+}
+ol,ul {
+	list-style: none;
+}
+caption,th {
+	text-align: left;
+}
+h1,h2,h3,h4,h5,h6 {
+	font-size: 100%;
+	font-weight: normal;
+}
+q:before,q:after {
+	content:'';
+}
+abbr,acronym { border:0;
+}
+
+/* @end */
+
+/* @group Fonts set
+	Based on YUI fonts set */
+	
+	body {font:13px arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
+	table {font-size:inherit;font:100%;}
+
+	select, input, textarea {font:99% arial,helvetica,clean,sans-serif;}
+
+	pre, code {font:115% monospace;*font-size:100%;}
+
+	body * {line-height:1.22em;}
+
+/* @end */
+
+/* @group List reset */
+
+
+#navigation ul, #extra ul, #footer ul, #footer ol, #bigbar ul {
+	margin: 5px 0 0;
+	padding-left: 0;
+	padding-right: 5px;
+}
+
+#navigation ul li, #extra ul li, #footer ul li, #bigbar ul li {
+	list-style-type: none;
+	list-style-image: none;
+}
+
+/* @group Alignment classes */
+
+.center, .aligncenter {
+        text-align: center;
+		margin: 0 auto;
+}
+
+.alignright {
+        float: right;
+}
+				        
+.alignleft {
+        float: left
+}
+
+/* @end */
+
+/* @group Image classes */
+
+img.center, img.aligncenter, img[align="center"] {
+    display: block;
+	margin: 0 auto !important;
+	_margin-right: auto;
+	_margin-left: auto;
+}
+
+img.alignright, img[align="right"] {
+    padding: 4px !important;
+	_padding: 4px;
+    margin: 0 0 2px 7px !important;
+    display: inline;
+}
+
+img.alignleft, img[align="left"] {
+    padding: 4px;
+	_padding: 4px;
+	margin: 0 7px 2px 0;
+    display: inline;
+}
+				        
+img.noborder {
+        border: none !important;
+}
+
+#content img {
+	margin-left: -5px;
+	padding: 4px;
+	border: 1px solid #ccc;
+	max-width: 100%;
+}
+
+.lifestream_icon img, .btc-summary img {
+	border: 0 none !important;
+}
+
+#flickrrss img {
+	border: 0 none;
+	padding: 5px;
+}
+
+.wp-caption {
+	
+}
+
+.wp-caption-text {
+	
+}
+
+.gallery-caption {
+	
+}
+/* @end */
+
+/* @group Gravatar classes */
+
+.gravatar, .avatar {
+	float: left;
+	padding: 3px;
+	border: 1px solid #3c3c3c;
+	background: #fff;
+	margin-right: 10px;
+	margin-bottom: 5px;
+	margin-left: 5px !important;
+}
+
+.postgrav {
+	float: left;
+	padding: 3px;
+	margin-right: 5px;
+	margin-left: 5px;
+	border: 1px solid #000;
+	background: transparent;
+}
+
+/* @end */
+
+/* @group Navigation classes */
+
+.navigation {
+	text-align: center;
+	margin: 10px 0 10px;
+	padding: 0;
+	width: 100%;
+}
+.navigation .left {
+	float: left;
+	width: 50%;
+	text-align: left;
+}
+
+.navigation .right {
+	float: right;
+	width: 50%;
+	text-align: right;
+}
+
+/* @end */
+
+/* @group Clearing classes */
+
+.clear {
+	clear: both;
+	margin: 0;
+	padding: 0;
+}
+
+.listclear {
+	clear: both;
+	height: 1px;
+	overflow: hidden;
+}
+
+/* @end */
+
+div.message {
+	width: 80%;
+	margin: 0 auto;
+	padding: 10px 20px 10px 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 1em;
+}
+
+.information {
+	background-color: #F8FAFC;
+	border-top: 2px solid;
+	border-bottom: 2px solid;
+	border-color: #B5D4FE;
+	color: #333;
+}
+
+.notification, .category-notification {
+	border-color: #669933;
+	border: 1px solid;
+	background-color: #9BCF7B;
+	color: #333;
+	padding: 10px;
+}
+
+.alert, .category-alert {
+	border: 1px solid;
+	border-color: #DDDB54;
+	background-color: #FFFFCC;
+	color: #000;
+	padding: 10px;
+}
+
+.warning, .category-warning {
+	border: 1px solid;
+	border-color: #D43C3C;
+	background-color: #faa19f;
+	color: #000;
+	padding: 10px;
+}
+
+.sticky {
+	border: 1px solid #097bc3;
+	background: #9ed2fb;
+	padding: 10px;
+}
+
+.bypostauthor {
+	
+}
+
+/*
+ @group Page-wide defaults
+*/
+body{
+	background-color: #efefef;
+}
+
+a:link, a:visited{
+	color: #0971B3;
+	text-decoration: none;
+}
+
+a:active, a:hover{
+	text-decoration: underline;
+}
+
+.startTranslucent {
+	background:rgb(0,0,0);
+	background:rgba(0,0,0,0.5);
+	-ms-filter:alpha(opacity=50);
+	filter:alpha(opacity=50)
+}
+
+.stopTranslucent{
+	position: relative;
+}
+
+#tinymce dl {
+	padding-left: 1em;
+	padding-top: 1em;
+}
+
+#tinymce dt {
+	font-weight: bold;
+}
+
+#tinymce dd {
+	padding-left: 1em;
+}
+
+/* @end */
+
+div#container {
+	border: 1px solid #333;
+}
+
+/* @group Content Elements */
+#tinymce{
+	
+}
+
+#tinymce h2 a, #tinymce h1, h1.entry-title {
+	font-size: 2em;
+	font-weight: bold;
+	padding-top: 0.5em;
+	margin-top: 0.5em;
+}
+
+#tinymce h2, #tinymce h3, #tinymce h4, #tinymce h5, #tinymce h6,
+.comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6 {
+	font-weight: bold;
+	clear: both;
+}
+
+#tinymce h2, .comment-body h2 {
+	font-size: 1.8em;
+}
+
+#tinymce h3, .comment-body h3 {
+	font-size: 1.6em;
+}
+
+#tinymce h4, .comment-body h4 {
+	font-size: 1.4em;
+}
+
+#tinymce h5, .comment-body h5 {
+	font-size: 1.2em;
+}
+
+#tinymce h6, .comment-body h6 {
+	font-size: 1.0em;
+}
+
+#tinymce blockquote, .comment-body blockquote {
+	padding: 5px 15px 0 15px;
+	margin-bottom: 10px;
+	background: #eee;
+	font-style: italic;
+}
+
+#tinymce table, .comment-body table {
+	width: 95%;
+	margin: 0 auto;
+}
+
+#tinymce table th, .comment-body table th {
+	text-transform: uppercase;
+	text-align: left;
+}
+
+#tinymce table tr td, .comment-body table tr td {
+	border-top: 1px solid #bbb;
+	padding: 5px 10px 5px 10px;
+}
+
+ol.commentlist ul.children{
+	margin-left: 20px;
+}
+
+#tinymce ul, .comment-body ul {
+	list-style-type: disc;
+	margin-left: 22px;
+}
+
+#tinymce ul ul, .comment-body ul ul {
+	list-style-type: circle;
+}
+
+#tinymce ul ul ul, .comment-body ul ul ul {
+	list-style-type: square;
+}
+
+#tinymce ol,  .comment-body ol {
+	list-style-type: decimal;
+	margin-left: 22px;
+}
+
+#tinymce ol ol, .comment-body ol ol {
+	list-style-type: lower-latin;
+}
+
+#tinymce ol ol ol, .comment-body ol ol ol {
+	list-style-type: lower-roman;
+}
+
+#tinymce abbr, #tinymce dfn, #tinymce acronym,
+.comment-body abbr, .comment-body dfn, .comment-body acronym {
+	border-bottom-style: dotted;
+	cursor: help;
+	border-bottom-width: 1px;
+}
+
+#tinymce pre, .comment-body pre {
+	padding: 5px 20px 5px 20px;
+	margin-left: 20px;
+	background: #eee;
+} 
+
+#tinymce strong, .comment-body strong{
+	font-weight: bold;
+}
+
+#tinymce p {
+	padding-bottom: 0.7em
+}
+
+#tinymce div.post {
+	margin-bottom: 1em;
+}
+
+#tinymce img.wp-post-image {
+	margin: 0 auto;
+	display: block;
+}
+
+#tinymce img {
+	max-width: 100%;
+}
+
+/* @end */
+
+/* @group Comment Elements */
+
+h2#comments {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+.commentlist li.comment, .commentlist li.pingback,
+.commentlist li.trackback {
+	clear: both;
+	margin-top: 15px;
+	padding-top: 10px;
+}
+
+
+.commentlist > li {
+	border-top: 1px solid #1a1c1d;
+}
+
+.commentlist li.depth-2, .commentlist li.depth-3, .commentlist li.depth-4 {
+	border-left: 1px solid #1a1c1d;	
+}
+
+.commentlist > li.even {
+	background: #f6f6f6;
+}
+
+.commentlist > li.highlight {
+	/*background: #cddce5;*/
+}
+
+.commentlist img.gravatar, .commentlist img.avatar {
+	float:  left;
+	background-color: #fff;
+	border: 1px solid #3c3c3c;
+}
+
+.commentlist div.comment-meta {
+	float: right;
+	font-size: 0.8em;
+}
+
+.commentlist span.comment-date{
+	font-size: 0.8em;
+}
+
+.commentlist div.comment-author {
+	display: inline;
+	font-size: 1.5em;
+}
+
+.commentlist div.comment-body{
+	margin-left: 5px;
+}
+
+.commentlist div.reply{
+	clear: both;
+	text-align: right;
+}
+
+p.form-allowed-tags {
+	font-size: 0.8em;
+		
+}
+
+/* @end */
+
+/* @group Sidebar Elements */
+#primarysb > ul > li, #secondarysb > ul > li,
+#footerleft > ul > li, #footerright > ul > li {
+	border: 3px solid #eee;
+	padding: 4px;
+	margin:4px;
+	overflow: auto;
+}
+
+#primarysb h4, #secondarysb h4,
+#footerleft h4, #footerright h4 {
+	background-color: #333;
+	width: 97%;
+	color: #fff;
+	padding: 3px;
+}
+
+#calendar_wrap {
+	padding: 15px;
+}
+
+#wp-calendar {
+	width: 90%;
+	margin: 0 auto;
+}
+
+#wp-calendar caption {
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+#wp-calendar th {
+	border-bottom: 1px solid;
+}
+
+#wp-calendar td#today {
+	font-weight: bold;
+}
+
+/* @end */
+
+/* @group Footer Elements */
+div#footer {
+	background: #333;
+}
+div#footerwrapper {
+	width: 960px;
+	margin: 0 auto;
+	background: #fff;
+}
+
+/* @end */
