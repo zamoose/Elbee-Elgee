@@ -123,6 +123,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* "Comments are closed" displayed when comments are disabled/closed
 		* Switched options textareas from `esc_attr()` to `wp_kses_post()`
 		* Calendar widget styling added
+		* `text` and `textarea` options properly escaped before output by `esc_html()`
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -154,7 +155,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* <del>wp_footer() must be placed directly before &lt;/body&gt;.</del>
 	* <del>The use of `$_SERVER['PHP_SELF']` in forms is discouraged as it presents a security risk.</del>
 	* <del>All custom functions and global variables must be prefixed with the theme slug or an appropriate variant.</del>
-	* All data must be sanitized and validated before saving to the database and properly escaped when outputting to forms.
+	* <del>All data must be sanitized and validated before saving to the database and properly escaped when outputting to forms.</del>
 	* <del>Themes are required to use checked() and selected() for checkbox and select options in forms respectively.</del>
 	* <del>`( ! isset( $content_width ) ) $content_width = '640';` entered twice in `includes/supports.php`.</del>
 	* <del>Please note the license being used for your header images in the readme. They must be GPL-compatible.</del>

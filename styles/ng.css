@@ -313,10 +313,6 @@ ol.commentlist ul.children{
 	font-weight: bold;
 }
 
-li.comment {
-	clear: both;
-}
-
 #lb-content p {
 	padding-bottom: 0.7em
 }
@@ -332,6 +328,73 @@ li.comment {
 
 #lb-content img {
 	max-width: 100%;
+}
+
+/* @end */
+
+/* @group Comment Elements */
+
+h2#comments {
+	font-weight: bold;
+	font-size: 1.4em;
+}
+
+.commentlist li.comment, .commentlist li.pingback,
+.commentlist li.trackback {
+	clear: both;
+	margin-top: 15px;
+	padding-top: 10px;
+}
+
+
+.commentlist > li {
+	border-top: 1px solid #1a1c1d;
+}
+
+.commentlist li.depth-2, .commentlist li.depth-3, .commentlist li.depth-4 {
+	border-left: 1px solid #1a1c1d;	
+}
+
+.commentlist > li.even {
+	background: #f6f6f6;
+}
+
+.commentlist > li.highlight {
+	/*background: #cddce5;*/
+}
+
+.commentlist img.gravatar, .commentlist img.avatar {
+	float:  left;
+	background-color: #fff;
+	border: 1px solid #3c3c3c;
+}
+
+.commentlist div.comment-meta {
+	float: right;
+	font-size: 0.8em;
+}
+
+.commentlist span.comment-date{
+	font-size: 0.8em;
+}
+
+.commentlist div.comment-author {
+	display: inline;
+	font-size: 1.5em;
+}
+
+.commentlist div.comment-body{
+	margin-left: 5px;
+}
+
+.commentlist div.reply{
+	clear: both;
+	text-align: right;
+}
+
+p.form-allowed-tags {
+	font-size: 0.8em;
+		
 }
 
 /* @end */
