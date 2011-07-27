@@ -4,7 +4,7 @@
 [Demo Site](<http://lblg.zamoose.org>)
 
 ### LICENSE ###
-All code (PHP, HTML, CSS and JavaScript) is licensed under the GNU Public License version 2 ([GPLv2](<http://www.gnu.org/licenses/gpl-2.0.html>)). All header images were taken by me and are also licensed under GPLv2.
+All code (PHP, HTML, CSS and JavaScript) is licensed under the GNU Public License version 2 ([GPLv2](<http://www.gnu.org/licenses/gpl-2.0.html>)). All header images were taken by me and are also licensed under GPLv2. All icons are from the Icon Set for Bloggers by [StudioPress](http://studiopress.com).
 
 ### DESCRIPTION ###
 Elbee Elgee (LBLG) is a parent theme with multiple layouts, including 1, 2 and 3 column fluid *and* fixed size designs. Its original inspiration was the [Layout Gala](<http://blog.html.it/layoutgala/>) (the "LG" in "Elgee"), whose extensive use of negative margins and creative use of floats gave 40 total layouts using a single HTML structure. I have pared down the options a bit, as WordPress' dynamic sidebars have negated the need for several of the "mirror image" designs originally provided by Layout Gala.
@@ -17,7 +17,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 
 ### INSTALLATION ###
 #### Via S/FTP ####
-1. Upload the `lblg/` folder to your site's `wp-content/themes/` directory.
+1. Upload the `elbee-elgee/` folder to your site's `wp-content/themes/` directory.
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -25,7 +25,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 6. Click "Save changes".
 
 #### Via Mercurial (Hg) ####
-1. Clone the repository from http://bitbucket.org/zamoose/lblg into your site's `wp-content/themes/` directory, e.g. `hg clone http://bitbucket.org/zamoose/lblg`.
+1. Clone the repository from http://bitbucket.org/zamoose/elbee-elgee into your site's `wp-content/themes/` directory, e.g. `hg clone http://bitbucket.org/zamoose/elbee-elgee`.
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -33,7 +33,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 6. Click "Save changes".
 
 #### Via Subversion (SVN) ####
-1. Check out the repository from http://bitbucket.org/zamoose/lblg/trunk into your site's `wp-content/themes/` directory, e.g. `svn cp http://bitbucket.org/zamoose/lblg/trunk lblg`
+1. Check out the repository from http://bitbucket.org/zamoose/elbee-elgee/trunk into your site's `wp-content/themes/` directory, e.g. `svn cp http://bitbucket.org/zamoose/elbee-elgee/trunk elbee-elgee`
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -101,7 +101,7 @@ I have tried to hew as closely as possible to the recommended best-practices in 
 * Editor styling (particularly important after WP 3.2's addition of Distraction-Free Writing [DFW])
 
 ### ONGOING DEVELOPMENT ###
-I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/lblg>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
+I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/elbee-elgee>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.
 
 If you are interested in learning more about Mercurial, [HG Init](<http://hginit.com>) is an *excellent* starters' resource (and it's even pretty good for moderately-skilled Hg users, too!)
 
@@ -126,6 +126,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* `text` and `textarea` options properly escaped before output by `esc_html()`
 		* Comments styling fully fleshed-out
 		* User-specified credits and copyright text displayed correctly
+		* Added `add_editor_style()` functionality for more WYSIWYG-ish TinyMCE/DFW goodness
+		* Added StudioPress Icon Set for Bloggers for visual flair
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -179,3 +181,5 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 * [Twenty Ten](http://2010dev.wordpress.com/), the default WordPress theme prior to version 3.2, was the inspiration for the default dynamic header support
 
 * [BuddyPress Template Pack](<http://wordpress.org/extend/plugins/bp-template-pack/>) by Andy Peatling for a *ton* of the BuddyPress functionality and template work
+
+* [StudioPress](http://studiopress.com)'s Icon Set for Bloggers iconography (Unfortunately, my preferred Mini2 icons are CC-Share-Alike or somesuch and therefore not WordPress Theme Repository-compatible)
