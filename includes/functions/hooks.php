@@ -141,10 +141,10 @@ function lblg_credits(){
 	if($tmp_credits != ''){
 		$credits_text = $tmp_credits;
 	}else{
-		$credits_text = '<p>Powered by <a href="http://wordpress.org\">WordPress</a> ' . get_bloginfo('version');
-		$credits_text .= ' and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a></p>';
+		$credits_text = 'Powered by <a href="http://wordpress.org\">WordPress</a> ' . get_bloginfo('version');
+		$credits_text .= ' and <a href="http://literalbarrage.org/blog/code/elbee-elgee">Elbee Elgee</a>';
 	}
-	echo $credits_text;
+	echo "<div id=\"credits-text\">$credits_text</div>";
 }
 
 /*
@@ -174,7 +174,16 @@ function lblg_copyright() {
 }
 
 function lblg_echo_copyright() {
-	echo lblg_copyright();
+	global $lblg_shortname, $lblg_options;
+	$tmp_copyright = $lblg_options['footer_copyright'];
+	if( $tmp_copyright != '' ){
+		$copyright_text = $tmp_copyright;
+	} else {
+		$copyright_text = "<a href=\"" . get_home_url() . "\">" . get_bloginfo('name') . "</a> " . lblg_copyright();
+	}
+	
+	print_r($tmp_copyright);
+	echo "<div id=\"copyright-text\">$copyright_text</div>";
 }
 
 // Output the Featured Image

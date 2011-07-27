@@ -124,6 +124,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Switched options textareas from `esc_attr()` to `wp_kses_post()`
 		* Calendar widget styling added
 		* `text` and `textarea` options properly escaped before output by `esc_html()`
+		* Comments styling fully fleshed-out
+		* User-specified credits and copyright text displayed correctly
 * Version 1.1.1
 	* **Issues Fixed**
 		* Updated to fix 'native' bug in upstream `bbp_twentyten` (ref. [rev. 3331](http://bbpress.trac.wordpress.org/changeset/3331))
@@ -146,12 +148,12 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* <del>You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.</del>
 	* <del>Captioned images must be properly aligned.</del>
 	* <del>Floated elements must be properly cleared.</del>
-	* Check your styling of comments, particularly nested comments.
+	* <del>Check your styling of comments, particularly nested comments.</del>
 	* <del>Posts with closed comments are required to display some kind of "Comments are disabled" message. This does not apply to Pages.</del>
 	* <del>Theme options using textareas that allow HTML should use `wp_kses_post()` when sanitizing form data.</del>
 	* <del>Provide styling for the calendar widget.</del>
 	* <del>Provide more whitespace between the post meta and post content.</del>
-	* Content entered in "Copyright Statement" and "Footer Credits" does not show up on the site.
+	* <del>Content entered in "Copyright Statement" and "Footer Credits" does not show up on the site.</del>
 	* <del>wp_footer() must be placed directly before &lt;/body&gt;.</del>
 	* <del>The use of `$_SERVER['PHP_SELF']` in forms is discouraged as it presents a security risk.</del>
 	* <del>All custom functions and global variables must be prefixed with the theme slug or an appropriate variant.</del>

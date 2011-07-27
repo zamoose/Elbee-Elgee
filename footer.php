@@ -23,11 +23,11 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 	</div>
 	<div id="footercredits">
 	<?php 
-		if( 'true' == $lblg_options['display_footer_copyright'] ) {
-	?>
-	<p><a href="<?php echo home_url(); ?>"><?php bloginfo('name'); ?></a> <?php lblg_print_copyright(); ?></p>
-	<?php }
-		if( 'true' == $lblg_options['display_footer_credits'] ) {
+		if( $lblg_options['display_footer_copyright'] ) {
+			lblg_print_copyright();
+ 		}
+
+		if( $lblg_options['display_footer_credits'] ) {
 			lblg_print_credits();
 		}
 	?>
