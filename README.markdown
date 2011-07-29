@@ -88,6 +88,9 @@ Elbee Elgee has a few notable hooks, with many more planned. I welcome your sugg
 * `lblg_the_postimage()`: Displays the Featured Image for posts, pages and custom post types that support it
 * `lblg_sidebar_header()`: Hooks into top of sidebar.php
 * `lblg_sidebar_footer()`: Hooks into bottom of sidebar.php
+* `lblg_enqueue_styles()`: Enqueues CSS styles for output by WordPress
+* `lblg_credits()`: Outputs the theme credit links in the footer
+* `lblg_echo_copyright()`: Outputs the site's copyright statement in the footer
 
 #### Settings API ####
 I have tried to hew as closely as possible to the recommended best-practices in the form of the WordPress Settings API. Elbee Elgee should leave a minimal database footprint (at the moment, it is two options, soon to be only a single option). By supporting the Settings API, Elbee Elgee can gain some manner of future-proofing and it obtains security features at a minimal cost.
