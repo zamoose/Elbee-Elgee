@@ -512,9 +512,8 @@ div.message {
 }
 
 .alert, .category-alert {
-	border: 1px solid;
-	border-color: #DDDB54;
-	background-color: #FFFFCC;
+	border: 1px solid #E6DB55;
+	background-color: lightYellow;
 	color: #000;
 	padding: 10px;
 }

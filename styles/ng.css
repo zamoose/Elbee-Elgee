@@ -204,6 +204,13 @@ span.postmeta, span.postcats, span.posttags {
 /* @end */
 
 /* @group Content Elements */
+
+.notification, .category-notification, .alert, .category-alert,
+.warning, .category-warning, .sticky, .message, .information{
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
 #lb-content{
 	
 }
