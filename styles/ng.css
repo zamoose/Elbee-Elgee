@@ -225,7 +225,8 @@ body.error404 #lb-content h1, h1.entry-title {
 }
 
 .itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6,
-.comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6 {
+.comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6,
+h3#reply-title {
 	font-weight: bold;
 	clear: both;
 }
@@ -234,7 +235,7 @@ body.error404 #lb-content h1, h1.entry-title {
 	font-size: 1.8em;
 }
 
-.itemtext h3, .comment-body h3 {
+.itemtext h3, .comment-body h3, h3#reply-title {
 	font-size: 1.6em;
 }
 
