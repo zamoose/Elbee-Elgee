@@ -9,7 +9,7 @@ Template Name: Page
 <div id="wrapper">
 	<div id="lb-content">
 		<?php get_template_part( 'theloop' ); ?>
-		<?php comments_template(); ?>
+		<?php if( comments_open() ) comments_template(); ?>
 	</div> <!-- #lb-content -->
 </div> <!-- #wrapper -->
 <?php get_sidebar(); ?>

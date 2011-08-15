@@ -115,7 +115,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 * Version 1.2.1
 	* **Issues Fixed**
 		* Correctly styling single page title display to use H1
-		*
+		* Single page view w/comments disabled no longer displaying comments closed message
 * Version 1.2
 	* **Issues Fixed**
 		* `wp_footer()` call moved to right before &lt;/body&gt;
@@ -156,6 +156,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 ### KNOWN ISSUES ###
 * Version 1.2
 	* <del>Page titles incorrectly using unstyled H2 for title.</del>
+	* <del>Pages with closed comments incorrectly displaying "Comments are closed".</del>
 * Version 1.1.1 aka "The Theme Review One" (taken from the [initial theme review](http://themes.trac.wordpress.org/ticket/4336#comment:3))
 	* <del>Posts with no titles must still include a permalink to the single post view. The recommended practice is to place the permalink on the post date as well.</del>
 	* <del>You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.</del>
