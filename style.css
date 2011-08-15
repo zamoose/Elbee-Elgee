@@ -535,3 +535,7 @@ div.message {
 .bypostauthor {
 	
 }
+
+#lb-content dl.gallery-item{
+	padding-left: 0;
+}
