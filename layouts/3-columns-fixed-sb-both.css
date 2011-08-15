@@ -1,6 +1,7 @@
 div#container{width:960px;margin:0 auto}
 div#wrapper{float:left;width:100%}
-div#lb-content{margin: 0 150px}
-div#primarysb{float:left;width:150px;margin-left:-940px}
+div#lb-content{margin: 0 145px}
+div#primarysb{float:left;width:150px;margin-left:-960px}
 div#secondarysb{float:left;width:150px;margin-left:-150px}
 div#footer{clear:left;width:100%}
+div#container div#allwrapper{padding-left:0;padding-right:0;}
