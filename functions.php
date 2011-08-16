@@ -32,6 +32,6 @@ if( function_exists( 'bp_init' ) )
 	require_once( LBLG_FUNCTIONS_DIR . 'buddypress.php' );
 
 // bbPress-related code, only loaded if bbP is active
-if( function_exists( 'bbp_get_current_user_id' ) )	
+if( function_exists( 'bbp_get_current_user_id' ) )
 	require_once( LBLG_FUNCTIONS_DIR . 'bbpress.php' );
 ?>

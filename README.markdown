@@ -1,7 +1,7 @@
 ## Elbee Elgee Parent Theme ##
 [Project Homepage](<http://literalbarrage.org/blog/code/elbee-elgee>)
 
-[Support Forums](http://literalbarrage.org/blog/forums/)
+[Support Forums](http://literalbarrage.org/blog/forums/elbee-elgee)
 
 [Demo Site](<http://lblg.zamoose.org>)
 
