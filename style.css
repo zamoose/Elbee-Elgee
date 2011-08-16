@@ -539,3 +539,7 @@ div.message {
 #lb-content dl.gallery-item{
 	padding-left: 0;
 }
+
+div.post-pagination {
+	clear: both;
+}

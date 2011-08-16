@@ -119,6 +119,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Removed padding on `#lb-content dl.gallery-item` which corrects wonky float behavior in inline galleries
 		* "Leave A Reply" H3 on single post/page views now correctly styled
 		* 3 column/sidebar both overflow issue fixed
+		* Pagination links now properly clear content
 * Version 1.2
 	* **Issues Fixed**
 		* `wp_footer()` call moved to right before &lt;/body&gt;
@@ -163,6 +164,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* <del>3 column gallery view incorrectly bumping third image to next line.</del>
 	* <del>"Reply" H3 incorrectly unstyled.</del>
 	* <del>Content area overflows into right sidebar in 3 column/sidebars both layout.</del>
+	* <del>Paginated posts' page navigation sections don't clear content correctly.</del>
 * Version 1.1.1 aka "The Theme Review One" (taken from the [initial theme review](http://themes.trac.wordpress.org/ticket/4336#comment:3))
 	* <del>Posts with no titles must still include a permalink to the single post view. The recommended practice is to place the permalink on the post date as well.</del>
 	* <del>You must provide styling for heading elements (&lt;h2&gt; - &lt;h6&gt;), blockquotes, tables, definition lists, ordered lists and unordered lists.</del>

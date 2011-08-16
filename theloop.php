@@ -12,7 +12,7 @@
 				} else {
 					the_content('Continue reading'. " '" . the_title('', '', false) . "'");
 				}
-				wp_link_pages('<p><strong>Pages:</strong> ', '</p>', 'number'); 
+				wp_link_pages( array( 'before' => '<div class="post-pagination">Pages: ', 'after' => '</div>', 'next_or_number' => 'number')); 
 				?>
 				<div class="postinfo">
 					<span class="postmeta">Posted by <?php the_author(); ?> on <a href="<?php the_permalink(); ?>"><?php the_time('F jS, Y'); ?></a> <?php if (!is_single() && !is_page() ){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
