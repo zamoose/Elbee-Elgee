@@ -1,9 +1,9 @@
 ## Elbee Elgee Parent Theme ##
-[Project Homepage](<http://literalbarrage.org/blog/code/elbee-elgee>)
+[Project Homepage](http://literalbarrage.org/blog/code/elbee-elgee)
 
 [Support Forums](http://literalbarrage.org/blog/forums/elbee-elgee)
 
-[Demo Site](<http://lblg.zamoose.org>)
+[Demo Site](http://lblg.zamoose.org)
 
 ### LICENSE ###
 All code (PHP, HTML, CSS and JavaScript) is licensed under the GNU Public License version 2 ([GPLv2](<http://www.gnu.org/licenses/gpl-2.0.html>)). All header images were taken by me and are also licensed under GPLv2. All icons are from the Icon Set for Bloggers by [StudioPress](http://studiopress.com).
@@ -112,6 +112,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.2.2
+	* **Issues Fixed**
+		* Proper support for BuddyPress 1.2.9 permalinks
 * Version 1.2.1
 	* **Issues Fixed**
 		* Correctly styling single page title display to use H1
@@ -158,6 +161,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.2.1
+	* <del>Proper BuddyPress 1.2.9 permalink support for single users.</del>
 * Version 1.2
 	* <del>Page titles incorrectly using unstyled H2 for title.</del>
 	* <del>Pages with closed comments incorrectly displaying "Comments are closed".</del>
