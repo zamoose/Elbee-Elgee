@@ -12,6 +12,25 @@ function lblg_admin_init(){
 }
 add_action( 'admin_init', 'lblg_admin_init' );
 
+function lblg_output_admin_tabs(){
+	if( isset($_GET['tab'] )) {
+		$current_tab = $_GET['tab'];
+	} else {
+		$current_tab = 'general';
+	}
+	
+	$tabs = lblg_get_admin_tabs();
+	echo '<h2 class="nav-tab-wrapper">';
+	echo '<a href="http://localhost" class="nav-tab">Localhost</a><a href="http://localhost" class="nav-tab nav-tab-active">Localhost Active</a></h2>';
+}
+//add_action( 'lblg_after_admin_header', 'lblg_output_admin_tabs' );
+
+function lblg_get_admin_tabs(){
+	global $lblg_default_options;
+	
+	print_r($lblg_default_options);
+}
+
 // Display the theme options page
 function lblg_admin() {
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
@@ -24,8 +43,9 @@ function lblg_admin() {
 <h2 class="updatehook"><?php echo $lblg_themename; ?> settings 
 <?php lblg_print_option_buttons(); ?>
 </h2>
+<?php
+	lblg_after_admin_header();
 
-<?php 
 	if ( isset( $_REQUEST['settings-updated'] ) ) echo '<div id="message" class="updated under-h2"><p><strong>'.$lblg_themename.' settings updated.</strong></p></div>';
 
 	settings_fields( $lblg_shortname . '_theme_options' ); 
@@ -70,7 +90,7 @@ function lblg_option_wrapper_header( $values ){
 function lblg_option_wrapper_footer( $values ){
 	?>
 		<br /><br />
-		<?php echo $values['desc']; ?>
+		<span class="description"><?php echo $values['desc']; ?></span>
 	    </td>
 	</tr>
 	<?php 

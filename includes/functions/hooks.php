@@ -10,6 +10,10 @@ function lblg_set_themename(){
 	do_action( 'lblg_set_themename' );
 }
 
+
+function lblg_after_admin_header(){
+	do_action( 'lblg_after_admin_header' );
+}
 function lblg_print_title(){
 	do_action( 'lblg_print_title' );
 }
