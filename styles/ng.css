@@ -1,3 +1,5 @@
+@import url("ng/ng-base.css");
+
 /*
  @group Page-wide defaults
 */
@@ -205,50 +207,8 @@ span.postmeta, span.postcats, span.posttags {
 
 /* @group Content Elements */
 
-.notification, .category-notification, .alert, .category-alert,
-.warning, .category-warning, .sticky, .message, .information{
-	border-radius: 5px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-}
 #lb-content{
 	
-}
-
-body.home-page #lb-content h2 a, body.home #lb-content h2 a, 
-body.single #lb-content h1, body.page #lb-content h1,
-body.error404 #lb-content h1, h1.entry-title {
-	font-size: 2em;
-	font-weight: bold;
-	padding-top: 0.5em;
-	margin-top: 0.5em;
-}
-
-.itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6,
-.comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6,
-h3#reply-title {
-	font-weight: bold;
-	clear: both;
-}
-
-.itemtext h2, .comment-body h2 {
-	font-size: 1.8em;
-}
-
-.itemtext h3, .comment-body h3, h3#reply-title {
-	font-size: 1.6em;
-}
-
-.itemtext h4, .comment-body h4 {
-	font-size: 1.4em;
-}
-
-.itemtext h5, .comment-body h5 {
-	font-size: 1.2em;
-}
-
-.itemtext h6, .comment-body h6 {
-	font-size: 1.0em;
 }
 
 .itemtext blockquote, .comment-body blockquote {
@@ -326,15 +286,6 @@ ol.commentlist ul.children{
 
 #lb-content div.post {
 	margin-bottom: 1em;
-}
-
-#lb-content img.wp-post-image {
-	margin: 0 auto;
-	display: block;
-}
-
-#lb-content img {
-	max-width: 100%;
 }
 
 /* @end */
@@ -421,29 +372,6 @@ p.form-allowed-tags {
 	width: 97%;
 	color: #fff;
 	padding: 3px;
-}
-
-#calendar_wrap {
-	padding: 15px;
-}
-
-#wp-calendar {
-	width: 90%;
-	margin: 0 auto;
-}
-
-#wp-calendar caption {
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 10px;
-}
-
-#wp-calendar th {
-	border-bottom: 1px solid;
-}
-
-#wp-calendar td#today {
-	font-weight: bold;
 }
 
 /* @end */

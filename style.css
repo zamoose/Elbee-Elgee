@@ -511,6 +511,10 @@ div.message {
 	padding: 10px;
 }
 
+div.notification a, div.category-notification a{
+	color: #4d7424;
+}
+
 .alert, .category-alert {
 	border: 1px solid #E6DB55;
 	background-color: lightYellow;
@@ -526,12 +530,19 @@ div.message {
 	padding: 10px;
 }
 
+div.warning a, div.category-warning a {
+	color: #d43c3c;
+}
+
 .sticky {
 	border: 1px solid #097bc3;
 	background: #9ed2fb;
 	padding: 10px;
 }
 
+div.sticky a {
+	color: #097bc3;
+}
 .bypostauthor {
 	
 }
