@@ -55,7 +55,6 @@ body.error404 #lb-content h1, h1.entry-title {
 	clear: both;
 }
 
-
 .itemtext h2, .comment-body h2 {
 	font-size: 1.8em;
 }
@@ -77,6 +76,76 @@ body.error404 #lb-content h1, h1.entry-title {
 }
 
 
+.itemtext table, .comment-body table {
+	width: 95%;
+	margin: 0 auto;
+}
+
+.itemtext table th, .comment-body table th {
+	text-transform: uppercase;
+	text-align: left;
+}
+
+.itemtext table tr td, .comment-body table tr td {
+	border-top: 1px solid #bbb;
+	padding: 5px 10px 5px 10px;
+}
+
+ol.commentlist ul.children{
+	margin-left: 20px;
+}
+
+.itemtext ul, .comment-body ul {
+	list-style-type: disc;
+	margin-left: 22px;
+}
+
+.itemtext ul ul, .comment-body ul ul {
+	list-style-type: circle;
+}
+
+.itemtext ul ul ul, .comment-body ul ul ul {
+	list-style-type: square;
+}
+
+.itemtext ol,  .comment-body ol {
+	list-style-type: decimal;
+	margin-left: 22px;
+}
+
+.itemtext ol ol, .comment-body ol ol {
+	list-style-type: lower-latin;
+}
+
+.itemtext ol ol ol, .comment-body ol ol ol {
+	list-style-type: lower-roman;
+}
+
+.itemtext abbr, .itemtext dfn, .itemtext acronym,
+.comment-body abbr, .comment-body dfn, .comment-body acronym {
+	border-bottom-style: dotted;
+	cursor: help;
+	border-bottom-width: 1px;
+}
+
+.itemtext pre, .comment-body pre {
+	padding: 5px 20px 5px 20px;
+	margin-left: 20px;
+	background: #eee;
+} 
+
+.itemtext strong, .comment-body strong{
+	font-weight: bold;
+}
+
+#lb-content p {
+	padding-bottom: 0.7em
+}
+
+#lb-content div.post {
+	margin-bottom: 1em;
+}
+
 #lb-content img.wp-post-image {
 	margin: 0 auto;
 	display: block;
@@ -88,4 +157,7 @@ body.error404 #lb-content h1, h1.entry-title {
 	max-width: 100%;
 }
 
+.post div.postinfo {
+	padding-left: 15px;
+}
 /* @end */
