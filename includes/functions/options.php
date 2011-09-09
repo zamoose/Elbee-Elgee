@@ -1,7 +1,25 @@
 <?php
-/*
-*  Initialize the theme options, save to the DB if we haven't yet been run
-*/
+/**
+ * This file is responsible for options handling.
+ * It draws from static theme files and dynamic theme options
+ * stored in the database.
+ *
+ * @package 		Elbee-Elgee
+ * @copyright	Copyright (c) 2011, Doug Stewart
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since 		Elbee-Elgee 1.0
+ */
+
+/**
+ * Initialize the theme options, save to the DB if we haven't yet been run
+ * 
+ * @global string   $lblg_shortname
+ * @global string   $lblg_themename
+ * @global string   $lblg_version
+ * @global array    $lblg_options
+ * @global array    $lblg_default_options 
+ */
 function lblg_options_init(){
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
 	/* 
@@ -62,6 +80,11 @@ function lblg_options_init(){
 }
 add_action( 'after_setup_theme','lblg_options_init', 9 );
 
+/**
+ *
+ * @param array $default_options
+ * @return array
+ */
 function lblg_get_options_from_defaults( $default_options ){
 	$stripped_opts = array();
 	
@@ -74,6 +97,10 @@ function lblg_get_options_from_defaults( $default_options ){
 	return $stripped_opts;
 }
 
+/**
+ *
+ * @return array
+ */
 function lblg_get_default_options(){
 	//Default locations for the parent and child options files
 	$parent_options_file = TEMPLATEPATH . '/includes/parent-options.php';
@@ -120,6 +147,14 @@ function lblg_get_default_options(){
 	return $temp_options;
 }
 
+/**
+ *
+ * @global  type $lblg_shortname
+ * @global  type $lblg_default_options
+ * @global  type $lblg_options
+ * @param   array $input
+ * @return  array
+ */
 function lblg_sanitize_options( $input ){
 	global $lblg_shortname, $lblg_default_options, $lblg_options;
 

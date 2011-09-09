@@ -1,6 +1,11 @@
+<?php
+/**
+ * 
+ */
+?>
 	<!--hr /-->
 
-	<?php if (is_single()) { ?>
+	<?php if ( is_single() ) { ?>
 
 	<div class="navigation">
 		<div class="left"><?php previous_post_link() ?></div>

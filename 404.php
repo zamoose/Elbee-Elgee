@@ -1,6 +1,12 @@
 <?php
-/*
-Template Name: 404'd
+/**
+* Template Name: 404'd
+*
+* @package 		Elbee-Elgee
+* @copyright	Copyright (c) 2011, Doug Stewart
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+*
+* @since 		Elbee-Elgee 1.0
 */
 ?>
 <?php header("HTTP/1.1 404 Not Found"); ?>

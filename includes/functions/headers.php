@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file contains registration of default header images.
+ *
+ * @package     Elbee-Elgee
+ * @copyright   Copyright (c) 2011, Doug Stewart
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since       Elbee-Elgee 1.0
+ *
+ */
+
+
 function lblg_custom_headers_check() {
 	global $lblg_options;
 

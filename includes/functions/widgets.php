@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file contains the custom widget classes necessary to register and
+ * display the custom widgets supplied with the theme.
+ *
+ * @package     Elbee-Elgee
+ * @copyright   Copyright (c) 2011, Doug Stewart
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since       Elbee-Elgee 1.0
+ *
+ */
+
 class Lblg_Smart_Recent_Posts_Widget extends WP_Widget {
 	function Lblg_Smart_Recent_Posts_Widget(){
 		$widget_ops = array('classname' => 'lblg_smart_recent_posts_widget', 'description' => 'A widget that intelligently displays recent posts.' );

@@ -1,5 +1,5 @@
 <?php
-/*
+/**
 * All code in this file has been adapted from the bbp_twentyten theme provided
 * as a part of the default bbPress plugin install and therefore retains the original
 * GPL license attached to said files.

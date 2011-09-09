@@ -1,4 +1,16 @@
 <?php
+/**
+ * This file is responsible for registering all the extra core
+ * WordPress functionality the theme supports.
+ *
+ * @package     Elbee-Elgee
+ * @copyright   Copyright (c) 2011, Doug Stewart
+ * @license     http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since       Elbee-Elgee 1.0
+ *
+ */
+
 function lblg_register_sidebars() {
 	register_sidebar( array( 'name'=>'Primary',
 						   'before_widget' => '<li>', 

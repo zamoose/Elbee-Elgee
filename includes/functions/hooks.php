@@ -14,6 +14,7 @@ function lblg_set_themename(){
 function lblg_after_admin_header(){
 	do_action( 'lblg_after_admin_header' );
 }
+
 function lblg_print_title(){
 	do_action( 'lblg_print_title' );
 }
@@ -28,6 +29,22 @@ function lblg_print_bp_menu(){
 
 function lblg_above_content(){
 	do_action( 'lblg_above_content' );
+}
+
+function lblg_before_post_title(){
+	do_action( 'lblg_before_post_title' );
+}
+
+function lblg_after_post_title(){
+	do_action( 'lblg_after_post_title' );
+}
+
+function lblg_before_itemtext(){
+	do_action( 'lblg_before_itemtext' );
+}
+
+function lblg_after_itemtext(){
+	do_action( 'lblg_after_itemtext' );
 }
 
 function lblg_sidebar_header(){
@@ -90,6 +107,21 @@ function lblg_menu(){
 	<?php
 	}
 }
+
+function lblg_post_info(){
+		?>
+		<div class="postinfo">
+			<span class="postmeta">Posted by <?php the_author(); ?> on <a href="<?php the_permalink(); ?>"><?php the_time('F jS, Y'); ?></a> <?php if (!is_single() && !is_page() ){ ?>| <span class="commentlink"><?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></span><?php } edit_post_link(' Edit this entry.', '', ''); ?></span>
+			<?php if( !is_page() ) { ?>
+			<span class="postcats">Posted in <?php the_category(', '); ?></span>
+			<?php } ?>
+			<?php if( is_single() ){?>
+			<span class="posttags"><?php the_tags('Tagged as: ',','); ?></span>
+		<?php }?>
+		</div>	
+		<?php
+}
+add_action( 'lblg_after_itemtext', 'lblg_post_info' );
 
 function lblg_styles(){
 	global $lblg_shortname, $lblg_options;
@@ -196,6 +228,7 @@ function lblg_the_postimage() {
 		the_post_thumbnail( 'lb-content-header' );
 	}
 }
+add_action( 'lblg_before_itemtext', 'lblg_the_postimage' );
 
 /*
 *  Utility hooks for use inside <head> and admin <head>,

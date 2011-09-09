@@ -1,18 +1,40 @@
 <?php
-// Set up the admin page &  register settings
+/**
+* This file is responsible for setting up and displaying the admin page
+* and register settings
+*
+* @package 		Elbee-Elgee
+* @copyright	Copyright (c) 2011, Doug Stewart
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+*
+* @since 		Elbee-Elgee 1.0
+*/
+
+/**
+ *
+ * @global type $lblg_themename 
+ */
 function lblg_add_admin() {
 	global $lblg_themename;
     add_theme_page( "$lblg_themename Settings", "$lblg_themename Settings", 'edit_theme_options', 'lblg_options_page' , 'lblg_admin' );
 }
 add_action( 'admin_menu', 'lblg_add_admin' );
 
+/**
+ *
+ * @global type $lblg_shortname 
+ */
 function lblg_admin_init(){
 	global $lblg_shortname;
 	register_setting( $lblg_shortname . '_theme_options', $lblg_shortname . '_theme_options', 'lblg_sanitize_options' );
 }
 add_action( 'admin_init', 'lblg_admin_init' );
 
+/**
+ * 
+ */
 function lblg_output_admin_tabs(){
+	global $lblg_default_options;
 	if( isset($_GET['tab'] )) {
 		$current_tab = $_GET['tab'];
 	} else {
@@ -23,15 +45,28 @@ function lblg_output_admin_tabs(){
 	echo '<h2 class="nav-tab-wrapper">';
 	echo '<a href="http://localhost" class="nav-tab">Localhost</a><a href="http://localhost" class="nav-tab nav-tab-active">Localhost Active</a></h2>';
 }
-//add_action( 'lblg_after_admin_header', 'lblg_output_admin_tabs' );
+add_action( 'lblg_after_admin_header', 'lblg_output_admin_tabs' );
 
+/**
+ *
+ * @global type $lblg_default_options 
+ */
 function lblg_get_admin_tabs(){
 	global $lblg_default_options;
 	
 	print_r($lblg_default_options);
 }
 
-// Display the theme options page
+/**
+ * Display the theme options page
+ *
+ * @global type $lblg_shortname
+ * @global type $lblg_themename
+ * @global type $lblg_version
+ * @global type $lblg_options
+ * @global type $lblg_default_options 
+ * 
+ */
 function lblg_admin() {
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
 
@@ -66,7 +101,11 @@ function lblg_admin() {
 <?php
 }
 
-// Output Submit/Reset buttons
+/**
+ * Output Submit/Reset buttons
+ *
+ * @global string $lblg_shortname
+ */
 function lblg_print_option_buttons() {
 	global $lblg_shortname;
 	
@@ -77,7 +116,11 @@ function lblg_print_option_buttons() {
  	submit_button( "Reset to defaults", "secondary", $reset_name, false );
 }
 
-// Output the per-option table row header markup
+/**
+ * Output the per-option table row header markup
+ *
+ * @param array $values
+ */
 function lblg_option_wrapper_header( $values ){
 	?>
 	<tr valign="top"> 
@@ -86,7 +129,11 @@ function lblg_option_wrapper_header( $values ){
 	<?php
 }
 
-// Output the per-option table row footer markup 
+/**
+ * Output the per-option table row footer markup
+ *
+ * @param array $values
+ */
 function lblg_option_wrapper_footer( $values ){
 	?>
 		<br /><br />
@@ -96,9 +143,13 @@ function lblg_option_wrapper_footer( $values ){
 	<?php 
 }
 
-/*
- * lblg_options_walker() is responsible for printing all the theme options in the theme's
- * options screen.
+/**
+ *
+ * @global type $lblg_options
+ * @global type $lblg_default_options
+ * @global type $lblg_shortname 
+ * lblg_options_walker() is responsible for printing all the 
+ * theme options in the theme's options screen.
  */
 function lblg_options_walker(){
 	global $lblg_options, $lblg_default_options, $lblg_shortname;

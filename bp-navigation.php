@@ -1,3 +1,15 @@
+<?php
+/**
+* Responsible for the search form and nav menu displayed in the header
+* when an active BuddyPress install is detected.
+*
+* @package 		Elbee-Elgee
+* @copyright	Copyright (c) 2011, Doug Stewart
+* @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+*
+* @since 		Elbee-Elgee 1.0
+*/
+?>
 <div id="lb-bp-nav">
 
 	<div id="lb-bp-search-bar">

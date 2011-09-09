@@ -1,4 +1,10 @@
 <?php
+/**
+ * Creates a WordPress custom menu based upon the default BuddyPress
+ * activity areas when an active BP install is detected.
+ * 
+ * @global type $lblg_themename
+ */
 function lblg_add_default_buddypress_menu(){
 	global $lblg_themename;
 	$menuname = $lblg_themename . ' BuddyPress Menu';
@@ -53,16 +59,21 @@ function lblg_add_default_buddypress_menu(){
 }
 add_action( 'after_setup_theme', 'lblg_add_default_buddypress_menu' );
 
+/**
+ * Grabs the template part for the BuddyPress navigation elements.
+ */
 function lblg_bp_menu() {
 		get_template_part( 'bp-navigation' );
 }
 add_action( 'lblg_print_bp_menu', 'lblg_bp_menu' );
 
-/*
-*  BuddyPress support code, adapted from the BuddyPress Template Pack
-*  http://wordpress.org/extend/plugins/bp-template-pack/
-*  By apeatling & boonebgorges
-*/
+/**
+ * BuddyPress support code, adapted from the BuddyPress Template Pack
+ * http://wordpress.org/extend/plugins/bp-template-pack/
+ * By apeatling & boonebgorges
+ * 
+ * @global type $lblg_shortname, $lblg_options
+ */
 function lblg_bp_init(){
 	global $lblg_shortname, $lblg_options;
 	
@@ -99,7 +110,12 @@ add_action( 'widgets_init', 'lblg_bp_init' );
  * Add support for showing the activity stream as the front page of the site
  */
 
-/* Filter the dropdown for selecting the page to show on front to include "Activity Stream" */
+/**
+ * Filter the dropdown for selecting the page to show on front 
+ * to include "Activity Stream"
+ * 
+ * @param type string $page_html
+ */
 function lblg_bp_wp_pages_filter( $page_html ) {
 	if ( 'page_on_front' != substr( $page_html, 14, 13 ) )
 		return $page_html;
@@ -115,7 +131,13 @@ function lblg_bp_wp_pages_filter( $page_html ) {
 }
 //add_filter( 'wp_dropdown_pages', 'lblg_bp_wp_pages_filter' );
 
-/* Hijack the saving of page on front setting to save the activity stream setting */
+/** 
+ * Hijack the saving of page on front setting to save the activity 
+ * stream setting 
+ * 
+ * @param type string $oldvalue
+ * @param type string $newvalue
+ */
 function lblg_bp_page_on_front_update( $oldvalue, $newvalue ) {
 	if ( !is_admin() || !is_super_admin() )
 		return false;
@@ -127,7 +149,11 @@ function lblg_bp_page_on_front_update( $oldvalue, $newvalue ) {
 }
 add_action( 'pre_update_option_page_on_front', 'lblg_bp_page_on_front_update', 10, 2 );
 
-/* Load the activity stream template if settings allow */
+/** 
+ * Load the activity stream template if settings allow 
+ * 
+ * @param type string $template
+ */
 function lblg_bp_page_on_front_template( $template ) {
 	global $wp_query;
 
@@ -139,7 +165,9 @@ function lblg_bp_page_on_front_template( $template ) {
 }
 add_filter( 'page_template', 'lblg_bp_page_on_front_template' );
 
-/* Return the ID of a page set as the home page. */
+/** 
+ * Return the ID of a page set as the home page. 
+ */
 function lblg_bp_page_on_front() {
 	if ( 'page' != get_option( 'show_on_front' ) )
 		return false;
@@ -147,7 +175,10 @@ function lblg_bp_page_on_front() {
 	return apply_filters( 'lblg_bp_page_on_front', get_option( 'page_on_front' ) );
 }
 
-/* Force the page ID as a string to stop the get_posts query from kicking up a fuss. */
+/**
+ *  Force the page ID as a string to stop the get_posts query from 
+ * kicking up a fuss. 
+ */
 function lblg_bp_fix_get_posts_on_activity_front() {
 	global $wp_query;
 
