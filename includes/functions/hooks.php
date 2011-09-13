@@ -218,7 +218,6 @@ function lblg_echo_copyright() {
 		$copyright_text = "<a href=\"" . get_home_url() . "\">" . get_bloginfo('name') . "</a> " . lblg_copyright();
 	}
 	
-	print_r($tmp_copyright);
 	echo "<div id=\"copyright-text\">$copyright_text</div>";
 }
 

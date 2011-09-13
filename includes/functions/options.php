@@ -148,7 +148,8 @@ function lblg_get_default_options(){
 }
 
 /**
- *
+ * Sanitizes options before sending them to the databse.
+ * 
  * @global  type $lblg_shortname
  * @global  type $lblg_default_options
  * @global  type $lblg_options

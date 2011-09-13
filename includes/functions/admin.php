@@ -11,8 +11,9 @@
 */
 
 /**
+ * Add theme options page to WordPress admin menu.
  *
- * @global type $lblg_themename 
+ * @global string $lblg_themename 
  */
 function lblg_add_admin() {
 	global $lblg_themename;
@@ -21,8 +22,10 @@ function lblg_add_admin() {
 add_action( 'admin_menu', 'lblg_add_admin' );
 
 /**
- *
- * @global type $lblg_shortname 
+ * Initialize/register the theme option that will be saved to the DB
+ * in order to use the Settings API properly
+ * 
+ * @global string $lblg_shortname 
  */
 function lblg_admin_init(){
 	global $lblg_shortname;
@@ -31,40 +34,64 @@ function lblg_admin_init(){
 add_action( 'admin_init', 'lblg_admin_init' );
 
 /**
- * 
+ * Display tabbed options page if theme options request such.
+ *
+ * @global array $lblg_output_admin_tabs
  */
 function lblg_output_admin_tabs(){
 	global $lblg_default_options;
+	
+	$page = 'lblg_options_page';
+	
 	if( isset($_GET['tab'] )) {
 		$current_tab = $_GET['tab'];
 	} else {
 		$current_tab = 'general';
 	}
 	
-	$tabs = lblg_get_admin_tabs();
+	$tabs = $lblg_default_options['tabs'];
+	
 	echo '<h2 class="nav-tab-wrapper">';
-	echo '<a href="http://localhost" class="nav-tab">Localhost</a><a href="http://localhost" class="nav-tab nav-tab-active">Localhost Active</a></h2>';
+	
+	foreach( $tabs as $tab => $name ){
+		if( $current_tab == $tab ){
+			echo '<a href="' . $PHP_SELF . '?page=' . $page . '&tab='. $tab . '" class="nav-tab nav-tab-active">' . $name . '</a>';			
+		} else {
+			echo '<a href="' . $PHP_SELF . '?page=' . $page . '&tab='. $tab . '" class="nav-tab">' . $name . '</a>';			
+		}
+	}
+	
+	echo "</h2>";
 }
 add_action( 'lblg_after_admin_header', 'lblg_output_admin_tabs' );
 
 /**
+ * Grab all the options tab names/links to display.
  *
- * @global type $lblg_default_options 
+ * @global array $lblg_default_options 
+ * @return array
  */
 function lblg_get_admin_tabs(){
 	global $lblg_default_options;
 	
-	print_r($lblg_default_options);
+	print_r($lblg_default_options['tabs']);
+	// foreach( $lblg_default_options as $option => $values ){
+	// 		if( 'tab' == $values['type'] ){
+	// 			$admin_tabs[$option] = $values['name'];
+	// 		}
+	// 	}
+	
+	return $admin_tabs;
 }
 
 /**
  * Display the theme options page
  *
- * @global type $lblg_shortname
- * @global type $lblg_themename
- * @global type $lblg_version
- * @global type $lblg_options
- * @global type $lblg_default_options 
+ * @global string $lblg_shortname
+ * @global string $lblg_themename
+ * @global string $lblg_version
+ * @global array $lblg_options
+ * @global array $lblg_default_options 
  * 
  */
 function lblg_admin() {
@@ -144,12 +171,12 @@ function lblg_option_wrapper_footer( $values ){
 }
 
 /**
- *
- * @global type $lblg_options
- * @global type $lblg_default_options
- * @global type $lblg_shortname 
  * lblg_options_walker() is responsible for printing all the 
  * theme options in the theme's options screen.
+ *
+ * @global array $lblg_options
+ * @global array $lblg_default_options
+ * @global string $lblg_shortname 
  */
 function lblg_options_walker(){
 	global $lblg_options, $lblg_default_options, $lblg_shortname;

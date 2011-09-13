@@ -51,68 +51,84 @@ $alt_stylesheets_tmp = asort($alt_stylesheets);
 $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:", "*none*");
 
 $parent_options_array = array (
+	"tabs" => array( 'general' ),
+	
+	"general" => array(
+			"name"		=> "General",
+			"type"		=> "tab",
+			"contents"	=> array(
+				"style_options" => array(	"name" => "Style Options",
+						"type" => "subhead"),
 
-	"style_options" => array(	"name" => "Style Options",
-			"type" => "subhead"),
+				"layout_stylesheet" => array(	"name" => "Layout Stylesheet",
+						"desc" => "Place additional layout stylesheets in <code>" . TEMPLATEPATH . "/layouts/</code> to add them as layout options",
+			    		"std" => "Select a layout:",
+			    		"type" => "select",
+			    		"options" => $layouts),
 
-	"layout_stylesheet" => array(	"name" => "Layout Stylesheet",
-			"desc" => "Place additional layout stylesheets in <code>" . TEMPLATEPATH . "/layouts/</code> to add them as layout options",
-    		"std" => "Select a layout:",
-    		"type" => "select",
-    		"options" => $layouts),
+				"alt_stylesheet" => array(	"name" => "Theme Stylesheet",
+						"desc" => "Place additional theme stylesheets and assets in <code>" . TEMPLATEPATH . "/styles/</code> to add them as styling options",
+					    "std" => "Select a stylesheet:",
+					    "type" => "select",
+					    "options" => $alt_stylesheets),
 
-	"alt_stylesheet" => array(	"name" => "Theme Stylesheet",
-			"desc" => "Place additional theme stylesheets and assets in <code>" . TEMPLATEPATH . "/styles/</code> to add them as styling options",
-		    "std" => "Select a stylesheet:",
-		    "type" => "select",
-		    "options" => $alt_stylesheets),
+				"use_custom_header" => array(	"name" => "Use Custom Headers",
+						"desc" => 'Check this box if you wish to use WordPress\'s built-in <a href="http://codex.wordpress.org/Custom_Headers">Custom Header Image API</a> to define a custom image for your theme',
+						"std" => "1",
+						"type" => "checkbox"),
 
-	"use_custom_header" => array(	"name" => "Use Custom Headers",
-			"desc" => 'Check this box if you wish to use WordPress\'s built-in <a href="http://codex.wordpress.org/Custom_Headers">Custom Header Image API</a> to define a custom image for your theme',
-			"std" => "1",
-			"type" => "checkbox"),
+				"blog_meta_info" => array(	"name" => "Blog Meta Info",
+						"type" => "subhead"),
 
-	"blog_meta_info" => array(	"name" => "Blog Meta Info",
-			"type" => "subhead"),
+				"display_footer_copyright" => array(	"name" => "Display Copyright",
+						"desc" => "Check this box to display your copyright information in the footer.", 
+						"std" => "1",
+						"type" => "checkbox"),
 
-	"display_footer_copyright" => array(	"name" => "Display Copyright",
-			"desc" => "Check this box to display your copyright information in the footer.", 
-			"std" => "1",
-			"type" => "checkbox"),
+				"footer_copyright" => array(	"name" => "Copyright Statement",
+						"desc" => "The following text will be displayed by default: <b><p>" . get_bloginfo('name') . " " . lblg_copyright() . "</p></b>",
+						"std" => "",
+						"type" => "textarea",
+						"options" => array("rows" => "5",
+										   "cols" => "40") ),
 
-	"footer_copyright" => array(	"name" => "Copyright Statement",
-			"desc" => "The following text will be displayed by default: <b><p>" . get_bloginfo('name') . " " . lblg_copyright() . "</p></b>",
-			"std" => "",
-			"type" => "textarea",
-			"options" => array("rows" => "5",
-							   "cols" => "40") ),
+				"display_footer_credits" => array(	"name" => "Display Credits",
+						"desc" => "Check this box to display your site credits in the footer.", 
+						"std" => "1",
+						"type" => "checkbox"),
 
-	"display_footer_credits" => array(	"name" => "Display Credits",
-			"desc" => "Check this box to display your site credits in the footer.", 
-			"std" => "1",
-			"type" => "checkbox"),
+				"footer_credit_text" => array(	"name" => "Footer Credits",
+						"desc" => "Footer credit text defaults to: <b><p>Powered by <a href=\"http://wordpress.org\">WordPress</a> " . get_bloginfo('version') . " and <a href=\"http://literalbarrage.org/blog/code/elbee-elgee\">Elbee Elgee</a></p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
+						"std" => "",
+						"type" => "textarea",
+						"options" => array("rows" => "5",
+										   "cols" => "40") ),
+			)
+	),
 
-	"footer_credit_text" => array(	"name" => "Footer Credits",
-			"desc" => "Footer credit text defaults to: <b><p>Powered by <a href=\"http://wordpress.org\">WordPress</a> " . get_bloginfo('version') . " and <a href=\"http://literalbarrage.org/blog/code/elbee-elgee\">Elbee Elgee</a></p></b> Change it to fit your site. (I'd appreciate the link love, though, if you'd leave it in...)  HTML should work just fine, raw PHP not so much. ",
-			"std" => "",
-			"type" => "textarea",
-			"options" => array("rows" => "5",
-							   "cols" => "40") ),
+
 );
 
 if( function_exists('bp_get_loggedin_user_nav') ) {
-	$parent_options_array['bp_subhead'] = array( "name" => "BuddyPress-specific Options",
-										"type" => "subhead" );
-	
-	$parent_options_array['disable_bp_js'] = array( "name" => "Disable BuddyPress JavaScript/AJAX",
-											"desc" => "Elbee Elgee automatically integrates the BuddyPress default theme javascript and AJAX functionality. You may switch this off, though the experience will degrade somewhat.",
-											"std" => "0",
-											"type" => "checkbox" );
-	
-	$parent_options_array['disable_bp_css'] = array( "name" => "Disable BuddyPress CSS",
-											"desc" => "Elbee Elgee comes with basic CSS styles that give BuddyPress pages a standard look and feel. You can extend upon these styles in your child theme's CSS or simply disable them and construct your own.",
-											"std" => "0",
-											"type" => "checkbox" );
+	$parent_options_array['tabs'][] = 'buddypress';
+	$parent_options_array['buddypress'] = array(
+		"name"		=> "BuddyPress",
+		"type"		=> "tab",
+		"contents"	=> array(
+			"bp_subhead" => array( "name" => "BuddyPress-specific Options",
+								   "type" => "subhead" ),
+			
+			"disable_bp_js" => array( "name" => "Disable BuddyPress JavaScript/AJAX",
+									  "desc" => "Elbee Elgee automatically integrates the BuddyPress default theme javascript and AJAX functionality. You may switch this off, though the experience will degrade somewhat.",
+									  "std" => "0",
+									  "type" => "checkbox" ),
+									
+			"disable_bp_css" => array( "name" => "Disable BuddyPress CSS",
+									   "desc" => "Elbee Elgee comes with basic CSS styles that give BuddyPress pages a standard look and feel. You can extend upon these styles in your child theme's CSS or simply disable them and construct your own.",
+									   "std" => "0",
+									   "type" => "checkbox" ),
+		),
+	);
 }
 
 $parent_theme_array[ 'options' ] = $parent_options_array;
