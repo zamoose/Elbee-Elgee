@@ -1,15 +1,20 @@
 <?php
-/*
-* Elbee Elgee Theme Hooks
-*/
+/**
+ * Elbee Elgee Theme Hooks
+ *
+ * @package 		Elbee-Elgee
+ * @copyright	Copyright (c) 2011, Doug Stewart
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since 		Elbee-Elgee 1.0
+ */
 
-/*
+/**
 *  Action hooks
 */
 function lblg_set_themename(){
 	do_action( 'lblg_set_themename' );
 }
-
 
 function lblg_after_admin_header(){
 	do_action( 'lblg_after_admin_header' );
@@ -249,6 +254,5 @@ add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
 add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
 add_action( 'lblg_print_credits', 'lblg_credits' );
-add_action( 'lblg_print_options', 'lblg_options_walker' );
 
 // WordPress core hooks

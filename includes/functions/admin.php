@@ -43,46 +43,48 @@ function lblg_output_admin_tabs(){
 	
 	$page = 'lblg_options_page';
 	
-	if( isset($_GET['tab'] )) {
-		$current_tab = $_GET['tab'];
+	if( empty( $lblg_default_options['tabs']) && empty($lblg_default_options['child_tabs']) ){
+		// If both sets of tab options are empty, don't output anything.
 	} else {
-		$current_tab = 'general';
-	}
-	
-	$tabs = $lblg_default_options['tabs'];
-	
-	echo '<h2 class="nav-tab-wrapper">';
-	
-	foreach( $tabs as $tab => $name ){
-		if( $current_tab == $tab ){
-			echo '<a href="' . $PHP_SELF . '?page=' . $page . '&tab='. $tab . '" class="nav-tab nav-tab-active">' . $name . '</a>';			
+		if( isset($_GET['tab'] )) {
+			$current_tab = $_GET['tab'];
 		} else {
-			echo '<a href="' . $PHP_SELF . '?page=' . $page . '&tab='. $tab . '" class="nav-tab">' . $name . '</a>';			
+			$current_tab = 'general';
 		}
-	}
 	
-	echo "</h2>";
+		$tabs = $lblg_default_options['tabs'];
+		$child_tabs = $lblg_default_options['child_tabs'];
+	
+		echo '<h2 class="nav-tab-wrapper">';
+	
+		if( !empty($tabs) ){
+			foreach( $tabs as $tab ){
+				$name = $lblg_default_options[$tab]['name'];
+				if( $current_tab == $tab ){
+					$activeclass = ' nav-tab-active';
+				} else {
+					$activeclass = '';
+				}
+				echo "<a href=\"?page=$page&tab=$tab\" class=\"nav-tab$activeclass\">$name</a>";
+			}
+		}
+	
+		if( !empty($child_tabs) ){
+			foreach( $child_tabs as $tab ){
+				$name = $lblg_default_options[$tab]['name'];
+				if( $current_tab == $tab ){
+					$activeclass = ' nav-tab-active';
+				} else {
+					$activeclass = '';
+				}
+				echo "<a href=\"?page=$page&tab=$tab\" class=\"nav-tab$activeclass\">$name</a>";			
+			}
+		}
+	
+		echo "</h2>";
+	}
 }
 add_action( 'lblg_after_admin_header', 'lblg_output_admin_tabs' );
-
-/**
- * Grab all the options tab names/links to display.
- *
- * @global array $lblg_default_options 
- * @return array
- */
-function lblg_get_admin_tabs(){
-	global $lblg_default_options;
-	
-	print_r($lblg_default_options['tabs']);
-	// foreach( $lblg_default_options as $option => $values ){
-	// 		if( 'tab' == $values['type'] ){
-	// 			$admin_tabs[$option] = $values['name'];
-	// 		}
-	// 	}
-	
-	return $admin_tabs;
-}
 
 /**
  * Display the theme options page
@@ -174,22 +176,23 @@ function lblg_option_wrapper_footer( $values ){
  * lblg_options_walker() is responsible for printing all the 
  * theme options in the theme's options screen.
  *
- * @global array $lblg_options
- * @global array $lblg_default_options
- * @global string $lblg_shortname 
+ * @param array $options
+ * @param array $default_options
+ * @param string $shortname 
  */
-function lblg_options_walker(){
-	global $lblg_options, $lblg_default_options, $lblg_shortname;
-		
+function lblg_options_walker( $options, $default_options, $shortname ){
+	
+	echo "<h2>Options</h2>";
+	print_r($options);
+	echo "<h2>Defaut Options</h2>";
+	print_r($default_options);
 	$section = '';
-	$lblg_options_group = $lblg_shortname . '_theme_options';
-	$options = $lblg_options;
-	$default_options = $lblg_default_options;
+	$lblg_options_group = $shortname . '_theme_options';
 
 	add_settings_section( 'lblg_options', 'lblg', 'lblg_options', 'lblg' );
+
 	foreach ( $default_options as $key => $value ) { 	
 		switch ( $value['type'] ) {
-			
 			// Prints a subheader (useful for dividing options up into similar sections)
 			case 'subhead':
 			$section = 'lblg';
@@ -197,14 +200,14 @@ function lblg_options_walker(){
 			?>
 				</tbody>
 				</table>
-				
+			
 				<h3><?php echo $value['name']; ?></h3>
-				
+			
 				<table class="form-table">
 				<tbody>
 			<?php
 			break;
-			
+		
 			// Prints a simple text <input> element
 			case 'text':
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
@@ -214,7 +217,7 @@ function lblg_options_walker(){
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
-			
+		
 			// Prints a drop-down <select> element
 			case 'select':
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
@@ -236,7 +239,7 @@ function lblg_options_walker(){
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
-			
+		
 			// Prints a <textarea> element
 			case 'textarea':
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
@@ -247,7 +250,7 @@ function lblg_options_walker(){
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
-	
+
 			// Prints a series of radio <input> elements
 			case "radio":
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );			
@@ -265,10 +268,10 @@ function lblg_options_walker(){
 			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"" . checked( $opt_key, $lblg_options[$key], false ) . " />$opt_value<br />\n";
 				}
 			}
-			 
+		 
 			lblg_option_wrapper_footer( $value );
 			break;
-			
+		
 			// Prints a checbox <input> element
 			case "checkbox":
 			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
@@ -279,11 +282,35 @@ function lblg_options_walker(){
 
 			lblg_option_wrapper_footer( $value );
 			break;
-	
+
 			default:
-	
+
 			break;
 		}
 	}
-
 }
+
+/**
+ * Wrapper function to intercept the current tab (if any)
+ * and spawn the display of the current screen's options
+ *
+ * @global array $lblg_default_options
+ * @global array $lblg_options
+ * @global string $lblg_shortname
+ */
+function lblg_display_options(){
+	global $lblg_default_options, $lblg_options, $lblg_shortname;
+	
+	if( empty($lblg_default_options['tabs']) && empty($lblg_default_options['child_tabs']) ){
+		lblg_options_walker( $lblg_options, $lblg_default_options, $lblg_shortname );
+	} else {
+		if( isset($_GET['tab'] )) {
+			$current_tab = $_GET['tab'];
+		} else {
+			$current_tab = 'general';
+		}
+		
+		lblg_options_walker( $lblg_options, $lblg_default_options[$current_tab]['contents'], $lblg_shortname );
+	}
+}
+add_action( 'lblg_print_options', 'lblg_display_options' );

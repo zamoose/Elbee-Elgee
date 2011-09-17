@@ -34,8 +34,16 @@ Additional layouts and styles can be added by simply placing new .css files in t
 5. Configure settings to your liking.
 6. Click "Save changes".
 
+#### Via Git (git) ####
+1. Check out the repository from https://github.com/zamoose/Elbee-Elgee into your site's `wp-content/themes/` directory, e.g. `git clone git://github.com/zamoose/Elbee-Elgee.git elbee-elgee`
+2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
+3. Activate Elbee Elgee.
+4. Go to Appearance -> Elbee Elgee Settings.
+5. Configure settings to your liking.
+6. Click "Save changes".
+
 #### Via Subversion (SVN) ####
-1. Check out the repository from http://bitbucket.org/zamoose/elbee-elgee/trunk into your site's `wp-content/themes/` directory, e.g. `svn cp http://bitbucket.org/zamoose/elbee-elgee/trunk elbee-elgee`
+1. Check out the repository from http://bitbucket.org/zamoose/elbee-elgee/trunk into your site's `wp-content/themes/` directory, e.g. `svn co http://bitbucket.org/zamoose/elbee-elgee/trunk elbee-elgee`
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -103,7 +111,7 @@ I have tried to hew as closely as possible to the recommended best-practices in 
 * General code clean-up/optimization.
 * Better documentation.
 * <del>Fully-integrated bbPress support.</del> Added in 1.1.
-* Editor styling (particularly important after WP 3.2's addition of Distraction-Free Writing [DFW])
+* <del>Editor styling (particularly important after WP 3.2's addition of Distraction-Free Writing [DFW])</del> Added in 1.2.
 
 ### ONGOING DEVELOPMENT ###
 I have switched my development workflow from Subversion to [Mercurial](<http://mercurial.selenic.com>) (I spend a great deal of time on the train and Hg's distributed nature is *ideal* for such disconnected development) and, as such, host my code at <http://bitbucket.org/zamoose/elbee-elgee>. Please submit feature requests and bug reports using the issue tracker available at BitBucket.

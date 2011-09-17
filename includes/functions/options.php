@@ -88,10 +88,21 @@ add_action( 'after_setup_theme','lblg_options_init', 9 );
 function lblg_get_options_from_defaults( $default_options ){
 	$stripped_opts = array();
 	
+	$c = 0;
 	foreach( $default_options as $key => $value ){
-		if('subhead' != $value['type']){
+		switch($value['type']){
+			case 'tab':
+				$stripped_opts = $stripped_opts + lblg_get_options_from_defaults($value['contents']);
+			break;
+			case 'subhead':
+			break;
+			default:
 			$stripped_opts[$key] = $value['std'];
+			break;
 		}
+		echo "<h2>Iteration $c</h2>";
+		print_r($stripped_opts);
+		$c++;
 	}
 	
 	return $stripped_opts;
@@ -183,7 +194,6 @@ function lblg_sanitize_options( $input ){
 				case 'textarea':
 					if( isset($input[$key]) ){
 						$valid_input[ $key ] = wp_kses_post( $input[ $key ] );
-						//$valid_input[ $key ] = esc_attr( $input[$key] );
 					}
 				break;
 

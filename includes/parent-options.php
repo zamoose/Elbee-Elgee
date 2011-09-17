@@ -9,13 +9,6 @@
  * @since		Elbee-Elgee 1.0
  */
 
-/** 
- * Current choices:
- * 'tabbed': use WordPress' built-in tabbing to separate sections
- * 'single': single page of options
- */
-$parent_theme_array[ 'admin_layout' ] = 'tabbed';
-
 // Look for layout CSS files to auto-load
 $layout_path = TEMPLATEPATH . '/layouts/'; 
 $layouts = array();
@@ -50,7 +43,7 @@ $layouts_tmp = array_unshift($layouts, "Select a layout:", "*none*");
 $alt_stylesheets_tmp = asort($alt_stylesheets);
 $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:", "*none*");
 
-$parent_options_array = array (
+$parent_options_array = array(
 	"tabs" => array( 'general' ),
 	
 	"general" => array(
