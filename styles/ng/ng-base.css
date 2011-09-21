@@ -1,3 +1,40 @@
+/* @group Menu elements */
+#menu ul ul {
+	display: none;
+	float: left;
+	position: absolute;
+	width: 188px;
+	border: 1px solid #000;
+	background: #3c3c3c;
+	z-index: 99999;
+}
+
+#menu ul ul li {
+	position: relative;
+}
+
+#menu ul li:hover > ul {
+	display: block;
+}
+
+#menu ul ul ul {
+	left: 100%;
+	top: -1px;
+}
+
+ul.sub-menu li a:link, ul.sub-menu li a:visited {
+	padding: 10px 20px;
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+ul.sub-menu li a:hover, ul.sub-menu li a:active {
+	background: #fff;
+	color: #0971B3;
+}
+/* @end */
+
 /* @group Calendar elements */
 #calendar_wrap {
 	padding: 15px;

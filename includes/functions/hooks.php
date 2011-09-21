@@ -103,8 +103,7 @@ function lblg_menu(){
 	if( function_exists( 'wp_nav_menu' ) ){
 		wp_nav_menu( array( 'theme_location'	=> 'primary',  
 							'container'			=> 'div',
-							'container_id'		=> 'menu',
-							'depth'				=> '1'
+							'container_id'		=> 'menu'
 					) );
 	} else {
 	?>
