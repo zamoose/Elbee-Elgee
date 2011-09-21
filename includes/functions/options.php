@@ -18,10 +18,11 @@
  * @global string   $lblg_themename
  * @global string   $lblg_version
  * @global array    $lblg_options
- * @global array    $lblg_default_options 
+ * @global array    $lblg_default_options
+ * @global array    $lblg_defaults
  */
 function lblg_options_init(){
-	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options;
+	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options, $lblg_defaults;
 	/* 
 	*  If Elbee Elgee (or a child theme) has already been installed,
 	*  this should return an array() with keys 'shortname', 'themename',
@@ -55,6 +56,7 @@ function lblg_options_init(){
 	// Pull the default options from the parent-options.php and, optionally, the
 	// child-options.php file, if we're running as a child theme.
 	$lblg_default_options = lblg_get_default_options();
+	$lblg_defaults = lblg_get_options_from_defaults( $lblg_default_options );
 
 	if( ( false === $lblg_stored_options ) || ( '' == $lblg_stored_options ) ){
 		// We haven't been installed yet.
@@ -88,21 +90,19 @@ add_action( 'after_setup_theme','lblg_options_init', 9 );
 function lblg_get_options_from_defaults( $default_options ){
 	$stripped_opts = array();
 	
-	$c = 0;
 	foreach( $default_options as $key => $value ){
-		switch($value['type']){
-			case 'tab':
-				$stripped_opts = $stripped_opts + lblg_get_options_from_defaults($value['contents']);
-			break;
-			case 'subhead':
-			break;
-			default:
-			$stripped_opts[$key] = $value['std'];
-			break;
+		if( $key != "tabs" ){
+			switch($value['type']){
+				case 'tab':
+					$stripped_opts = $stripped_opts + lblg_get_options_from_defaults($value['contents']);
+				break;
+				case 'subhead':
+				break;
+				default:
+				$stripped_opts[$key] = $value['std'];
+				break;
+			}
 		}
-		echo "<h2>Iteration $c</h2>";
-		print_r($stripped_opts);
-		$c++;
 	}
 	
 	return $stripped_opts;

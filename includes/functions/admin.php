@@ -184,8 +184,7 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 	
 	echo "<h2>Options</h2>";
 	print_r($options);
-	echo "<h2>Defaut Options</h2>";
-	print_r($default_options);
+	
 	$section = '';
 	$lblg_options_group = $shortname . '_theme_options';
 
@@ -227,7 +226,7 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 						<?php 
 							if( $value['options'] === array_values($value['options'])){
 								foreach ( $value['options'] as $option) { 
-									echo "<option" . selected( $option, $lblg_options[$key], false ) . ">$option</option>\n";
+									echo "<option" . selected( $option, $options[$key], false ) . ">$option</option>\n";
 								}
 							} else {
 								foreach ( $value['options'] as $key => $value ) { 
@@ -246,7 +245,7 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 			$ta_options = $value['options'];
 			lblg_option_wrapper_header( $value );
 			?>
-					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php echo esc_html( $lblg_options[$key] ); ?></textarea>
+					<textarea name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>" cols="<?php echo $ta_options['cols']; ?>" rows="<?php echo $ta_options['rows']; ?>"><?php echo esc_html( $options[$key] ); ?></textarea>
 			<?php
 			lblg_option_wrapper_footer( $value );
 			break;
@@ -259,13 +258,13 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 		 		foreach ( $value['options'] as $option ) {
 						$radio_setting = $lblg_options[$key];
 						$tmp_name = $lblg_options_group . '['. $key . ']';
-			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"" . checked( $option, $lblg_options[$key], false ) . " />$option<br />\n";
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$option\"" . checked( $option, $options[$key], false ) . " />$option<br />\n";
 				}
 			} else {
 		 		foreach ( $value['options'] as $opt_key => $opt_value ) {
 						$radio_setting = $lblg_options[$key];
 						$tmp_name = $lblg_options_group . '['. $key . ']';
-			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"" . checked( $opt_key, $lblg_options[$key], false ) . " />$opt_value<br />\n";
+			    		echo "<input type=\"radio\" name=\"$tmp_name\" value=\"$opt_key\"" . checked( $opt_key, $options[$key], false ) . " />$opt_value<br />\n";
 				}
 			}
 		 
@@ -278,7 +277,7 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 			lblg_option_wrapper_header( $value );
 
 			$tmp_name = $lblg_options_group . '['. $key . ']';
-			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"1\"" . checked( $lblg_options[$key], 1, false ) . " />\n";
+			echo "<input type=\"checkbox\" name=\"$tmp_name\" id=\"$key\" value=\"1\"" . checked( $options[$key], 1, false ) . " />\n";
 
 			lblg_option_wrapper_footer( $value );
 			break;
