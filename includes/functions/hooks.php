@@ -132,6 +132,7 @@ function lblg_styles(){
 	$layout_handle = $lblg_shortname . '_layout_stylesheet';
 	$alt_style_handle = $lblg_shortname . '_alt_stylesheet';
 	$print_handle = $lblg_shortname . '_print_stylesheet';
+	$normalize_handle = $lblg_shortname . '_normalize_stylesheet';
 	
 	$layout_style_option = $lblg_options['layout_stylesheet'];
 	$alt_style_option = $lblg_options['alt_stylesheet'];
@@ -170,6 +171,7 @@ function lblg_styles(){
 		wp_enqueue_style( $alt_style_handle, $alt_style, '', '', 'screen' );
 	}
 	
+	//wp_enqueue_style( $normalize_handle, get_template_directory_uri() . 'includes/css/normalize.css/normalize.css', '', '', 'screen' );
 	wp_enqueue_style($print_handle,  get_template_directory_uri() . '/print.css', '', '', 'print' );
 }
 add_action( 'lblg_enqueue_styles', 'lblg_styles' );
@@ -253,5 +255,3 @@ add_action( 'lblg_print_title', 'lblg_title' );
 add_action( 'lblg_print_menu', 'lblg_menu' );
 add_action( 'lblg_print_copyright', 'lblg_echo_copyright' );
 add_action( 'lblg_print_credits', 'lblg_credits' );
-
-// WordPress core hooks
