@@ -82,10 +82,6 @@ body.archive #lb-content h2 {
 	padding-bottom: 0.5em;
 }
 
-.itemtext p {
-	padding-left: 15px;
-}
-
 .itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6,
 .comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6 {
 	font-weight: bold;
@@ -175,6 +171,11 @@ ol.commentlist ul.children{
 	font-weight: bold;
 }
 
+#lb-content {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
 #lb-content p {
 	padding-bottom: 0.7em
 }
@@ -195,7 +196,4 @@ ol.commentlist ul.children{
 	max-width: 100%;
 }
 
-.post div.postinfo {
-	padding-left: 15px;
-}
 /* @end */

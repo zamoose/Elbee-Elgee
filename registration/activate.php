@@ -1,14 +1,10 @@
-<?php /* This template is only used on multisite installations */ ?>
-
-<?php get_header(); ?>
+<?php get_header( 'buddypress' ); ?>
 
 	<?php get_template_part( 'bp-wrapper-header' ); ?>
 
 		<?php do_action( 'bp_before_activation_page' ) ?>
 
 		<div class="page" id="activate-page">
-
-			<?php do_action( 'template_notices' ) ?>
 
 			<?php if ( bp_account_was_activated() ) : ?>
 
@@ -36,7 +32,7 @@
 					<input type="text" name="key" id="key" value="" />
 
 					<p class="submit">
-						<input type="submit" name="submit" value="<?php _e( 'Activate', 'buddypress' ) ?> &rarr;" />
+						<input type="submit" name="submit" value="<?php _e( 'Activate', 'buddypress' ) ?>" />
 					</p>
 
 				</form>
@@ -49,5 +45,6 @@
 
 		<?php do_action( 'bp_after_activation_page' ) ?>
 
-<?php get_template_part( 'bp-wrapper-footer' ); ?>
-<?php get_footer(); ?>
+	<?php get_template_part( 'bp-wrapper-footer-top' ); ?>
+
+	<?php get_template_part( 'bp-wrapper-footer-bottom' ); ?>

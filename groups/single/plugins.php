@@ -1,6 +1,7 @@
-<?php get_header() ?>
+<?php get_header( 'buddypress' ) ?>
 
 	<?php get_template_part( 'bp-wrapper-header' ); ?>
+	
 			<?php if ( bp_has_groups() ) : while ( bp_groups() ) : bp_the_group(); ?>
 
 			<?php do_action( 'bp_before_group_plugin_template' ) ?>
@@ -10,7 +11,7 @@
 			</div><!-- #item-header -->
 
 			<div id="item-nav">
-				<div class="item-list-tabs no-ajax" id="object-nav">
+				<div class="item-list-tabs no-ajax" id="object-nav" role="navigation">
 					<ul>
 						<?php bp_get_options_nav() ?>
 
@@ -28,9 +29,10 @@
 				<?php do_action( 'bp_after_group_body' ) ?>
 			</div><!-- #item-body -->
 
-			<?php endwhile; endif; ?>
-
 			<?php do_action( 'bp_after_group_plugin_template' ) ?>
 
-<?php get_template_part( 'bp-wrapper-footer' ); ?>
-<?php get_footer() ?>
+			<?php endwhile; endif; ?>
+
+	<?php get_template_part( 'bp-wrapper-footer-top' ); ?>
+
+	<?php get_template_part( 'bp-wrapper-footer-bottom' ); ?>

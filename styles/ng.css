@@ -164,16 +164,21 @@ div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
 div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 	background: #fff;
 	color: #0971B3;
-
 }
 
 #menu li.current_page_item, #lb-bp-nav ul.menu > li.current-menu-item {
 	background: #fff;
 }
 
-#menu li.current_page_item a:link, #menu li.current_page_item a:visited,
+#menu li.current_page_item > a:link, #menu li.current_page_item > a:visited,
 #lb-bp-nav ul.menu > li.current-menu-item a:link, #lb-bp-nav ul.menu > li.current-menu-item a:visited {
 	color: #000;
+}
+
+#menu li.current_page_item a:hover, #menu li.current_page_item a:active,
+#lb-bp-nav ul.menu > li.current-menu-item a:active, #lb-bp-nav ul.menu > li.current-menu-item a:hover {
+	background: #fff;
+	color: #0971B3;
 }
 
 /* @end */
