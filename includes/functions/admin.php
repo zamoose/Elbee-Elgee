@@ -181,10 +181,7 @@ function lblg_option_wrapper_footer( $values ){
  * @param string $shortname 
  */
 function lblg_options_walker( $options, $default_options, $shortname ){
-	
-	echo "<h2>Options</h2>";
-	print_r($options);
-	
+
 	$section = '';
 	$lblg_options_group = $shortname . '_theme_options';
 

@@ -168,8 +168,8 @@ function lblg_get_default_options(){
  * @return  array
  */
 function lblg_sanitize_options( $input ){
-	global $lblg_shortname, $lblg_default_options, $lblg_options;
-
+	global $lblg_shortname, $lblg_default_options, $lblg_options, $lblg_defaults;
+	
 	$submit = ( ! empty( $input['save']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
 		
@@ -186,33 +186,64 @@ function lblg_sanitize_options( $input ){
 			$valid_input = lblg_get_options_from_defaults( $lblg_default_options );
 		}
 
-		foreach( $valid_input as $key => $value ){
-			$tmp_type = $lblg_default_options[$key]['type'];
+		if( !isset( $lblg_default_options['tabs'] ) ){
+			foreach( $valid_input as $key => $value ){
+				$tmp_type = $lblg_default_options[$key]['type'];
 			
-			switch( $tmp_type ){
-				case 'text':
-				case 'textarea':
-					if( isset($input[$key]) ){
-						$valid_input[ $key ] = wp_kses_post( $input[ $key ] );
-					}
-				break;
+				switch( $tmp_type ){
+					case 'text':
+					case 'textarea':
+						if( isset($input[$key]) ){
+							$valid_input[ $key ] = wp_kses_post( $input[ $key ] );
+						}
+					break;
 
-				case 'select':
-				case 'radio':
-					if( isset($input[$key]) ){
-						$valid_input[$key] = ( in_array( $input[$key], $lblg_default_options[$key]['options']) ? $input[$key] : $valid_input[$key] );
-					}
-				break;
+					case 'select':
+					case 'radio':
+						if( isset($input[$key]) ){
+							$valid_input[$key] = ( in_array( $input[$key], $lblg_default_options[$key]['options']) ? $input[$key] : $valid_input[$key] );
+						}
+					break;
 
-				case 'checkbox':
-					$valid_input[$key] = (( isset($input[$key]) && ( '1' == $input[$key] ) ) ? '1' : '0' );
-				break;
+					case 'checkbox':
+						$valid_input[$key] = (( isset($input[$key]) && ( '1' == $input[$key] ) ) ? '1' : '0' );
+					break;
 				
-				default:
-				break;
+					default:
+					break;
+				}
 			}
-		}		
+		} else {
+			foreach( $lblg_default_options['tabs'] as $tab ) {
+				foreach( $valid_input as $key => $value ){
+					$tmp_type = $lblg_default_options[$tab]['contents'][$key]['type'];
+
+					switch( $tmp_type ){
+						case 'text':
+						case 'textarea':
+							if( isset($input[$key]) ){
+								$valid_input[ $key ] = wp_kses_post( $input[ $key ] );
+							}
+						break;
+
+						case 'select':
+						case 'radio':
+							if( isset($input[$key]) ){
+								$valid_input[$key] = ( in_array( $input[$key], $lblg_default_options[$tab]['contents'][$key]['options']) ? $input[$key] : $valid_input[$key] );
+							}
+						break;
+
+						case 'checkbox':
+							$valid_input[$key] = (( isset($input[$key]) && ( '1' == $input[$key] ) ) ? '1' : '0' );
+						break;
+
+						default:
+						break;
+					}
+				}
+			}
+		}
 	}
-		
+
 	return $valid_input;
 }
