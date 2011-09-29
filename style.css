@@ -554,3 +554,11 @@ div.sticky a {
 div.post-pagination {
 	clear: both;
 }
+
+#s {
+	max-width: 97%;
+}
+
+.accessibly-hidden{
+	display: none;
+}

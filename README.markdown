@@ -120,6 +120,11 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3
+	* **Features Added**
+		* Support for BuddyPress 1.5
+		* Support for final bbPress 2.0
+		* Tabbed admin support
 * Version 1.2.2
 	* **Issues Fixed**
 		* Proper support for BuddyPress 1.2.9 permalinks

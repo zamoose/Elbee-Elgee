@@ -86,7 +86,7 @@ function lblg_bp_init(){
 	}
 	
 	/* Add the wireframe BP page styles */
-	if ( 'true' != $lblg_options['disable_bp_css'] )
+ 	if ( ( 'true' != $lblg_options['disable_bp_css'] ) && ( !is_admin() ) )
 		wp_enqueue_style( 'lblg-bp-css', get_template_directory_uri() . '/includes/css/bp.css' );
 		
 	// Add words that we need to use in JS to the end of the page so they can be 
