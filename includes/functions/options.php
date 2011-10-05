@@ -172,6 +172,7 @@ function lblg_sanitize_options( $input ){
 	
 	$submit = ( ! empty( $input['save']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
+	$tabbed = ( !empty( $input['tab']) ? true : false );
 		
 	if( $reset ){
 		$valid_input = lblg_get_options_from_defaults( $lblg_default_options );

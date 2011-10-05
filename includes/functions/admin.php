@@ -301,11 +301,13 @@ function lblg_display_options(){
 		lblg_options_walker( $lblg_options, $lblg_default_options, $lblg_shortname );
 	} else {
 		if( isset($_GET['tab'] )) {
-			$current_tab = $_GET['tab'];
+			$current_tab = esc_html( $_GET['tab'] );
 		} else {
 			$current_tab = 'general';
 		}
 		
+		echo '<input type="hidden" name="' . $lblg_shortname . '_theme_options[tab]" value="' . $current_tab . '" />';
+
 		lblg_options_walker( $lblg_options, $lblg_default_options[$current_tab]['contents'], $lblg_shortname );
 	}
 }
