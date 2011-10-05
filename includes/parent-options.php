@@ -124,6 +124,22 @@ if( function_exists('bp_get_loggedin_user_nav') ) {
 	);
 }
 
+if( function_exists( 'bbp_version' ) ){
+	$parent_options_array['tabs'][] = 'bbpress';
+	$parent_options_array['bbpress'] = array(
+		"name"		=> "bbPress",
+		"type"		=> "tab",
+		"contents"	=> array(
+			"bbp_subhead" => array( "name" => "bbPress-specific Options",
+									"type" => "subhead"),
+			"bbp_force_1_column_layout" => array( "name" => "Force 1 Column Layout",
+												  "desc" => "Force all bbPress forum/topic screens to use 1 column layouts (can increase readability/functionality of bbPress forums, depending upon your chosen layout).",
+												  "type" => "checkbox",
+												  "std" => "0" ),
+		),
+	);
+}
+
 $parent_theme_array[ 'options' ] = $parent_options_array;
 
 return $parent_theme_array;

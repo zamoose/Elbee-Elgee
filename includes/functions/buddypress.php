@@ -78,17 +78,48 @@ function lblg_bp_init(){
 	global $lblg_shortname, $lblg_options;
 	
 	/* Load the default BuddyPress AJAX functions */
-	if ( 'true' != $lblg_options['disable_bp_js'] ) {
+	if ( '1' != $lblg_options['disable_bp_js'] ) {
 		require_once( BP_PLUGIN_DIR . '/bp-themes/bp-default/_inc/ajax.php' );
 
 		/* Load the default BuddyPress javascript */
 		wp_enqueue_script( 'lblg-bp-js', BP_PLUGIN_URL . '/bp-themes/bp-default/_inc/global.js', array( 'jquery' ) );
 	}
 	
-	/* Add the wireframe BP page styles */
- 	if ( ( 'true' != $lblg_options['disable_bp_css'] ) && ( !is_admin() ) )
+ 	if ( ( '1' != $lblg_options['disable_bp_css'] ) && ( !is_admin() ) ){
+		// Add the wireframe BP page styles
 		wp_enqueue_style( 'lblg-bp-css', get_template_directory_uri() . '/includes/css/bp.css' );
 		
+		// Enqueue RTL styles for BP 1.5+
+		if ( version_compare( BP_VERSION, '1.3', '>' ) && is_rtl() )
+			wp_enqueue_style( 'bp-rtl',  plugins_url( '/bp-template-pack/' ) . 'bp-rtl.css', array( 'bp' ), $version );
+	}
+
+	if ( !is_admin() ) {
+		// Register buttons for the relevant component templates
+		// Friends button
+		if ( bp_is_active( 'friends' ) )
+			add_action( 'bp_member_header_actions',    'bp_add_friend_button' );
+
+		// Activity button
+		if ( bp_is_active( 'activity' ) )
+			add_action( 'bp_member_header_actions',    'bp_send_public_message_button' );
+
+		// Messages button
+		if ( bp_is_active( 'messages' ) )
+			add_action( 'bp_member_header_actions',    'bp_send_private_message_button' );
+
+		// Group buttons
+		if ( bp_is_active( 'groups' ) ) {
+			add_action( 'bp_group_header_actions',     'bp_group_join_button' );
+			add_action( 'bp_group_header_actions',     'bp_group_new_topic_button' );
+			add_action( 'bp_directory_groups_actions', 'bp_group_join_button' );
+		}
+
+		// Blog button
+		if ( bp_is_active( 'blogs' ) )
+			add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
+	}
+			
 	// Add words that we need to use in JS to the end of the page so they can be 
 	// translated and still used.
 	$params = array(
@@ -186,30 +217,3 @@ function lblg_bp_fix_get_posts_on_activity_front() {
 		$wp_query->query_vars['page_id'] = '"activity"';
 }
 add_action( 'pre_get_posts', 'lblg_bp_fix_get_posts_on_activity_front' );
-
-/**
- * Hooks BP's action buttons
- */
-function lblg_bp_add_buttons() {
-	// Member Buttons
-	if ( bp_is_active( 'friends' ) ) 
-		add_action( 'bp_member_header_actions',    'bp_add_friend_button' );
-	
-	if ( bp_is_active( 'activity' ) )
-		add_action( 'bp_member_header_actions',    'bp_send_public_message_button' );
-	
-	if ( bp_is_active( 'messages' ) )
-		add_action( 'bp_member_header_actions',    'bp_send_private_message_button' );
-	
-	// Group Buttons
-	if ( bp_is_active( 'groups' ) ) {
-		add_action( 'bp_group_header_actions',     'bp_group_join_button' );
-		add_action( 'bp_group_header_actions',     'bp_group_new_topic_button' );
-		add_action( 'bp_directory_groups_actions', 'bp_group_join_button' );
-	}
-	
-	// Blog Buttons
-	if ( bp_is_active( 'blogs' ) )
-		add_action( 'bp_directory_blogs_actions',  'bp_blogs_visit_blog_button' );
-}
-add_action( 'widgets_init', 'lblg_bp_add_buttons' );
