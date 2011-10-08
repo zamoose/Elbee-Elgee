@@ -72,9 +72,7 @@ This effectively creates a parent/child relationship *for theme options*. Child 
 #### bbPress version 2.0 (aka "The Plugin") Support ####
 *Based on the bbp_twentyten parent theme provided as a part of the default bbPress plugin install*
 
-Elbee Elgee has preliminary support for the "plugin-ized" version 2.0 of [bbPress](http://bbpress.org) (the WordPress-based forum solution). Templating functionality should not change between bbPress 2.0 beta 3 (the most recent version of bbP as of this writing) and the final release of bbPress version 2.0, so forums should continue to work during that transition period.
-
-**Note:** BuddyPress and the plugin version of bbPress do not currently play well together. The combination of the two is not tested under this theme and is in no way recommended, nor will I support it until BuddyPress and bbPress come to an understanding regarding mutual support. *I.e., if you're thinking of running BuddyPress 1.2.x and bbPress 2.0, DON'T.*
+Elbee Elgee features support for the "plugin-ized" version 2.0 of [bbPress](http://bbpress.org) (the WordPress-based forum solution). If an active bbPress installation is detected, Elbee Elgee will populate the theme admin page with bbPress-appropriate options.
 
 #### Multiple Layouts ####
 The HTML markup, combined with different CSS layout files, offers Elbee Elgee around 30 possible layout configurations right out of the gate. You can choose between 1, 2 and 3 column layouts, each of which offers static width, percentage-based and fluid width variants.
@@ -125,6 +123,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* Support for BuddyPress 1.5
 		* Support for final bbPress 2.0
 		* Tabbed admin support
+		* CSS-only drop-down menu support for primary menu area
+		* Partial PHPDoc documentation for included theme files
 * Version 1.2.2
 	* **Issues Fixed**
 		* Proper support for BuddyPress 1.2.9 permalinks

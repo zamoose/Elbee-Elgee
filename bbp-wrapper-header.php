@@ -8,7 +8,11 @@
 *
 * @since 		Elbee-Elgee 1.0
 */
+
+global $lblg_options;
 ?>
 <div id="allwrapper">
 	<div id="wrapper">
-		<div id="lb-content" role="main">
+		<?php 
+		if( 1 == $lblg_options['bbp_force_1_column'] ) $column_class = 'class="bp-full-width" ';
+		echo "<div id=\"lb-content\" $column_class role=\"main\">";

@@ -23,12 +23,8 @@
  */
 function lblg_options_init(){
 	global $lblg_shortname, $lblg_themename, $lblg_version, $lblg_options, $lblg_default_options, $lblg_defaults;
-	/* 
-	*  If Elbee Elgee (or a child theme) has already been installed,
-	*  this should return an array() with keys 'shortname', 'themename',
-	*  and 'version'.
-	*/
 	
+	// Grab theme metadata from parent/child style.css files.
 	$parent_bootstrap = get_theme_data( trailingslashit( TEMPLATEPATH ) . 'style.css' );
 	$child_bootstrap = get_theme_data( trailingslashit( STYLESHEETPATH ) . 'style.css' );
 	
@@ -175,7 +171,7 @@ function lblg_sanitize_options( $input ){
 	$tabbed = ( !empty( $input['tab']) ? true : false );
 		
 	if( $reset ){
-		$valid_input = lblg_get_options_from_defaults( $lblg_default_options );
+		$valid_input = $lblg_defaults;
 	} elseif ( $submit ){
 		// Check to see whether our options have actually been initialized
 		// and exist in the database (they should!)
@@ -188,6 +184,7 @@ function lblg_sanitize_options( $input ){
 		}
 
 		if( !isset( $lblg_default_options['tabs'] ) ){
+			// Admin is one screen, no tabs, so all the options are displayed at once.
 			foreach( $valid_input as $key => $value ){
 				$tmp_type = $lblg_default_options[$key]['type'];
 			
@@ -215,7 +212,7 @@ function lblg_sanitize_options( $input ){
 				}
 			}
 		} else {
-			foreach( $lblg_default_options['tabs'] as $tab ) {
+				$tab = $input['tab'];
 				foreach( $valid_input as $key => $value ){
 					$tmp_type = $lblg_default_options[$tab]['contents'][$key]['type'];
 
@@ -242,7 +239,6 @@ function lblg_sanitize_options( $input ){
 						break;
 					}
 				}
-			}
 		}
 	}
 

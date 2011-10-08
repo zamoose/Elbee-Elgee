@@ -1,6 +1,8 @@
 <?php
+global $lblg_options;
 lblg_sidebar_header(); 
 ?>
+<?php if( 1 != $lblg_options['bbp_force_1_column'] ) { ?>
 <div id="primarysb">
 	<ul>
 		<?php if ( !dynamic_sidebar('Primary') ) : ?>
@@ -37,5 +39,6 @@ lblg_sidebar_header();
 	</ul>
 </div> <!-- #secondarysb -->
 <?php
+} //endif
 lblg_sidebar_footer();
 ?>
