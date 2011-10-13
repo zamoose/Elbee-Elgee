@@ -3,6 +3,7 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 ?>
 <div id="footer">
 	<div id="footerwrapper">
+	<?php if( 1 != $lblg_options['bbp_disable_footer'] ) : ?>
 		<div id="footerleft">
 			<ul>
 			<?php if ( !dynamic_sidebar('Bottom Left') ) : ?>
@@ -25,6 +26,7 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 			<?php endif; ?>
 			</ul>
 		</div>
+	<?php endif; ?>
 	<div id="footercredits">
 	<?php 
 		if( $lblg_options['display_footer_copyright'] ) {

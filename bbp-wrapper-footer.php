@@ -12,8 +12,8 @@
 		</div><!-- #lb-content -->
 	</div><!-- #wrapper -->
 	
-	<?php get_sidebar(); ?>
+	<?php get_sidebar( 'bbpress' ); ?>
 	
 </div><!-- #allwrapper -->
 
-<?php get_footer(); ?>
+<?php get_footer( 'bbpress' ); ?>

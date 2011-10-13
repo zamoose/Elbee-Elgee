@@ -118,6 +118,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.1
+	* **Issues Fixed**
+		* bbPress 1 column layouts no longer site-wide
 * Version 1.3
 	* **Features Added**
 		* Support for BuddyPress 1.5
@@ -174,6 +177,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3
+	* bbPress 1 column settings apply site-wide instead of just to bbPress pages due to a flaw in selection logic.
 * Version 1.2.1
 	* <del>Proper BuddyPress 1.2.9 permalink support for single users.</del>
 * Version 1.2
