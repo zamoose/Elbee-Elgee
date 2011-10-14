@@ -12,6 +12,9 @@ require_once( LBLG_FUNCTIONS_DIR . 'options.php' );
 // Functions and settings related to handling the Custom Header functionality
 require_once( LBLG_FUNCTIONS_DIR . 'headers.php' );
 
+// Change from options to decisions
+require_once( LBLG_FUNCTIONS_DIR . 'decisions.php' );
+
 // Functions and settings related to the back-end theme admin page[s]
 require_once( LBLG_FUNCTIONS_DIR . 'admin.php' );
 
