@@ -20,6 +20,14 @@ function lblg_after_admin_header(){
 	do_action( 'lblg_after_admin_header' );
 }
 
+function lblg_before_loop(){
+	do_action( 'lblg_before_loop' );
+}
+
+function lblg_after_loop(){
+	do_action( 'lblg_after_loop' );
+}
+
 function lblg_print_title(){
 	do_action( 'lblg_print_title' );
 }
@@ -38,6 +46,10 @@ function lblg_above_content(){
 
 function lblg_before_post_title(){
 	do_action( 'lblg_before_post_title' );
+}
+
+function lblg_the_title(){
+	do_action( 'lblg_the_title' );
 }
 
 function lblg_after_post_title(){
