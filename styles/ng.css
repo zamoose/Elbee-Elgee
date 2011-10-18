@@ -102,7 +102,7 @@ div#titledesc {
 	text-align: right;
 }
 
-#lb-bp-nav ul.menu {
+#lb-bp-nav .menu {
 	width: 100%;
 	/*margin-top:28%;
 	height: 4em;*/
@@ -110,7 +110,7 @@ div#titledesc {
 	margin-top: 130px;
 }
 
-#lb-bp-nav ul.menu > li {
+#lb-bp-nav ul.menu > li, #lb-bp-nav div.menu li {
 	display: inline-block;
 	background: #000;
 	margin-right: 5px;
@@ -123,12 +123,14 @@ div#titledesc {
 	-webkit-border-radius: 4px 4px 0 0;
 }
 
-#lb-bp-nav ul.menu > li a:link, #lb-bp-nav ul.menu > li a:visited {
+#lb-bp-nav ul.menu > li a:link, #lb-bp-nav ul.menu > li a:visited,
+#lb-bp-nav div.menu li a:link, #lb-bp-nav div.menu li a:visited {
 	padding: 1em;
 	text-decoration: none;
 }
 
-#lb-bp-nav ul.menu > li a:hover, #lb-bp-nav ul.menu > li a:active {
+#lb-bp-nav ul.menu > li a:hover, #lb-bp-nav ul.menu > li a:active,
+#lb-bp-nav div.menu li a:hover, #lb-bp-nav div.menu li a:active {
 	padding: 1em;
 	background: #fff;
 }
@@ -166,17 +168,20 @@ div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 	color: #0971B3;
 }
 
-#menu li.current_page_item, #lb-bp-nav ul.menu > li.current-menu-item {
+#menu li.current_page_item, #lb-bp-nav ul.menu > li.current-menu-item,
+#lb-bp-nav div.menu li.current-menu-item  {
 	background: #fff;
 }
 
 #menu li.current_page_item > a:link, #menu li.current_page_item > a:visited,
-#lb-bp-nav ul.menu > li.current-menu-item a:link, #lb-bp-nav ul.menu > li.current-menu-item a:visited {
+#lb-bp-nav ul.menu > li.current-menu-item a:link, #lb-bp-nav ul.menu > li.current-menu-item a:visited,
+#lb-bp-nav div.menu li.current-menu-item a:link, #lb-bp-nav div.menu li.current-menu-item a:visited {
 	color: #000;
 }
 
 #menu li.current_page_item a:hover, #menu li.current_page_item a:active,
-#lb-bp-nav ul.menu > li.current-menu-item a:active, #lb-bp-nav ul.menu > li.current-menu-item a:hover {
+#lb-bp-nav ul.menu > li.current-menu-item a:active, #lb-bp-nav ul.menu > li.current-menu-item a:hover,
+#lb-bp-nav div.menu li.current-menu-item a:active, #lb-bp-nav div.menu li.current-menu-item a:hover {
 	background: #fff;
 	color: #0971B3;
 }
