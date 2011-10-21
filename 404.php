@@ -19,9 +19,12 @@ if (function_exists('afdn_error_page')) {
 <?php get_header(); ?>
 
 <div id="allwrapper">
+	<?php lblg_above_content_and_sidebars(); ?>
 	<div id="wrapper">
+	<?php lblg_above_content(); ?>
 		<div id="lb-content">
 			<div class="wppost">
+				<?php lblg_the_title(); ?>
 				<h1>Whoops.</h1>
 				<div class="itemtext">
 					<p>Looks like you managed to stumble across a link to a page that doesn't exist, but never fear, good citizen, for a wealth of options awaits you!</p>

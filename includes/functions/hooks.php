@@ -40,6 +40,10 @@ function lblg_print_bp_menu(){
 	do_action( 'lblg_print_bp_menu' );
 }
 
+function lblg_above_content_and_sidebars(){
+	do_action( 'lblg_above_content_and_sidebars' );
+}
+
 function lblg_above_content(){
 	do_action( 'lblg_above_content' );
 }

@@ -10,6 +10,8 @@
 */
 ?>
 <div id="allwrapper">
+	<?php lblg_above_content_and_sidebars(); ?>
 	<div id="wrapper">
+	<?php lblg_above_content(); ?>
 		<div id="lb-content">
 			<div class="padder">

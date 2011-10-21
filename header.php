@@ -1,4 +1,14 @@
 <?php
+/**
+ * Elbee Elgee Header Template
+ *
+ * @package 		Elbee-Elgee
+ * @copyright	Copyright (c) 2011, Doug Stewart
+ * @license		http://www.gnu.org/licenses/old-licenses/gpl-2.0.html GNU General Public License, v2 (or newer)
+ *
+ * @since 		Elbee-Elgee 1.0
+ */
+
 $lblg_meta = get_option('lblg_meta_info');
 $lblg_themename = $lblg_meta['themename'];
 $lblg_shortname = $lblg_meta['shortname'];
