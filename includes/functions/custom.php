@@ -35,7 +35,7 @@ add_filter( 'extra_theme_headers', 'lblg_extra_theme_headers' );
 
 function lblg_print_the_title(){
 	if( !is_single() && !is_page() ) { ?> 
-		<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h2>
+		<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h2>
 	<?php 
 	} else { ?>
 		<h1><?php the_title(); ?></h1>

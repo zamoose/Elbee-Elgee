@@ -28,7 +28,7 @@
 /* @group Reset CSS 
    Based on YUI Reset CSS */
 
-body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
+/*body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { 
 	margin: 0;
 	padding: 0;
 }
@@ -57,13 +57,13 @@ q:before,q:after {
 	content:'';
 }
 abbr,acronym { border:0;
-}
+}*/
 
 /* @end */
 
 /* @group Fonts set
 	Based on YUI fonts set */
-	
+/*	
 	body {font:13px arial,helvetica,clean,sans-serif;*font-size:small;*font:x-small;}
 	table {font-size:inherit;font:100%;}
 
@@ -72,7 +72,7 @@ abbr,acronym { border:0;
 	pre, code {font:115% monospace;*font-size:100%;}
 
 	body * {line-height:1.22em;}
-
+*/
 /* @end */
 
 /* @group Top-level containers */
@@ -154,9 +154,6 @@ abbr,acronym { border:0;
 
 
 #header h1 {
-	font-size: 189%;
-	font-family: times;
-	padding-left: 20px;
 }
 
 #header p{
