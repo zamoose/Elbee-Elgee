@@ -118,6 +118,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.2
+	* **Issues Fixed**
+		* Fallback wp_list_pages() output CSS corrected
 * Version 1.3.1
 	* **Issues Fixed**
 		* bbPress 1 column layouts no longer site-wide
@@ -177,6 +180,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.1
+	* WP installs not using custom nav menu (thus using fallback wp_list_pages() function) not seeing correct multi-level menu behavior
 * Version 1.3
 	* bbPress 1 column settings apply site-wide instead of just to bbPress pages due to a flaw in selection logic.
 * Version 1.2.1
