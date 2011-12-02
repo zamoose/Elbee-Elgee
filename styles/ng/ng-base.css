@@ -1,5 +1,5 @@
 /* @group Menu elements */
-#menu ul ul {
+#menu ul ul, div.menu ul ul {
 	display: none;
 	float: left;
 	position: absolute;
@@ -9,27 +9,27 @@
 	z-index: 99999;
 }
 
-#menu ul ul li {
+#menu ul ul li, div.menu ul ul li {
 	position: relative;
 }
 
-#menu ul li:hover > ul {
+#menu ul li:hover > ul, div.menu ul li:hover > ul {
 	display: block;
 }
 
-#menu ul ul ul {
+#menu ul ul ul, div.menu ul ul ul {
 	left: 100%;
 	top: -1px;
 }
 
-ul.sub-menu li a:link, ul.sub-menu li a:visited {
+ul.sub-menu li a:link, ul.sub-menu li a:visited, ul.children li a:link, ul.children li a:visited {
 	padding: 10px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-ul.sub-menu li a:hover, ul.sub-menu li a:active {
+ul.sub-menu li a:hover, ul.sub-menu li a:active, ul.children li a:hover, ul.children li a:active {
 	background: #fff;
 	color: #0971B3;
 }

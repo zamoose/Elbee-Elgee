@@ -152,30 +152,33 @@ div#menu, div.menu {
 	float: none;
 }
 
-#menu > ul > li > a:link, #menu > ul > li > a:visited,
-div.menu > ul > li > a:link, div.menu > ul > li > a:visited {
+#menu a:link, #menu a:visited,
+div.menu  a:link, div.menu a:visited {
 	padding: 5px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-#menu > ul > li > a:active, #menu > ul > li > a:hover,
+/*#menu > ul > li > a:active, #menu > ul > li > a:hover,
 div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
+*/	
+#menu a:active, #menu  a:hover,
+div.menu a:active, div.menu a:hover {
 	background: #fff;
 	color: #0971B3;
 }
 
-#menu li.current_page_item, #lb-bp-nav ul.menu > li.current-menu-item {
+li.current_page_item, #lb-bp-nav ul.menu > li.current-menu-item {
 	background: #fff;
 }
 
-#menu li.current_page_item > a:link, #menu li.current_page_item > a:visited,
+.children li.current_page_item > a:link, .children li.current_page_item > a:visited,
 #lb-bp-nav ul.menu > li.current-menu-item a:link, #lb-bp-nav ul.menu > li.current-menu-item a:visited {
 	color: #000;
 }
 
-#menu li.current_page_item a:hover, #menu li.current_page_item a:active,
+li.current_page_item a:hover, li.current_page_item a:active,
 #lb-bp-nav ul.menu > li.current-menu-item a:active, #lb-bp-nav ul.menu > li.current-menu-item a:hover {
 	background: #fff;
 	color: #0971B3;
