@@ -79,7 +79,7 @@ function lblg_print_options(){
 function lblg_enqueue_styles(){
 	do_action( 'lblg_enqueue_styles' );
 }
-add_action( 'wp_print_styles', 'lblg_enqueue_styles', 11 );
+add_action( 'wp_enqueue_scripts', 'lblg_enqueue_styles', 11 );
 
 /**
 * Output functions.
