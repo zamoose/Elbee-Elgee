@@ -118,6 +118,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.3
+	* **Issues Fixed**
+		* Switched from wp_print_styles() to wp_enqueue_scripts() to enqueue/output CSS due to changes in WordPress 3.3 (see http://wpdevel.wordpress.com/2011/12/12/use-wp_enqueue_scripts-not-wp_print_styles-to-enqueue-scripts-and-styles-for-the-frontend/ for details).
 * Version 1.3.2
 	* **Issues Fixed**
 		* Fallback wp_list_pages() output CSS corrected
@@ -180,10 +183,12 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.2
+	* <del>Improperly enqueuing front-end CSS stylesheets in admin backend as of WordPress 3.3.</del>
 * Version 1.3.1
-	* WP installs not using custom nav menu (thus using fallback wp_list_pages() function) not seeing correct multi-level menu behavior
+	* <del>WP installs not using custom nav menu (thus using fallback wp_list_pages() function) not seeing correct multi-level menu behavior</del>
 * Version 1.3
-	* bbPress 1 column settings apply site-wide instead of just to bbPress pages due to a flaw in selection logic.
+	* <del>bbPress 1 column settings apply site-wide instead of just to bbPress pages due to a flaw in selection logic.</del>
 * Version 1.2.1
 	* <del>Proper BuddyPress 1.2.9 permalink support for single users.</del>
 * Version 1.2
