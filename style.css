@@ -568,3 +568,16 @@ div.post-pagination {
 	width: 95%;
 	padding: 0 20px;
 } 
+
+/* @group Responsive */
+@media screen and (max-width: 980px) {
+	div#container,div#lb-content,div#primarysb,div#secondarysb{width:auto;float:none;}
+	div#footer,div#footerwrapper,div#footerleft,div#footerright{width:auto !important;clear:none;float:none}
+}
+
+@media screen and (max-width: 480px){
+	div#container,div#lb-content{width:auto;float:none;}
+	div#primarysb,div#secondarysb,div#footerwrapper, div#footer{display:none;}
+}
+
+/* @end */
