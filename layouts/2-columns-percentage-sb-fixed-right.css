@@ -1,5 +1,5 @@
 div#wrapper{float:left;width:100%;margin-left:-33%}
-div#lb-content{margin-left:33%}
-div#primarysb{float:right;width:32.9%}
-div#secondarysb{float:right;clear:right;width:32.9%}
-div#footer{clear:both;width:100%}
+#lb-content{margin-left:33%}
+#primarysb{float:right;width:32.9%}
+#secondarysb{float:right;clear:right;width:32.9%}
+#footer{clear:both;width:100%}

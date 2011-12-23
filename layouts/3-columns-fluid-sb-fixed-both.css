@@ -1,5 +1,5 @@
 div#wrapper{float:left;width:100%}
-div#lb-content{margin: 0 200px}
-div#primarysb{float:left;width:200px;margin-left:-100%}
-div#secondarysb{float:left;width:200px;margin-left:-200px}
-div#footer{clear:left;width:100%}
+#lb-content{margin: 0 200px}
+#primarysb{float:left;width:200px;margin-left:-100%}
+#secondarysb{float:left;width:200px;margin-left:-200px}
+#footer{clear:left;width:100%}

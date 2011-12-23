@@ -47,12 +47,12 @@ div#container {
 }
 
 /* @group Header Elements */
-div#header {
+#header {
 	height: 200px;
 	overflow: hidden;
 }
 
-div#titledesc {
+#titledesc {
 	width: 50%;
 	height: 100%;
 	float: left;

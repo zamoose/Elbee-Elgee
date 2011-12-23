@@ -96,6 +96,11 @@ $parent_options_array = array(
 						"type" => "textarea",
 						"options" => array("rows" => "5",
 										   "cols" => "40") ),
+
+				"header_text_color" => array(	"name" => "Header Text Color",
+						"desc" => "The text color for the header.",
+						"std" => "ffffff",
+						"type" => "colorpicker"),
 			)
 	),
 

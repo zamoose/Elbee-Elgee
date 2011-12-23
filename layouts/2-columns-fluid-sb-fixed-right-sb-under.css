@@ -1,4 +1,4 @@
 div#wrapper{float:left;width:100%}
-div#lb-content{margin-right:200px}
-div#primarysb{float:left;width:200px;margin-left:-200px}
-div#secondarysb{clear:left;width:100%}
+#lb-content{margin-right:200px}
+#primarysb{float:left;width:200px;margin-left:-200px}
+#secondarysb{clear:left;width:100%}

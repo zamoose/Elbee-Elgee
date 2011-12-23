@@ -279,6 +279,19 @@ function lblg_options_walker( $options, $default_options, $shortname ){
 			lblg_option_wrapper_footer( $value );
 			break;
 
+			// Prints a Farbtastic color picker
+			case "colorpicker":
+			add_settings_field( $key, $value['name'], '', $lblg_options_group, $section );
+			lblg_option_wrapper_header( $value );
+			?>
+				<div class="lblgcp">
+			        <input name="<?php echo $lblg_options_group . '[' . $key . ']'; ?>" id="<?php echo $key; ?>cptext" class="lblgcptext" type="text" value="<?php if( "" != $options[$key] ) { echo esc_html( $options[$key] ); } else { echo $value['std']; } ?>" />
+					<div id="<?php echo $key;?>cpicker" class="lblgcpicker"></div>
+				</div>
+			<?php
+			lblg_option_wrapper_footer( $value );
+			break;
+
 			default:
 
 			break;
