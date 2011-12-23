@@ -1,5 +1,5 @@
 #container{width:960px;margin:0 auto}
-div#wrapper{float:left;width:100%}
+#wrapper{float:left;width:100%}
 #lb-content{margin: 0 145px}
 #primarysb{float:left;width:150px;margin-left:-960px}
 #secondarysb{float:left;width:150px;margin-left:-150px}
