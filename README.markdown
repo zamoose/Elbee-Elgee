@@ -108,6 +108,7 @@ I have tried to hew as closely as possible to the recommended best-practices in 
 * More theme hooks.
 * General code clean-up/optimization.
 * Better documentation.
+* "Responsive" design
 * <del>Fully-integrated bbPress support.</del> Added in 1.1.
 * <del>Editor styling (particularly important after WP 3.2's addition of Distraction-Free Writing [DFW])</del> Added in 1.2.
 
@@ -118,12 +119,15 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.4
+	* **Issues Fixed**
+		* Fixed CSS selector specificity oversight that caused active menu items to appear "invisible" in default `ng.css` styling. 
 * Version 1.3.3
 	* **Issues Fixed**
-		* Switched from wp_print_styles() to wp_enqueue_scripts() to enqueue/output CSS due to changes in WordPress 3.3 (see http://wpdevel.wordpress.com/2011/12/12/use-wp_enqueue_scripts-not-wp_print_styles-to-enqueue-scripts-and-styles-for-the-frontend/ for details).
+		* Switched from `wp_print_styles()` to `wp_enqueue_scripts()` to enqueue/output CSS due to changes in WordPress 3.3 (see [here]( http://wpdevel.wordpress.com/2011/12/12/use-wp_enqueue_scripts-not-wp_print_styles-to-enqueue-scripts-and-styles-for-the-frontend/) for details).
 * Version 1.3.2
 	* **Issues Fixed**
-		* Fallback wp_list_pages() output CSS corrected
+		* Fallback `wp_list_pages()` output CSS corrected
 * Version 1.3.1
 	* **Issues Fixed**
 		* bbPress 1 column layouts no longer site-wide
@@ -183,6 +187,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.3
+	* <del>Incorrect specificity in CSS selectors makes active menu item "invisible" in default `ng.css` styling</del>
 * Version 1.3.2
 	* <del>Improperly enqueuing front-end CSS stylesheets in admin backend as of WordPress 3.3.</del>
 * Version 1.3.1
