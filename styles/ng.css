@@ -164,7 +164,9 @@ div.menu  a:link, div.menu a:visited {
 div.menu > ul > li > a:active, div.menu > ul > li > a:hover {
 */	
 #menu a:active, #menu  a:hover,
-div.menu a:active, div.menu a:hover {
+div.menu a:active, div.menu a:hover,
+#menu li.current_page_item a:link, #menu li.current_page_item a:visited,
+div.menu li.current_page_item a:link, div.menu li.current_page_item a:visited {
 	background: #fff;
 	color: #0971B3;
 }
