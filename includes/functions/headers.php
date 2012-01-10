@@ -88,6 +88,10 @@ function lblg_header_style() {
 #header h1, #header #description {
 	display: none;
 }
+
+#header div#titledesc {
+	display: none;
+}
 <?php } else { ?>
 #header h1 a, p.description {
 	color:#<?php header_textcolor(); ?>;

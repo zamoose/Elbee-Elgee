@@ -36,6 +36,8 @@ class lessc {
 	protected $buffer;
 	protected $count;
 	protected $line;
+	protected $libFunctions = array();
+	protected $nextBlockId = 0;
 
 	public $indentLevel;
 	public $indentChar = '  ';
@@ -65,7 +67,7 @@ class lessc {
 	/**
 	 * @link http://www.w3.org/TR/css3-values/
 	 */
-	static protected $units=array(
+	static protected $units = array(
 		'em', 'ex', 'px', 'gd', 'rem', 'vw', 'vh', 'vm', 'ch', // Relative length units
 		'in', 'cm', 'mm', 'pt', 'pc', // Absolute length units
 		'%', // Percentages
@@ -267,14 +269,16 @@ class lessc {
 
 			if (!$hidden) $this->append(array('block', $block));
 			foreach ($block->tags as $tag) {
+				if (isset($this->env->children[$tag])) {
+					$block = $this->mergeBlock($this->env->children[$tag], $block);
+				}
 				$this->env->children[$tag] = $block;
 			}
 
 			return true;
 		}
 
-
-		// mixin 
+		// mixin
 		if ($this->mixinTags($tags) &&
 			($this->argumentValues($argv) || true) && $this->end())
 		{
@@ -284,6 +288,7 @@ class lessc {
 		} else {
 			$this->seek($s);
 		}
+
 		// spare ;
 		if ($this->literal(';')) return true;
 
@@ -738,9 +743,9 @@ class lessc {
 	// a single tag
 	function tag(&$tag, $simple = false) {
 		if ($simple)
-			$chars = '^,:;{}\][>\(\) ';
+			$chars = '^,:;{}\][>\(\) "\'';
 		else
-			$chars = '^,;{}[';
+			$chars = '^,;{}["\'';
 
 		$tag = '';
 		while ($this->tagBracket($first)) $tag .= $first;
@@ -835,6 +840,13 @@ class lessc {
 	function compressList($items, $delim) {
 		if (count($items) == 1) return $items[0];	
 		else return array('list', $delim, $items);
+	}
+
+	// just do a shallow propety merge, seems to be what lessjs does
+	function mergeBlock($target, $from) {
+		$target = clone $target;
+		$target->props = array_merge($target->props, $from->props);
+		return $target;
 	}
 
 	/**
@@ -958,8 +970,11 @@ class lessc {
 	}
 
 	// attempt to find block pointed at by path within search_in or its parent
-	function findBlock($search_in, $path) {
+	function findBlock($search_in, $path, $seen=array()) {
 		if ($search_in == null) return null;
+		if (isset($seen[$search_in->id])) return null;
+		$seen[$search_in->id] = true;
+
 		$name = $path[0];
 
 		if (isset($search_in->children[$name])) {
@@ -967,10 +982,11 @@ class lessc {
 			if (count($path) == 1) {
 				return $block;
 			} else {
-				return $this->findBlock($block, array_slice($path, 1));
+				return $this->findBlock($block, array_slice($path, 1), $seen);
 			}
 		} else {
-			return $this->findBlock($search_in->parent, $path);
+			if ($search_in->parent === $search_in) return null;
+			return $this->findBlock($search_in->parent, $path, $seen);
 		}
 	}
 
@@ -1434,7 +1450,9 @@ class lessc {
 				else {
 					list($_, $name, $args) = $var;
 					if ($name == "%") $name = "_sprintf";
-					$f = array($this, 'lib_'.$name);
+					$f = isset($this->libFunctions[$name]) ?
+						$this->libFunctions[$name] : array($this, 'lib_'.$name);
+
 					if (is_callable($f)) {
 						if ($args[0] == 'list')
 							$args = $this->compressList($args[2], $args[1]);
@@ -1599,6 +1617,7 @@ class lessc {
 		$b = new stdclass;
 		$b->parent = $this->env;
 
+		$b->id = $this->nextBlockId++;
 		$b->tags = $tags;
 		$b->props = array();
 		$b->children = array();
@@ -1819,6 +1838,14 @@ class lessc {
 
 			$this->addParsedFile($fname);
 		}
+	}
+
+	public function registerFunction($name, $func) {
+		$this->libFunctions[$name] = $func;
+	}
+
+	public function unregisterFunction($name) {
+		unset($this->libFunctions[$name]);
 	}
 
 	// remove comments from $text

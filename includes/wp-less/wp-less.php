@@ -1,6 +1,6 @@
 <?php
 /**
- * Enables the use LESS in WordPress
+ * Enables the use of LESS in WordPress
  *
  * See README.md for usage information
  */
@@ -22,10 +22,16 @@ if ( ! class_exists( 'wp_less' ) ) {
 			// every CSS file URL gets passed through this filter
 			add_filter( 'style_loader_src', array( &$this, 'parse_stylesheet' ), 100000, 2 );
 
+			// editor stylesheet URLs are concatenated and run through this filter
+			add_filter( 'mce_css', array( &$this, 'parse_editor_stylesheets' ), 100000 );
+
 		}
 
 		/**
 		 * Lessify the stylesheet and return the href of the compiled file
+		 *
+		 * @param String $src	Source URL of the file to be parsed
+		 * @param String $handle	An identifier for the file used to create the file name in the cache
 		 *
 		 * @return String    URL of the compiled stylesheet
 		 */
@@ -37,14 +43,30 @@ if ( ! class_exists( 'wp_less' ) ) {
 
 			// get file path from $src
 			preg_match( "/^(.*?\/wp-content\/)([^\?]+)(.*)$/", $src, $src_bits );
-			$src_path = WP_CONTENT_DIR . '/' . $src_bits[ 2 ];
+			$less_path = WP_CONTENT_DIR . '/' . $src_bits[ 2 ];
 
-			// cache file name
-			$cache_path = $this->get_cache_dir() . "/$handle.css";
+			// output css file name
+			$css_path = $this->get_cache_dir() . "/$handle.css";
 
-			// ccompile automatically regenerates files if source's modified time has changed
+			// vars to pass into the compiler - default @themeurl var for image urls etc...
+			$vars = apply_filters( 'less_vars', array( 'themeurl' => '~"' . get_stylesheet_directory_uri() . '"' ), $handle );
+			$vars = apply_filters( "less_vars_$handle", $vars );
+
+			// automatically regenerate files if source's modified time has changed or vars have changed
 			try {
-				lessc::ccompile( $src_path, $cache_path );
+				// load the cache
+				$cache_path = "$css_path.cache";
+				if ( file_exists( $cache_path ) )
+					$full_cache = unserialize( file_get_contents( $cache_path ) );
+				else
+					$full_cache = array( 'vars' => $vars, 'less' => $less_path );
+
+				$less_cache = lessc::cexecute( $full_cache[ 'less' ] );
+				if ( ! is_array( $less_cache ) || $less_cache['updated'] > $full_cache[ 'less' ]['updated'] || $vars !== $full_cache[ 'vars' ] ) {
+					$less = new lessc( $less_path );
+					file_put_contents( $cache_path, serialize( array( 'vars' => $vars, 'less' => $less_cache ) ) );
+					file_put_contents( $css_path, $less->parse( null, $vars ) );
+				}
 			} catch ( exception $ex ) {
 				wp_die( $ex->getMessage() );
 			}
@@ -55,7 +77,56 @@ if ( ! class_exists( 'wp_less' ) ) {
 		}
 
 		/**
+		 * Compile editor stylesheets registered via add_editor_style()
+		 *
+		 * @param String $mce_css comma separated list of CSS file URLs
+		 *
+		 * @return String    New comma separated list of CSS file URLs
+		 */
+		function parse_editor_stylesheets( $mce_css ) {
+
+			// extract CSS file URLs
+			$style_sheets = explode( ',', $mce_css );
+
+			if ( count( $style_sheets ) ) {
+				$compiled_css = array();
+
+				// loop through editor styles, any .less files will be compiled and the compiled URL returned
+				foreach( $style_sheets as $style_sheet )
+					$compiled_css[] = $this->parse_stylesheet( $style_sheet, $this->url_to_handle( "$style_sheet" ) );
+
+				$mce_css = implode( ',', $compiled_css );
+			}
+
+			// return new URLs
+			return $mce_css;
+
+		}
+
+		/**
+		 * Get a nice handle to use for the compiled CSS file name
+		 *
+		 * @param String $url 	File URL to generate a handle from
+		 *
+		 * @return String    Sanitised string to use for handle
+		 */
+		function url_to_handle( $url ) {
+
+			$url = preg_replace( "/^.*?\/wp-content\/themes\//", '', $url );
+			$url = str_replace( '.less', '', $url );
+			$url = str_replace( '/', '-', $url );
+
+			return sanitize_key( $url );
+
+		}
+
+
+		/**
 		 * Get (and create if unavailable) the compiled CSS cache directory
+		 *
+		 * @param Bool $path 	If true this method returns the cache's system path. Set to false to return the cache URL
+		 *
+		 * @return String 	The system path or URL of the cache folder
 		 */
 		function get_cache_dir( $path = true ) {
 
@@ -72,6 +143,7 @@ if ( ! class_exists( 'wp_less' ) ) {
 			}
 
 			return $dir;
+
 		}
 
 	}
