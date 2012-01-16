@@ -119,6 +119,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.5
+	* **Issues Fixed**
+		* Fixed error where selecting "Display Text: no" in theme header options would still display the 50% opacity #titltedesc div.
 * Version 1.3.4
 	* **Issues Fixed**
 		* Fixed CSS selector specificity oversight that caused active menu items to appear "invisible" in default `ng.css` styling. 
@@ -187,6 +190,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.4
+	* <del>Blanking header text via theme admin settings doesn't blank the 50% transparency div in the default style</del>
 * Version 1.3.3
 	* <del>Incorrect specificity in CSS selectors makes active menu item "invisible" in default `ng.css` styling</del>
 * Version 1.3.2
