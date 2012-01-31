@@ -5,6 +5,8 @@
 
 [Demo Site](http://lblg.zamoose.org)
 
+[FAQs](http://literalbarrage.org/blog/code/elbee-elgee/faq)
+
 ### LICENSE ###
 All code (PHP, HTML, CSS and JavaScript) is licensed under the GNU Public License version 2 ([GPLv2](<http://www.gnu.org/licenses/gpl-2.0.html>)). All header images were taken by me and are also licensed under GPLv2. All icons are from the Icon Set for Bloggers by [StudioPress](http://studiopress.com).
 

@@ -1,4 +1,4 @@
-    title: v0.3.0 documentation
+    title: v0.3.1 documentation
     link_to_home: true
 --
 
@@ -321,6 +321,41 @@ you want to include. Optionally you can separate them by `>`.
     }
     ```
 
+#### `@arguments` Variable
+
+Within an mixin there is a special variable named `@arguments` that contains
+all the arguments passed to the mixin along with any remaining arguments that
+have default values. The value of the variable has all the values separated by
+spaces.
+
+This useful for quickly assigning all the arguments:
+
+    ```less
+    .box-shadow(@inset, @x, @y, @blur, @spread, @color) {
+      box-shadow: @arguments;
+      -webkit-box-shadow: @arguments;
+      -moz-box-shadow: @arguments;
+    }
+    .menu {
+      .box-shadow(1px, 1px, 5px, #aaa);
+    }
+    ```
+
+In addition to the arguments passed to the mixin, `@arguments` will also inlude
+remaining default values assigned by the mixin:
+
+
+    ```less
+    .border-mixin(@width, @style: solid, @color: black) {
+      border: @arguments;
+    }
+
+    pre {
+      .border-mixin(4px, dotted);
+    }
+
+    ```
+
 ### Import
 
 Multiple LESS files can be compiled into a single CSS file by using the
@@ -457,16 +492,33 @@ function that let's you unquote any value. It is called `e`.
 * `floor(number)` -- returns the floor of a numerical input
 * `round(number)` -- returns the rounded value of numerical input
 
-* `lighten(color, percent)` -- lightens color by percent and returns it
-* `darken(color, percent)` -- darkens color by percent and returns it
+* `lighten(color, percent)` -- lightens `color` by `percent` and returns it
+* `darken(color, percent)` -- darkens `color` by `percent` and returns it
 
-* `saturate(color, percent)` -- saturates color by percent and returns it
-* `desaturate(color, percent)` -- desaturates color by percent and returns it
+* `saturate(color, percent)` -- saturates `color` by `percent` and returns it
+* `desaturate(color, percent)` -- desaturates `color` by `percent` and returns it
 
-* `fadein(color, percent)` -- makes color less transparent by percent and returns it
-* `fadeout(color, percent)` -- makes color more transparent by percent and returns it
+* `fadein(color, percent)` -- makes `color` less transparent by `percent` and returns it
+* `fadeout(color, percent)` -- makes `color` more transparent by `percent` and returns it
 
-* `spin(color, amount)` -- returns a color with amount degrees added to hue
+* `spin(color, amount)` -- returns a color with `amount` degrees added to hue
+
+* `fade(color, amount)` -- retuns a color with the alpha set to `amount`
+
+* `hue(color)` -- retuns the hue of `color`
+
+* `saturation(color)` -- retuns the saturation of `color`
+
+* `lightness(color)` -- retuns the lightness of `color`
+
+* `alpha(color)` -- retuns the alpha value of `color` or 1.0 if it doesn't have an alpha
+
+* `percentage(number)` -- converts a floating point number to a percentage, eg. `0.65` -> `65%`
+
+* `mix(color1, color1, percent)` -- mixes two colors by percentagle where 100%
+  keeps all of `color1`, and 0% keeps all of `color2`. Will take into account
+  the alpha of the colors if it exists. See
+  <http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#mix-instance_method>.
 
 * `rgbahex(color)` -- returns a string containing 4 part hex color.
    
@@ -680,10 +732,13 @@ The best way to get an understanding of the system is to register is dummy
 function which does a `vardump` on the argument. Try passing the function
 different values from LESS and see what the results are.
 
-The return value of the registered function must also be a LESS type, but if it is
+The return value of the registered function must also be a **lessphp** type, but if it is
 a string or numeric value, it will automatically be coerced into an appropriate
 typed value. In our example, we reconstruct the value with our modifications
 while making sure that we preserve the original type.
+
+In addition to the arguments passed from **lessphp**, the instnace of
+**lessphp** itself is sent to the registered function as the second argument.
 
 ## Command Line Interface
 
