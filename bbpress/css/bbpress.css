@@ -59,9 +59,11 @@ div.bbp-topic-tags {
 
 #lb-content table tbody tr.even td {
 	background-color: #fff;
+	padding-left: 15px;
 }
 #lb-content table tbody tr.odd td {
 	background-color: #f3f3f3;
+	padding-left: 15px
 }
 
 #lb-content table tbody tr.status-trash.even td,
