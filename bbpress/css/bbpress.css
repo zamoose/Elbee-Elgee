@@ -120,10 +120,11 @@ span.bbp-author-ip {
 	color: #aaa;
 }
 
-#lb-content .bbp-forum-info {
+/*#lb-content .bbp-forum-info {
 	width: 55%;
 	text-align: left;
 }
+*/
 #lb-content .bbp-forum-topic-count,
 #lb-content .bbp-forum-reply-count,
 #lb-content .bbp-topic-reply-count,
