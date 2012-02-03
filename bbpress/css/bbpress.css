@@ -8,8 +8,8 @@
 /* =bbPress Style
 -------------------------------------------------------------- */
 
-#content hr,
-#container hr {
+#lb-content hr,
+#wrapper hr {
 	margin: 0 0 24px 0;
 }
 #entry-author-info {
@@ -17,13 +17,13 @@
 	border-bottom: 1px solid #fff;
 }
 
-#content table.bbp-topics,
-#content table.bbp-forums,
-#content table.bbp-replies,
+#lb-content table.bbp-topics,
+#lb-content table.bbp-forums,
+#lb-content table.bbp-replies,
 
-#container table.bbp-topics,
-#container table.bbp-forums,
-#container table.bbp-replies,
+#wrapper table.bbp-topics,
+#wrapper table.bbp-forums,
+#wrapper table.bbp-replies,
 
 #main table.bbp-topics,
 #main table.bbp-forums,
@@ -45,8 +45,8 @@ div.bbp-topic-tags {
 	font-size: 12px;
 }
 
-#content div.bbp-breadcrumb p,
-#content div.bbp-topic-tags p {
+#lb-content div.bbp-breadcrumb p,
+#lb-content div.bbp-topic-tags p {
 	margin-bottom: 10px
 }
 
@@ -57,24 +57,24 @@ div.bbp-topic-tags {
 /* =Tables
 -------------------------------------------------------------- */
 
-#content table tbody tr.even td {
+#lb-content table tbody tr.even td {
 	background-color: #fff;
 }
-#content table tbody tr.odd td {
+#lb-content table tbody tr.odd td {
 	background-color: #fbfbfb;
 }
 
-#content table tbody tr.status-trash.even td,
-#content table tbody tr.status-spam.even td {
+#lb-content table tbody tr.status-trash.even td,
+#lb-content table tbody tr.status-spam.even td {
 	background-color: #fee;
 }
-#content table tbody tr.status-trash.odd td,
-#content table tbody tr.status-spam.odd td {
+#lb-content table tbody tr.status-trash.odd td,
+#lb-content table tbody tr.status-spam.odd td {
 	background-color: #fdd;
 }
 
-#content table.bbp-topics tbody tr.status-closed td,
-#content table.bbp-topics tbody tr.status-closed td a {
+#lb-content table.bbp-topics tbody tr.status-closed td,
+#lb-content table.bbp-topics tbody tr.status-closed td a {
 	color: #ccc;
 }
 
@@ -91,20 +91,20 @@ table.bbp-forums th span, table.bbp-topics th span,
 table.bbp-topic th span, table.bbp-replies th span {
 	float: right;
 }
-#content th.bbp-topic-author,
-#content th.bbp-reply-author {
+#lb-content th.bbp-topic-author,
+#lb-content th.bbp-reply-author {
 	text-align: center;
 	width: 120px;
 }
-#content th.bbp-topic-content,
-#content th.bbp-reply-content {
+#lb-content th.bbp-topic-content,
+#lb-content th.bbp-reply-content {
 	text-align: left;
 	padding: 9px 10px 9px 15px;
 }
-#content table.bbp-forums tfoot td, #content table.bbp-topics tfoot td,
-#content table.bbp-topic tfoot td, #content table.bbp-replies tfoot td,
-#content table.bbp-replies tr.bbp-reply-header td,
-#content table.bbp-topic tr.bbp-topic-header td {
+#lb-content table.bbp-forums tfoot td, #lb-content table.bbp-topics tfoot td,
+#lb-content table.bbp-topic tfoot td, #lb-content table.bbp-replies tfoot td,
+#lb-content table.bbp-replies tr.bbp-reply-header td,
+#lb-content table.bbp-topic tr.bbp-topic-header td {
 	background-color: #fafafa;
 	color: #888;
 	font-size: 12px;
@@ -120,21 +120,21 @@ span.bbp-author-ip {
 	color: #aaa;
 }
 
-#content .bbp-forum-info {
+#lb-content .bbp-forum-info {
 	width: 55%;
 	text-align: left;
 }
-#content .bbp-forum-topic-count,
-#content .bbp-forum-reply-count,
-#content .bbp-topic-reply-count,
-#content .bbp-topic-voice-count,
-#content .bbp-topic-action {
+#lb-content .bbp-forum-topic-count,
+#lb-content .bbp-forum-reply-count,
+#lb-content .bbp-topic-reply-count,
+#lb-content .bbp-topic-voice-count,
+#lb-content .bbp-topic-action {
 	width: 10%;
 	text-align: center;
 	padding: 6px 0px;
 }
-#content td.bbp-topic-author,
-#content td.bbp-reply-author {
+#lb-content td.bbp-topic-author,
+#lb-content td.bbp-reply-author {
 	padding: 20px;
 	text-align: center;
 	vertical-align: top;
@@ -149,15 +149,15 @@ span.bbp-author-ip {
 	width: 25%;
 }
 
-#content tbody .bbp-topic-content,
-#content tbody .bbp-reply-content {
+#lb-content tbody .bbp-topic-content,
+#lb-content tbody .bbp-reply-content {
 	vertical-align: top;
 	padding: 15px 10px 10px 15px;
 	overflow: auto;
 }
 
-#content .bbp-topic-content img,
-#content .bbp-reply-content img {
+#lb-content .bbp-topic-content img,
+#lb-content .bbp-reply-content img {
 	max-width: 100%;
 }
 
@@ -254,31 +254,31 @@ a.bbp-reply-permalink {
 			background-color: #fdd;
 		}
 
-#content p.bbp-topic-meta {
+#lb-content p.bbp-topic-meta {
 	margin-bottom: 0;
 	font-size: 11px;
 }
 
-#content p.bbp-topic-meta span {
+#lb-content p.bbp-topic-meta span {
 	white-space: nowrap;
 }
 
 /* =Forums
 -------------------------------------------------------------- */
 
-#content table tbody tr .bbp-forum-description p {
+#lb-content table tbody tr .bbp-forum-description p {
 	margin-bottom: 0;
 	font-size: 13px;
 	font-style: italic;
 }
-#content table tbody tr ul.bbp-forums {
+#lb-content table tbody tr ul.bbp-forums {
 	list-style: none;
 	font-size: 12px;
 	margin: 0 0 0 10px;
 	padding: 0 0 0 10px;
 	border-left: 1px solid #aaa;
 }
-#content table tbody tr ul.bbp-forums li {
+#lb-content table tbody tr ul.bbp-forums li {
 	display: inline;
 }
 
@@ -312,27 +312,27 @@ a.bbp-reply-permalink {
 
 /* =Forms
 -------------------------------------------------------------- */
-#content fieldset.bbp-form,
-#container fieldset.bbp-form,
+#lb-content fieldset.bbp-form,
+#wrapper fieldset.bbp-form,
 #wrapper fieldset.bbp-form {
 	clear: left;
 }
 
-#content fieldset.bbp-form,
-#container fieldset.bbp-form,
+#lb-content fieldset.bbp-form,
+#wrapper fieldset.bbp-form,
 #wrapper fieldset.bbp-form {
 	border: 1px solid #eee;
 	padding: 10px 20px;
 }
 
-#content fieldset.bbp-form legend,
-#container fieldset.bbp-form legend,
+#lb-content fieldset.bbp-form legend,
+#wrapper fieldset.bbp-form legend,
 #wrapper fieldset.bbp-form legend {
 	padding: 5px;
 }
 
-#content fieldset.bbp-form label,
-#container fieldset.bbp-form label,
+#lb-content fieldset.bbp-form label,
+#wrapper fieldset.bbp-form label,
 #wrapper fieldset.bbp-form label {
 	width: 250px;
 	display: inline-block;
@@ -345,17 +345,17 @@ a.bbp-reply-permalink {
 	width: 100px;
 }
 
-#content fieldset.bbp-form p,
-#container fieldset.bbp-form p,
+#lb-content fieldset.bbp-form p,
 #wrapper fieldset.bbp-form p,
-#content fieldset.bbp-form textarea,
-#container fieldset.bbp-form textarea,
+#wrapper fieldset.bbp-form p,
+#lb-content fieldset.bbp-form textarea,
 #wrapper fieldset.bbp-form textarea,
-#content fieldset.bbp-form select,
-#container fieldset.bbp-form select,
+#wrapper fieldset.bbp-form textarea,
+#lb-content fieldset.bbp-form select,
 #wrapper fieldset.bbp-form select,
-#content fieldset.bbp-form input,
-#container fieldset.bbp-form input,
+#wrapper fieldset.bbp-form select,
+#lb-content fieldset.bbp-form input,
+#wrapper fieldset.bbp-form input,
 #wrapper fieldset.bbp-form input {
 	margin: 0px 0px 10px;
 }
@@ -452,8 +452,8 @@ input[type="password"] {
 	#bbp-your-profile fieldset legend {
 		display: none;
 	}
-	#content #bbp-your-profile fieldset label,
-	#container #bbp-your-profile fieldset label {
+	#lb-content #bbp-your-profile fieldset label,
+	#wrapper #bbp-your-profile fieldset label {
 		float: left;
 		width: 150px;
 		padding-right: 20px;
@@ -471,8 +471,8 @@ input[type="password"] {
 		background-color: #f0f8ff;
 	}
 
-	#content #bbp-your-profile fieldset fieldset,
-	#container #bbp-your-profile fieldset fieldset {
+	#lb-content #bbp-your-profile fieldset fieldset,
+	#wrapper #bbp-your-profile fieldset fieldset {
 		margin: 0;
 		width: 260px;
 		border: none;
@@ -550,14 +550,14 @@ div.bbp-template-notice a {
 
 /* =Revisions
 -------------------------------------------------------------- */
-#content .bbp-topic-revision-log,
-#content .bbp-reply-revision-log,
+#lb-content .bbp-topic-revision-log,
+#lb-content .bbp-reply-revision-log,
 
 #main .bbp-topic-revision-log,
 #main .bbp-reply-revision-log,
 
-#container .bbp-topic-revision-log,
-#container .bbp-reply-revision-log {
+#wrapper .bbp-topic-revision-log,
+#wrapper .bbp-reply-revision-log {
 	border-top: 1px dotted #ddd;
 	list-style: none;
 	width: 100%;
@@ -623,13 +623,13 @@ div.bbp-template-notice a {
 /* =Avatars
 -------------------------------------------------------------- */
 
-#content p.bbp-topic-meta img.avatar,
-#content ul.bbp-reply-revision-log img.avatar,
-#content ul.bbp-topic-revision-log img.avatar,
-#content div.bbp-template-notice img.avatar,
-#content .widget_display_topics img.avatar,
-#content .widget_display_replies img.avatar,
-#content p.bbp-topic-meta img.avatar,
+#lb-content p.bbp-topic-meta img.avatar,
+#lb-content ul.bbp-reply-revision-log img.avatar,
+#lb-content ul.bbp-topic-revision-log img.avatar,
+#lb-content div.bbp-template-notice img.avatar,
+#lb-content .widget_display_topics img.avatar,
+#lb-content .widget_display_replies img.avatar,
+#lb-content p.bbp-topic-meta img.avatar,
 
 #main ul.bbp-reply-revision-log img.avatar,
 #main ul.bbp-topic-revision-log img.avatar,
@@ -638,11 +638,11 @@ div.bbp-template-notice a {
 #main .widget_display_replies img.avatar,
 #main p.bbp-topic-meta img.avatar,
 
-#container ul.bbp-reply-revision-log img.avatar,
-#container ul.bbp-topic-revision-log img.avatar,
-#container div.bbp-template-notice img.avatar,
-#container .widget_display_topics img.avatar,
-#container .widget_display_replies img.avatar {
+#wrapper ul.bbp-reply-revision-log img.avatar,
+#wrapper ul.bbp-topic-revision-log img.avatar,
+#wrapper div.bbp-template-notice img.avatar,
+#wrapper .widget_display_topics img.avatar,
+#wrapper .widget_display_replies img.avatar {
 	float: none;
 	margin-bottom: -7px;
 	border: 3px double #ddd;
