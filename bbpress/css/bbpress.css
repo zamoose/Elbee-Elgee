@@ -87,7 +87,9 @@ table.bbp-replies tbody tr td {
 
 table.bbp-forums th, table.bbp-topics th,
 table.bbp-topic th, table.bbp-replies th {
-	background-color: #f3f3f3;
+	background-color: #ccc;
+	font-weight: bold;
+	padding-left: 20px;
 }
 table.bbp-forums th span, table.bbp-topics th span,
 table.bbp-topic th span, table.bbp-replies th span {
