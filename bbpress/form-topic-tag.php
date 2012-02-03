@@ -33,18 +33,18 @@
 
 					<div>
 						<label for="tag-name"><?php _e( 'Name:', 'bbpress' ); ?></label>
-						<input type="text" name="tag-name" size="20" maxlength="40" tabindex="<?php bbp_tab_index(); ?>" value="<?php echo esc_attr( bbp_get_topic_tag_slug() ); ?>" />
+						<input type="text" id="tag-name" name="tag-name" size="20" maxlength="40" tabindex="<?php bbp_tab_index(); ?>" value="<?php echo esc_attr( bbp_get_topic_tag_name() ); ?>" />
 					</div>
 
 					<div>
-						<label for="tag-name"><?php _e( 'Slug:', 'bbpress' ); ?></label>
-						<input type="text" name="tag-slug" size="20" maxlength="40" tabindex="<?php bbp_tab_index(); ?>" value="<?php echo esc_attr( apply_filters( 'editable_slug', bbp_get_topic_tag_slug() ) ); ?>" />
+						<label for="tag-slug"><?php _e( 'Slug:', 'bbpress' ); ?></label>
+						<input type="text" id="tag-slug" name="tag-slug" size="20" maxlength="40" tabindex="<?php bbp_tab_index(); ?>" value="<?php echo esc_attr( apply_filters( 'editable_slug', bbp_get_topic_tag_slug() ) ); ?>" />
 					</div>
 
 					<div class="bbp-submit-wrapper">
 						<input type="submit" name="submit" tabindex="<?php bbp_tab_index(); ?>" value="<?php esc_attr_e( 'Update', 'bbpress' ); ?>" /><br />
 
-						<input type="hidden" name="tag-id" value="<?php bbp_get_topic_tag_id(); ?>" />
+						<input type="hidden" name="tag-id" value="<?php bbp_topic_tag_id(); ?>" />
 						<input type="hidden" name="action" value="bbp-update-topic-tag" />
 
 						<?php wp_nonce_field( 'update-tag_' . bbp_get_topic_tag_id() ); ?>
@@ -65,8 +65,8 @@
 				<form id="merge_tag" name="merge_tag" method="post" action="">
 
 					<div>
-						<label for="tag-name"><?php _e( 'Existing tag:', 'bbpress' ); ?></label>
-						<input type="text" name="tag-name" size="22" tabindex="<?php bbp_tab_index(); ?>" maxlength="40" />
+						<label for="tag-existing-name"><?php _e( 'Existing tag:', 'bbpress' ); ?></label>
+						<input type="text" id="tag-existing-name" name="tag-existing-name" size="22" tabindex="<?php bbp_tab_index(); ?>" maxlength="40" />
 					</div>
 
 					<div class="bbp-submit-wrapper">

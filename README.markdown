@@ -190,6 +190,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.5
+	* bbPress support lags behind core bbPress Twenty Ten standards
 * Version 1.3.4
 	* <del>Blanking header text via theme admin settings doesn't blank the 50% transparency div in the default style</del>
 * Version 1.3.3
