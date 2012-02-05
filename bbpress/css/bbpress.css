@@ -150,8 +150,9 @@ span.bbp-author-ip {
 }
 .bbp-topic-freshness,
 .bbp-forum-freshness {
-	text-align: center;
+	text-align: right;
 	width: 25%;
+	padding-right: 15px;
 }
 
 #lb-content tbody .bbp-topic-content,

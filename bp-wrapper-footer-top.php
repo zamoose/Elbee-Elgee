@@ -10,5 +10,6 @@
 */
 ?>
 			</div><!-- .padder -->
+			</div><!-- #content -->
 		</div><!-- #lb-content -->
 	</div><!-- #wrapper -->

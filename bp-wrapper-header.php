@@ -12,4 +12,5 @@
 <div id="allwrapper">
 	<div id="wrapper">
 		<div id="lb-content">
+			<div id="content">
 			<div class="padder">
