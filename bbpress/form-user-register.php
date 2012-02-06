@@ -25,7 +25,7 @@
 			</div>
 
 			<div class="bbp-email">
-				<label for="user_email"><?php _e( 'Email Address', 'bbpress' ); ?>: </label>
+				<label for="user_email"><?php _e( 'Email', 'bbpress' ); ?>: </label>
 				<input type="text" name="user_email" value="<?php bbp_sanitize_val( 'user_email' ); ?>" size="20" id="user_email" tabindex="<?php bbp_tab_index(); ?>" />
 			</div>
 
@@ -33,7 +33,7 @@
 
 			<div class="bbp-submit-wrapper">
 
-				<button type="submit" name="user-submit" tabindex="<?php bbp_tab_index(); ?>" class="user-submit"><?php _e( 'Register', 'bbpress' ); ?></button>
+				<button type="submit" name="user-submit" tabindex="<?php bbp_tab_index(); ?>" class="button submit user-submit"><?php _e( 'Register', 'bbpress' ); ?></button>
 
 				<?php bbp_user_register_fields(); ?>
 

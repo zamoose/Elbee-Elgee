@@ -14,4 +14,5 @@
 	<div id="wrapper">
 	<?php lblg_above_content(); ?>
 		<div id="lb-content">
+			<div id="content">
 			<div class="padder">
