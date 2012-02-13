@@ -125,7 +125,7 @@ function lblg_breadcrumbs(){
 		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 	}
 }
-add_action( 'lblg_before_the_loop', 'lblg_breadcrumbs' );
+add_action( 'lblg_before_loop', 'lblg_breadcrumbs' );
 
 function lblg_post_info(){
 		?>
