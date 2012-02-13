@@ -1,5 +1,5 @@
+<?php lblg_before_loop(); ?>
 <?php 
-	lblg_before_the_loop();
 	/* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
 		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) get_template_part('navigation'); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -26,3 +26,4 @@
 	<?php } /* End while */?>
 	<?php if(is_home() || is_archive()) get_template_part('navigation'); ?>
 	<?php } /*End loop*/ ?>
+<?php lblg_after_loop(); ?>
