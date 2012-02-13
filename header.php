@@ -36,7 +36,6 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 
 	<?php
 	if ( class_exists('All_in_One_SEO_Pack') || class_exists('HeadSpace_Plugin') || class_exists('Platinum_SEO_Pack') || class_exists('wpSEO') || defined('WPSEO_VERSION') ) {
-	{
 		
 	} else {
 	?>
