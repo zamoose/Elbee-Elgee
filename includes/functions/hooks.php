@@ -12,15 +12,20 @@
 /**
 *  Action hooks
 */
-function lblg_before_the_loop(){
-	do_action( 'lblg_before_the_loop' );
-}
 function lblg_set_themename(){
 	do_action( 'lblg_set_themename' );
 }
 
 function lblg_after_admin_header(){
 	do_action( 'lblg_after_admin_header' );
+}
+
+function lblg_before_loop(){
+	do_action( 'lblg_before_loop' );
+}
+
+function lblg_after_loop(){
+	do_action( 'lblg_after_loop' );
 }
 
 function lblg_print_title(){
