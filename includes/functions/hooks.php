@@ -128,6 +128,13 @@ function lblg_menu(){
 	}
 }
 
+function lblg_breadcrumbs(){
+	if ( function_exists('yoast_breadcrumb') && !is_home() ) {
+		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+	}
+}
+add_action( 'lblg_before_loop', 'lblg_breadcrumbs' );
+
 function lblg_post_info(){
 		?>
 		<div class="postinfo">
