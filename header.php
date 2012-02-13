@@ -23,8 +23,15 @@ if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){
 ?>
 	<title><?php if(is_search()) { echo "Search Results &raquo; "; } else { wp_title('&raquo;', true, 'right'); } ?> <?php bloginfo('name');?></title>
 
+	<?php
+	if ( class_exists('All_in_One_SEO_Pack') || class_exists('HeadSpace_Plugin') || class_exists('Platinum_SEO_Pack') || class_exists('wpSEO') || defined('WPSEO_VERSION') ) {
+	{
+	
+	} else {
+	?>
 	<meta name="description" content="<?php bloginfo('description'); ?>" />
 	<?php 
+	}
 	// Support for Ozh's YOURLs short-link plugin.
 	// Highly-recommended.
 	if (is_single() or is_page()) {
