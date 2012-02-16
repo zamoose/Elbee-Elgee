@@ -18,7 +18,6 @@ $lblg_options = get_option($lblg_shortname . '_theme_options' );
 	?>
 	<!-- google, please ignore - thanks! -->
 	<meta name="robots" content="noindex,follow">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php
 	}
 
