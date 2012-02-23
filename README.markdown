@@ -120,6 +120,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 ### VERSION HISTORY ###
 
 * Version 1.3.6
+	* **Features Added**
+		* Greater CSS flexibility (selectors aren't as specific, allowing for easier child theming)
 	* **Issues Fixed**
 		* BuddyPress "Load More" link in Activity streams actually, you know, *loads more*.
 		* bbPress support updated for all the proper bbP hooks, so certain plugins that weren't working before now **POOF** magically work again.
