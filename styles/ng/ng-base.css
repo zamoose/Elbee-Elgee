@@ -1,5 +1,6 @@
 /* @group Menu elements */
-#menu ul ul, div.menu ul ul {
+#menu ul ul, 
+div.menu ul ul {
 	display: none;
 	float: left;
 	position: absolute;
@@ -9,27 +10,36 @@
 	z-index: 99999;
 }
 
-#menu ul ul li, div.menu ul ul li {
+#menu ul ul li, 
+div.menu ul ul li {
 	position: relative;
 }
 
-#menu ul li:hover > ul, div.menu ul li:hover > ul {
+#menu ul li:hover > ul, 
+div.menu ul li:hover > ul {
 	display: block;
 }
 
-#menu ul ul ul, div.menu ul ul ul {
+#menu ul ul ul, 
+div.menu ul ul ul {
 	left: 100%;
 	top: -1px;
 }
 
-ul.sub-menu li a:link, ul.sub-menu li a:visited, ul.children li a:link, ul.children li a:visited {
+ul.sub-menu li a:link, 
+ul.sub-menu li a:visited, 
+ul.children li a:link, 
+ul.children li a:visited {
 	padding: 10px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-ul.sub-menu li a:hover, ul.sub-menu li a:active, ul.children li a:hover, ul.children li a:active {
+ul.sub-menu li a:hover, 
+ul.sub-menu li a:active, 
+ul.children li a:hover, 
+ul.children li a:active {
 	background: #fff;
 	color: #0971B3;
 }
@@ -63,8 +73,15 @@ ul.sub-menu li a:hover, ul.sub-menu li a:active, ul.children li a:hover, ul.chil
 
 /* @group Special Info Post Classes */
 
-.notification, .category-notification, .alert, .category-alert,
-.warning, .category-warning, .sticky, .message, .information{
+.notification, 
+.category-notification, 
+.alert, 
+.category-alert,
+.warning, 
+.category-warning, 
+.sticky, 
+.message, 
+.information{
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -73,53 +90,73 @@ ul.sub-menu li a:hover, ul.sub-menu li a:active, ul.children li a:hover, ul.chil
 /* @end */
 
 /* @group Content Elements */
-body.home-page #lb-content h2, body.home #lb-content h2, 
-body.single #lb-content h1, body.page #lb-content h1,
-body.error404 #lb-content h1, h1.entry-title,
+body.home-page #lb-content h2, 
+body.home #lb-content h2, 
+body.single #lb-content h1, 
+body.page #lb-content h1,
+body.error404 #lb-content h1, 
+h1.entry-title,
 body.archive #lb-content h2 {
 	font-size: 2em;
 	font-weight: bold;
 	padding-bottom: 0.5em;
 }
 
-.itemtext h2, .itemtext h3, .itemtext h4, .itemtext h5, .itemtext h6,
-.comment-body h2, .comment-body h3, .comment-body h4, .comment-body h5, .comment-body h6 {
+.itemtext h2, 
+.itemtext h3, 
+.itemtext h4, 
+.itemtext h5, 
+.itemtext h6,
+.comment-body h2, 
+.comment-body h3, 
+.comment-body h4, 
+.comment-body h5, 
+.comment-body h6 {
 	font-weight: bold;
 	clear: both;
 }
 
-.itemtext h2, .comment-body h2 {
+.itemtext h2, 
+.comment-body h2 {
 	font-size: 1.8em;
 }
 
-.itemtext h3, .comment-body h3, h3#reply-title {
+.itemtext h3, 
+.comment-body h3, 
+h3#reply-title {
 	font-size: 1.6em;
 }
 
-.itemtext h4, .comment-body h4 {
+.itemtext h4, 
+.comment-body h4 {
 	font-size: 1.4em;
 }
 
-.itemtext h5, .comment-body h5 {
+.itemtext h5, 
+.comment-body h5 {
 	font-size: 1.2em;
 }
 
-.itemtext h6, .comment-body h6 {
+.itemtext h6, 
+.comment-body h6 {
 	font-size: 1.0em;
 }
 
 
-.itemtext table, .comment-body table {
+.itemtext table, 
+.comment-body table {
 	width: 95%;
 	margin: 0 auto;
 }
 
-.itemtext table th, .comment-body table th {
+.itemtext table th, 
+.comment-body table th {
 	text-transform: uppercase;
 	text-align: left;
 }
 
-.itemtext table tr td, .comment-body table tr td {
+.itemtext table tr td, 
+.comment-body table tr td {
 	border-top: 1px solid #bbb;
 	padding: 5px 10px 5px 10px;
 }
@@ -128,46 +165,58 @@ ol.commentlist ul.children{
 	margin-left: 20px;
 }
 
-.itemtext ul, .comment-body ul {
+.itemtext ul, 
+.comment-body ul {
 	list-style-type: disc;
 	margin-left: 22px;
 }
 
-.itemtext ul ul, .comment-body ul ul {
+.itemtext ul ul, 
+.comment-body ul ul {
 	list-style-type: circle;
 }
 
-.itemtext ul ul ul, .comment-body ul ul ul {
+.itemtext ul ul ul, 
+.comment-body ul ul ul {
 	list-style-type: square;
 }
 
-.itemtext ol,  .comment-body ol {
+.itemtext ol,
+.comment-body ol {
 	list-style-type: decimal;
 	margin-left: 22px;
 }
 
-.itemtext ol ol, .comment-body ol ol {
+.itemtext ol ol, 
+.comment-body ol ol {
 	list-style-type: lower-latin;
 }
 
-.itemtext ol ol ol, .comment-body ol ol ol {
+.itemtext ol ol ol, 
+.comment-body ol ol ol {
 	list-style-type: lower-roman;
 }
 
-.itemtext abbr, .itemtext dfn, .itemtext acronym,
-.comment-body abbr, .comment-body dfn, .comment-body acronym {
+.itemtext abbr, 
+.itemtext dfn, 
+.itemtext acronym,
+.comment-body abbr, 
+.comment-body dfn, 
+.comment-body acronym {
 	border-bottom-style: dotted;
 	cursor: help;
 	border-bottom-width: 1px;
 }
 
-.itemtext pre, .comment-body pre {
+.itemtext pre, 
+.comment-body pre {
 	padding: 5px 20px 5px 20px;
 	margin-left: 20px;
 	background: #eee;
 } 
 
-.itemtext strong, .comment-body strong{
+.itemtext strong, 
+.comment-body strong{
 	font-weight: bold;
 }
 
