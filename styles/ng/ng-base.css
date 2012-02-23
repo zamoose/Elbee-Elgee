@@ -26,20 +26,20 @@ div.menu ul ul ul {
 	top: -1px;
 }
 
-ul.sub-menu li a:link, 
-ul.sub-menu li a:visited, 
-ul.children li a:link, 
-ul.children li a:visited {
+.sub-menu a:link, 
+.sub-menu a:visited, 
+.children a:link, 
+.children a:visited {
 	padding: 10px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-ul.sub-menu li a:hover, 
-ul.sub-menu li a:active, 
-ul.children li a:hover, 
-ul.children li a:active {
+.sub-menu a:hover, 
+.sub-menu a:active, 
+.children a:hover, 
+.children a:active {
 	background: #fff;
 	color: #0971B3;
 }

@@ -73,18 +73,16 @@ div#titledesc {
 	margin-top: 20px;
 }
 
-#header h1 a:link,
-#header h1 a:visited,
-#header p.blogtitle a:link,
-#header p.blogtitle a:visited {
+#titledesc a:link,
+#titledesc a:visited {
 	color: #fff;
 	text-decoration: none;
 	vertical-align: baseline;
 	text-shadow: #000 2px 2px 1px;
 }
 
-#header h1 a:hover,
-#header h1 a:active{
+#titledesc a:hover,
+#titledesc a:active{
 }
 
 #blogtitle{
@@ -162,29 +160,22 @@ div.menu {
 	float: none;
 }
 
-#menu a:link,
-#menu a:visited,
-div.menu  a:link,
-div.menu a:visited {
+/*#menu a:link,
+#menu a:visited,*/
+.menu a:link,
+.menu a:visited {
 	padding: 5px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-/*#menu > ul > li > a:active,
-#menu > ul > li > a:hover,
-div.menu > ul > li > a:active,
-div.menu > ul > li > a:hover {
-*/	
-#menu a:active,
-#menu  a:hover,
-div.menu a:active,
-div.menu a:hover,
-#menu li.current_page_item a:link,
-#menu li.current_page_item a:visited,
-div.menu li.current_page_item a:link,
-div.menu li.current_page_item a:visited {
+/*#menu a:active,
+#menu a:hover,*/
+.menu a:active,
+.menu a:hover,
+.current_page_item > a:link,
+.current_page_item > a:visited {
 	background: #fff;
 	color: #0971B3;
 }
