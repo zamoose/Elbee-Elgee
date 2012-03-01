@@ -13,22 +13,22 @@
 
 function lblg_register_sidebars() {
 	register_sidebar( array( 'name'=>'Primary',
-						   'before_widget' => '<li>', 
+						   'before_widget' => '<li id="%1$s" class="widget %2$s">', 
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
 	register_sidebar( array( 'name'=>'Secondary', 
-						   'before_widget' => '<li>', 
+						   'before_widget' => '<li id="%1$s" class="widget %2$s">',
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
 	register_sidebar( array( 'name'=>'Bottom-Left',
-						   'before_widget' => '<li>', 
+						   'before_widget' => '<li id="%1$s" class="widget %2$s">',
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
 	register_sidebar( array( 'name'=>'Bottom-Right',
-						   'before_widget' => '<li>', 
+						   'before_widget' => '<li id="%1$s" class="widget %2$s">',
 						   'after_widget' => '</li>', 
 						   'before_title' => '<h4>', 
 						   'after_title' => '</h4>' ) );
