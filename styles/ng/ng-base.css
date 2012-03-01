@@ -95,7 +95,8 @@ body.home #lb-content h2,
 body.single #lb-content h1, 
 body.page #lb-content h1,
 body.error404 #lb-content h1,
-body.search h1, 
+body.search h1,
+body.search h2,
 h1.entry-title,
 body.archive #lb-content h2 {
 	font-size: 2em;
