@@ -1,7 +1,11 @@
 <?php lblg_before_loop(); ?>
 <?php 
-	/* Start The Loop */ if (have_posts()) { while (have_posts()) { the_post(); ?>
-		<?php /* Permalink navigation has to be inside the loop */ if (is_single()) get_template_part('navigation'); ?>
+	/* Start The Loop */ 
+	if (have_posts()) { 
+		while (have_posts()) { 
+			the_post();
+			/* Permalink navigation has to be inside the loop */ 
+			if (is_single()) get_template_part('navigation'); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php lblg_before_post_title(); ?>
 			
@@ -23,7 +27,8 @@
 				<?php trackback_rdf(); ?>
 			-->
 		</div>
-	<?php } /* End while */?>
-	<?php if(is_home() || is_archive()) get_template_part('navigation'); ?>
-	<?php } /*End loop*/ ?>
-<?php lblg_after_loop(); ?>
+	<?php } /* End while */
+		if(is_home() || is_archive()) get_template_part('navigation');
+	} /*End loop*/
+	
+	lblg_after_loop(); 
