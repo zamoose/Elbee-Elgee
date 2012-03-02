@@ -126,6 +126,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 		* BuddyPress "Load More" link in Activity streams actually, you know, *loads more*.
 		* bbPress support updated for all the proper bbP hooks, so certain plugins that weren't working before now **POOF** magically work again.
 		* Default search results if nothing is found were... *blank*. D'oh! Fixed.
+		* BuddyPress Groups widget AJAX now works to load groups on the fly.
 * Version 1.3.5
 	* **Issues Fixed**
 		* Fixed error where selecting "Display Text: no" in theme header options would still display the 50% opacity #titltedesc div.
@@ -198,6 +199,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### KNOWN ISSUES ###
 * Version 1.3.5
+	* <del>BuddyPress Groups widget AJAX doesn't work -- full page reload caused by clicks</del>
 	* <del>Search results with 0 results eventuate in empty search page</del>
 	* <del>bbPress support lags behind core bbPress Twenty Ten standards</del>
 	* <del>"Load More" link in BuddyPress Activity screen doesn't work</del>
