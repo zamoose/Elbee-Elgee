@@ -164,10 +164,9 @@ div.menu {
 	padding-left: 20px;
 }
 
-
-
 #menu li, 
-div.menu li {
+div.menu li,
+li.menu-item {
 	display: inline-block;
 }
 

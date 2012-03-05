@@ -108,16 +108,12 @@ function lblg_title(){
 
 // Output the primary menu. Hook-able via lblg_print_menu() action hook.
 function lblg_menu(){
+	echo '<div id="menu">';
 	if( function_exists( 'wp_nav_menu' ) ){
-		wp_nav_menu( array( 'theme_location'	=> 'primary',  
-							'container'			=> 'div',
-							'container_id'		=> 'menu'
-					) );
+		wp_nav_menu( array( 'theme_location'	=> 'primary' ) );
 	} else {
-	?>
-
-	<?php
 	}
+	echo '</div><!-- #menu -->';
 }
 
 function lblg_breadcrumbs(){
@@ -186,7 +182,7 @@ function lblg_styles(){
 		wp_enqueue_style( $alt_style_handle, $alt_style, '', '', 'screen' );
 	}
 	
-	//wp_enqueue_style( $normalize_handle, get_template_directory_uri() . 'includes/css/normalize.css/normalize.css', '', '', 'screen' );
+	//wp_enqueue_style( $normalize_handle, get_template_directory_uri() . '/includes/css/normalize.css/normalize.css', '', '', 'screen' );
 	wp_enqueue_style($print_handle,  get_template_directory_uri() . '/print.css', '', '', 'print' );
 }
 add_action( 'lblg_enqueue_styles', 'lblg_styles' );
