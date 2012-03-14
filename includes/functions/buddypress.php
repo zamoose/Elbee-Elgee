@@ -83,6 +83,7 @@ function lblg_bp_init(){
 
 		/* Load the default BuddyPress javascript */
 		wp_enqueue_script( 'lblg-bp-js', BP_PLUGIN_URL . '/bp-themes/bp-default/_inc/global.js', array( 'jquery' ) );
+		//wp_enqueue_script( 'lblg-bp-fix', get_stylesheet_directory_uri() . '/includes/js/lblg-bp.js', array('jquery'), '20120312' );
 	}
 	
  	if ( ( '1' != $lblg_options['disable_bp_css'] ) && ( !is_admin() ) ){
