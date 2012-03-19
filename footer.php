@@ -13,7 +13,7 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 			<?php } ?>
 			<?php endif; ?>
 			</ul>
-		</div>
+		</div><!-- #footerleft -->
 		<div id="footerright">
 			<ul>
 			<?php if ( !dynamic_sidebar('Bottom Right') ) : ?>
@@ -24,7 +24,7 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 			<?php } ?>
 			<?php endif; ?>
 			</ul>
-		</div>
+		</div><!-- #footerright -->
 	<div id="footercredits">
 	<?php 
 		if( $lblg_options['display_footer_copyright'] ) {
@@ -36,10 +36,10 @@ global $lblg_themename, $lblg_shortname, $lblg_options;
 		}
 	?>
 	<!--<?php echo get_num_queries(); ?> queries-->
-	</div>
-	</div>
-</div>
-</div>
+	</div><!-- #footercredits -->
+	</div><!-- #footerwrapper -->
+</div><!-- #footer -->
+</div><!-- #container -->
 <?php wp_footer(); ?>
 </body>
 </html>

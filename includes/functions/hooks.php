@@ -16,6 +16,14 @@ function lblg_set_themename(){
 	do_action( 'lblg_set_themename' );
 }
 
+function lblg_before_container(){
+	do_action( 'lblg_before_container' );
+}
+
+function lblg_container_top(){
+	do_action( 'lblg_container_top' );
+}
+
 function lblg_after_admin_header(){
 	do_action( 'lblg_after_admin_header' );
 }

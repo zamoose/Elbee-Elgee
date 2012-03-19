@@ -19,19 +19,6 @@ $lblg_options = get_option($lblg_shortname . '_theme_options' );
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 <?php
-// Head that nasty "duplicate content" Google "feature" off at the pass.
-	if((is_single() || is_category() || is_page() || is_home()) && (!is_paged())){ 
-	?>
-	<!-- ok google, index me! -->
-	<?php 
-	}else{
-	?>
-	<!-- google, please ignore - thanks! -->
-	<meta name="robots" content="noindex,follow">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<?php
-	}
-
 	if ( class_exists('All_in_One_SEO_Pack') || class_exists('HeadSpace_Plugin') || class_exists('Platinum_SEO_Pack') || class_exists('wpSEO') || defined('WPSEO_VERSION') ) {
 	?>
 	<title><?php wp_title(''); ?></title>
@@ -60,7 +47,9 @@ $lblg_options = get_option($lblg_shortname . '_theme_options' );
 
 </head>
 <body <?php body_class(); ?>>
+<?php lblg_before_container(); ?>
 <div id="container">
+<?php lblg_container_top(); ?>
 <div id="header">
 	<div id="titledesc">
 		<?php lblg_print_title(); ?>
