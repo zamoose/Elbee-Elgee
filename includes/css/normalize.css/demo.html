@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width">
         <title>Normalize CSS</title>
         <link rel="stylesheet" href="normalize.css">
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -18,10 +18,35 @@
         </style>
     </head>
     <body>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <h4>Heading 4</h4>
+        <h5>Heading 5</h5>
+        <h6>Heading 6</h6>
+
+        <section>
+            <h1>Heading 1 (in section)</h1>
+            <h2>Heading 2 (in section)</h2>
+            <h3>Heading 3 (in section)</h3>
+            <h4>Heading 4 (in section)</h4>
+            <h5>Heading 5 (in section)</h5>
+            <h6>Heading 6 (in section)</h6>
+        </section>
+
+        <article>
+            <h1>Heading 1 (in article)</h1>
+            <h2>Heading 2 (in article)</h2>
+            <h3>Heading 3 (in article)</h3>
+            <h4>Heading 4 (in article)</h4>
+            <h5>Heading 5 (in article)</h5>
+            <h6>Heading 6 (in article)</h6>
+        </article>
+
         <header>
             <hgroup>
-                <h1>Grouped Heading 1</h1>
-                <h2>Grouped Heading 2</h2>
+                <h1>Heading 1 (in hgroup)</h1>
+                <h2>Heading 2 (in hgroup)</h2>
             </hgroup>
             <nav>
                 <ul>
@@ -32,26 +57,14 @@
             </nav>
         </header>
 
-        <h1>Heading 1</h1>
-        <h2>Heading 2</h2>
-        <h3>Heading 3</h3>
-        <h4>Heading 4</h4>
-        <h5>Heading 5</h5>
-        <h6>Heading 6</h6>
+        <h1>Text-level semantics</h1>
 
         <p hidden>This should be hidden in all browsers, apart from IE6</p>
 
-        <section>
-            <h1>Section Heading 1</h1>
-            <article>
-                <h4>Article Heading 2</h4>
-                <address>Address: somewhere, world</address>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m.</p>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m.</p>
-            </article>
-        </section>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m.</p>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et m.</p>
 
-        <h1>Text-level semantics</h1>
+        <address>Address: somewhere, world</address>
 
         <p>
         The <a href="#">a element</a> example<br>
@@ -101,6 +114,18 @@
 
         <video controls></video>
         <video></video>
+
+        <h1>Interactive content</h1>
+
+        <h3>details / summary</h3>
+        <details>
+            <summary>More info</summary>
+            <p>Additional information</p>
+            <ul>
+                <li>Point 1</li>
+                <li>Point 2</li>
+            </ul>
+        </details>
 
         <h1>Grouping content</h1>
 
@@ -234,8 +259,8 @@
 
         <form>
             <fieldset>
-                <legend>Inputs as descendents of labels (form legend)</legend>
-                <p><label>Text input <input type="text" value="default value"></label></p>
+                <legend>Inputs as descendents of labels (form legend). This doubles up as a long legend that can test word wrapping.</legend>
+                <p><label>Text input <input type="text" value="default value that goes on and on without stopping or punctuation"></label></p>
                 <p><label>Email input <input type="email"></label></p>
                 <p><label>Search input <input type="search"></label></p>
                 <p><label>Tel input <input type="tel"></label></p>
@@ -278,10 +303,13 @@
                 <p><input type="reset" value="Reset (input)"></p>
                 <p><input type="button" value="Button (input)"></p>
                 <p><input type="submit" value="Submit (input)"></p>
+                <p><input type="submit" value="Disabled (input)" disabled></p>
+
 
                 <p><button type="reset">Reset (button)</button></p>
                 <p><button type="button">Button (button)</button></p>
                 <p><button type="submit">Submit (button)</button></p>
+                <p><button type="submit" disabled>Disabled (button)</button></p>
             </fieldset>
 
             <fieldset id="boxsize">
@@ -305,7 +333,7 @@
                 <div><input type="checkbox"></div>
 
                 <div><select><option>Option 01</option><option>Option 02</option></select></div>
-                <div><textarea cols="30" rows="5" >Textarea text</textarea></div>
+                <div><textarea cols="30" rows="5">Textarea text</textarea></div>
 
                 <div><input type="image" src="http://placekitten.com/90/24" alt="Image (input)"></div>
                 <div><input type="reset" value="Reset (input)"></div>

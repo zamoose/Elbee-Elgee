@@ -29,7 +29,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 6. Click "Save changes".
 
 #### Via Mercurial (Hg) ####
-1. Clone the repository from http://bitbucket.org/zamoose/elbee-elgee into your site's `wp-content/themes/` directory, e.g. `hg clone http://bitbucket.org/zamoose/elbee-elgee`.
+1. Clone the repository from [http://bitbucket.org/zamoose/elbee-elgee](http://bitbucket.org/zamoose/elbee-elgee) into your site's `wp-content/themes/` directory, e.g. `hg clone http://bitbucket.org/zamoose/elbee-elgee`.
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -37,7 +37,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 6. Click "Save changes".
 
 #### Via Git (git) ####
-1. Check out the repository from https://github.com/zamoose/Elbee-Elgee into your site's `wp-content/themes/` directory, e.g. `git clone git://github.com/zamoose/Elbee-Elgee.git elbee-elgee`
+1. Check out the repository from [https://github.com/zamoose/Elbee-Elgee](https://github.com/zamoose/Elbee-Elgee) into your site's `wp-content/themes/` directory, e.g. `git clone git://github.com/zamoose/Elbee-Elgee.git elbee-elgee`
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -45,7 +45,7 @@ Additional layouts and styles can be added by simply placing new .css files in t
 6. Click "Save changes".
 
 #### Via Subversion (SVN) ####
-1. Check out the repository from http://bitbucket.org/zamoose/elbee-elgee/trunk into your site's `wp-content/themes/` directory, e.g. `svn co http://bitbucket.org/zamoose/elbee-elgee/trunk elbee-elgee`
+1. Check out the repository from [http://bitbucket.org/zamoose/elbee-elgee/trunk](http://bitbucket.org/zamoose/elbee-elgee/trunk) into your site's `wp-content/themes/` directory, e.g. `svn co http://bitbucket.org/zamoose/elbee-elgee/trunk elbee-elgee`
 2. Navigate to your WordPress Dashboard and go to Appearance -> Themes.
 3. Activate Elbee Elgee.
 4. Go to Appearance -> Elbee Elgee Settings.
@@ -62,9 +62,7 @@ Elbee Elgee supports one menu by default ("Front Page"). A second menu ("Elbee E
 #### BuddyPress Support ####
 *Based in part on code provided by the [BuddyPress Template Pack plugin](http://wordpress.org/extend/plugins/bp-template-pack/)*
 
-Elbee Elgee supports basic use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Once BuddyPress version 1.3 is released, I hope to increase this support dramatically. At the very least, the basic Activity, Registration, Member, Forum and Blogs templates are supported.
-
-**Note:** This theme has preliminary support for using a BuddyPress activity stream as the front page, however, it is buggy and therefore disabled in the code for the time being. I hope to correct this as soon as BuddyPress 1.3 ships.
+Elbee Elgee supports use of the [BuddyPress](<http://buddypress.org>) social media framework out of the box. Support for BP has gotten better with further testing from willing end-users. If you have a bug that you run into while using BuddyPress, *please* let me know so that I can correct it.
 
 #### Theme Options Page ####
 I have planned Elbee Elgee to be a flexible parent theme from the very early stages. One of the coolest features (in my opinion) is its ability to auto-load theme options from either the parent theme *or* child themes. This primarily takes place in `includes/functions/options.php` and allows for an arbitrary number of theme options to be set and configured by end users.
@@ -124,6 +122,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 * Version 1.3.6
 	* **Features Added**
 		* Greater CSS flexibility (selectors aren't as specific, allowing for easier child theming)
+		* Support for Yoast's Breadcrumbs (part of his [WordPress SEO plugin](http://yoast.com/wordpress/seo/#utm_source=wpadmin&utm_medium=plugin&utm_campaign=wpseoplugin))
 	* **Issues Fixed**
 		* BuddyPress "Load More" link in Activity streams actually, you know, *loads more*.
 		* bbPress support updated for all the proper bbP hooks, so certain plugins that weren't working before now **POOF** magically work again.
@@ -201,6 +200,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### KNOWN ISSUES ###
 * Version 1.3.5
+	* [BP GTM System](http://ovirium.com/plugins/bp-gtm-system/) is incompatible with Elbee Elgee
 	* <del>BuddyPress Groups widget AJAX doesn't work -- full page reload caused by clicks</del>
 	* <del>Search results with 0 results eventuate in empty search page</del>
 	* <del>bbPress support lags behind core bbPress Twenty Ten standards</del>
