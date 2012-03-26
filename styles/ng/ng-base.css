@@ -13,6 +13,7 @@ div.menu ul ul {
 #menu ul ul li, 
 div.menu ul ul li {
 	position: relative;
+	width: 100%;
 }
 
 #menu ul li:hover > ul, 

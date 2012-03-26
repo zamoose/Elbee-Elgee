@@ -119,6 +119,10 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.7
+	* **Issues Fixed**
+		*Top-level drop-downs should now be styled correctly and consistently
+		* Custom menus added as widgets should no longer get styling from top-level menus
 * Version 1.3.6
 	* **Features Added**
 		* Greater CSS flexibility (selectors aren't as specific, allowing for easier child theming)
@@ -199,6 +203,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.6
+	* <del>Drop-down primary menu CSS is overlapping incorrectly[*](https://bitbucket.org/zamoose/elbee-elgee/issue/5/drop-down-menus-not-aligning-correctly)</del>
+	* <del>"Greedy" CSS selectors causing menus added as custom widgets to get incorrect styling[*](https://bitbucket.org/zamoose/elbee-elgee/issue/6/overly-greedy-css-causing-menus-in-widgets)</del>
 * Version 1.3.5
 	* [BP GTM System](http://ovirium.com/plugins/bp-gtm-system/) is incompatible with Elbee Elgee
 	* <del>BuddyPress Groups widget AJAX doesn't work -- full page reload caused by clicks</del>
