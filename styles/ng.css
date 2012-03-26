@@ -160,24 +160,24 @@ div.menu {
 	float: none;
 }
 
-/*#menu a:link,
-#menu a:visited,*/
-.menu a:link,
-.menu a:visited {
+#menu a:link,
+#menu a:visited {
 	padding: 5px 10px;
 	color: #fff;
 	text-decoration: none;
 	font-weight: bold;
 }
 
-/*#menu a:active,
-#menu a:hover,*/
-.menu a:active,
-.menu a:hover,
-.current_page_item > a:link,
-.current_page_item > a:visited {
+#menu a:active,
+#menu a:hover {
 	background: #fff;
 	color: #0971B3;
+}
+
+#menu .current_page_item > a:link,
+#menu .current_page_item > a:visited {
+	background: #fff;
+	color: #000;
 }
 
 li.current_page_item,
