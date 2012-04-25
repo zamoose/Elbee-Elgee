@@ -121,7 +121,7 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 * Version 1.3.7
 	* **Issues Fixed**
-		*Top-level drop-downs should now be styled correctly and consistently
+		* Top-level drop-downs should now be styled correctly and consistently
 		* Custom menus added as widgets should no longer get styling from top-level menus
 * Version 1.3.6
 	* **Features Added**
