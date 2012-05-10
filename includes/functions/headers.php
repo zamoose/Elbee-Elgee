@@ -10,7 +10,9 @@
  *
  */
 
-
+/**
+ * Check to see whether the user has custom header functionality enabled
+ */
 function lblg_custom_headers_check() {
 	global $lblg_options;
 
@@ -22,61 +24,74 @@ function lblg_custom_headers_check() {
 }
 add_action( 'after_setup_theme', 'lblg_custom_headers_check' );
 
+/**
+ * Register custom headers
+ */
 function lblg_register_headers(){
+	$h_args = array(
+					'height'				=> '200',
+					'flex-height'			=> true,
+					'width'					=> '960',
+					'flex-width'			=> true,
+					'default-text-color'	=> 'ffffff',
+					'wp-head-callback'		=> 'lblg_header_style',
+					'admin-head-callback'	=> 'lblg_admin_header_style'	
+	);
+	if( function_exists( 'get_custom_header' )){		
+		add_theme_support( 'custom-header', $h_args );
+	} else {
 		// Set up custom header code
-		if( !defined('HEADER_IMAGE') ){
+		if( !defined('HEADER_IMAGE') )
 			define( 'HEADER_IMAGE', '%s/images/headers/ivy_in_winter.jpg' );
-		}
-		if( !defined('HEADER_TEXTCOLOR') ){	
-			define( 'HEADER_TEXTCOLOR', 'ffffff' );
-		}
-		if( !defined('HEADER_IMAGE_WIDTH') ) {
-			define( 'HEADER_IMAGE_WIDTH', '960' );
-		}
-		if( !defined('HEADER_IMAGE_HEIGHT') ){
-			define( 'HEADER_IMAGE_HEIGHT', '200' );
-		}
-
-		register_default_headers( array(
-			'fireworks' => array(
-				'url' => '%s/images/headers/fireworks.jpg',
-				'thumbnail_url' => '%s/images/headers/fireworks-thumbnail.jpg',
-				'description' => 'Fireworks'
-			),
-			'ivy_in_winter' => array(
-				'url' => '%s/images/headers/ivy_in_winter.jpg',
-				'thumbnail_url' => '%s/images/headers/ivy_in_winter-thumbnail.jpg',
-				'description' => 'Ivy in Winter'
-			),
-			'lakeshore' => array(
-				'url' => '%s/images/headers/lakeshore.jpg',
-				'thumbnail_url' => '%s/images/headers/lakeshore-thumbnail.jpg',
-				'description' => 'Lakeshore'
-			),
-			'philly_sunset' => array(
-				'url' => '%s/images/headers/philly_sunset.jpg',
-				'thumbnail_url' => '%s/images/headers/philly_sunset-thumbnail.jpg',
-				'description' => 'Philly Sunset'
-			),
-			'snowy_day' => array(
-				'url' => '%s/images/headers/snowy_day.jpg',
-				'thumbnail_url' => '%s/images/headers/snowy_day-thumbnail.jpg',
-				'description' => 'Snowy Day'
-			),
-			'summer_dock' => array(
-				'url' => '%s/images/headers/summer_dock.jpg',
-				'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
-				'description' => 'Summer Dock'
-			),
-			'sunlight_streaming' => array(
-				'url' => '%s/images/headers/sunlight_streaming.jpg',
-				'thumbnail_url' => '%s/images/headers/sunlight_streaming-thumbnail.jpg',
-				'description' => 'Sunlight Streaming'
-			),
-		) );
-	// }
+		if( !defined('HEADER_TEXTCOLOR') )
+			define( 'HEADER_TEXTCOLOR', $h_args['default-text-color'] );
+		if( !defined('HEADER_IMAGE_WIDTH') )
+			define( 'HEADER_IMAGE_WIDTH', $h_args['width'] );
+		if( !defined('HEADER_IMAGE_HEIGHT') )
+			define( 'HEADER_IMAGE_HEIGHT', $h_args['height'] );
+	}
+	register_default_headers( array(
+		'fireworks' => array(
+			'url' => '%s/images/headers/fireworks.jpg',
+			'thumbnail_url' => '%s/images/headers/fireworks-thumbnail.jpg',
+			'description' => 'Fireworks'
+		),
+		'ivy_in_winter' => array(
+			'url' => '%s/images/headers/ivy_in_winter.jpg',
+			'thumbnail_url' => '%s/images/headers/ivy_in_winter-thumbnail.jpg',
+			'description' => 'Ivy in Winter'
+		),
+		'lakeshore' => array(
+			'url' => '%s/images/headers/lakeshore.jpg',
+			'thumbnail_url' => '%s/images/headers/lakeshore-thumbnail.jpg',
+			'description' => 'Lakeshore'
+		),
+		'philly_sunset' => array(
+			'url' => '%s/images/headers/philly_sunset.jpg',
+			'thumbnail_url' => '%s/images/headers/philly_sunset-thumbnail.jpg',
+			'description' => 'Philly Sunset'
+		),
+		'snowy_day' => array(
+			'url' => '%s/images/headers/snowy_day.jpg',
+			'thumbnail_url' => '%s/images/headers/snowy_day-thumbnail.jpg',
+			'description' => 'Snowy Day'
+		),
+		'summer_dock' => array(
+			'url' => '%s/images/headers/summer_dock.jpg',
+			'thumbnail_url' => '%s/images/headers/summer_dock-thumbnail.jpg',
+			'description' => 'Summer Dock'
+		),
+		'sunlight_streaming' => array(
+			'url' => '%s/images/headers/sunlight_streaming.jpg',
+			'thumbnail_url' => '%s/images/headers/sunlight_streaming-thumbnail.jpg',
+			'description' => 'Sunlight Streaming'
+		),
+	) );
 }
 
+/**
+ * Output custom-header-related CSS on the front end
+ */
 function lblg_header_style() {
 ?>
 <style type="text/css">
@@ -101,7 +116,9 @@ function lblg_header_style() {
 <?php
 }
 
-
+/**
+ * Output custom-header-related CSS on the back end
+ */
 function lblg_admin_header_style() {
 ?>
 <style type="text/css">
