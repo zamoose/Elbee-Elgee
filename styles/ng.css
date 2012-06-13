@@ -73,6 +73,10 @@ div#container {
 	margin-top: 20px;
 }
 
+#header h1 {
+	margin-left: 0.75em;
+}
+
 #header h1 a:link,
 #header h1 a:visited,
 #header p.blogtitle a:link,
