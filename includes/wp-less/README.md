@@ -1,4 +1,4 @@
-# Enables LESS in WordPress
+# Enable LESS CSS in WordPress
 
 LESS is an abstraction layer that adds some very powerful features to CSS. It
 will speed up your development process and make your life that much easier. Find
@@ -22,12 +22,14 @@ folder.
 
 ## Usage:
 
+You can either install the script as a standard plugin or use it as an include within a theme or plugin.
+
 For use with themes add the following lines to your functions.php:
 
 ```php
 <?php
 
-// Include the class
+// Include the class (unless you are using the script as a plugin)
 require_once( 'wp-less/wp-less.php' );
 
 // enqueue a .less style sheet
@@ -60,7 +62,7 @@ You can now pass variables into your .less files using one of two hooks:
 add_filter( 'less_vars', 'my_less_vars', 10, 2 );
 function my_less_vars( $vars, $handle ) {
     // $handle is a reference to the handle used with wp_enqueue_style()
-    $vars[ 'color' ] => '#000000';
+    $vars[ 'color' ] = '#000000';
     return $vars;
 }
 
@@ -68,7 +70,7 @@ function my_less_vars( $vars, $handle ) {
 // in this case 'style' is the handle we enqueued the .less file with
 add_filter( 'less_vars_style', 'style_less_vars' );
 function style_less_vars( $vars ) {
-    $vars[ 'color' ] => '#ffffff';
+    $vars[ 'color' ] = '#ffffff';
     return $vars;
 }
 
@@ -96,5 +98,18 @@ break.
 
 ## Further Reading
 
-Read the LESS.js documentation here: http://lesscss.org/
+[Read the LESS.js documentation here](http://lesscss.org/)
+
 For documenation specific to the PHP parser: http://leafo.net/lessphp/docs/
+
+
+## Contributors
+
+Big massive thanks to those whose contributions and discussion has helped to improve the plugin.
+
+* [Tom Willmot](https://github.com/willmot)
+* [Franz Josef Kaiser](https://github.com/franz-josef-kaiser)
+
+## License
+
+The software is licensed under [WTFPL](http://sam.zoy.org/wtfpl/)

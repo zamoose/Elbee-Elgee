@@ -1,8 +1,21 @@
 <?php
 /**
+Plugin Name: LESS CSS Auto Compiler
+Plugin URI: https://github.com/sanchothefat/wp-less/
+Description: Allows you to enqueue .less files and have them automatically compiled whenever a change is detected.
+Author: Robert O'Rourke
+Version: 1.0
+Author URI: http://interconnectit.com
+License: WTFPL
+*/
+
+
+/**
  * Enables the use of LESS in WordPress
  *
  * See README.md for usage information
+ *
+ * Licensed under WTFPL
  */
 
 
@@ -38,12 +51,13 @@ if ( ! class_exists( 'wp_less' ) ) {
 		function parse_stylesheet( $src, $handle ) {
 
 			// we only want to handle .less files
-			if ( ! strstr( $src, '.less' ) )
+			if ( ! preg_match( "/\.less(\.php)?$/", preg_replace( "/\?.*$/", "", $src ) ) )
 				return $src;
 
 			// get file path from $src
-			preg_match( "/^(.*?\/wp-content\/)([^\?]+)(.*)$/", $src, $src_bits );
-			$less_path = WP_CONTENT_DIR . '/' . $src_bits[ 2 ];
+			if ( ! strstr( $src, '?' ) )
+				$src .= '?';
+			list( $less_path, $query_string ) = explode( '?', str_replace( WP_CONTENT_URL, WP_CONTENT_DIR, $src ) );
 
 			// output css file name
 			$css_path = $this->get_cache_dir() . "/$handle.css";
@@ -54,25 +68,31 @@ if ( ! class_exists( 'wp_less' ) ) {
 
 			// automatically regenerate files if source's modified time has changed or vars have changed
 			try {
+
 				// load the cache
 				$cache_path = "$css_path.cache";
+
 				if ( file_exists( $cache_path ) )
 					$full_cache = unserialize( file_get_contents( $cache_path ) );
-				else
+
+				// If the root path in the cache is wrong then regenerate
+				if ( ! isset( $full_cache['less']['root'] ) || ! file_exists( $full_cache['less']['root'] ) )
 					$full_cache = array( 'vars' => $vars, 'less' => $less_path );
 
 				$less_cache = lessc::cexecute( $full_cache[ 'less' ] );
+
 				if ( ! is_array( $less_cache ) || $less_cache['updated'] > $full_cache[ 'less' ]['updated'] || $vars !== $full_cache[ 'vars' ] ) {
 					$less = new lessc( $less_path );
 					file_put_contents( $cache_path, serialize( array( 'vars' => $vars, 'less' => $less_cache ) ) );
 					file_put_contents( $css_path, $less->parse( null, $vars ) );
 				}
+
 			} catch ( exception $ex ) {
-				wp_die( $ex->getMessage() );
+			  wp_die( $ex->getMessage() );
 			}
 
 			// return the compiled stylesheet with the query string it had if any
-			return $this->get_cache_dir( false ) . "/$handle.css" . ( isset( $src_bits[ 3 ] ) ? $src_bits[ 3 ] : '' );
+			return $this->get_cache_dir( false ) . "/$handle.css" . ( ! empty( $query_string ) ? '?' . $query_string : '' );
 
 		}
 
@@ -112,8 +132,8 @@ if ( ! class_exists( 'wp_less' ) ) {
 		 */
 		function url_to_handle( $url ) {
 
-			$url = preg_replace( "/^.*?\/wp-content\/themes\//", '', $url );
-			$url = str_replace( '.less', '', $url );
+			$url = parse_url( $url );
+			$url = str_replace( '.less', '', basename( $url[ 'path' ] ) );
 			$url = str_replace( '/', '-', $url );
 
 			return sanitize_key( $url );
@@ -134,16 +154,28 @@ if ( ! class_exists( 'wp_less' ) ) {
 			$upload_dir = wp_upload_dir();
 
 			if ( $path ) {
-				$dir = str_replace( $upload_dir[ 'subdir' ], '', $upload_dir[ 'path' ] ) . '/wp-less-cache';
+				$dir = apply_filters( 'wp_less_cache_path', trailingslashit( $upload_dir[ 'basedir' ] ) . 'wp-less-cache' );
 				// create folder if it doesn't exist yet
 				if ( ! file_exists( $dir ) )
 					wp_mkdir_p( $dir );
 			} else {
-				$dir = str_replace( $upload_dir[ 'subdir' ], '', $upload_dir[ 'url' ] ) . '/wp-less-cache';
+				$dir = apply_filters( 'wp_less_cache_url', trailingslashit( $upload_dir[ 'baseurl' ] ) . 'wp-less-cache' );
 			}
 
-			return $dir;
+			return rtrim( $dir, '/' );
 
+		}
+
+
+		/**
+		 * Escape a string that has non alpha numeric characters variable for use within .less stylesheets
+		 *
+		 * @param string $str The string to escape
+		 *
+		 * @return string    String ready for passing into the compiler
+		 */
+		function sanitize_string( $str ) {
+			return '~"' . $str . '"';
 		}
 
 	}

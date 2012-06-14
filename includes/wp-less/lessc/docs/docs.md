@@ -1,4 +1,4 @@
-    title: v0.3.1 documentation
+    title: v0.3.0 documentation
     link_to_home: true
 --
 
@@ -321,41 +321,6 @@ you want to include. Optionally you can separate them by `>`.
     }
     ```
 
-#### `@arguments` Variable
-
-Within an mixin there is a special variable named `@arguments` that contains
-all the arguments passed to the mixin along with any remaining arguments that
-have default values. The value of the variable has all the values separated by
-spaces.
-
-This useful for quickly assigning all the arguments:
-
-    ```less
-    .box-shadow(@inset, @x, @y, @blur, @spread, @color) {
-      box-shadow: @arguments;
-      -webkit-box-shadow: @arguments;
-      -moz-box-shadow: @arguments;
-    }
-    .menu {
-      .box-shadow(1px, 1px, 5px, #aaa);
-    }
-    ```
-
-In addition to the arguments passed to the mixin, `@arguments` will also inlude
-remaining default values assigned by the mixin:
-
-
-    ```less
-    .border-mixin(@width, @style: solid, @color: black) {
-      border: @arguments;
-    }
-
-    pre {
-      .border-mixin(4px, dotted);
-    }
-
-    ```
-
 ### Import
 
 Multiple LESS files can be compiled into a single CSS file by using the
@@ -492,33 +457,16 @@ function that let's you unquote any value. It is called `e`.
 * `floor(number)` -- returns the floor of a numerical input
 * `round(number)` -- returns the rounded value of numerical input
 
-* `lighten(color, percent)` -- lightens `color` by `percent` and returns it
-* `darken(color, percent)` -- darkens `color` by `percent` and returns it
+* `lighten(color, percent)` -- lightens color by percent and returns it
+* `darken(color, percent)` -- darkens color by percent and returns it
 
-* `saturate(color, percent)` -- saturates `color` by `percent` and returns it
-* `desaturate(color, percent)` -- desaturates `color` by `percent` and returns it
+* `saturate(color, percent)` -- saturates color by percent and returns it
+* `desaturate(color, percent)` -- desaturates color by percent and returns it
 
-* `fadein(color, percent)` -- makes `color` less transparent by `percent` and returns it
-* `fadeout(color, percent)` -- makes `color` more transparent by `percent` and returns it
+* `fadein(color, percent)` -- makes color less transparent by percent and returns it
+* `fadeout(color, percent)` -- makes color more transparent by percent and returns it
 
-* `spin(color, amount)` -- returns a color with `amount` degrees added to hue
-
-* `fade(color, amount)` -- retuns a color with the alpha set to `amount`
-
-* `hue(color)` -- retuns the hue of `color`
-
-* `saturation(color)` -- retuns the saturation of `color`
-
-* `lightness(color)` -- retuns the lightness of `color`
-
-* `alpha(color)` -- retuns the alpha value of `color` or 1.0 if it doesn't have an alpha
-
-* `percentage(number)` -- converts a floating point number to a percentage, eg. `0.65` -> `65%`
-
-* `mix(color1, color1, percent)` -- mixes two colors by percentagle where 100%
-  keeps all of `color1`, and 0% keeps all of `color2`. Will take into account
-  the alpha of the colors if it exists. See
-  <http://sass-lang.com/docs/yardoc/Sass/Script/Functions.html#mix-instance_method>.
+* `spin(color, amount)` -- returns a color with amount degrees added to hue
 
 * `rgbahex(color)` -- returns a string containing 4 part hex color.
    
@@ -684,61 +632,43 @@ instead of the file:
 functions that will be exposed in LESS code during the compile. They can be a
 little tricky though because you need to work with the  **lessphp** type system.
 
-An instance of `lessc`, the **lessphp** compiler has two relevant methods:
-`registerFunction` and `unregisterFunction`. `registerFunction` takes two
-arguments, a name and a callable value. `unregisterFunction` just takes the
-name of an existing function to remove.
+By sub-classing `lessc`, and creating specially named methods we can extend
+**lessphp**. In order for a function to be visible in LESS, its name must
+start with `lib_`.
 
-Here's an example that adds a function called `double` that doubles any numeric
-argument:
+Let's make a function that doubles any numeric argument.
 
     ```php
     <?php
     include "lessc.inc.php";
 
-    function lessphp_double($arg) {
-        list($type, $value) = $arg;
-        return array($type, $value*2);
+    class myless extends lessc {
+        function lib_double($arg) {
+            list($type, $value) = $arg;
+            return array($type, $value*2);
+        }
     }
 
     $myless = new myless();
-    $myless->registerFunction("double", "lessphp_double");
-
-    // gives us a width of 800px
     echo $myless->parse("div { width: double(400px); }");
     ```
 
-The second argument to `registerFunction` is any *callable value* that is
-understood by [`call_user_func`](http://php.net/call_user_func).
-
-If we are using PHP 5.3 or above then we are free to pass a function literal
-like so:
-
-    ```php
-    $myless->registerFunction("double", function($arg) {
-        list($type, $value) = $arg;
-        return array($type, $value*2);
-    });
-    ```
-
-Now let's talk about the `double` function itself.
-
-Although a little verbose, the implementation gives us some insight on the type
-system. All values in **lessphp** are stored in an array where the 0th element
-is a string representing the type, and the other elements make up the
+Although a little verbose, the implementation of `lib_double` gives us some
+insight on the type system. All values are stored in an array where the 0th
+element is a string representing the type, and the other elements make up the
 associated data for that value.
 
-The best way to get an understanding of the system is to register is dummy
+The best way to get an understanding of the system is to make a dummy `lib_`
 function which does a `vardump` on the argument. Try passing the function
 different values from LESS and see what the results are.
 
-The return value of the registered function must also be a **lessphp** type, but if it is
+The return value of the `lib_` function must also be a LESS type, but if it is
 a string or numeric value, it will automatically be coerced into an appropriate
 typed value. In our example, we reconstruct the value with our modifications
-while making sure that we preserve the original type.
+while making sure that we preserve the type.
 
-In addition to the arguments passed from **lessphp**, the instnace of
-**lessphp** itself is sent to the registered function as the second argument.
+All of the built in functions are implemented in this manner within the `lessc`
+class.
 
 ## Command Line Interface
 
