@@ -1,4 +1,4 @@
-i<?php
+<?php
 /**
  * Template Name: The Loop
  * @package 	Elbee-Elgee
