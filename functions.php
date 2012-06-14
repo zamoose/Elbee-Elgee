@@ -4,7 +4,8 @@
 * Elbee Elgee.
 */
 
-define( 'LBLG_FUNCTIONS_DIR',  get_template_directory() . '/includes/functions/' );
+define( 'LBLG_INCLUDE_DIR', get_template_directory() . '/includes/' );
+define( 'LBLG_FUNCTIONS_DIR',  LBLG_INCLUDE_DIR . 'functions/' );
 
 // Functions and settings related to handling theme options
 require_once( LBLG_FUNCTIONS_DIR . 'options.php' );
@@ -37,4 +38,6 @@ if( function_exists( 'bp_init' ) )
 // bbPress-related code, only loaded if bbP is active
 if( function_exists( 'bbp_get_current_user_id' ) )
 	require_once( LBLG_FUNCTIONS_DIR . 'bbpress.php' );
-?>
+	
+// wp-less, from Sancho the Fat
+require_once( LBLG_INCLUDE_DIR . 'wp-less/wp-less.php' );
