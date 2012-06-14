@@ -16,10 +16,13 @@
 				<?php 
 				if ( is_archive() or is_search() or is_tag() ) {
 					the_excerpt();
+					echo "<a href=\"";
+					the_permalink();
+					echo "\">Continue reading '" . the_title('', '', false) . "'</a>";
 				} else {
 					the_content('Continue reading'. " '" . the_title('', '', false) . "'");
+					wp_link_pages( array( 'before' => '<div class="post-pagination">Pages: ', 'after' => '</div>', 'next_or_number' => 'number')); 
 				}
-				wp_link_pages( array( 'before' => '<div class="post-pagination">Pages: ', 'after' => '</div>', 'next_or_number' => 'number')); 
 				?>
 			</div>
 			<?php lblg_after_itemtext(); ?>
