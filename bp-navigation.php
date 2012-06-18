@@ -9,9 +9,13 @@
 *
 * @since 		Elbee-Elgee 1.0
 */
+
+global $lblg_options;
 ?>
 <div id="lb-bp-nav">
 
+	<?php 
+	if( !$lblg_options['disable_bp_searchform'] ) { ?>
 	<div id="lb-bp-search-bar">
 		<div class="bp-padder">
 
@@ -33,6 +37,9 @@
 	</div><!-- #lb-bp-search-bar -->
 	
 	<?php
+	} // End if
+
+	if( !$lblg_options['disable_bp_menu'] )
 		wp_nav_menu( array( 'theme_location'	=> 'lblgbpmenu',  
 							'container'			=> 'ul',
 							'container_id'		=> 'lblgbpmenu',

@@ -125,6 +125,16 @@ if( function_exists('bp_get_loggedin_user_nav') ) {
 									   "desc" => "Elbee Elgee comes with basic CSS styles that give BuddyPress pages a standard look and feel. You can extend upon these styles in your child theme's CSS or simply disable them and construct your own.",
 									   "std" => "0",
 									   "type" => "checkbox" ),
+			
+			"disable_bp_searchform" => array( "name" => "Disable BuddyPress search form",
+											  "desc" => "Disables the BP search form in the header.",
+											  "std" => "0",
+											  "type" => "checkbox" ),
+			
+			"disable_bp_menu" => array( "name" => "Disable custom BuddyPress menu",
+										"desc" => "Disables the BP menu in the header.",
+										"std" => "0",
+										"type" => "checkbox" ),
 		),
 	);
 }
