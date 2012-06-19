@@ -10,7 +10,7 @@
  */
 
 // Look for layout CSS files to auto-load
-$layout_path = TEMPLATEPATH . '/layouts/'; 
+$layout_path = TEMPLATEPATH . '/layouts/css/'; 
 $layouts = array();
 
 // Look for color/design CSS files to auto-load
