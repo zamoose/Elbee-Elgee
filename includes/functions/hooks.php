@@ -171,13 +171,13 @@ function lblg_styles(){
 	switch($layout_style_option){
 		case '':
 		case 'Select a layout:':
-			$layout = get_template_directory_uri() . '/layouts/2-columns-fixed-sb-right.css';
+			$layout = get_template_directory_uri() . '/layouts/css/2-columns-fixed-sb-right.css';
 		break;
 		case '*none*':
 			unset($layout);
 		break;
 		default:
-			$layout = get_template_directory_uri() . '/layouts/' . $layout_style_option;
+			$layout = get_template_directory_uri() . '/layouts/css/' . $layout_style_option;
 		break;
 	}
 	
