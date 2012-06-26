@@ -33,6 +33,10 @@ function lblg_extra_theme_headers( $headers ){
 }
 add_filter( 'extra_theme_headers', 'lblg_extra_theme_headers' );
 
+/**
+ * This function prints the post titles and alters display slightly
+ * based upon the context it is called in.
+ */
 function lblg_print_the_title(){
 	if( !is_single() && !is_page() ) { ?> 
 		<h2 class="posttitle"><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php echo strip_tags(get_the_title()) ?>"><?php the_title(); ?></a></h2>
@@ -43,3 +47,13 @@ function lblg_print_the_title(){
 	}
 }
 add_action( 'lblg_the_title', 'lblg_print_the_title' );
+
+function lblg_mobile_nav() {
+	
+}
+add_action( 'lblg_before_container', 'lblg_mobile_nav' );
+
+function lblg_mobile_nav_style() {
+	echo "<!-- MOBILE NAV STYLE -->";
+}
+add_action( 'wp_head', 'lblg_mobile_nav_style' );
