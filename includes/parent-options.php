@@ -44,7 +44,7 @@ $alt_stylesheets_tmp = asort($alt_stylesheets);
 $alt_stylesheets_tmp = array_unshift($alt_stylesheets, "Select a stylesheet:", "*none*");
 
 $parent_options_array = array(
-	"tabs" => array( 'general' ),
+	"tabs" => array( 'general', 'mobile' ),
 	
 	"general" => array(
 			"name"		=> "General",
@@ -103,8 +103,21 @@ $parent_options_array = array(
 						"type" => "colorpicker"),
 			)
 	),
-
-
+	
+	"mobile" => array(
+				"name" => "Mobile/Responsive",
+				"type" => "tab",
+				"contents" => array(
+					"enable_responsive_css" => array(	"name" => "Enable Responsive CSS",
+							"desc" => "Enable \"responsive\" CSS.",
+							"std" => "1",
+							"type" => "checkbox"),
+					"enable_mobile_menu" => array(	"name"	=> "Enable Mobile Nav Menu",
+							"desc" => "Enable alternate mobile/\"respponsive\" menu function.",
+							"std" => "1",
+							"type" => "checkbox"),
+				),
+	),
 );
 
 if( function_exists('bp_get_loggedin_user_nav') ) {
@@ -127,12 +140,12 @@ if( function_exists('bp_get_loggedin_user_nav') ) {
 									   "type" => "checkbox" ),
 			
 			"disable_bp_searchform" => array( "name" => "Disable BuddyPress search form",
-											  "desc" => "Disables the BP search form in the header.",
+											  "desc" => "Disables the BP search form in the site header.",
 											  "std" => "0",
 											  "type" => "checkbox" ),
 			
 			"disable_bp_menu" => array( "name" => "Disable custom BuddyPress menu",
-										"desc" => "Disables the BP menu in the header.",
+										"desc" => "Disables the BP menu in the site header.",
 										"std" => "0",
 										"type" => "checkbox" ),
 		),
