@@ -10,7 +10,11 @@
  * @since       Elbee-Elgee 1.0
  *
  */
+global $lblg_options;
 
+/**
+ * Register all the sidebar areas
+ */
 function lblg_register_sidebars() {
 	register_sidebar( array( 'name'=>'Primary',
 						   'before_widget' => '<li id="%1$s" class="widget %2$s">', 
@@ -38,7 +42,7 @@ add_action( 'widgets_init', 'lblg_register_sidebars' );
 /*
 * Add support for various WordPress-native functionality
 */
-if ( ! isset( $content_width ) ) $content_width = '640';
+if ( ! isset( $content_width ) ) $content_width = '600';
 add_theme_support( 'nav-menus' );
 add_theme_support( 'post-thumbnails' );
 set_post_thumbnail_size( 64, 64, true );
@@ -48,7 +52,14 @@ add_theme_support( 'automatic-feed-links' );
 add_theme_support( 'custom-background' );
 add_editor_style();
 
+/**
+ * Register nav menus
+*/
 register_nav_menu( 'primary', 'Primary Navigation Menu' );
-if( function_exists( 'bp_get_loggedin_user_nav' ) ){
+if( function_exists( 'bp_get_loggedin_user_nav' ) ) {
 	register_nav_menu( 'lblgbpmenu', 'Default BuddyPress Menu' );
+}
+if( $lblg_options['enable_mobile_menu'] ) {
+	register_nav_menu( 'lblgmobilemenu', 'Mobile Nav Menu' );
+	add_action( 'lblg_before_container', 'lblg_output_mobile_nav' );
 }
