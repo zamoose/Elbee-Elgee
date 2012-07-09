@@ -1,11 +1,19 @@
 <?php
 /**
- * 
+ * Template Name: Navigation
  */
 ?>
 	<!--hr /-->
 
-	<?php if ( is_single() ) { ?>
+	<?php if ( is_attachment() ) { ?>
+
+	<div class="navigation">
+		<div class="left"><?php previous_image_link( 0 ) ?></div>
+		<div class="right"><?php next_image_link( 0 ) ?></div>
+		<div class="clear"></div>
+	</div>		
+
+	<?php } elseif ( is_single() ) { ?>
 
 	<div class="navigation">
 		<div class="left"><?php previous_post_link() ?></div>
@@ -14,6 +22,7 @@
 	</div>
 
 	<?php } else { ?>
+
 	<div class="navigation">
 			<?php if(function_exists('wp_pagenavi')) {
  					wp_pagenavi(); 

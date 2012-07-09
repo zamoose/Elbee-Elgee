@@ -105,6 +105,13 @@ function lblg_enqueue_styles(){
 }
 add_action( 'wp_enqueue_scripts', 'lblg_enqueue_styles', 11 );
 
+function lblg_nav_top() {
+	do_action( 'lblg_nav_top' );
+}
+
+function lblg_nav_bottom() {
+	do_action( 'lblg_nav_bottom' );
+}
 /**
 * Output functions.
 *
@@ -136,12 +143,51 @@ function lblg_menu(){
 	}
 }
 
+// Output site breadcrumbs if Yoast's Breadcrumbs are available.
 function lblg_breadcrumbs(){
 	if ( function_exists('yoast_breadcrumb') && !is_home() ) {
 		yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 	}
 }
 add_action( 'lblg_before_loop', 'lblg_breadcrumbs' );
+
+// Output navigation info at the top of the Loop.
+function lblg_topnav() {
+	if ( is_attachment() ) { ?>
+
+	<div class="navigation">
+		<div class="left"><?php previous_image_link( 0 ) ?></div>
+		<div class="right"><?php next_image_link( 0 ) ?></div>
+		<div class="clear"></div>
+	</div>		
+
+	<?php 
+	} elseif ( is_single() ) { ?>
+
+	<div class="navigation">
+		<div class="left"><?php previous_post_link() ?></div>
+		<div class="right"><?php next_post_link() ?></div>
+		<div class="clear"></div>
+	</div>
+	
+	<?php 
+	}
+}
+add_action( 'lblg_nav_top', 'lblg_topnav' );
+
+function lblg_bottomnav() { ?>
+	<div class="navigation">
+			<?php if(function_exists('wp_pagenavi')) {
+ 					wp_pagenavi(); 
+				} else { ?>
+		<div class="left"><?php next_posts_link('<span>&laquo;</span> Older Entries') ?></div>
+		<div class="right"><?php previous_posts_link('Newer Entries <span>&raquo;</span>') ?></div>
+		<div class="clear"></div>
+			<?php } ?>
+	</div>
+	<?php 
+}
+add_action( 'lblg_nav_bottom', 'lblg_bottomnav' );
 
 function lblg_post_info(){
 		?>

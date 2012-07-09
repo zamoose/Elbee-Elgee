@@ -8,14 +8,13 @@
  * @since 		Elbee-Elgee 1.0
  */
 
-lblg_before_loop(); ?>
-<?php 
+lblg_before_loop();
 	/* Start The Loop */ 
 	if (have_posts()) { 
 		while (have_posts()) { 
 			the_post();
 			/* Permalink navigation has to be inside the loop */ 
-			if (is_single()) get_template_part('navigation'); ?>
+			lblg_nav_top(); ?>
 		<div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 			<?php lblg_before_post_title(); ?>
 			
@@ -41,7 +40,7 @@ lblg_before_loop(); ?>
 			-->
 		</div>
 	<?php } /* End while */
-		if(is_home() || is_archive()) get_template_part('navigation');
+		lblg_nav_bottom();
 	} /*End loop*/
 	
-	lblg_after_loop(); 
+lblg_after_loop(); 
