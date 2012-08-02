@@ -34,6 +34,7 @@ function lblg_register_headers(){
 					'width'					=> '960',
 					'flex-width'			=> true,
 					'default-text-color'	=> 'ffffff',
+					'default-image'			=> '%s/images/headers/lakeshore.jpg',
 					'wp-head-callback'		=> 'lblg_header_style',
 					'admin-head-callback'	=> 'lblg_admin_header_style'	
 	);
@@ -97,7 +98,10 @@ function lblg_header_style() {
 <style type="text/css">
 #header{
 	background: url(<?php header_image() ?>) bottom left no-repeat;
-	background-size: cover;
+	/*background-size: cover;*/
+	background-height: <?php get_custom_header()->height; ?>;
+	background-width: <?php get_custom_header()->width; ?>;
+	height: <?php get_custom_header()->height; ?>;
 }
 <?php if ( 'blank' == get_header_textcolor() ) { ?>
 #header h1, #header #description {

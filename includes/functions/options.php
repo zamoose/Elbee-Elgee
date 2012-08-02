@@ -53,11 +53,11 @@ function lblg_options_init(){
 	// child-options.php file, if we're running as a child theme.
 	$lblg_default_options = lblg_get_default_options();
 	$lblg_defaults = lblg_get_options_from_defaults( $lblg_default_options );
-
+	
 	if( ( false === $lblg_stored_options ) || ( '' == $lblg_stored_options ) ){
 		// We haven't been installed yet.
-		$lblg_options = lblg_get_options_from_defaults( $lblg_default_options );
-	} elseif( version_compare( $lblg_version, $lblg_stored_options['version'], '>' )) {
+		$lblg_options = $lblg_defaults;
+	} elseif( (version_compare( $lblg_version, $lblg_stored_options['version'], '!=' )) || (count($lblg_stored_options) != count($lblg_default_options))) {
 		// New version of the options have been detected. Let's reload.
 		$lblg_options = $lblg_stored_options + $lblg_default_options;
 	} else {
@@ -151,6 +151,8 @@ function lblg_get_default_options(){
 		$temp_options = $parent_options_array;
 	}
 	
+	//lblg_filter_default_options( $temp_options );
+	
 	return $temp_options;
 }
 
@@ -160,12 +162,18 @@ function lblg_get_default_options(){
  * @global  string $lblg_shortname
  * @global  array $lblg_default_options
  * @global  array $lblg_options
+ * @global  array $lblg_defaults
  * @param   array $input
  * @return  array
  */
 function lblg_sanitize_options( $input ){
 	global $lblg_shortname, $lblg_default_options, $lblg_options, $lblg_defaults;
 	
+	// echo '<h2>$lblg_options</h2>';
+	// print_r($lblg_options);
+	// echo '<h2>$lblg_defaults</h2>';
+	// print_r($lblg_defaults);
+		
 	$submit = ( ! empty( $input['save']) ? true : false );
 	$reset = ( ! empty( $input['reset']) ? true : false );
 	$tabbed = ( !empty( $input['tab']) ? true : false );
@@ -180,7 +188,7 @@ function lblg_sanitize_options( $input ){
 		} else {
 			// If they don't exist for some reason, we use the defaults
 			// as our valid input test
-			$valid_input = lblg_get_options_from_defaults( $lblg_default_options );
+			$valid_input = $lblg_defaults; //lblg_get_options_from_defaults( $lblg_default_options );
 		}
 
 		if( !isset( $lblg_default_options['tabs'] ) ){

@@ -10,8 +10,6 @@
  * @since       Elbee-Elgee 1.0
  *
  */
-global $lblg_options;
-
 /**
  * Register all the sidebar areas
  */
