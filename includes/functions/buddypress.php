@@ -136,7 +136,7 @@ function lblg_bp_init(){
 
 	wp_localize_script( 'lblg-bp-js', 'BP_DTheme', $params );
 }
-add_action( 'widgets_init', 'lblg_bp_init' );
+add_action( 'after_setup_theme', 'lblg_bp_init' );
 
 /*****
  * Add support for showing the activity stream as the front page of the site
