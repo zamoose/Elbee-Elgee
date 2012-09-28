@@ -7,6 +7,14 @@ body{
 	background-color: #efefef;
 }
 
+strong {
+	font-weight: bold;
+}
+
+em {
+	font-style: italic;
+}
+
 a:link,
 a:visited{
 	color: #0971B3;
