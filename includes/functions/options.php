@@ -48,7 +48,7 @@ function lblg_options_init(){
 
 	// Check to see whether we've been installed previously
 	$lblg_stored_options = get_option( $lblg_shortname . '_theme_options' );
-	
+
 	// Pull the default options from the parent-options.php and, optionally, the
 	// child-options.php file, if we're running as a child theme.
 	$lblg_default_options = lblg_get_default_options();
@@ -56,10 +56,11 @@ function lblg_options_init(){
 
 	if( ( false === $lblg_stored_options ) || ( '' == $lblg_stored_options ) ){
 		// We haven't been installed yet.
-		$lblg_options = lblg_get_options_from_defaults( $lblg_default_options );
-	} elseif( version_compare( $lblg_version, $lblg_stored_options['version'], '>' )) {
+		$lblg_options = $lblg_defaults;
+	} elseif( (version_compare( $lblg_version, $lblg_stored_options['version'], '!=' )) || (count($lblg_stored_options) != count($lblg_defaults))) {
+
 		// New version of the options have been detected. Let's reload.
-		$lblg_options = $lblg_stored_options + $lblg_default_options;
+		$lblg_options = $lblg_stored_options + $lblg_defaults;
 	} else {
 		// We've previously been installed and the version number
 		// hasn't changed. Assume no change and act accordingly.

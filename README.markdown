@@ -119,6 +119,12 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 
 ### VERSION HISTORY ###
 
+* Version 1.3.9
+	* **Issues Fixed**
+		* Resolved options-saving bug that has been plaguing LBLG for ages, affecting primarily bbPress and BuddyPress
+* Version 1.3.8
+	* **Issues Fixed**
+		* BuddyPress JavaScript has been fixed for BP version >= 1.6
 * Version 1.3.7
 	* **Issues Fixed**
 		* Top-level drop-downs should now be styled correctly and consistently
@@ -203,6 +209,8 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.8
+	* <del>Options for bbPress or BuddyPress don't save after enabling plugins</del>
 * Version 1.3.7
 	* <del>Italics/emphasis elements not styled correctly</del>
 	* <del>AJAX requests for BuddyPress pages not working correctly</del>
