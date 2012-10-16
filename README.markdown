@@ -203,6 +203,9 @@ If you are interested in learning more about Mercurial, [HG Init](<http://hginit
 	* Initial release
 
 ### KNOWN ISSUES ###
+* Version 1.3.7
+	* <del>Italics/emphasis elements not styled correctly</del>
+	* <del>AJAX requests for BuddyPress pages not working correctly</del>
 * Version 1.3.6
 	* <del>Drop-down primary menu CSS is overlapping incorrectly[*](https://bitbucket.org/zamoose/elbee-elgee/issue/5/drop-down-menus-not-aligning-correctly)</del>
 	* <del>"Greedy" CSS selectors causing menus added as custom widgets to get incorrect styling[*](https://bitbucket.org/zamoose/elbee-elgee/issue/6/overly-greedy-css-causing-menus-in-widgets)</del>
